@@ -7,9 +7,9 @@
             $conn = $this->connect();
 			$this->closeDB($conn);
         }
-		function themsuaxoa($sql)
+		/*function themsuaxoa($sql)
 		{
-			$con = $this->connectDB();
+			$conn = $this->connect();
 
 			if(mysql_query($sql, $con))
 			{
@@ -19,7 +19,7 @@
 			{
 				$error = mysql_error();
 				echo $error;
-				/*echo "<script> alert('Thêm sản phẩm thất bại {$error}')</script>";*/
+				echo "<script> alert('Thêm sản phẩm thất bại {$error}')</script>";
 			}
 			
 			$this->closeDB($con);
@@ -63,7 +63,7 @@
 				return 0;
 			}
 		}
-		
+*/		
 		public function  showProducts()
         {
             $conn = $this->connect();
