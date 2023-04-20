@@ -27,7 +27,7 @@
 		
 		function loadThongTin($sql)
 		{
-			$con = $this->connectDB();
+			$con = $this->connect();
 			$result = mysql_query($sql, $con);
 			$rows = mysql_num_rows($result);
 			
@@ -83,7 +83,7 @@
 						  <tr>
 							<td width='36'>STT</td>
 							<td width='52'>Title</td>
-							<td>descript</td>
+							<td width='150'>descript</td>
 							<td width='20'>price</td>
 							<td width='20'>discount</td>
 							<td width='20'>quantity</td>

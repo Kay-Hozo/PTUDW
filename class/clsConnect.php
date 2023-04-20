@@ -18,7 +18,7 @@
 			else
 			{
 				mysql_select_db($this->db_name);
-                mysql_set_charset('utf8_unicode_ci',$conn);
+                mysql_query('SET NAMES UTF8');
 				return $conn;
 			}
         }
