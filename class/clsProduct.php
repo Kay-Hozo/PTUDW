@@ -2,72 +2,87 @@
     include ("clsConnect.php");
     class product extends connectDB
     {
-        public function  addProduct()
+        public function themSuaXoaSP($sql)
         {
             $conn = $this->connect();
-			$this->closeDB($conn);
-        }
-		/*function themsuaxoa($sql)
-		{
-			$conn = $this->connect();
-
-			if(mysql_query($sql, $con))
+			
+			$result = mysql_query($sql, $conn);
+			if($result)
 			{
-				echo "<script> alert('Thêm sản phẩm thành công')</script>";		
-			} 
+				return 1;
+			}
 			else
 			{
-				$error = mysql_error();
-				echo $error;
-				echo "<script> alert('Thêm sản phẩm thất bại {$error}')</script>";
+				return 0;
 			}
 			
-			$this->closeDB($con);
-		}	
+			$this->closeDB($conn);
+        }
 		
-		function loadThongTin($sql)
+		public function showOptionsInSelect($sql, $tenSelect)
 		{
-			$con = $this->connect();
-			$result = mysql_query($sql, $con);
-			$rows = mysql_num_rows($result);
-			
-			if($rows > 0)
+			$conn = $this->connect();
+			$result = mysql_query($sql, $conn);
+			$row = mysql_num_rows($result);
+			if($row > 0)
 			{
-				echo "<select name='txtcongty' id='txtcongty'>
-						<option value='0'>Chọn công ty</option>";
-				while($info = mysql_fetch_array($result))
+				echo "<select name='{$tenSelect}' id='{$tenSelect}'>";
+				
+				while($option = mysql_fetch_array($result))
 				{
-					echo "<option value='{$info['id']}'> {$info['tenct']}</option>";
+					echo "<option value='{$option['0']}'>{$option['1']}</option>";
 				}
+				
 				echo "</select>";
 			}
 			else
 			{
-				echo "Không có thông tin";	
+				echo "";	
 			}
+				
+			$this->closeDB($conn);
 		}
 		
-		function uploadHinhAnh ($imgName, $folder, $tmpName)
-		{			
-			$newName = $folder . '/' . $imgName;
-			$imgType = $_FILES["txthinhanh"]["type"];
-			if($imgType == 'image/jpg' || $imgType == 'image/jpeg' || $imgType == 'image/png')
+		public function countRowTable($tenBang)
+		{
+            $conn = $this->connect();
+			$sql = "SELECT COUNT(*) FROM {$tenBang};";
+			$result = mysql_query($sql, $conn);
+			
+			if($result !== false)
 			{
-				if(move_uploaded_file($tmpName, $newName))
-				{
-					return 1;	
-				}
-			} 
+				$row = mysql_fetch_array($result);
+				return $row[0];
+			}
 			else
 			{
 				return 0;
 			}
 		}
-*/		
+		
+		public function uploadImg ($tmpName, $folder, $name, $type)
+		{
+			if($type != 'image/jpg' && $type != 'image/png' && $type != 'image/jpeg')
+			{
+				return 0;	
+			}
+			
+			$new_name = $folder . $name;
+			
+			if(move_uploaded_file($tmpName, $new_name))
+			{
+				return 1;	
+			}
+			else
+			{
+				return 0;
+			}
+		}
+		
 		public function  showProducts()
         {
             $conn = $this->connect();
-			$sql = "SELECT * FROM Product";
+			$sql = "SELECT * FROM sanPham";
 			
 			$result = mysql_query($sql,$conn);
 			
@@ -95,18 +110,19 @@
 						  </tr>";
 			  while($product = mysql_fetch_array($result)) 
 			  {
+				  
 					echo "<tr>
-						<td>{$product['ID']}</td>
-						<td>{$product['title']}</td>
-						<td style='height: 40px; overflow:hidden;'>{$product['description']}</td>
-						<td>{$product['price']}</td>
-						<td>{$product['discount']}</td>
-						<td>{$product['quantity']}</td>
-						<td>{$product['sold']}</td>
-						<td>{$product['status']}</td>
-						<td>{$product['author_id']}</td>
-						<td>{$product['image']}</td>
-						<td>{$product['rate']}</td>
+						<td>{$product['maSP']}</td>
+						<td>{$product['tenSP']}</td>
+						<td style='height: 40px; overflow:hidden;'>{$product['moTa']}</td>
+						<td>{$product['gia']}</td>
+						<td>{$product['giamGia']}</td>
+						<td>{$product['soLuong']}</td>
+						<td>{$product['daBan']}</td>
+						<td>{$product['trangThaiSP']}</td>
+						<td>{$product['maTacGia']}</td>
+						<td><img src='./images/book/{$product['hinhAnh']}' width='100%' alt=''/></td>
+						<td>{$product['danhGia']}</td>
 					  </tr>";
 			  }
 			 	echo "</tbody>
