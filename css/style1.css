@@ -9433,6 +9433,7 @@ button.button span span {
 	padding: 0px 0px;
 	background-size: cover;
 	height: 300px;
+	display: none;
 }
 .add-banner1 {
 	background-image: url(../images/silde/banner5.png);

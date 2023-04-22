@@ -45,7 +45,7 @@
         <div class="row">
           <div class="col-sm-3 col-xs-12"> 
             <!-- Header Logo -->
-            <div class="logo"><a title="Magento Commerce" href="index.php"><img alt="Magento Commerce" src="images/logo/logo.png" style="height:150px; width:150px;"></a></div>
+            <div class="logo"><a title="Magento Commerce" href="index.php"><img alt="Magento Commerce" src="images/logo/logo.png" style="height:150px;"></a></div>
             <!-- End Header Logo --> 
           </div>
           <div class="col-lg-9 col-xs-12 right_menu">
@@ -621,7 +621,7 @@
                             <div class="add_cart">
                               <button class="button btn-cart" type="button"><span>Add to Cart</span></button>
                             </div>
-                            <div class="product-detail-bnt"><a href="quick_view.html" class="button detail-bnt"><span>Quick View</span></a></div>
+                            <div class="product-detail-bnt"><a href="quick_view.php" class="button detail-bnt"><span>Quick View</span></a></div>
                            <span class="add-to-links"> <a href="wishlist.html" class="link-wishlist" title="Add to Wishlist"><span>Add to Wishlist</span></a> <a href="compare.html" class="link-compare add_to_compare" title="Add to Compare"><span>Add to Compare</span></a></span> </div>
                           </div>
                         </div>
@@ -657,7 +657,7 @@
                             <div class="add_cart">
                               <button class="button btn-cart" type="button"><span>Add to Cart</span></button>
                             </div>
-                            <div class="product-detail-bnt"><a href="quick_view.html" class="button detail-bnt"><span>Quick View</span></a></div>
+                            <div class="product-detail-bnt"><a href="quick_view.php" class="button detail-bnt"><span>Quick View</span></a></div>
                            <span class="add-to-links"> <a href="wishlist.html" class="link-wishlist" title="Add to Wishlist"><span>Add to Wishlist</span></a> <a href="compare.html" class="link-compare add_to_compare" title="Add to Compare"><span>Add to Compare</span></a></span> </div>
                           </div>
                         </div>
@@ -696,7 +696,7 @@
                             <div class="add_cart">
                               <button class="button btn-cart" type="button"><span>Add to Cart</span></button>
                             </div>
-                            <div class="product-detail-bnt"><a href="quick_view.html" class="button detail-bnt"><span>Quick View</span></a></div>
+                            <div class="product-detail-bnt"><a href="quick_view.php" class="button detail-bnt"><span>Quick View</span></a></div>
                             <span class="add-to-links"> <a href="wishlist.html" class="link-wishlist" title="Add to Wishlist"><span>Add to Wishlist</span></a> <a href="compare.html" class="link-compare add_to_compare" title="Add to Compare"><span>Add to Compare</span></a></span> </div>
                           </div>
                         </div>
@@ -735,7 +735,7 @@
                             <div class="add_cart">
                               <button class="button btn-cart" type="button"><span>Add to Cart</span></button>
                             </div>
-                            <div class="product-detail-bnt"><a href="quick_view.html" class="button detail-bnt"><span>Quick View</span></a></div>
+                            <div class="product-detail-bnt"><a href="quick_view.php" class="button detail-bnt"><span>Quick View</span></a></div>
                            <span class="add-to-links"> <a href="wishlist.html" class="link-wishlist" title="Add to Wishlist"><span>Add to Wishlist</span></a> <a href="compare.html" class="link-compare add_to_compare" title="Add to Compare"><span>Add to Compare</span></a></span> </div>
                           </div>
                         </div>
@@ -773,7 +773,7 @@
                             <div class="add_cart">
                               <button class="button btn-cart" type="button"><span>Add to Cart</span></button>
                             </div>
-                            <div class="product-detail-bnt"><a href="quick_view.html" class="button detail-bnt"><span>Quick View</span></a></div>
+                            <div class="product-detail-bnt"><a href="quick_view.php" class="button detail-bnt"><span>Quick View</span></a></div>
                             <span class="add-to-links"> <a href="wishlist.html" class="link-wishlist" title="Add to Wishlist"><span>Add to Wishlist</span></a> <a href="compare.html" class="link-compare add_to_compare" title="Add to Compare"><span>Add to Compare</span></a></span> </div>
                           </div>
                         </div>
@@ -812,7 +812,7 @@
                             <div class="add_cart">
                               <button class="button btn-cart" type="button"><span>Add to Cart</span></button>
                             </div>
-                            <div class="product-detail-bnt"><a href="quick_view.html" class="button detail-bnt"><span>Quick View</span></a></div>
+                            <div class="product-detail-bnt"><a href="quick_view.php" class="button detail-bnt"><span>Quick View</span></a></div>
                            <span class="add-to-links"> <a href="wishlist.html" class="link-wishlist" title="Add to Wishlist"><span>Add to Wishlist</span></a> <a href="compare.html" class="link-compare add_to_compare" title="Add to Compare"><span>Add to Compare</span></a></span> </div>
                           </div>
                         </div>
@@ -848,7 +848,7 @@
                             <div class="add_cart">
                               <button class="button btn-cart" type="button"><span>Add to Cart</span></button>
                             </div>
-                            <div class="product-detail-bnt"><a href="quick_view.html" class="button detail-bnt"><span>Quick View</span></a></div>
+                            <div class="product-detail-bnt"><a href="quick_view.php" class="button detail-bnt"><span>Quick View</span></a></div>
                             <span class="add-to-links"> <a href="wishlist.html" class="link-wishlist" title="Add to Wishlist"><span>Add to Wishlist</span></a> <a href="compare.html" class="link-compare add_to_compare" title="Add to Compare"><span>Add to Compare</span></a></span> </div>
                           </div>
                         </div>
@@ -887,7 +887,7 @@
                             <div class="add_cart">
                               <button class="button btn-cart" type="button"><span>Add to Cart</span></button>
                             </div>
-                            <div class="product-detail-bnt"><a href="quick_view.html" class="button detail-bnt"><span>Quick View</span></a></div>
+                            <div class="product-detail-bnt"><a href="quick_view.php" class="button detail-bnt"><span>Quick View</span></a></div>
                             <span class="add-to-links"> <a href="wishlist.html" class="link-wishlist" title="Add to Wishlist"><span>Add to Wishlist</span></a> <a href="compare.html" class="link-compare add_to_compare" title="Add to Compare"><span>Add to Compare</span></a></span> </div>
                           </div>
                         </div>
@@ -926,7 +926,7 @@
                             <div class="add_cart">
                               <button class="button btn-cart" type="button"><span>Add to Cart</span></button>
                             </div>
-                            <div class="product-detail-bnt"><a href="quick_view.html" class="button detail-bnt"><span>Quick View</span></a></div>
+                            <div class="product-detail-bnt"><a href="quick_view.php" class="button detail-bnt"><span>Quick View</span></a></div>
                             <span class="add-to-links"> <a href="wishlist.html" class="link-wishlist" title="Add to Wishlist"><span>Add to Wishlist</span></a> <a href="compare.html" class="link-compare add_to_compare" title="Add to Compare"><span>Add to Compare</span></a></span> </div>
                           </div>
                         </div>
@@ -964,7 +964,7 @@
                             <div class="add_cart">
                               <button class="button btn-cart" type="button"><span>Add to Cart</span></button>
                             </div>
-                            <div class="product-detail-bnt"><a href="quick_view.html" class="button detail-bnt"><span>Quick View</span></a></div>
+                            <div class="product-detail-bnt"><a href="quick_view.php" class="button detail-bnt"><span>Quick View</span></a></div>
                             <span class="add-to-links"> <a href="wishlist.html" class="link-wishlist" title="Add to Wishlist"><span>Add to Wishlist</span></a> <a href="compare.html" class="link-compare add_to_compare" title="Add to Compare"><span>Add to Compare</span></a></span> </div>
                           </div>
                         </div>
@@ -1322,7 +1322,7 @@
                                         <div class="add_cart">
                                           <button class="button btn-cart" type="button"><span>Add to Cart</span></button>
                                         </div>
-                                        <div class="product-detail-bnt"><a href="quick_view.html" class="button detail-bnt"><span>Quick View</span></a></div> <span class="add-to-links"><a href="wishlist.html" class="link-wishlist" title="Add to Wishlist"><span>Add to Wishlist</span></a> 
+                                        <div class="product-detail-bnt"><a href="quick_view.php" class="button detail-bnt"><span>Quick View</span></a></div> <span class="add-to-links"><a href="wishlist.html" class="link-wishlist" title="Add to Wishlist"><span>Add to Wishlist</span></a> 
  <a href="compare.html" class="link-compare add_to_compare" title="Add to Compare"><span>Add to Compare</span></a></span> </div>
                                       </div>
                     </div>
@@ -1364,7 +1364,7 @@
                                         <div class="add_cart">
                                           <button class="button btn-cart" type="button"><span>Add to Cart</span></button>
                                         </div>
-                                        <div class="product-detail-bnt"><a href="quick_view.html" class="button detail-bnt"><span>Quick View</span></a></div> <span class="add-to-links"><a href="wishlist.html" class="link-wishlist" title="Add to Wishlist"><span>Add to Wishlist</span></a> 
+                                        <div class="product-detail-bnt"><a href="quick_view.php" class="button detail-bnt"><span>Quick View</span></a></div> <span class="add-to-links"><a href="wishlist.html" class="link-wishlist" title="Add to Wishlist"><span>Add to Wishlist</span></a> 
  <a href="compare.html" class="link-compare add_to_compare" title="Add to Compare"><span>Add to Compare</span></a></span> </div>
                                       </div>
                     </div>
@@ -1406,7 +1406,7 @@
                                         <div class="add_cart">
                                           <button class="button btn-cart" type="button"><span>Add to Cart</span></button>
                                         </div>
-                                        <div class="product-detail-bnt"><a href="quick_view.html" class="button detail-bnt"><span>Quick View</span></a></div> <span class="add-to-links"><a href="wishlist.html" class="link-wishlist" title="Add to Wishlist"><span>Add to Wishlist</span></a> 
+                                        <div class="product-detail-bnt"><a href="quick_view.php" class="button detail-bnt"><span>Quick View</span></a></div> <span class="add-to-links"><a href="wishlist.html" class="link-wishlist" title="Add to Wishlist"><span>Add to Wishlist</span></a> 
  <a href="compare.html" class="link-compare add_to_compare" title="Add to Compare"><span>Add to Compare</span></a></span> </div>
                                       </div>
                     </div>
@@ -1688,7 +1688,7 @@
       <div class="footer-middle">
         <div class="container">
           <div class="row">
-            <div style="text-align:center"><a href="index.php"><img src="images/logo/logo.png" height="150" width="150" alt=""></a></div>
+            <div style="text-align:center"><a href="index.php"><img src="images/logo/logo.png" height="150"  alt=""></a></div>
             <address>
             <i class="icon-location-arrow"></i> 12 Nguyễn Văn Bảo,Phường 4 ,Q.Gò Vấp,TP Hồ Chí Minh<i class="icon-mobile-phone"></i><span>0387120640</span> <i class="icon-envelope"></i><a href="mailto:support@magikcommerce.com">lethoa22012020@gmail.com</a>
             </address>
@@ -1742,7 +1742,7 @@
         <li> <a href="about_us.html">About us</a></li>
         <li><a href="compare.html">Compare</a></li>
  	   <li><a href="faq.html">FAQ</a></li>
-        <li><a href="quick_view.html">Quick view</a></li>
+        <li><a href="quick_view.php">Quick view</a></li>
         <li><a href="login.php">Login</a></li>
         <li><a href="blog.html">Blog</a>
           <ul>

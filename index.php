@@ -1,3 +1,13 @@
+<?php 
+include("./class/clsConnect.php");
+$p=new connectDB();
+?>
+<?php 
+if(isset($_REQUEST['layid']))
+{
+	$layid=$_REQUEST['layid'];
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -240,7 +250,7 @@
           <li data-transition='random' data-slotamount='7' data-masterspeed='1000' data-thumb='images/silde/slide-image-2.png'><img src='images/silde/slide-image-2.png' alt="slide" data-bgposition='left top'  data-bgfit='cover' data-bgrepeat='no-repeat'  />
            
           </li>
-          <li data-transition='random' data-slotamount='7' data-masterspeed='1000' data-thumb=''><img src='images/silde/slide-image-5.png' alt="slide" data-bgposition='left top' data-bgfit='cover' data-bgrepeat='no-repeat'  /></li>
+          <li data-transition='random' data-slotamount='7' data-masterspeed='1000' data-thumb=''><img src='images/silde/slide-image-3.jpg' alt="slide" data-bgposition='left top' data-bgfit='cover' data-bgrepeat='no-repeat'  /></li>
           <li data-transition='random' data-slotamount='7' data-masterspeed='1000' data-thumb='images/silde/slide-image-4.png'><img src='images/silde/slide-image-4.png' alt="slide" data-bgposition='left top' data-bgfit='cover' data-bgrepeat='no-repeat'  /></li>
         </ul>
       </div>
@@ -294,7 +304,10 @@
                       <div class="magik-pdt-content wide-5">
                         <div class="pdt-content is-loaded pdt_best_sales tab-content-actived">
                           <ul class="pdt-list products-grid-home zoomOut play">
-     <!--1 sản phẩm New-->    <li class="item item-animate wide-first">
+                          <?php 
+						  $p->xuatsp("select*from sanPham order by maSP asc");
+						  ?>
+     <!--1 sản phẩm New-->   <!-- <li class="item item-animate wide-first">
                               <div class="item-inner">
                                 <div class="item-img">
                                   <div class="item-img-info"><a href="product_detail.php" title="Sample Product" class="product-image"><img src="products-images/product1.jpg" alt="Sample Product"></a>
@@ -330,10 +343,10 @@
                                   </div>
                                 </div>
                               </div>
-                            </li>
+                            </li>-->
                <!--kết thúc 1 sản phẩm-->
                
-                            <li class="item item-animate">
+                          <!--  <li class="item item-animate">
                               <div class="item-inner">
                                 <div class="item-img">
                                   <div class="item-img-info"><a href="product_detail.php" title="Sample Product" class="product-image"><img src="products-images/product2.jpg" alt="Sample Product"></a>
@@ -917,7 +930,7 @@
                                   </div>
                                 </div>
                               </div>
-                            </li>
+                            </li>-->
                           </ul>
                         </div>
                       </div>
@@ -951,7 +964,7 @@
                         <div class="add_cart">
                           <button class="button btn-cart" type="button"><span>Add to Cart</span></button>
                         </div>
-                        <div class="product-detail-bnt"><a href="quick_view.html" class="button detail-bnt"><span>Quick View</span></a></div>
+                        <div class="product-detail-bnt"><a href="quick_view.php" class="button detail-bnt"><span>Quick View</span></a></div>
                         <span class="add-to-links"><a href="wishlist.html" class="link-wishlist" title="Add to Wishlist"><span>Add to Wishlist</span></a> <a href="compare.html" class="link-compare add_to_compare" title="Add to Compare"><span>Add to Compare</span></a></span> </div>
                     </div>
                   </div>
@@ -989,7 +1002,7 @@
                         <div class="add_cart">
                           <button class="button btn-cart" type="button"><span>Add to Cart</span></button>
                         </div>
-                        <div class="product-detail-bnt"><a href="quick_view.html" class="button detail-bnt"><span>Quick View</span></a></div>
+                        <div class="product-detail-bnt"><a href="quick_view.php" class="button detail-bnt"><span>Quick View</span></a></div>
                         <span class="add-to-links"><a href="wishlist.html" class="link-wishlist" title="Add to Wishlist"><span>Add to Wishlist</span></a> <a href="compare.html" class="link-compare add_to_compare" title="Add to Compare"><span>Add to Compare</span></a></span> </div>
                     </div>
                   </div>
@@ -1031,7 +1044,7 @@
                         <div class="add_cart">
                           <button class="button btn-cart" type="button"><span>Add to Cart</span></button>
                         </div>
-                        <div class="product-detail-bnt"><a href="quick_view.html" class="button detail-bnt"><span>Quick View</span></a></div>
+                        <div class="product-detail-bnt"><a href="quick_view.php" class="button detail-bnt"><span>Quick View</span></a></div>
                         <span class="add-to-links"><a href="wishlist.html" class="link-wishlist" title="Add to Wishlist"><span>Add to Wishlist</span></a> <a href="compare.html" class="link-compare add_to_compare" title="Add to Compare"><span>Add to Compare</span></a></span> </div>
                     </div>
                   </div>
@@ -1073,7 +1086,7 @@
                         <div class="add_cart">
                           <button class="button btn-cart" type="button"><span>Add to Cart</span></button>
                         </div>
-                        <div class="product-detail-bnt"><a href="quick_view.html" class="button detail-bnt"><span>Quick View</span></a></div>
+                        <div class="product-detail-bnt"><a href="quick_view.php" class="button detail-bnt"><span>Quick View</span></a></div>
                         <span class="add-to-links"><a href="wishlist.html" class="link-wishlist" title="Add to Wishlist"><span>Add to Wishlist</span></a> <a href="compare.html" class="link-compare add_to_compare" title="Add to Compare"><span>Add to Compare</span></a></span> </div>
                     </div>
                   </div>
@@ -1111,7 +1124,7 @@
                         <div class="add_cart">
                           <button class="button btn-cart" type="button"><span>Add to Cart</span></button>
                         </div>
-                        <div class="product-detail-bnt"><a href="quick_view.html" class="button detail-bnt"><span>Quick View</span></a></div>
+                        <div class="product-detail-bnt"><a href="quick_view.php" class="button detail-bnt"><span>Quick View</span></a></div>
                         <span class="add-to-links"><a href="wishlist.html" class="link-wishlist" title="Add to Wishlist"><span>Add to Wishlist</span></a> <a href="compare.html" class="link-compare add_to_compare" title="Add to Compare"><span>Add to Compare</span></a></span> </div>
                     </div>
                   </div>
@@ -1153,7 +1166,7 @@
                         <div class="add_cart">
                           <button class="button btn-cart" type="button"><span>Add to Cart</span></button>
                         </div>
-                        <div class="product-detail-bnt"><a href="quick_view.html" class="button detail-bnt"><span>Quick View</span></a></div>
+                        <div class="product-detail-bnt"><a href="quick_view.php" class="button detail-bnt"><span>Quick View</span></a></div>
                         <span class="add-to-links"><a href="wishlist.html" class="link-wishlist" title="Add to Wishlist"><span>Add to Wishlist</span></a> <a href="compare.html" class="link-compare add_to_compare" title="Add to Compare"><span>Add to Compare</span></a></span> </div>
                     </div>
                   </div>
@@ -1465,7 +1478,7 @@
         <li> <a href="about_us.html">About us</a></li>
         <li><a href="compare.html">Compare</a></li>
  	   <li><a href="faq.html">FAQ</a></li>
-        <li><a href="quick_view.html">Quick view</a></li>
+        <li><a href="quick_view.php">Quick view</a></li>
         <li><a href="login.php">Login</a></li>
         <li><a href="blog.html">Blog</a>
           <ul>
