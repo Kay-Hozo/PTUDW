@@ -93,40 +93,48 @@
 			$rows = mysql_num_rows($result);
 						
 			if ($rows > 0) {
-				echo "<table width='100%' border='1' cellspacing='0' cellpadding='0'>
-						<tbody>
-						  <tr>
-							<td width='36'>STT</td>
-							<td width='52'>Title</td>
-							<td width='150'>descript</td>
-							<td width='20'>price</td>
-							<td width='20'>discount</td>
-							<td width='20'>quantity</td>
-							<td width='20'>sold</td>
-							<td width='20'>status</td>
-							<td width='20'>author_id</td>
-							<td width='40'>image</td>
-							<td width='20'>rate</td>
-						  </tr>";
+				echo "
+				<form method='POST'>
+				<input type='submit' name='btnSP' value='Cập nhật sản phẩm'>
+				<table data-toggle='table' data-url='tables/data1.json'  data-show-refresh='true' data-show-toggle='true' data-show-columns='true' data-search='true' data-pagination='true' data-sort-name='name' data-sort-order='desc'>
+				<thead>
+					<tr>
+					<th data-field='state' data-checkbox='true' >Item ID</th>
+					<th data-field='maSP'>Mã sản phẩm</th>
+					<th data-field='tenSP' data-sortable='true'>Tên sản phẩm</th>
+					<th data-field='moTa'>Mô tả</th>
+					<th data-field='gia' data-sortable='true'>Giá</th>
+					<th data-field='giamGia' data-sortable='true'>Giảm giá</th>
+					<th data-field='soLuong'>Số lượng</th>
+					<th data-field='daBan' data-sortable='true'>Đã bán</th>
+					<th data-field='trangThaiSP' data-sortable='true'>Trạng thái</th>
+					<th data-field='maTacGia'>Tác giả</th>
+					<th data-field='hinhAnh'>Hình ảnh</th>
+					<th data-field='danhGia' data-sortable='true'>Đánh giá</th>
+					</tr>
+				</thead>
+				<tbody>";
 			  while($product = mysql_fetch_array($result)) 
 			  {
 				  
 					echo "<tr>
-						<td>{$product['maSP']}</td>
+						<td><input data-index='0' name='toolbar1' type='checkbox' value='{$product['maSP']}'></td>
+						<td class='text-center'>{$product['maSP']}</td>
 						<td>{$product['tenSP']}</td>
-						<td style='height: 40px; overflow:hidden;'>{$product['moTa']}</td>
-						<td>{$product['gia']}</td>
-						<td>{$product['giamGia']}</td>
-						<td>{$product['soLuong']}</td>
-						<td>{$product['daBan']}</td>
-						<td>{$product['trangThaiSP']}</td>
-						<td>{$product['maTacGia']}</td>
-						<td><img src='./images/book/{$product['hinhAnh']}' width='100%' alt=''/></td>
-						<td>{$product['danhGia']}</td>
+						<td><p class='product-desc'>{$product['moTa']}</p></td>
+						<td class='text-center'>{$product['gia']}.000</td>
+						<td class='text-center'>{$product['giamGia']}</td>
+						<td class='text-center'>{$product['soLuong']}</td>
+						<td class='text-center'>{$product['daBan']}</td>
+						<td class='text-center'>{$product['trangThaiSP']}</td>
+						<td class='text-center'>{$product['maTacGia']}</td>
+						<td><img src='../images/book/{$product['hinhAnh']}' width='100%' alt=''/></td>
+						<td class='text-center'>{$product['danhGia']}</td>
 					  </tr>";
 			  }
 			 	echo "</tbody>
-  				</table>";
+  				</table>
+				</form>";
 			} else {
 			  echo "Không có sản phẩm!";
 			}

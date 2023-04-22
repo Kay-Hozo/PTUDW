@@ -1,0 +1,48 @@
+/* CSS Document */
+.nav-tabs {
+    border-bottom: 0;
+}
+
+.nav-tabs > li > a {
+    border: none;
+    color: #777;
+    font-weight: bold;
+}
+
+.nav-tabs > li.active > a, 
+.nav-tabs > li.active > a:hover, 
+.nav-tabs > li.active > a:focus {
+    border: none;
+    color: #555;
+    background-color: #fff;
+}
+
+.tab-content {
+    border: 1px solid #ddd;
+    padding: 10px;
+}
+
+.tab-pane {
+    margin-top: 20px;
+}
+  
+.border-0 {
+	border: 0;
+}
+
+.product-desc {
+	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+	font-size: 14px;	
+	line: 18px;
+	max-height: 180px;
+	overflow: hidden;
+	display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 9;
+}
+
+.form-themSP {
+	max-width: 80%;
+	margin: 0 auto;
+	padding-top: 18px;
+}
