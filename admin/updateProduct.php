@@ -1,6 +1,9 @@
 <?php 
 	include ("../class/clsProduct.php");
 	$p = new product();
+	$product_id = $_REQUEST['product_id'];
+	$author_id = $_REQUEST['author_id'];
+	$category_id = $_REQUEST['category_id'];
 ?>
 <!DOCTYPE html>
 <html>
@@ -12,6 +15,7 @@
 <link href="../css/bootstrap.min.css" rel="stylesheet">
 <link href="../css/datepicker3.css" rel="stylesheet">
 <link href="../css/styles2.css" rel="stylesheet">
+<link href="../css/main.css" rel="stylesheet">
 
 <!--Icons-->
 <script src="../js/lumino.glyphs.js"></script>
@@ -24,37 +28,117 @@
 </head>
 
 <body>
-<div class="upProduct-box">
-    <h3 class='modal-title text-center'>CẬP NHẬT SẢN PHẨM</h3>
-      <form enctype='multipart/form-data' method='post'>
-        <div class='form-group row'>
-          <label for='txt_Up_DM' class='col-sm-2 col-form-label'>Danh mục</label>
-          <div class='col-sm-10'>
-            <?php
-                $p->showOptionsInSelect('SELECT * FROM danhMuc', 'txt_Up_DM');
-            ?>
-          </div>
-        </div>
-        <div class='form-group row'>
-          <label for='txt_Up_TG' class='col-sm-2 col-form-label'>Tác giả</label>
-          <div class='col-sm-10'>
-            <?php
-                $p->showOptionsInSelect('SELECT * FROM tacGia', 'txt_Up_TG');
-            ?>
-          </div>
-        </div>
-	<?php
-		$product_id = $_REQUEST["product_id"];
-		$sql = "SELECT * FROM  sanPham WHERE maSP = {$product_id}";
-		
-    	$p->showUpProduct($sql);
-	?>
-    <div class='form-group row'>
-      <div class='col-sm-12 text-center'>
-        <input type='submit' name='btnSP' id='btnUpdateSP' class='btn btn-primary' value='Cập nhật sản phẩm'>
-      </div>
+<div class="content">
+    <div class="bg-dark">
     </div>
-  </form>
+    <div class="upProduct-box">
+        <h3 class='text-center heading-form'>CẬP NHẬT SẢN PHẨM</h3>
+        <form enctype='multipart/form-data' method='post'>
+            <div class='form-group row'>
+              <label for='txt_Up_DM' class='col-sm-2 col-form-label'>Danh mục</label>
+              <div class='col-sm-10'>
+                <?php
+                    $p->showOptionsInSelect('SELECT * FROM danhMuc', 'txt_Up_DM', $category_id);
+                ?>
+              </div>
+            </div>
+            <div class='form-group row'>
+              <label for='txt_Up_TG' class='col-sm-2 col-form-label'>Tác giả</label>
+              <div class='col-sm-10'>
+                <?php
+                    $p->showOptionsInSelect('SELECT * FROM tacGia', 'txt_Up_TG', $author_id);
+                ?>
+              </div>
+            </div>
+        <?php
+            $sql_showProduct = "SELECT * FROM  sanPham WHERE maSP = {$product_id}";            
+            $p->showUpProduct($sql_showProduct);
+			
+			switch ($_REQUEST['btnSP'])
+			{
+				case "Cập nhật sản phẩm" :
+				{
+					$danhMuc = $_REQUEST["txt_Up_DM"];
+					$tacGia = $_REQUEST["txt_Up_TG"];
+					$tenSP = $_REQUEST["txt_Up_TenSP"];
+					$gia = $_REQUEST["txt_Up_Gia"];
+					$giamGia = $_REQUEST["txt_Up_GiamGia"];
+					$mota = $_REQUEST["txt_Up_MT"];
+					$soLuong = $_REQUEST["txt_Up_SL"];
+					$thoiGian = date('Y-m-d H:i:s');	
+					$sql_upProduct  = "";
+					
+					if($_FILES["txt_Up_Anh"]["name"] == "")
+					{
+						$sql_upProduct = 
+						"
+						UPDATE sanPham sp
+						LEFT JOIN danhMucSP dm ON sp.maSP = dm.maSanPham
+						SET  sp.`tenSP` = N'{$tenSP}', 
+							sp.`moTa` = N'{$mota}', 
+							sp.`gia` = {$gia}, 
+							sp.`giamGia` = {$giamGia}, 
+							sp.`soLuong` = {$soLuong}, 
+							sp.`thoiGianSua` = '{$thoiGian}',  
+							sp.`maTacGia` = {$tacGia}, 
+							dm.`maDanhMuc` = {$danhMuc}
+						WHERE sp.maSP = {$product_id}
+						";
+					}
+					else
+					{
+						$folder = '../images/book/';
+						$tenAnh = time() . '-' . $_FILES["txt_Up_Anh"]["name"];
+						$tmpName = $_FILES["txt_Up_Anh"]["tmp_name"];
+						$type = $_FILES["txt_Up_Anh"]["type"];
+						
+						if($p->uploadImg($tmpName, $folder, $tenAnh, $type) == 0) 
+						{
+							exit("Lỗi, tải ảnh lên thất bại!");
+						}
+						
+						$sql_upProduct = 
+						"
+						UPDATE sanPham sp
+						LEFT JOIN danhMucSP dm ON sp.maSP = dm.maSanPham
+						SET sp.`tenSP` = N'{$tenSP}', 
+							sp.`moTa` = N'{$mota}', 
+							sp.`gia` = {$gia}, 
+							sp.`giamGia` = {$giamGia}, 
+							sp.`soLuong` = {$soLuong}, 
+							sp.`thoiGianSua` = '{$thoiGian}',  
+							sp.`maTacGia` = {$tacGia}, 
+							sp.`hinhAnh` = '{$tenAnh}',
+							dm.`maDanhMuc` = {$danhMuc}
+						WHERE sp.maSP = {$product_id}
+						";
+					}
+					
+					$result = $p->themSuaXoaSP($sql_upProduct);
+
+					if($result == 1)
+					{
+						echo "<script> alert('Cập nhật sản phẩm thành công')</script>";	
+						$p->showProducts($product_id);
+					}
+					else
+					{
+						echo "<script> alert('Lỗi, cập nhật sản phẩm thất bại!')</script>";		
+					}
+					break;	
+				}	
+			}
+        ?>
+        <div class='form-group row'>
+          <div class='col-sm-12 text-center'>
+            <input type='submit' name='btnSP' id='btnUpdateSP' class='btn btn-primary' value='Cập nhật sản phẩm'>
+          </div>
+        </div>
+      </form>
+      <a href="products.php" class="cancel-btn">
+      	<i class="fa-solid fa-circle-xmark btn-icon"></i>
+      </a>
+    </div>
 </div>
 
 	<script src="../js/jquery-1.11.1.min.js"></script>
@@ -64,5 +148,6 @@
 	<script src="../js/easypiechart.js"></script>
 	<script src="../js/easypiechart-data.js"></script>
 	<script src="../js/bootstrap-datepicker.js"></script>
+    <script src="https://kit.fontawesome.com/e9dbdfe1dd.js" crossorigin="anonymous"></script>
 </body>
 </html>

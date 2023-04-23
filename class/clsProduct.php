@@ -19,7 +19,7 @@
 			$this->closeDB($conn);
         }
 		
-		public function showOptionsInSelect($sql, $tenSelect)
+		public function showOptionsInSelect($sql, $tenSelect, $select_id=0)
 		{
 			$conn = $this->connect();
 			$result = mysql_query($sql, $conn);
@@ -30,7 +30,14 @@
 				
 				while($option = mysql_fetch_array($result))
 				{
-					echo "<option value='{$option['0']}'>{$option['1']}</option>";
+					if($option['0'] == $select_id) 
+					{
+						echo "<option  selected value='{$option['0']}'>{$option['1']}</option>";
+					}
+					else 
+					{
+						echo "<option value='{$option['0']}'>{$option['1']}</option>";
+					}
 				}
 				
 				echo "</select>";
@@ -110,7 +117,9 @@
 					<div class='form-group row'>
 					  <label for='txt_Up_MT' class='col-sm-2 col-form-label'>Mô tả</label>
 					  <div class='col-sm-10'>
-						<textarea name='txt_Up_MT' class='form-control' value='{$product['mota']}' id='txt_Up_MT' rows='5'></textarea>
+						<textarea name='txt_Up_MT' class='form-control' id='txt_Up_MT' rows='5'>
+							{$product['moTa']}
+						</textarea>
 					  </div>
 					</div>
 					<div class='form-group row'>
@@ -122,7 +131,7 @@
 					<div class='form-group row'>
 					  <label for='txt_Up_Anh' class='col-sm-2 col-form-label'>Hình ảnh</label>
 					  <div class='col-sm-10'>
-						<input type='file' name='txt_Up_Anh' id='txt_Up_Anh' value='{$product['hinhAnh']}'>
+						<input type='file' name='txt_Up_Anh' id='txt_Up_Anh'>
 					  </div>
 					</div>
 				";
@@ -136,10 +145,17 @@
 			}
 		}
 		
-		public function  showProducts()
+		public function  showProducts($product_id=0)
         {
             $conn = $this->connect();
-			$sql = "SELECT * FROM sanPham";
+			if($product_id > 0)
+			{
+				$sql = "SELECT * FROM sanPham sp LEFT JOIN danhMucSP dm ON sp.maSP = dm.maSanPham WHERE sp.maSP = {$product_id}";
+			}
+			else
+			{
+				$sql = "SELECT * FROM sanPham sp LEFT JOIN danhMucSP dm ON sp.maSP = dm.maSanPham";
+			}
 			
 			$result = mysql_query($sql,$conn);
 			
@@ -174,36 +190,36 @@
 					echo "<tr>
 						<td></td>
 						<td class='text-center'>
-							<a href='updateProduct.php?product_id={$product['maSP']}' class='text-color'>{$product['maSP']}</a>
+							<a href='updateProduct.php?product_id={$product['maSP']}&author_id={$product['maTacGia']}&category_id={$product['maDanhMuc']}' class='text-color'>{$product['maSP']}</a>
 						</td>
 						<td>
-							<a href='updateProduct.php?product_id={$product['maSP']}' class='text-color'>{$product['tenSP']}</a></td>
+							<a href='updateProduct.php?product_id={$product['maSP']}&author_id={$product['maTacGia']}&category_id={$product['maDanhMuc']}' class='text-color'>{$product['tenSP']}</a></td>
 						<td>
-							<a href='updateProduct.php?product_id={$product['maSP']}' class='text-color'>
+							<a href='updateProduct.php?product_id={$product['maSP']}&author_id={$product['maTacGia']}&category_id={$product['maDanhMuc']}' class='text-color'>
 								<p class='product-desc'>{$product['moTa']}</p>
 							</a>
 						</td>
 						<td class='text-center'>
-							<a href='updateProduct.php?product_id={$product['maSP']}' class='text-color'>{$product['gia']}.000</a>
+							<a href='updateProduct.php?product_id={$product['maSP']}&author_id={$product['maTacGia']}&category_id={$product['maDanhMuc']}' class='text-color'>{$product['gia']}.000</a>
 						</td>
 						<td class='text-center'>
-							<a href='updateProduct.php?product_id={$product['maSP']}' class='text-color'>{$product['giamGia']}</a>
+							<a href='updateProduct.php?product_id={$product['maSP']}&author_id={$product['maTacGia']}&category_id={$product['maDanhMuc']}' class='text-color'>{$product['giamGia']}</a>
 						</td>
 						<td class='text-center'>
-							<a href='updateProduct.php?product_id={$product['maSP']}' class='text-color'>{$product['soLuong']}</a>
+							<a href='updateProduct.php?product_id={$product['maSP']}&author_id={$product['maTacGia']}&category_id={$product['maDanhMuc']}' class='text-color'>{$product['soLuong']}</a>
 						</td>
 						<td class='text-center'>
-							<a href='updateProduct.php?product_id={$product['maSP']}' class='text-color'>{$product['daBan']}</a>
+							<a href='updateProduct.php?product_id={$product['maSP']}&author_id={$product['maTacGia']}&category_id={$product['maDanhMuc']}' class='text-color'>{$product['daBan']}</a>
 						</td>
 						<td class='text-center'>
-							<a href='updateProduct.php?product_id={$product['maSP']}' class='text-color'>{$product['trangThaiSP']}</a>
+							<a href='updateProduct.php?product_id={$product['maSP']}&author_id={$product['maTacGia']}&category_id={$product['maDanhMuc']}' class='text-color'>{$product['trangThaiSP']}</a>
 						</td>
 						<td class='text-center'>
-							<a href='updateProduct.php?product_id={$product['maSP']}' class='text-color'>{$product['maTacGia']}</a>
+							<a href='updateProduct.php?product_id={$product['maSP']}&author_id={$product['maTacGia']}&category_id={$product['maDanhMuc']}' class='text-color'>{$product['maTacGia']}</a>
 						</td>
 						<td><img src='../images/book/{$product['hinhAnh']}' width='100%' alt=''/></td>
 						<td class='text-center'>
-							<a href='updateProduct.php?product_id={$product['maSP']}' class='text-color'>{$product['danhGia']}</a>
+							<a href='updateProduct.php?product_id={$product['maSP']}&author_id={$product['maTacGia']}&category_id={$product['maDanhMuc']}' class='text-color'>{$product['danhGia']}</a>
 						</td>
 					  </tr>";
 			  }
