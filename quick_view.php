@@ -1,3 +1,14 @@
+
+<?php 
+include ("./class/clsgiohang.php");
+$p=new giohang();
+?>
+<?php 
+if(isset($_REQUEST['layid']))
+{
+	$layid=$_REQUEST['layid'];
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -45,72 +56,47 @@
       <div style="width:auto;height:auto;overflow: auto;position:relative;">
         <div class="product-view">
           <div class="product-essential">
-            <form action="#" method="post" id="product_addtocart_form">
-              <input name="form_key" value="6UbXroakyQlbfQzK" type="hidden">
-              <div class="product-img-box col-sm-5 col-xs-12 bounceInRight animated">
-                <div class="new-label new-top-left"> New </div>
-                <div class="product-image">
-                  <div class="large-image"> <a href="products-images/product4.jpg" class="cloud-zoom" id="zoom1" rel="useWrapper: false, adjustY:0, adjustX:20"> <img src="products-images/product4.jpg" alt = "Thumbnail"> </a> </div>
-                  <div class="flexslider flexslider-thumb">
-                    <ul class="previews-list slides">
-                      <li><a href='products-images/product6.jpg' class='cloud-zoom-gallery' rel="useZoom: 'zoom1', smallImage: 'products-images/product6.jpg' "><img src="products-images/product6.jpg" alt = "Thumbnail 1"/></a></li>
-                      <li><a href='products-images/product10.jpg' class='cloud-zoom-gallery' rel="useZoom: 'zoom1', smallImage: 'products-images/product10.jpg' "><img src="products-images/product10.jpg" alt = "Thumbnail 2"/></a></li>
-                      <li><a href='products-images/product3.jpg' class='cloud-zoom-gallery' rel="useZoom: 'zoom1', smallImage: 'products-images/product3.jpg' "><img src="products-images/product3.jpg" alt = "Thumbnail 1"/></a></li>
-                      <li><a href='products-images/product4.jpg' class='cloud-zoom-gallery' rel="useZoom: 'zoom1', smallImage: 'products-images/product4.jpg' "><img src="products-images/product4.jpg" alt = "Thumbnail 2"/></a></li>
-                      <li><a href='products-images/product5.jpg' class='cloud-zoom-gallery' rel="useZoom: 'zoom1', smallImage: 'products-images/product5.jpg' "><img src="products-images/product5.jpg" alt = "Thumbnail 2"/></a></li>
-                    </ul>
-                  </div>
-                </div>
-                <!-- end: more-images --> 
-              </div>
-              <div class="product-shop col-sm-7 col-xs-12 bounceInUp animated">
-              <div class="product-next-prev"> <a class="product-next" href="#"><span></span></a> <a class="product-prev" href="#"><span></span></a> </div>
-                <div class="product-name">
-                  <h1>Sample Product</h1>
-                </div>
-                <div class="short-description"> 
-                  <!--<h2>Quick Overview</h2>-->
-                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam fringilla augue nec est tristique auctor. Donec non est at libero vulputate rutrum.</p>
-                   <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam fringilla augue nec est tristique auctor. Donec non est at libero vulputate rutrum.</p>
-                </div>
-                <div class="ratings">
-                  <div class="rating-box">
-                    <div style="width:60%" class="rating"></div>
-                  </div>
-                  <p class="rating-links"> <a href="#">1 Review(s)</a> <span class="separator">|</span> <a href="#">Add Your Review</a> </p>
-                </div>
-                <p class="availability in-stock pull-right"><span>In Stock</span></p>
-                <div class="price-block">
-                  <div class="price-box">
-                    <p class="old-price"> <span class="price-label">Regular Price:</span> <span class="price"> $315.99 </span> </p>
-                    <p class="special-price"> <span class="price-label">Special Price</span> <span id="product-price-48" class="price"> $309.99 </span> </p>
-                  </div>
-                </div>
-                <div class="add-to-box">
-                  <div class="add-to-cart">
-                    <label for="qty">Qty:</label>
-                    <div class="pull-left">
-                      <div class="custom pull-left">
-                        <button onClick="var result = document.getElementById('qty'); var qty = result.value; if( !isNaN( qty )) result.value++;return false;" class="increase items-count" type="button"><i class="icon-plus">&nbsp;</i></button>
-                        <input type="text" class="input-text qty" title="Qty" value="1" maxlength="12" id="qty" name="qty">
-                        
-                        <button onClick="var result = document.getElementById('qty'); var qty = result.value; if( !isNaN( qty ) &amp;&amp; qty &gt; 0 ) result.value--;return false;" class="reduced items-count" type="button"><i class="icon-minus">&nbsp;</i></button>
-                      </div>
-                    </div>
-      
-                      <button onClick="productAddToCartForm.submit(this)" class="button btn-cart" title="Add to Cart" type="button"><span><i class="icon-basket"></i> Add to Cart</span></button>
-      
-                  </div>
-                  <div class="email-addto-box">
-                   
-                    <ul class="add-to-links">
-                      <li> <a class="link-wishlist" href="wishlist.html"><span>Add to Wishlist</span></a></li>
-                      <li><span class="separator">|</span> <a class="link-compare" href="compare.html"><span>Add to Compare</span></a></li>
-                    </ul> <p class="email-friend"><a href="#" class=""><span>Email to a Friend</span></a></p>
-                  </div>
-                </div>
-              </div>
-            </form>
+            
+              <?php 
+			  $p->quick_view("select*from sanPham where maSP='$layid' limit 1");
+			  switch($_POST['nut'])
+				  {
+					  case'Add to Cart':
+					  {
+						  $soluong=$_REQUEST['qty'];
+						  $sql = "insert into giohang(maSP,maKH,soluong) values ('$layid',1,'$soluong');";
+						
+						   
+						  $sql2="update giohang set soluong=soluong+1 where maSP='$layid'";
+						  $result = $p->themsuaxoa($sql);
+						  $result1=$p->laygiatri("select maSP from giohang where maSP='$layid' limit 1");
+						  $result2=$p->themsuaxoa($sql2);
+						   if($layid==$result1)
+						   {
+							   if($result2==1)
+							   {
+								   echo " <script>alert('Thêm giỏ hàng thành công')</script>;";
+							   }
+						   }
+						   else
+						   {
+							    if($result==1)
+										 {
+											 echo " <script>alert('Thêm giỏ hàng thành công')</script>;";
+										 }
+										 else
+										 {
+										
+											  echo " <script>alert('Thêm giỏ hàng thất bại')</script>;";
+										 }
+						   }
+						
+						  break;
+						
+					  }
+				  }
+			  ?>
+            
           </div>
         </div>
         <!--product-view--> 

@@ -51,7 +51,9 @@
                                       <div class="box-inner">
                                         <div class="actions">
                                           <div class="add_cart">
-                                            <a href="./shopping_cart.php"><button class="button btn-cart" type="button"><span>Thêm vào giỏ hàng</span></button></a>
+										  <form method="POST">
+                                            <a href="?layid='.$id.'"><button class="button btn-cart" type="submit" id="nut" name="nut" value="Add to Cart"><span>Thêm vào giỏ hàng</span></button></a>
+											</form>
                                           </div>
                                           <div class="product-detail-bnt"><a href="quick_view.php?layid='.$id.'" class="button detail-bnt"><span>Quick View</span></a></div>
                                           

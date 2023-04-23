@@ -257,9 +257,9 @@ if(isset($_REQUEST['layid']))
     <div class="col-main">
       <div class="row">
         <div class="product-view">
-         <div class="product-essential">
+        <!-- <div class="product-essential">
             <form action="#" method="post" id="product_addtocart_form">
-              <input name="form_key" value="6UbXroakyQlbfQzK" type="hidden">
+              <input name="form_key" value="6UbXroakyQlbfQzK" type="hidden">-->
               <?php
 			    $p->chitietsp("select* from sanPham where maSP='$layid' limit 1");
 				
@@ -269,18 +269,31 @@ if(isset($_REQUEST['layid']))
 					  {
 						  $soluong=$_REQUEST['qty'];
 						  $sql = "insert into giohang(maSP,maKH,soluong) values ('$layid',1,'$soluong');";
-						  var_dump($sql);
+						   
+						   $sql2="update giohang set soluong=soluong+1 where maSP='$layid'";
 						  $result = $p->themsuaxoa($sql);
-						 var_dump($result);
-						 if($result==1)
-						 {
-							 echo " <script>alert('Thêm giỏ hàng thành công')</script>;";
-						 }
-						 else
-						 {
+						  $result1=$p->laygiatri("select maSP from giohang where maSP='$layid' limit 1");
+						  $result2=$p->themsuaxoa($sql2);
+						   if($layid==$result1)
+						   {
+							   if($result2==1)
+							   {
+								   echo " <script>alert('Thêm giỏ hàng thành công')</script>;";
+							   }
+						   }
+						   else
+						   {
+							    if($result==1)
+										 {
+											 echo " <script>alert('Thêm giỏ hàng thành công')</script>;";
+										 }
+										 else
+										 {
+										
+											  echo " <script>alert('Thêm giỏ hàng thất bại')</script>;";
+										 }
+						   }
 						
-							  echo " <script>alert('Thêm giỏ hàng thất bại')</script>;";
-						 }
 						  break;
 						
 					  }
@@ -471,36 +484,7 @@ if(isset($_REQUEST['layid']))
                     <div class="clear"></div>
                   </div>
                 </div>
-                <!--<div class="tab-pane fade" id="product_tabs_custom">
-                  <div class="product-tabs-content-inner clearfix">
-                    <p><strong>Lorem Ipsum</strong><span>&nbsp;is
-                      simply dummy text of the printing and typesetting industry. Lorem Ipsum
-                      has been the industry's standard dummy text ever since the 1500s, when 
-                      an unknown printer took a galley of type and scrambled it to make a type
-                      specimen book. It has survived not only five centuries, but also the 
-                      leap into electronic typesetting, remaining essentially unchanged. It 
-                      was popularised in the 1960s with the release of Letraset sheets 
-                      containing Lorem Ipsum passages, and more recently with desktop 
-                      publishing software like Aldus PageMaker including versions of Lorem 
-                      Ipsum.</span></p>
-                  </div>
-                </div>
-                <div class="tab-pane fade" id="product_tabs_custom1">
-                  <div class="product-tabs-content-inner clearfix">
-                    <p> <strong> Comfortable </strong><span>&nbsp;preshrunk shirts. Highest Quality Printing.  6.1 oz. 100% preshrunk heavyweight cotton Shoulder-to-shoulder taping Double-needle sleeves and bottom hem     
-                      
-                      Lorem Ipsumis
-                      simply dummy text of the printing and typesetting industry. Lorem Ipsum
-                      has been the industry's standard dummy text ever since the 1500s, when 
-                      an unknown printer took a galley of type and scrambled it to make a type
-                      specimen book. It has survived not only five centuries, but also the 
-                      leap into electronic typesetting, remaining essentially unchanged. It 
-                      was popularised in the 1960s with the release of Letraset sheets 
-                      containing Lorem Ipsum passages, and more recently with desktop 
-                      publishing software like Aldus PageMaker including versions of Lorem 
-                      Ipsum.</span></p>
-                  </div>
-                </div>-->
+                
               </div>
             </div>
           </div>
@@ -513,249 +497,11 @@ if(isset($_REQUEST['layid']))
                   
                   <div id="related-products-slider" class="product-flexslider hidden-buttons">
                     <div class="slider-items slider-width-col4 products-grid">
-            <div class="item">
-              <div class="item-inner">
-                <div class="item-img">
-                  <div class="item-img-info"> <a class="product-image" title="Sample Product" href="product_detail.php"> <img alt="Sample Product" src="products-images/product10.jpg"> </a>
-                    <div class="sale-label sale-top-left">sale</div>
-                    <div class="item-box-hover">
-                      <div class="box-inner">                                        
-                                        <div class="actions">
-                                        <div class="add_cart">
-                                          <button class="button btn-cart" type="button"><span>Add to Cart</span></button>
-                                        </div>
-                                        <div class="product-detail-bnt"><a href="quick_view.php" class="button detail-bnt"><span>Quick View</span></a></div> <span class="add-to-links"><a href="wishlist.html" class="link-wishlist" title="Add to Wishlist"><span>Add to Wishlist</span></a> 
- <a href="compare.html" class="link-compare add_to_compare" title="Add to Compare"><span>Add to Compare</span></a></span> </div>
-                                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="item-info">
-                  <div class="info-inner">
-                    <div class="item-title"> <a title="Sample Product" href="product_detail.php"> Sample Product </a> </div>
-                    <div class="item-content">
-                      <div class="rating">
-                        <div class="ratings">
-                          <div class="rating-box">
-                            <div style="width:80%" class="rating"></div>
-                          </div>
-                          <p class="rating-links"> <a href="#">1 Review(s)</a> <span class="separator">|</span> <a href="#">Add Review</a> </p>
-                        </div>
-                      </div>
-                      <div class="item-price">
-                        <div class="price-box"> <span  class="regular-price"> <span class="price">$125.00</span> </span> </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            <!-- Item -->
-            <div class="item">
-              <div class="item-inner">
-                <div class="item-img">
-                  <div class="item-img-info"> <a class="product-image" title="Sample Product" href="product_detail.php"> <img alt="Sample Product" src="products-images/product11.jpg"></a>
-                    <div class="item-box-hover">
-                      <div class="box-inner">                                        
-                                        <div class="actions">
-                                        <div class="add_cart">
-                                          <button class="button btn-cart" type="button"><span>Add to Cart</span></button>
-                                        </div>
-                                        <div class="product-detail-bnt"><a href="quick_view.php" class="button detail-bnt"><span>Quick View</span></a></div> <span class="add-to-links"><a href="wishlist.html" class="link-wishlist" title="Add to Wishlist"><span>Add to Wishlist</span></a> 
- <a href="compare.html" class="link-compare add_to_compare" title="Add to Compare"><span>Add to Compare</span></a></span> </div>
-                                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="item-info">
-                  <div class="info-inner">
-                    <div class="item-title"> <a title="Sample Product" href="product_detail.php">Sample Product</a> </div>
-                    <div class="item-content">
-                      <div class="rating">
-                        <div class="ratings">
-                          <div class="rating-box">
-                            <div style="width:30%" class="rating"></div>
-                          </div>
-                          <p class="rating-links"> <a href="#">1 Review(s)</a> <span class="separator">|</span> <a href="#">Add Review</a> </p>
-                        </div>
-                      </div>
-                      <div class="item-price">
-                        <div class="price-box">
-                          <p class="old-price"> <span class="price-label">Regular Price:</span> <span id="old-price-2" class="price"> $567.00 </span> </p>
-                          <p class="special-price"> <span class="price-label">Special Price</span> <span id="product-price-2" class="price"> $456.00 </span> </p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <!-- End Item --> 
-            
-            <!-- Item -->
-            <div class="item">
-              <div class="item-inner">
-                <div class="item-img">
-                  <div class="item-img-info"> <a class="product-image" title="Sample Product" href="product_detail.php"> <img alt="Sample Product" src="products-images/product12.jpg"></a>
-                    <div class="item-box-hover">
-                      <div class="box-inner">                                        
-                                        <div class="actions">
-                                        <div class="add_cart">
-                                          <button class="button btn-cart" type="button"><span>Add to Cart</span></button>
-                                        </div>
-                                        <div class="product-detail-bnt"><a href="quick_view.php" class="button detail-bnt"><span>Quick View</span></a></div> <span class="add-to-links"><a href="wishlist.html" class="link-wishlist" title="Add to Wishlist"><span>Add to Wishlist</span></a> 
- <a href="compare.html" class="link-compare add_to_compare" title="Add to Compare"><span>Add to Compare</span></a></span> </div>
-                                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="item-info">
-                  <div class="info-inner">
-                    <div class="item-title"> <a title="Sample Product" href="product_detail.php">Sample Product</a> </div>
-                    <div class="item-content">
-                      <div class="rating">
-                        <div class="ratings">
-                          <div class="rating-box">
-                            <div style="width:100%" class="rating"></div>
-                          </div>
-                          <p class="rating-links"> <a href="#">1 Review(s)</a> <span class="separator">|</span> <a href="#">Add Review</a> </p>
-                        </div>
-                      </div>
-                      <div class="item-price">
-                        <div class="price-box">
-                          <p class="old-price"> <span class="price-label">Regular Price:</span> <span id="old-price-27" class="price"> $100.00 </span> </p>
-                          <p class="special-price"> <span class="price-label">Special Price</span> <span id="product-price-27" class="price"> $90.00 </span> </p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <!-- End Item -->
-            
-            <div class="item">
-              <div class="item-inner">
-                <div class="item-img">
-                  <div class="item-img-info"> <a class="product-image" title="Sample Product" href="product_detail.php"> <img alt="Sample Product" src="products-images/product13.jpg"> </a>
-                    <div class="new-label new-top-left">new</div>
-                    <div class="item-box-hover">
-                      <div class="box-inner">                                        
-                                        <div class="actions">
-                                        <div class="add_cart">
-                                          <button class="button btn-cart" type="button"><span>Add to Cart</span></button>
-                                        </div>
-                                        <div class="product-detail-bnt"><a href="quick_view.php" class="button detail-bnt"><span>Quick View</span></a></div> <span class="add-to-links"><a href="wishlist.html" class="link-wishlist" title="Add to Wishlist"><span>Add to Wishlist</span></a> 
- <a href="compare.html" class="link-compare add_to_compare" title="Add to Compare"><span>Add to Compare</span></a></span> </div>
-                                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="item-info">
-                  <div class="info-inner">
-                    <div class="item-title"> <a title="Sample Product" href="product_detail.php"> Sample Product </a> </div>
-                    <div class="item-content">
-                      <div class="rating">
-                        <div class="ratings">
-                          <div class="rating-box">
-                            <div style="width:80%" class="rating"></div>
-                          </div>
-                          <p class="rating-links"> <a href="#">1 Review(s)</a> <span class="separator">|</span> <a href="#">Add Review</a> </p>
-                        </div>
-                      </div>
-                      <div class="item-price">
-                        <div class="price-box"> <span  class="regular-price"> <span class="price">$125.00</span> </span> </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            <!-- Item -->
-            <div class="item">
-              <div class="item-inner">
-                <div class="item-img">
-                  <div class="item-img-info"> <a class="product-image" title="Sample Product" href="product_detail.php"> <img alt="Sample Product" src="products-images/product14.jpg"></a>
-                    <div class="item-box-hover">
-                      <div class="box-inner">                                        
-                                        <div class="actions">
-                                        <div class="add_cart">
-                                          <button class="button btn-cart" type="button"><span>Add to Cart</span></button>
-                                        </div>
-                                        <div class="product-detail-bnt"><a href="quick_view.php" class="button detail-bnt"><span>Quick View</span></a></div> <span class="add-to-links"><a href="wishlist.html" class="link-wishlist" title="Add to Wishlist"><span>Add to Wishlist</span></a> 
- <a href="compare.html" class="link-compare add_to_compare" title="Add to Compare"><span>Add to Compare</span></a></span> </div>
-                                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="item-info">
-                  <div class="info-inner">
-                    <div class="item-title"> <a title="Sample Product" href="product_detail.php">Sample Product</a> </div>
-                    <div class="item-content">
-                      <div class="rating">
-                        <div class="ratings">
-                          <div class="rating-box">
-                            <div style="width:30%" class="rating"></div>
-                          </div>
-                          <p class="rating-links"> <a href="#">1 Review(s)</a> <span class="separator">|</span> <a href="#">Add Review</a> </p>
-                        </div>
-                      </div>
-                      <div class="item-price">
-                        <div class="price-box">
-                          <p class="old-price"> <span class="price-label">Regular Price:</span> <span class="price"> $567.00 </span> </p>
-                          <p class="special-price"> <span class="price-label">Special Price</span> <span class="price"> $456.00 </span> </p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <!-- End Item --> 
-            
-            <!-- Item -->
-            <div class="item">
-              <div class="item-inner">
-                <div class="item-img">
-                  <div class="item-img-info"> <a class="product-image" title="Sample Product" href="product_detail.php"> <img alt="Sample Product" src="products-images/product15.jpg"></a>
-                    <div class="item-box-hover">
-                      <div class="box-inner">                                        
-                                        <div class="actions">
-                                        <div class="add_cart">
-                                          <button class="button btn-cart" type="button"><span>Add to Cart</span></button>
-                                        </div>
-                                        <div class="product-detail-bnt"><a href="quick_view.php" class="button detail-bnt"><span>Quick View</span></a></div> <span class="add-to-links"><a href="wishlist.html" class="link-wishlist" title="Add to Wishlist"><span>Add to Wishlist</span></a> 
- <a href="compare.html" class="link-compare add_to_compare" title="Add to Compare"><span>Add to Compare</span></a></span> </div>
-                                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="item-info">
-                  <div class="info-inner">
-                    <div class="item-title"> <a title="Sample Product" href="product_detail.php">Sample Product</a> </div>
-                    <div class="item-content">
-                      <div class="rating">
-                        <div class="ratings">
-                          <div class="rating-box">
-                            <div style="width:100%" class="rating"></div>
-                          </div>
-                          <p class="rating-links"> <a href="#">1 Review(s)</a> <span class="separator">|</span> <a href="#">Add Review</a> </p>
-                        </div>
-                      </div>
-                      <div class="item-price">
-                        <div class="price-box">
-                          <p class="old-price"> <span class="price-label">Regular Price:</span> <span class="price"> $100.00 </span> </p>
-                          <p class="special-price"> <span class="price-label">Special Price</span> <span class="price"> $90.00 </span> </p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <!-- End Item --> 
+                    <?php
+					$p->xuatsp("select * from sanPham order by maSP asc limit 4"); 
+					 
+					?>
+           
             
           </div>
                   </div>
@@ -779,248 +525,9 @@ if(isset($_REQUEST['layid']))
         </div>
         <div id="upsell-products-slider" class="product-flexslider hidden-buttons">
           <div class="slider-items slider-width-col4 products-grid">
-            <div class="item">
-              <div class="item-inner">
-                <div class="item-img">
-                  <div class="item-img-info"> <a class="product-image" title="Sample Product" href="product_detail.php"> <img alt="Sample Product" src="products-images/product10.jpg"> </a>
-                    <div class="sale-label sale-top-left">sale</div>
-                    <div class="item-box-hover">
-                      <div class="box-inner">                                        
-                                        <div class="actions">
-                                        <div class="add_cart">
-                                          <button class="button btn-cart" type="button"><span>Add to Cart</span></button>
-                                        </div>
-                                        <div class="product-detail-bnt"><a href="quick_view.php" class="button detail-bnt"><span>Quick View</span></a></div> <span class="add-to-links"><a href="wishlist.html" class="link-wishlist" title="Add to Wishlist"><span>Add to Wishlist</span></a> 
- <a href="compare.html" class="link-compare add_to_compare" title="Add to Compare"><span>Add to Compare</span></a></span> </div>
-                                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="item-info">
-                  <div class="info-inner">
-                    <div class="item-title"> <a title="Sample Product" href="product_detail.php"> Sample Product </a> </div>
-                    <div class="item-content">
-                      <div class="rating">
-                        <div class="ratings">
-                          <div class="rating-box">
-                            <div style="width:80%" class="rating"></div>
-                          </div>
-                          <p class="rating-links"> <a href="#">1 Review(s)</a> <span class="separator">|</span> <a href="#">Add Review</a> </p>
-                        </div>
-                      </div>
-                      <div class="item-price">
-                        <div class="price-box"> <span  class="regular-price"> <span class="price">$125.00</span> </span> </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            <!-- Item -->
-            <div class="item">
-              <div class="item-inner">
-                <div class="item-img">
-                  <div class="item-img-info"> <a class="product-image" title="Sample Product" href="product_detail.php"> <img alt="Sample Product" src="products-images/product11.jpg"></a>
-                    <div class="item-box-hover">
-                      <div class="box-inner">                                        
-                                        <div class="actions">
-                                        <div class="add_cart">
-                                          <button class="button btn-cart" type="button"><span>Add to Cart</span></button>
-                                        </div>
-                                        <div class="product-detail-bnt"><a href="quick_view.php" class="button detail-bnt"><span>Quick View</span></a></div> <span class="add-to-links"><a href="wishlist.html" class="link-wishlist" title="Add to Wishlist"><span>Add to Wishlist</span></a> 
- <a href="compare.html" class="link-compare add_to_compare" title="Add to Compare"><span>Add to Compare</span></a></span> </div>
-                                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="item-info">
-                  <div class="info-inner">
-                    <div class="item-title"> <a title="Sample Product" href="product_detail.php">Sample Product</a> </div>
-                    <div class="item-content">
-                      <div class="rating">
-                        <div class="ratings">
-                          <div class="rating-box">
-                            <div style="width:30%" class="rating"></div>
-                          </div>
-                          <p class="rating-links"> <a href="#">1 Review(s)</a> <span class="separator">|</span> <a href="#">Add Review</a> </p>
-                        </div>
-                      </div>
-                      <div class="item-price">
-                        <div class="price-box">
-                          <p class="old-price"> <span class="price-label">Regular Price:</span> <span class="price"> $567.00 </span> </p>
-                          <p class="special-price"> <span class="price-label">Special Price</span> <span class="price"> $456.00 </span> </p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <!-- End Item --> 
-            
-            <!-- Item -->
-            <div class="item">
-              <div class="item-inner">
-                <div class="item-img">
-                  <div class="item-img-info"> <a class="product-image" title="Sample Product" href="product_detail.php"> <img alt="Sample Product" src="products-images/product12.jpg"></a>
-                    <div class="item-box-hover">
-                      <div class="box-inner">                                        
-                                        <div class="actions">
-                                        <div class="add_cart">
-                                          <button class="button btn-cart" type="button"><span>Add to Cart</span></button>
-                                        </div>
-                                        <div class="product-detail-bnt"><a href="quick_view.php" class="button detail-bnt"><span>Quick View</span></a></div> <span class="add-to-links"><a href="wishlist.html" class="link-wishlist" title="Add to Wishlist"><span>Add to Wishlist</span></a> 
- <a href="compare.html" class="link-compare add_to_compare" title="Add to Compare"><span>Add to Compare</span></a></span> </div>
-                                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="item-info">
-                  <div class="info-inner">
-                    <div class="item-title"> <a title="Sample Product" href="product_detail.php">Sample Product</a> </div>
-                    <div class="item-content">
-                      <div class="rating">
-                        <div class="ratings">
-                          <div class="rating-box">
-                            <div style="width:100%" class="rating"></div>
-                          </div>
-                          <p class="rating-links"> <a href="#">1 Review(s)</a> <span class="separator">|</span> <a href="#">Add Review</a> </p>
-                        </div>
-                      </div>
-                      <div class="item-price">
-                        <div class="price-box">
-                          <p class="old-price"> <span class="price-label">Regular Price:</span> <span class="price"> $100.00 </span> </p>
-                          <p class="special-price"> <span class="price-label">Special Price</span> <span class="price"> $90.00 </span> </p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <!-- End Item -->
-            
-            <div class="item">
-              <div class="item-inner">
-                <div class="item-img">
-                  <div class="item-img-info"> <a class="product-image" title="Sample Product" href="product_detail.php"> <img alt="Sample Product" src="products-images/product13.jpg"> </a>
-                    <div class="new-label new-top-left">new</div>
-                    <div class="item-box-hover">
-                      <div class="box-inner">                                        
-                                        <div class="actions">
-                                        <div class="add_cart">
-                                          <button class="button btn-cart" type="button"><span>Add to Cart</span></button>
-                                        </div>
-                                        <div class="product-detail-bnt"><a href="quick_view.php" class="button detail-bnt"><span>Quick View</span></a></div> <span class="add-to-links"><a href="wishlist.html" class="link-wishlist" title="Add to Wishlist"><span>Add to Wishlist</span></a> 
- <a href="compare.html" class="link-compare add_to_compare" title="Add to Compare"><span>Add to Compare</span></a></span> </div>
-                                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="item-info">
-                  <div class="info-inner">
-                    <div class="item-title"> <a title="Sample Product" href="product_detail.php"> Sample Product </a> </div>
-                    <div class="item-content">
-                      <div class="rating">
-                        <div class="ratings">
-                          <div class="rating-box">
-                            <div style="width:80%" class="rating"></div>
-                          </div>
-                          <p class="rating-links"> <a href="#">1 Review(s)</a> <span class="separator">|</span> <a href="#">Add Review</a> </p>
-                        </div>
-                      </div>
-                      <div class="item-price">
-                        <div class="price-box"> <span  class="regular-price"> <span class="price">$125.00</span> </span> </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            <!-- Item -->
-            <div class="item">
-              <div class="item-inner">
-                <div class="item-img">
-                  <div class="item-img-info"> <a class="product-image" title="Sample Product" href="product_detail.php"> <img alt="Sample Product" src="products-images/product14.jpg"></a>
-                    <div class="item-box-hover">
-                      <div class="box-inner">                                        
-                                        <div class="actions">
-                                        <div class="add_cart">
-                                          <button class="button btn-cart" type="button"><span>Add to Cart</span></button>
-                                        </div>
-                                        <div class="product-detail-bnt"><a href="quick_view.php" class="button detail-bnt"><span>Quick View</span></a></div> <span class="add-to-links"><a href="wishlist.html" class="link-wishlist" title="Add to Wishlist"><span>Add to Wishlist</span></a> 
- <a href="compare.html" class="link-compare add_to_compare" title="Add to Compare"><span>Add to Compare</span></a></span> </div>
-                                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="item-info">
-                  <div class="info-inner">
-                    <div class="item-title"> <a title="Sample Product" href="product_detail.php">Sample Product</a> </div>
-                    <div class="item-content">
-                      <div class="rating">
-                        <div class="ratings">
-                          <div class="rating-box">
-                            <div style="width:30%" class="rating"></div>
-                          </div>
-                          <p class="rating-links"> <a href="#">1 Review(s)</a> <span class="separator">|</span> <a href="#">Add Review</a> </p>
-                        </div>
-                      </div>
-                      <div class="item-price">
-                        <div class="price-box">
-                          <p class="old-price"> <span class="price-label">Regular Price:</span> <span class="price"> $567.00 </span> </p>
-                          <p class="special-price"> <span class="price-label">Special Price</span> <span class="price"> $456.00 </span> </p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <!-- End Item --> 
-            
-            <!-- Item -->
-            <div class="item">
-              <div class="item-inner">
-                <div class="item-img">
-                  <div class="item-img-info"> <a class="product-image" title="Sample Product" href="product_detail.php"> <img alt="Sample Product" src="products-images/product15.jpg"></a>
-                    <div class="item-box-hover">
-                      <div class="box-inner">                                        
-                                        <div class="actions">
-                                        <div class="add_cart">
-                                          <button class="button btn-cart" type="button"><span>Add to Cart</span></button>
-                                        </div>
-                                        <div class="product-detail-bnt"><a href="quick_view.php" class="button detail-bnt"><span>Quick View</span></a></div> <span class="add-to-links"><a href="wishlist.html" class="link-wishlist" title="Add to Wishlist"><span>Add to Wishlist</span></a> 
- <a href="compare.html" class="link-compare add_to_compare" title="Add to Compare"><span>Add to Compare</span></a></span> </div>
-                                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="item-info">
-                  <div class="info-inner">
-                    <div class="item-title"> <a title="Sample Product" href="product_detail.php">Sample Product</a> </div>
-                    <div class="item-content">
-                      <div class="rating">
-                        <div class="ratings">
-                          <div class="rating-box">
-                            <div style="width:100%" class="rating"></div>
-                          </div>
-                          <p class="rating-links"> <a href="#">1 Review(s)</a> <span class="separator">|</span> <a href="#">Add Review</a> </p>
-                        </div>
-                      </div>
-                      <div class="item-price">
-                        <div class="price-box">
-                          <p class="old-price"> <span class="price-label">Regular Price:</span> <span class="price"> $100.00 </span> </p>
-                          <p class="special-price"> <span class="price-label">Special Price</span> <span class="price"> $90.00 </span> </p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+             <?php
+					$p->xuatsp("select * from sanPham order by maSP desc limit 4"); 
+					?>
             <!-- End Item --> 
             
           </div>
@@ -1441,7 +948,32 @@ if(isset($_REQUEST['layid']))
   </ul>
 </div>
 
-
+<?php 
+/*switch($_POST['nut'])
+  {
+	  case'Thêm vào giỏ hàng':
+	  {
+		  
+		  $sql = "insert into giohang(maSP,maKH,soluong) values ('$layid',1,1);";
+		
+		  $result = $p->themsuaxoa($sql);
+		 
+						 if($result==1)
+						 {
+							 echo " <script>alert('Thêm giỏ hàng thành công')</script>;";
+						 }
+						 else
+						 {
+						
+							  echo " <script>alert('Thêm giỏ hàng thất bại')</script>;";
+						 }
+			
+		
+		  break;
+		
+	  }
+  }*/
+?>
 <!-- End Footer --> 
 <!-- JavaScript --> 
 <script type="text/javascript" src="js/jquery.min.js"></script> 
