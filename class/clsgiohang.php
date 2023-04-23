@@ -286,5 +286,83 @@ class giohang extends connectDB
 			
 			$this->closeDB($link);
 		}
+		public function load_DS_giohang($sql)
+		{
+			
+			$link=$this->connect();
+			$kq=mysql_query($sql,$link);
+			$i=mysql_num_rows($kq);
+			if($i>0)
+			{
+				
+				while($row=mysql_fetch_array($kq))
+				{
+					
+					$id=$row['maSP'];
+					$tensp=$row['tenSP'];
+					$mota=$row['moTa'];
+					$gia=$row['gia'];
+					$soluong=$row['soluong'];
+					$hinh=$row['hinhAnh'];
+					$tongtien=$gia*$soluong;
+					
+					echo '<tr class="first odd">
+                      <td class="image"><a class="product-image" title="Sample Product" href="product_detail.php?layid='.$id.'"><img width="75" alt="Sample Product" src="./images/book/'.$hinh.'"></a></td>
+                      <td><h2 class="product-name"> <a href="product_detail.php?layid='.$id.'">'.$tensp.'</a> </h2></td>
+                      <td class="a-center hidden-table"><a title="Edit item parameters" class="edit-bnt" href="#"></a></td>
+                      <td class="a-center hidden-table"><span class="cart-price"> <span class="price">$'.$gia.'.00</span> </span></td>
+                      <td class="a-center movewishlist"><input maxlength="12" class="input-text qty" title="Qty" size="4" value="'.$soluong.'" name="cart[10522][qty]"></td>
+                      <td class="a-center movewishlist"><span class="cart-price"> <span class="price">$'.$tongtien.'.00</span> </span></td>
+                      <form method="POST" > <td class="a-center last"><a class="button remove-item" title="Remove item" href="?layid='.$id.'"><span><span>Remove item</span></span></a></td></form>
+                    </tr>';
+				}
+			}
+			else
+			{
+				echo 'Không có dữ liệu';
+			}
+			$this->closeDB($link);
+		}
+		public function thanhtien_giohang($sql)
+		{
+			
+			$link=$this->connect();
+			$kq=mysql_query($sql,$link);
+			$i=mysql_num_rows($kq);
+			if($i>0)
+			{
+				$thanhtien=0;
+				while($row=mysql_fetch_array($kq))
+				{
+					
+					$id=$row['maSP'];
+					$tensp=$row['tenSP'];
+					$mota=$row['moTa'];
+					$gia=$row['gia'];
+					$soluong=$row['soluong'];
+					$hinh=$row['hinhAnh'];
+					$tongtien=$gia*$soluong;
+					$thanhtien+=$tongtien;
+					
+				}
+				echo ' <tfoot>
+                    <tr>
+                      <td colspan="1" class="a-left"><strong>Tổng cộng</strong></td>
+                      <td class="a-right"><strong><span class="price">$'.$thanhtien.'.00</span></strong></td>
+                    </tr>
+                  </tfoot>
+                  <tbody>
+                    <tr>
+                      <td colspan="1" class="a-left"> Tổng tiền </td>
+                      <td class="a-right"><span class="price">$'.$thanhtien.'.00</span></td>
+                    </tr>
+                  </tbody>';
+			}
+			else
+			{
+				echo 'Không có dữ liệu';
+			}
+			$this->closeDB($link);
+		}
 }
 ?>

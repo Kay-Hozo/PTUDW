@@ -269,8 +269,8 @@ if(isset($_REQUEST['layid']))
 					  {
 						  $soluong=$_REQUEST['qty'];
 						  $sql = "insert into giohang(maSP,maKH,soluong) values ('$layid',1,'$soluong');";
-						   
-						   $sql2="update giohang set soluong=soluong+1 where maSP='$layid'";
+						   $sl=0;
+						   $sql2="update giohang set soluong='$sl'+1 where maSP='$layid'";
 						  $result = $p->themsuaxoa($sql);
 						  $result1=$p->laygiatri("select maSP from giohang where maSP='$layid' limit 1");
 						  $result2=$p->themsuaxoa($sql2);
