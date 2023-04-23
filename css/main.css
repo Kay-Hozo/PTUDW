@@ -46,3 +46,12 @@
 	margin: 0 auto;
 	padding-top: 18px;
 }
+
+.text-color {
+	color: #777!important;
+}
+
+.upProduct-box { 
+	max-width: 800px;
+	margin: 0 auto;
+}

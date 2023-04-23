@@ -79,6 +79,63 @@
 			}
 		}
 		
+		public function showUpProduct($sql)
+		{
+			$conn = $this->connect();
+			$result = mysql_query($sql, $conn);
+			
+			if($result != false)
+			{
+				$product = mysql_fetch_array($result);
+				echo 
+				"
+					<div class='form-group row'>
+					  <label for='txt_Up_TenSP' class='col-sm-2 col-form-label'>Tên sản phẩm</label>
+					  <div class='col-sm-10'>
+						<input name='txt_Up_TenSP' type='text' value='{$product['tenSP']}' id='txt_Up_TenSP' class='form-control' placeholder='Nhập tên sản phẩm'>
+					  </div>
+					</div>
+					<div class='form-group row'>
+					  <label for='txt_Up_Gia' class='col-sm-2 col-form-label'>Giá</label>
+					  <div class='col-sm-10'>
+						<input name='txt_Up_Gia' type='number' value='{$product['gia']}' id='txt_Up_Gia' class='form-control' value='0' min='0'>
+					  </div>
+					</div>
+					<div class='form-group row'>
+					  <label for='txt_Up_GiamGia' class='col-sm-2 col-form-label'>Giảm giá</label>
+					  <div class='col-sm-10'>
+						<input name='txt_Up_GiamGia' type='number' value='{$product['giamGia']}' id='txt_Up_GiamGia' class='form-control' value='0' min='0'>
+					  </div>
+					</div>
+					<div class='form-group row'>
+					  <label for='txt_Up_MT' class='col-sm-2 col-form-label'>Mô tả</label>
+					  <div class='col-sm-10'>
+						<textarea name='txt_Up_MT' class='form-control' value='{$product['mota']}' id='txt_Up_MT' rows='5'></textarea>
+					  </div>
+					</div>
+					<div class='form-group row'>
+					  <label for='txt_Up_SL' class='col-sm-2 col-form-label'>Số lượng</label>
+					  <div class='col-sm-10'>
+						<input type='number' name='txt_Up_SL' value='{$product['soLuong']}' id='txt_Up_SL' class='form-control' min='0'>
+					  </div>
+					</div>
+					<div class='form-group row'>
+					  <label for='txt_Up_Anh' class='col-sm-2 col-form-label'>Hình ảnh</label>
+					  <div class='col-sm-10'>
+						<input type='file' name='txt_Up_Anh' id='txt_Up_Anh' value='{$product['hinhAnh']}'>
+					  </div>
+					</div>
+				";
+				 
+				$this->closeDB($conn);
+			}
+			else
+			{
+				echo "Không thành công";
+				return 0;
+			}
+		}
+		
 		public function  showProducts()
         {
             $conn = $this->connect();
@@ -94,8 +151,6 @@
 						
 			if ($rows > 0) {
 				echo "
-				<form method='POST'>
-				<input type='submit' name='btnSP' value='Cập nhật sản phẩm'>
 				<table data-toggle='table' data-url='tables/data1.json'  data-show-refresh='true' data-show-toggle='true' data-show-columns='true' data-search='true' data-pagination='true' data-sort-name='name' data-sort-order='desc'>
 				<thead>
 					<tr>
@@ -116,25 +171,44 @@
 				<tbody>";
 			  while($product = mysql_fetch_array($result)) 
 			  {
-				  
 					echo "<tr>
-						<td><input data-index='0' name='toolbar1' type='checkbox' value='{$product['maSP']}'></td>
-						<td class='text-center'>{$product['maSP']}</td>
-						<td>{$product['tenSP']}</td>
-						<td><p class='product-desc'>{$product['moTa']}</p></td>
-						<td class='text-center'>{$product['gia']}.000</td>
-						<td class='text-center'>{$product['giamGia']}</td>
-						<td class='text-center'>{$product['soLuong']}</td>
-						<td class='text-center'>{$product['daBan']}</td>
-						<td class='text-center'>{$product['trangThaiSP']}</td>
-						<td class='text-center'>{$product['maTacGia']}</td>
+						<td></td>
+						<td class='text-center'>
+							<a href='updateProduct.php?product_id={$product['maSP']}' class='text-color'>{$product['maSP']}</a>
+						</td>
+						<td>
+							<a href='updateProduct.php?product_id={$product['maSP']}' class='text-color'>{$product['tenSP']}</a></td>
+						<td>
+							<a href='updateProduct.php?product_id={$product['maSP']}' class='text-color'>
+								<p class='product-desc'>{$product['moTa']}</p>
+							</a>
+						</td>
+						<td class='text-center'>
+							<a href='updateProduct.php?product_id={$product['maSP']}' class='text-color'>{$product['gia']}.000</a>
+						</td>
+						<td class='text-center'>
+							<a href='updateProduct.php?product_id={$product['maSP']}' class='text-color'>{$product['giamGia']}</a>
+						</td>
+						<td class='text-center'>
+							<a href='updateProduct.php?product_id={$product['maSP']}' class='text-color'>{$product['soLuong']}</a>
+						</td>
+						<td class='text-center'>
+							<a href='updateProduct.php?product_id={$product['maSP']}' class='text-color'>{$product['daBan']}</a>
+						</td>
+						<td class='text-center'>
+							<a href='updateProduct.php?product_id={$product['maSP']}' class='text-color'>{$product['trangThaiSP']}</a>
+						</td>
+						<td class='text-center'>
+							<a href='updateProduct.php?product_id={$product['maSP']}' class='text-color'>{$product['maTacGia']}</a>
+						</td>
 						<td><img src='../images/book/{$product['hinhAnh']}' width='100%' alt=''/></td>
-						<td class='text-center'>{$product['danhGia']}</td>
+						<td class='text-center'>
+							<a href='updateProduct.php?product_id={$product['maSP']}' class='text-color'>{$product['danhGia']}</a>
+						</td>
 					  </tr>";
 			  }
 			 	echo "</tbody>
-  				</table>
-				</form>";
+  				</table>";
 			} else {
 			  echo "Không có sản phẩm!";
 			}

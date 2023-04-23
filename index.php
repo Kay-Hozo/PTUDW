@@ -309,12 +309,7 @@ if(isset($_REQUEST['layid']))
                         <div class="pdt-content is-loaded pdt_best_sales tab-content-actived">
                           <ul class="pdt-list products-grid-home zoomOut play">
                           <?php 
-<<<<<<< HEAD
-						  $p->xuatsp("select*from sanPham order by maSP asc");
-						   
-=======
-						  $p->xuatsp("SELECT * FROM sanPham ORDER BY noiBat asc LIMIT 8;");
->>>>>>> 1c23f26acc019b592864ce766fc4a0d0af54a56b
+						  	$p->xuatsp("SELECT * FROM sanPham ORDER BY noiBat asc LIMIT 8;");
 						  ?>
 
                           </ul>

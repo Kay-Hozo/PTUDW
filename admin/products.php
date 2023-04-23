@@ -58,7 +58,7 @@
 			</div>
 		</form>
 		<ul class="nav menu">
-			<li><a href="index.html"><svg class="glyph stroked dashboard-dial"><use xlink:href="#stroked-dashboard-dial"></use></svg> Dashboard</a></li>
+			<li><a href="index.php"><svg class="glyph stroked dashboard-dial"><use xlink:href="#stroked-dashboard-dial"></use></svg> Dashboard</a></li>
 			<li><a href="widgets.html"><svg class="glyph stroked calendar"><use xlink:href="#stroked-calendar"></use></svg> Widgets</a></li>
 			<li><a href="charts.html"><svg class="glyph stroked line-graph"><use xlink:href="#stroked-line-graph"></use></svg> Charts</a></li>
 			<li class="active"><a href="products.php"><svg class="glyph stroked table"><use xlink:href="#stroked-table"></use></svg> Quản lý sản phẩm</a></li>
@@ -182,73 +182,9 @@
                                   </div>
                                 </div>
                               </form>
-							</div>
-							<div class="tab-pane" id="capNhatSP">							  
-                             <!-- <h3 class="text-center">CẬP NHẬT SẢN PHẨM</h3>
-                              <form enctype="multipart/form-data" method="post">
-                                <div class="form-group row">
-                                  <label for="txt_Up_DM" class="col-sm-2 col-form-label">Danh mục</label>
-                                  <div class="col-sm-10">
-                                    <?php /*?><?php
-                                        $p->showOptionsInSelect("SELECT * FROM danhMuc", 'txt_Up_DM');
-                                    ?><?php */?>
-                                  </div>
-                                </div>
-                                <div class="form-group row">
-                                  <label for="txt_Up_TG" class="col-sm-2 col-form-label">Tác giả</label>
-                                  <div class="col-sm-10">
-                                    <?php /*?><?php
-                                        $p->showOptionsInSelect("SELECT * FROM tacGia", 'txt_Up_TG');
-                                    ?><?php */?>
-                                  </div>
-                                </div>
-                                <div class="form-group row">
-                                  <label for="txt_Up_TenSP" class="col-sm-2 col-form-label">Tên sản phẩm</label>
-                                  <div class="col-sm-10">
-                                    <input name="txt_Up_TenSP" type="text" id="txt_Up_TenSP" class="form-control" placeholder="Nhập tên sản phẩm">
-                                  </div>
-                                </div>
-                                <div class="form-group row">
-                                  <label for="txt_Up_Gia" class="col-sm-2 col-form-label">Giá</label>
-                                  <div class="col-sm-10">
-                                    <input name="txt_Up_Gia" type="number" id="txt_Up_Gia" class="form-control" value="0" min="0">
-                                  </div>
-                                </div>
-                                <div class="form-group row">
-                                  <label for="txt_Up_GiamGia" class="col-sm-2 col-form-label">Giảm giá</label>
-                                  <div class="col-sm-10">
-                                    <input name="txt_Up_GiamGia" type="number" id="txt_Up_GiamGia" class="form-control" value="0" min="0">
-                                  </div>
-                                </div>
-                                <div class="form-group row">
-                                  <label for="txt_Up_MT" class="col-sm-2 col-form-label">Mô tả</label>
-                                  <div class="col-sm-10">
-                                    <textarea name="txt_Up_MT" class="form-control" id="txt_Up_MT" rows="5"></textarea>
-                                  </div>
-                                </div>
-                                <div class="form-group row">
-                                  <label for="txt_Up_SL" class="col-sm-2 col-form-label">Số lượng</label>
-                                  <div class="col-sm-10">
-                                    <input type="number" name="txt_Up_SL" id="txt_Up_SL" class="form-control" min="0">
-                                  </div>
-                                </div>
-                                <div class="form-group row">
-                                  <label for="txt_Up_Anh" class="col-sm-2 col-form-label">Hình ảnh</label>
-                                  <div class="col-sm-10">
-                                    <input type="file" name="txt_Up_Anh" id="txt_Up_Anh">
-                                  </div>
-                                </div>
-                                <div class="form-group row">
-                                  <div class="col-sm-12 text-center">
-                                    <input type="submit" name="btnSP" id="btnUpdateSP" class="btn btn-primary" value="Cập nhật sản phẩm">
-                                  </div>
-                                </div>
-                              </form>-->
-							</div>
-                            
+							</div>                            
 						</div>
 					</div>
-					
 					<?php
                         $btn = $_REQUEST["btnSP"];
                         switch ($btn)
