@@ -261,38 +261,48 @@ if(isset($_REQUEST['layid']))
             <form action="#" method="post" id="product_addtocart_form">
               <input name="form_key" value="6UbXroakyQlbfQzK" type="hidden">-->
               <?php
-			    $p->chitietsp("select* from sanPham where maSP='$layid' limit 1");
+			    $p->chitietsp("select* from sanPham s join tacGia t on s.maTacGia=t.maTG where s.maSP='$layid' limit 1");
 				
 				switch($_POST['nut'])
 				  {
 					  case'Add to Cart':
 					  {
 						  $soluong=$_REQUEST['qty'];
-						  $sql = "insert into giohang(maSP,maKH,soluong) values ('$layid',1,'$soluong');";
-						   $sl=0;
-						   $sql2="update giohang set soluong='$sl'+1 where maSP='$layid'";
-						  $result = $p->themsuaxoa($sql);
-						  $result1=$p->laygiatri("select maSP from giohang where maSP='$layid' limit 1");
-						  $result2=$p->themsuaxoa($sql2);
-						   if($layid==$result1)
-						   {
-							   if($result2==1)
-							   {
-								   echo " <script>alert('Thêm giỏ hàng thành công')</script>;";
-							   }
-						   }
-						   else
-						   {
-							    if($result==1)
-										 {
-											 echo " <script>alert('Thêm giỏ hàng thành công')</script>;";
-										 }
-										 else
-										 {
-										
-											  echo " <script>alert('Thêm giỏ hàng thất bại')</script>;";
-										 }
-						   }
+						  $link=$p->addtocart();
+						  $sql="select*from giohang where maSP='$layid'";
+						  $result=mysql_query($sql,$link);
+						  $i=mysql_num_rows($result);
+						  if($i>0)
+						  {
+							  $row=mysql_fetch_array($result);
+							  $sl=$row['soluong'];
+							  $sql1="update giohang set soluong='$sl'+1 where maSP='$layid'";
+							  if( mysql_query($sql1,$link))
+							  {
+								  echo " <script>alert('Thêm giỏ hàng thành công')</script>;";
+								  
+							  }
+							  else
+							  {
+								  echo " <script>alert('Thêm giỏ hàng thất bại')</script>;";
+							  }
+							  
+						  }
+						  else
+						  {
+							  $sql2="insert into giohang(maKH,maSP,soluong) values (1,'$layid','$soluong')";
+							  if( mysql_query($sql2,$link))
+							  {
+								  echo " <script>alert('Thêm giỏ hàng thành công')</script>;";
+							  }
+							  else
+							  {
+								  echo " <script>alert('Thêm giỏ hàng thất bại')</script>;";
+							  }
+							  
+						  }
+						  
+						   
 						
 						  break;
 						

@@ -30,7 +30,7 @@ class giohang extends connectDB
 					$gia=$row['gia'];
 					$soluong=$row['soLuong'];
 					$hinh=$row['hinhAnh'];
-					
+					$tacgia=$row['tenTG'];
 					echo '
 					 <div class="product-essential">
             <form action="#" method="post" id="product_addtocart_form">
@@ -48,7 +48,7 @@ class giohang extends connectDB
                 <div class="product-name">
                   <h1>'.$tensp.'</h1>
                 </div>
-                  <div class="short-description"> </div>
+                  <div class="short-description">Tác giả:'.$tacgia.' </div>
                 <div class="ratings">
                   <div class="rating-box">
                     <div style="width:60%" class="rating"></div>
@@ -59,7 +59,7 @@ class giohang extends connectDB
                 <div class="price-block">
                   <div class="price-box">
                   
-                    <p class="special-price"> <span class="price-label">Special Price</span> <span id="product-price-48" class="price"> $'.$gia.'.00 </span> </p>
+                    <p class="special-price"> <span class="price-label">Special Price</span> <span id="product-price-48" class="price"> '.$gia.'.000 đ </span> </p>
                   </div>
                 </div>
                 <div class="add-to-box">
@@ -110,11 +110,11 @@ class giohang extends connectDB
                             <input class="input-text" name="productTagName" id="productTagName" type="text">
                             <button type="button" title="Add Tags" class=" button btn-add" onClick="submitTagForm()"> <span>Add Tags</span> </button>
                           </div>
-                          <!--input-box--> 
+                          
                         </div>
                       </form>
                     </div>
-                    <!--tags-->
+                   
                    
                   </div>
                 </div>';
@@ -175,7 +175,7 @@ class giohang extends connectDB
 								  <div class="item-price">
 									<div class="price-box">
 									  
-                          <p class="special-price"> <span class="price-label">Special Price</span> <span class="price"> $'.$gia.'.00 </span> </p>
+                          <p class="special-price"> <span class="price-label">Special Price</span> <span class="price"> '.$gia.'.000 đ </span> </p>
                         </div>
                       </div>
                     </div>
@@ -233,7 +233,7 @@ class giohang extends connectDB
                   <div class="large-image"> <a href="./images/book/'.$hinh.'" class="cloud-zoom" id="zoom1" rel="useWrapper: false, adjustY:0, adjustX:20"> <img src="./images/book/'.$hinh.'" alt = "Thumbnail"> </a> </div>
                  
                 </div>
-                <!-- end: more-images --> 
+               
               </div>
               <div class="product-shop col-sm-7 col-xs-12 bounceInUp animated">
               <div class="product-next-prev"> <a class="product-next" href="#"><span></span></a> <a class="product-prev" href="#"><span></span></a> </div>
@@ -253,7 +253,7 @@ class giohang extends connectDB
                 <div class="price-block">
                   <div class="price-box">
                     
-                    <p class="special-price"> <span class="price-label">Special Price</span> <span id="product-price-48" class="price"> $'.$gia.'.00 </span> </p>
+                    <p class="special-price"> <span class="price-label">Special Price</span> <span id="product-price-48" class="price"> '.$gia.'.000 đ </span> </p>
                   </div>
                 </div>
                 <div class="add-to-box">
@@ -310,9 +310,9 @@ class giohang extends connectDB
                       <td class="image"><a class="product-image" title="Sample Product" href="product_detail.php?layid='.$id.'"><img width="75" alt="Sample Product" src="./images/book/'.$hinh.'"></a></td>
                       <td><h2 class="product-name"> <a href="product_detail.php?layid='.$id.'">'.$tensp.'</a> </h2></td>
                       <td class="a-center hidden-table"><a title="Edit item parameters" class="edit-bnt" href="#"></a></td>
-                      <td class="a-center hidden-table"><span class="cart-price"> <span class="price">$'.$gia.'.00</span> </span></td>
+                      <td class="a-center hidden-table"><span class="cart-price"> <span class="price">'.$gia.'.000 đ</span> </span></td>
                       <td class="a-center movewishlist"><input maxlength="12" class="input-text qty" title="Qty" size="4" value="'.$soluong.'" name="cart[10522][qty]"></td>
-                      <td class="a-center movewishlist"><span class="cart-price"> <span class="price">$'.$tongtien.'.00</span> </span></td>
+                      <td class="a-center movewishlist"><span class="cart-price"> <span class="price">'.$tongtien.'.000 đ</span> </span></td>
                       <form method="POST" > <td class="a-center last"><a class="button remove-item" title="Remove item" href="?layid='.$id.'"><span><span>Remove item</span></span></a></td></form>
                     </tr>';
 				}
@@ -348,13 +348,13 @@ class giohang extends connectDB
 				echo ' <tfoot>
                     <tr>
                       <td colspan="1" class="a-left"><strong>Tổng cộng</strong></td>
-                      <td class="a-right"><strong><span class="price">$'.$thanhtien.'.00</span></strong></td>
+                      <td class="a-right"><strong><span class="price">'.$thanhtien.'.000 đ</span></strong></td>
                     </tr>
                   </tfoot>
                   <tbody>
                     <tr>
                       <td colspan="1" class="a-left"> Tổng tiền </td>
-                      <td class="a-right"><span class="price">$'.$thanhtien.'.00</span></td>
+                      <td class="a-right"><span class="price">'.$thanhtien.'.000 đ</span></td>
                     </tr>
                   </tbody>';
 			}
@@ -363,6 +363,13 @@ class giohang extends connectDB
 				echo 'Không có dữ liệu';
 			}
 			$this->closeDB($link);
+		}
+		public function addtocart()
+		{
+			$link=$this->connect();
+			 return $link;
+			
+			
 		}
 }
 ?>
