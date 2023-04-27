@@ -43,87 +43,65 @@ if(isset($_REQUEST['layid']))
 <link rel="stylesheet" type="text/css" href="css/jquery.mobile-menu.css">
 <link rel="stylesheet" type="text/css" href="css/jquery.bxslider.css">
 <link rel="stylesheet" type="text/css" href="css/style1.css" media="all">
+<link rel="stylesheet" type="text/css" href="css/styles2.css">
+<link rel="stylesheet" type="text/css" href="css/main.css">
 <!-- Google Fonts -->
 <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
 <link href='https://fonts.googleapis.com/css?family=Roboto:400,500,300,700,900' rel='stylesheet' type='text/css'>
 </head>
 
-<body class="cms-index-index">
-<div style="background-color: rgb(119, 119, 119); opacity: 0.7; cursor: pointer; height: 1024px; display: block;" id="fancybox-overlay"></div>
-<div style="width: 1190px; height: auto; top: 20%; left: 27%; display: block;" id="fancybox-wrap">
-  <div id="fancybox-outer">
-    <div style="border-width: 10px; width: 1170px; height: auto;" id="fancybox-content"> <a href="index.php" style="display: inline;"></a>
-      <div style="width:auto;height:auto;overflow: auto;position:relative;">
-        <div class="product-view">
-          <div class="product-essential">
-            
-              <?php 
-			  $p->quick_view("select*from sanPham where maSP='$layid' limit 1");
-			 switch($_POST['nut'])
-				  {
-					  case'Add to Cart':
-					  {
-						  $soluong=$_REQUEST['qty'];
-						  $link=$p->addtocart();
-						  $sql="select*from giohang where maSP='$layid'";
-						  $result=mysql_query($sql,$link);
-						  $i=mysql_num_rows($result);
-						  if($i>0)
-						  {
-							  $row=mysql_fetch_array($result);
-							  $sl=$row['soluong'];
-							  $sql1="update giohang set soluong='$sl'+1 where maSP='$layid'";
-							  if( mysql_query($sql1,$link))
-							  {
-								  echo " <script>alert('Thêm giỏ hàng thành công')</script>;";
-								  echo '<script language="javascript">
-										window.location="./quick_view.php?layid='.$layid.'";
-										  </script>';
-							  }
-							  else
-							  {
-								  echo " <script>alert('Thêm giỏ hàng thất bại')</script>;";
-								   echo '<script language="javascript">
-										window.location="./quick_view.php?layid='.$layid.'";
-										  </script>';
-							  }
-							  
-						  }
-						  else
-						  {
-							  $sql2="insert into giohang(maKH,maSP,soluong) values (1,'$layid','$soluong')";
-							  if( mysql_query($sql2,$link))
-							  {
-								  echo " <script>alert('Thêm giỏ hàng thành công')</script>;";
-								  echo '<script language="javascript">
-										window.location="./quick_view.php?layid='.$layid.'";
-										  </script>';
-							  }
-							  else
-							  {
-								  echo " <script>alert('Thêm giỏ hàng thất bại')</script>;";
-								   echo '<script language="javascript">
-										window.location="./quick_view.php?layid='.$layid.'";
-										  </script>';
-							  }
-							  
-						  }
-						  
-						   
-						
-						  break;
-						
-					  }
-				  }
-			  ?>
-            
+<body>
+<div class="content" >
+    <div class="bg-dark">
+    </div>
+    <div class="upProduct-box">
+        
+        <form enctype='multipart/form-data' method='post'>
+            <div class='form-group row'> 
+              <h4 class="text-center">Bạn có chắc chắn xóa sản phẩm này không ?</h4>
+            </div>
+           
+           <div class='form-group row'>
+          <div class='col-sm-12 text-center'>
+            <input type='submit' name='btndelete' id='btndelete' class='btn btn-primary' value='Có'>
+             <input type='submit' name='btndelete' id='btndelete' class='btn btn-danger' value='Không'>
           </div>
         </div>
-        <!--product-view--> 
-        
-      </div>
+      </form>
+      <?php
+	  switch($_POST['btndelete'])
+	  {
+		  case'Có':
+		  {
+			  $sql="delete from giohang where maSP='$layid'";
+			  $result=$p->themsuaxoa($sql);
+			  if($result==1)
+			  {
+				   echo " <script>alert('Xóa sản phẩm thành công')</script>;";
+				   echo '<script language="javascript">
+						window.location="./shopping_cart.php";
+						  </script>';
+}
+			  else
+			  {
+				   echo " <script>alert('Xóa sản phẩm thất bại')</script>;";
+				   echo '<script language="javascript">
+						window.location="./shopping_cart.php";
+						  </script>';
+			  }
+			  break;
+		  }
+		  case'Không':
+		  {
+			  echo '<script language="javascript">
+						window.location="./shopping_cart.php";
+						  </script>';
+			  break;
+		  }
+	  }
+	  ?>
+      <a style="display: inline;" id="fancybox-close" href="./shopping_cart.php"></a>
     </div>
-    <a style="display: inline;" id="fancybox-close" href="index.php"></a> </div>
 </div>
 
 <!-- JavaScript --> 

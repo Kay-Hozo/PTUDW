@@ -123,11 +123,11 @@ $giaodien = new statusLogin();
             <div class="top-cart-contain pull-right"> 
               <!-- Top Cart -->
               <div class="mini-cart">
-                <div data-toggle="dropdown" data-hover="dropdown" class="basket dropdown-toggle"><a href="shopping_cart.php"><span class="hidden-xs">Giỏ hàng(3)</span></a></div>
+                <div data-toggle="dropdown" data-hover="dropdown" class="basket dropdown-toggle"><a href="shopping_cart.php"><span class="hidden-xs">Giỏ hàng(<?php echo $p->laygiatri("select count(*) from giohang");?>)</span></a></div>
                 <div>
                   <div class="top-cart-content" style="display: none;">
                     <div class="block-subtitle">
-                      <div class="top-subtotal">3 items, <span class="price">$180.00</span> </div>
+                      <div class="top-subtotal"><?php echo $p->laygiatri("select count(*) from giohang");?> items, <span class="price"><?php echo $p->subtotal("select*from giohang g left join sanPham s on g.maSP=s.maSP ");?>.000 đ</span> </div>
                       <!--top-subtotal-->
                       <div class="pull-right">
                         <button title="View Cart" class="view-cart" type="button"><a href="shopping_cart.php"><span>Xem giỏ hàng</span></a></button>
@@ -136,33 +136,9 @@ $giaodien = new statusLogin();
                     </div>
                     <!--block-subtitle-->
                     <ul class="mini-products-list" id="cart-sidebar">
-                      <li class="item first">
-                        <div class="item-inner"><a class="product-image" title="Sample Product" href="#l"><img alt="Sample Product" src="images/book/image1.jpg"></a>
-                          <div class="product-details">
-                            <div class="access"><a class="btn-remove1" title="Remove This Item" href="#">Remove</a> <a class="btn-edit" title="Edit item" href="#"><i class="icon-pencil"></i><span class="hidden">Edit item</span></a> </div>
-                            <!--access--> <strong>1</strong> x <span class="price">$99.00</span>
-                            <p class="product-name"><a href="product_detail.php">Người Giàu Có Nhất Thành Babylon</a></p>
-                          </div>
-                        </div>
-                      </li>
-                      <li class="item last">
-                        <div class="item-inner"><a class="product-image" title="Sample Product" href="#"><img alt="Sample Product" src="images/book/image2.jpg"></a>
-                          <div class="product-details">
-                            <div class="access"><a class="btn-remove1" title="Remove This Item" href="#">Remove</a> <a class="btn-edit" title="Edit item" href="#"><i class="icon-pencil"></i><span class="hidden">Edit item</span></a> </div>
-                            <!--access--> <strong>1</strong> x <span class="price">$16.00</span>
-                            <p class="product-name"><a href="product_detail.php">Doremon</a></p>
-                          </div>
-                        </div>
-                      </li>
-                      <li class="item last">
-                        <div class="item-inner"><a class="product-image" title="Sample Product" href="#"><img alt="Sample Product" src="images/book/image3.png"></a>
-                          <div class="product-details">
-                            <div class="access"><a class="btn-remove1" title="Remove This Item" href="#">Remove</a> <a class="btn-edit" title="Edit item" href="#"><i class="icon-pencil"></i><span class="hidden">Edit item</span></a> </div>
-                            <!--access--> <strong>1</strong> x <span class="price">$65.00</span>
-                            <p class="product-name"><a href="product_detail.php">Từ điển Anh-Việt</a></p>
-                          </div>
-                        </div>
-                      </li>
+                      <?php
+					  $p->ouput_checkout("select*from giohang g left join sanPham s on g.maSP=s.maSP"); 
+					  ?>
                     </ul>
                     <div class="actions">
                       <button class="btn-checkout" title="Checkout" type="button"><a href="shopping_cart.php"><span style="color:white;">Thanh toán</span></a></button>
@@ -212,13 +188,14 @@ $giaodien = new statusLogin();
             <form action="#" method="post" id="product_addtocart_form">
               <input name="form_key" value="6UbXroakyQlbfQzK" type="hidden">-->
               <?php
-			    $p->chitietsp("select* from sanPham where maSP='$layid' limit 1");
+			    $p->chitietsp("select* from sanPham s join tacGia t on s.maTacGia=t.maTG where s.maSP='$layid' limit 1");
 				
 				switch($_POST['nut'])
 				  {
 					  case'Add to Cart':
 					  {
 						  $soluong=$_REQUEST['qty'];
+<<<<<<< HEAD
 						  $sql = "insert into giohang(maSP,maKH,soluong) values ('$layid',1,'$soluong');";
 						   $sl=0;
 						   $sql2="update giohang set soluong='$sl'+1 where maSP='$layid'";
@@ -245,6 +222,56 @@ $giaodien = new statusLogin();
 									  echo " <script>alert('Thêm giỏ hàng thất bại')</script>;";
 								 }
 						   }
+=======
+						  $link=$p->addtocart();
+						  $sql="select*from giohang where maSP='$layid'";
+						  $result=mysql_query($sql,$link);
+						  $i=mysql_num_rows($result);
+						  if($i>0)
+						  {
+							  $row=mysql_fetch_array($result);
+							  $sl=$row['soluong'];
+							  $sql1="update giohang set soluong='$sl'+1 where maSP='$layid'";
+							  if( mysql_query($sql1,$link))
+							  {
+								  echo " <script>alert('Thêm giỏ hàng thành công')</script>;";
+								   echo '<script language="javascript">
+										window.location="./product_detail.php?layid='.$layid.'";
+										  </script>';
+								  
+							  }
+							  else
+							  {
+								  echo " <script>alert('Thêm giỏ hàng thất bại')</script>;";
+								  echo '<script language="javascript">
+										window.location="./product_detail.php?layid='.$layid.'";
+										  </script>';
+							  }
+							  
+						  }
+						  else
+						  {
+							  $sql2="insert into giohang(maKH,maSP,soluong) values (1,'$layid','$soluong')";
+							  if( mysql_query($sql2,$link))
+							  {
+								  echo " <script>alert('Thêm giỏ hàng thành công')</script>;";
+								  echo '<script language="javascript">
+										window.location="./product_detail.php?layid='.$layid.'";
+										  </script>';
+								  
+							  }
+							  else
+							  {
+								  echo " <script>alert('Thêm giỏ hàng thất bại')</script>;";
+								  echo '<script language="javascript">
+										window.location="./product_detail.php?layid='.$layid.'";
+										  </script>';
+							  }
+							  
+						  }
+						  
+						   
+>>>>>>> be59e069be4250d3bc5cb87af390f48694ef4a91
 						
 						  break;
 						
