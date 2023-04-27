@@ -1,4 +1,9 @@
-﻿<!DOCTYPE html>
+﻿<?php 
+include ("./class/clsStatusLogin.php");
+
+$giaodien = new statusLogin();
+?>
+<!DOCTYPE html>
 <html lang="en">
 
 <!-- Tieu Long Lanh Kute -->
@@ -38,76 +43,10 @@
 
 <body class="cms-index-index cms-home-page">
 <div id="page"> 
-  <!-- Header -->
-  <header>
-    <div class="header-container">
-      <div class="container">
-        <div class="row">
-          <div class="col-sm-3 col-xs-12"> 
-            <!-- Header Logo -->
-            <div class="logo"><a title="Magento Commerce" href="index.php"><img alt="Magento Commerce" src="images/logo.png"></a></div>
-            <!-- End Header Logo --> 
-          </div>
-          <div class="col-lg-9 col-xs-12 right_menu">
-            <div class="toplinks"> 
-              <!-- Default Welcome Message -->
-              <div class="welcome-msg hidden-xs">Default welcome msg! </div>
-              <!-- End Default Welcome Message -->
-              <div class="links">
-                <div class="myaccount"><a title="My Account" href="login.php"><span class="hidden-xs">My Account</span></a></div>
-                <div class="wishlist"><a title="My Wishlist" href="wishlist.html"><span class="hidden-xs">Wishlist</span></a></div>
-                <div class="check"><a title="Checkout" href="checkout.html"><span class="hidden-xs">Checkout</span></a></div>
-                <div class="demo"><a title="Blog" href="blog.html"><span class="hidden-xs">Blog</span></a></div>
-                <!-- Header Company -->
-                <div class="dropdown block-company-wrapper hidden-xs"><a role="button" data-toggle="dropdown" data-target="#" class="block-company dropdown-toggle" href="#">Company <span class="caret"></span></a>
-                  <ul class="dropdown-menu" role="menu">
-                    <li role="presentation"><a role="menuitem" tabindex="-1" href="about_us.html">About Us</a></li>
-                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Customer Service</a></li>
-                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Privacy Policy</a></li>
-                    <li role="presentation"><a role="menuitem" tabindex="-1" href="sitemap.html">Site Map</a></li>
-                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Search Terms</a></li>
-                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Advanced Search</a></li>
-                  </ul>
-                </div>
-                <!-- End Header Company -->
-                
-                <div class="login"><a href="login.php"><span class="hidden-xs">Log In</span></a></div>
-              </div>
-              <!-- links --> 
-            </div>
-            
-            <!-- Search-col -->
-            <div class="search-box pull-right">
-              <form action="http://htmldemo.magikcommerce.com/ecommerce/classic-html-template/version_1/cat" method="POST" id="search_mini_form" name="Categories">
-                <input type="text" placeholder="Search entire store here..." value="Search" maxlength="70" name="search" id="search">
-                <button type="button" class="search-btn-bg"><span class="glyphicon glyphicon-search"></span>&nbsp;</button>
-              </form>
-            </div>
-            <!-- End Search-col --> 
-            <!-- Header Language -->
-            <div class="lang-curr">
-              <div class="form-language">
-                <ul class="lang">
-                  <li class=""><a href="#" title="English"><img src="images/english.png" alt="English" /> <span>English</span></a></li>
-                  <li class=""><a href="#" title="Francais"><img src="images/francais.png" alt="Francais" /> <span>francais</span></a></li>
-                  <li class=""><a href="#" title="German"><img src="images/german.png" alt="German" /> <span>german</span></a></li>
-                </ul>
-              </div>
-              <div class="form-currency">
-                <ul class="currencies_list">
-                  <li class=""><a class="" title="Dollar" href="#">$</a></li>
-                  <li class=""><a class="" title="Euro" href="#">&euro;</a></li>
-                  <li class=""><a class="" title="Pound" href="#">&pound;</a></li>
-                </ul>
-              </div>
-            </div>
-            
-            <!-- End Header Currency --> 
-          </div>
-        </div>
-      </div>
-    </div>
-  </header>
+   <!-- Header -->
+	<?php
+    	$giaodien->showHeader();
+	?>
   <!-- end header -->
   <div class="mm-toggle-wrap">
     <div class="mm-toggle"><i class="icon-align-justify"></i><span class="mm-label">Menu</span> </div>
@@ -129,10 +68,10 @@
             <li class="level0 parent drop-menu"><a href="#"><span>Pages</span></a>
               <ul class="level1">
                 <li class="level1 first"><a href="grid.php"><span>Grid</span></a></li>
-                <li class="level1 nav-10-2"><a href="list.html"><span>List</span></a></li>
+                <li class="level1 nav-10-2"><a href="list.php"><span>List</span></a></li>
                 <li class="level1 nav-10-3"><a href="product_detail.php"><span>Product Detail</span></a></li>
                 <li class="level1 nav-10-4"><a href="shopping_cart.php"><span>Shopping Cart</span></a></li>
-                <li class="level1 first parent"><a href="checkout.html"><span>Checkout</span></a>
+                <li class="level1 first parent"><a href="checkout.php"><span>Checkout</span></a>
                   
                 </li>
                 <li class="level1 nav-10-4"><a href="wishlist.html"><span>Wishlist</span></a></li>
@@ -145,9 +84,9 @@
                 <li class="level1"><a href="quick_view.php"><span>Quick view </span></a></li>
                 <li class="level1"><a href="login.php"><span>Login</span></a></li>
                 
-                <li class="level1 first parent"><a href="blog.html"><span>Blog</span></a>
+                <li class="level1 first parent"><a href="blog.php"><span>Blog</span></a>
                   <ul class="level2 right-sub">
-                    <li class="level2 nav-2-1-1 first"><a href="blog_detail.html"><span>Blog Detail</span></a></li>
+                    <li class="level2 nav-2-1-1 first"><a href="blog_detail.php"><span>Blog Detail</span></a></li>
                   </ul>
                 </li>
                 <li class="level1"><a href="contact_us.html"><span>Contact us</span></a></li>
@@ -1228,111 +1167,9 @@
     </div>
   </div>
  <!-- Footer -->
-  <footer>
-    <section class="footer-navbar">
-      <div class="footer-inner">
-        <div class="container">
-          <div class="row">
-            <div class="col-sm-12 col-xs-12 col-lg-8">
-              <div class="footer-column pull-left collapsed-block">
-                <h4>Shopping Guide<a class="expander visible-xs" href="#TabBlock-1">+</a></h4>
-                <div class="tabBlock" id="TabBlock-1">
-                  <ul class="links">
-                    <li class="first"><a href="#" title="How to buy">How to buy</a></li>
-                    <li><a href="faq.html" title="FAQs">FAQs</a></li>
-                    <li><a href="#" title="Payment">Payment</a></li>
-                    <li><a href="#" title="Shipment&lt;/a&gt;">Shipment</a></li>
-                    <li><a href="#" title="Where is my order?">Where is my order?</a></li>
-                    <li class="last"><a href="#" title="Return policy">Return policy</a></li>
-                  </ul>
-                </div>
-              </div>
-              <div class="footer-column pull-left collapsed-block">
-                <h4>Style Advisor<a class="expander visible-xs" href="#TabBlock-2">+</a></h4>
-                <div class="tabBlock" id="TabBlock-2">
-                  <ul class="links">
-                    <li class="first"><a title="Your Account" href="login.php">Your Account</a></li>
-                    <li><a title="Information" href="#">Information</a></li>
-                    <li><a title="Addresses" href="#">Addresses</a></li>
-                    <li><a title="Addresses" href="#">Discount</a></li>
-                    <li><a title="Orders History" href="#">Orders History</a></li>
-                    <li class="last"><a title=" Additional Information" href="#">Additional Information</a></li>
-                  </ul>
-                </div>
-              </div>
-              <div class="footer-column pull-left collapsed-block">
-                <h4>Information<a class="expander visible-xs" href="#TabBlock-3">+</a></h4>
-                <div class="tabBlock" id="TabBlock-3">
-                  <ul class="links">
-                    <li class="first"><a href="#" title="privacy policy">Privacy policy</a></li>
-                    <li><a href="#" title="Search Terms">Search Terms</a></li>
-                    <li><a href="#" title="Advanced Search">Advanced Search</a></li>
-                    <li><a href="contact_us.html" title="Contact Us">Contact Us</a></li>
-                    <li><a href="#" title="Suppliers">Suppliers</a></li>
-                    <li class=" last"><a href="#" title="Our stores" class="link-rss">Our stores</a></li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-            <div class="col-xs-12 col-lg-4">
-              <div class="footer-column-last">
-                <div class="newsletter-wrap collapsed-block">
-                  <h4>Sign up for emails<a class="expander visible-xs" href="#TabBlock-4">+</a></h4>
-                  <div class="tabBlock" id="TabBlock-4">
-                    <form id="newsletter-validate-detail" method="post" action="#">
-                      <div id="container_form_news">
-                        <div id="container_form_news2">
-                          <input type="text" class="input-text required-entry validate-email" value="Enter your email address" onfocus=" this.value='' " title="Sign up for our newsletter" id="newsletter" name="email">
-                          <button class="button subscribe" title="Subscribe" type="submit"><span>Subscribe</span></button>
-                        </div>
-                      </div>
-                    </form>
-                  </div>
-                </div>
-                <div class="social">
-                  <h4>Follow Us</h4>
-                  <ul class="link">
-                    <li class="fb pull-left"><a href="#"></a></li>
-                    <li class="tw pull-left"><a href="#"></a></li>
-                    <li class="googleplus pull-left"><a href="#"></a></li>
-                    <li class="rss pull-left"><a href="#"></a></li>
-                    <li class="pintrest pull-left"><a href="#"></a></li>
-                    <li class="linkedin pull-left"><a href="#"></a></li>
-                    <li class="youtube pull-left"><a href="#"></a></li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="footer-middle">
-        <div class="container">
-          <div class="row">
-            <div style="text-align:center"><a href="index.php"><img src="images/footer-logo.png" alt="footer-logo"></a></div>
-            <address>
-            <i class="icon-location-arrow"></i> 123 Main Street, Anytown, CA 12345  USA <i class="icon-mobile-phone"></i><span> +(408) 394-7557</span> <i class="icon-envelope"></i><a href="mailto:support@magikcommerce.com">support@magikcommerce.com</a>
-            </address>
-          </div>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <div class="container">
-          <div class="row">
-            <div class="col-sm-5 col-xs-12 coppyright">&copy; 2015 Magikcommerce. All Rights Reserved.</div>
-            <div class="col-sm-7 col-xs-12 company-links">
-              <ul class="links">
-                <li><a title="Magento Themes" href="#">Magento Themes</a></li>
-                <li><a title="Premium Themes" href="#">Premium Themes</a></li>
-                <li><a title="Responsive Themes" href="#">Responsive Themes</a></li>
-                <li class="last"><a title="Magento Extensions" href="#">Magento Extensions</a></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  </footer>
+  <?php
+  	$giaodien->showFooter();
+  ?>
 </div>
 <div id="mobile-menu">
   <div class="mm-search">
@@ -1353,10 +1190,10 @@
     <li><a href="#">Pages</a>
       <ul>
         <li><a href="grid.php">Grid</a></li>
-        <li> <a href="list.html">List</a></li>
+        <li> <a href="list.php">List</a></li>
         <li> <a href="product_detail.php">Product Detail</a></li>
         <li> <a href="shopping_cart.php">Shopping Cart</a></li>
-        <li><a href="checkout.html">Checkout</a>
+        <li><a href="checkout.php">Checkout</a>
           
         </li>
         <li> <a href="wishlist.html">Wishlist</a></li>
@@ -1369,9 +1206,9 @@
         <li><a href="quick_view.php">Quick view</a></li>
         <li><a href="login.php">Login</a></li>
         
-        <li><a href="blog.html">Blog</a>
+        <li><a href="blog.php">Blog</a>
           <ul>
-            <li><a href="blog_detail.html">Blog Detail</a></li>
+            <li><a href="blog_detail.php">Blog Detail</a></li>
           </ul>
         </li>
         <li><a href="contact_us.html">Contact us</a></li>

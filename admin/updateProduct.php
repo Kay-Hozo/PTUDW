@@ -1,4 +1,18 @@
 <?php 
+include("../class/clsLogin.php");
+$login = new login();
+session_start();
+
+if(isset($_SESSION["id"]) && isset($_SESSION["user"]) && isset($_SESSION["pass"]) && isset($_SESSION["ten"]) && isset($_SESSION["quyen"]))
+{
+	$login->confirmLogin($_SESSION["id"], $_SESSION["user"], $_SESSION["pass"], $_SESSION["ten"], $_SESSION["quyen"]);
+}
+else
+{
+	header('location: login.php');	
+}
+?>
+<?php 
 	include ("../class/clsProduct.php");
 	$p = new product();
 	$product_id = $_REQUEST['product_id'];
@@ -113,9 +127,8 @@
 						WHERE sp.maSP = {$product_id}
 						";
 					}
-					
+					var_dump($sql_upProduct);
 					$result = $p->themSuaXoaSP($sql_upProduct);
-
 					if($result == 1)
 					{
 						echo "<script> alert('Cập nhật sản phẩm thành công')</script>";	

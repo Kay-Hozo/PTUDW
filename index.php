@@ -1,8 +1,12 @@
 <?php 
 include("./class/clsConnect.php");
 $p=new connectDB();
+session_start();
 ?>
 <?php 
+include ("./class/clsStatusLogin.php");
+
+$giaodien = new statusLogin();
 if(isset($_REQUEST['layid']))
 {
 	$layid=$_REQUEST['layid'];
@@ -40,6 +44,7 @@ if(isset($_REQUEST['layid']))
 <link rel="stylesheet" type="text/css" href="css/jquery.mobile-menu.css">
 <link rel="stylesheet" type="text/css" href="css/jquery.bxslider.css">
 <link rel="stylesheet" type="text/css" href="css/style1.css" media="all">
+<link rel="stylesheet" type="text/css" href="css/main.css">
 
 <!-- Google Fonts -->
 <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
@@ -49,63 +54,9 @@ if(isset($_REQUEST['layid']))
 <body class="cms-index-index cms-home-page">
 <div id="page"> 
   <!-- Header -->
-  <header>
-    <div class="header-container">
-      <div class="container">
-        <div class="row">
-          <div class="col-sm-3 col-xs-12"> 
-            <!-- Header Logo -->
-            <div class="logo"><a title="Magento Commerce" href="index.php"><img alt="Magento Commerce" src="images/logo/logo.png" style="height:150px;"></a></div>
-            <!-- End Header Logo --> 
-          </div>
-          <div class="col-lg-9 col-xs-12 right_menu">
-            <div class="toplinks"> 
-              <!-- Default Welcome Message -->
-              <div class="welcome-msg hidden-xs">Default welcome msg! </div>
-              <!-- End Default Welcome Message -->
-              <div class="links">
-                <div class="myaccount"><a title="My Account" href="login.php"><span class="hidden-xs">Tài khoản</span></a></div>
-               
-                <div class="check"><a title="Checkout" href="checkout.html"><span class="hidden-xs">Thanh toán</span></a></div>
-                <div class="demo"><a title="Blog" href="blog.html"><span class="hidden-xs">Bài viết</span></a></div>
-                
-                <div class="login"><a href="login.php"><span class="hidden-xs">Đăng nhập</span></a></div>
-              </div>
-              <!-- links --> 
-            </div>
-            
-           
-            <div class="search-box pull-right">
-              <form action="http://htmldemo.magikcommerce.com/ecommerce/classic-html-template/version_1/cat" method="POST" id="search_mini_form" name="Categories">
-                <input type="text" placeholder="Search entire store here..." value="Search" maxlength="70" name="search" id="search">
-                <button type="button" class="search-btn-bg"><span class="glyphicon glyphicon-search"></span>&nbsp;</button>
-              </form>
-            </div>
-            <!-- End Search-col --> 
-            <!-- Header Language -->
-            <div class="lang-curr">
-              <div class="form-language">
-                <ul class="lang">
-                  <li class=""><a href="#" title="English"><img src="images/english.png" alt="English" /> <span>English</span></a></li>
-                  <li class=""><a href="#" title="Francais"><img src="images/francais.png" alt="Francais" /> <span>francais</span></a></li>
-                  <li class=""><a href="#" title="German"><img src="images/german.png" alt="German" /> <span>german</span></a></li>
-                </ul>
-              </div>
-              <div class="form-currency">
-                <ul class="currencies_list">
-                  <li class=""><a class="" title="Dollar" href="#">$</a></li>
-                  <li class=""><a class="" title="Euro" href="#">&euro;</a></li>
-                  <li class=""><a class="" title="Pound" href="#">&pound;</a></li>
-                </ul>
-              </div>
-            </div>
-            
-            <!-- End Header Currency --> 
-          </div>
-        </div>
-      </div>
-    </div>
-  </header>
+	<?php
+    	$giaodien->showHeader();
+	?>
   <!-- end header -->
   <div class="mm-toggle-wrap">
     <div class="mm-toggle"><i class="icon-align-justify"></i><span class="mm-label">Menu</span> </div>
@@ -124,11 +75,11 @@ if(isset($_REQUEST['layid']))
                 <li class="level1 first"><a href="grid.php"><span>Danh mục sản phẩm</span></a></li>
                
                 <li class="level1 nav-10-4"><a href="shopping_cart.php"><span>Giỏ hàng</span></a></li>
-                <li class="level1 first parent"><a href="checkout.html"><span>Thanh toán</span></a>  </li>
+                <li class="level1 first parent"><a href="checkout.php"><span>Thanh toán</span></a>  </li>
              
                 <li class="level1"><a href="login.php"><span>Đăng nhập</span></a></li>
                 
-                <li class="level1 first parent"><a href="blog.html"><span>Bài viết</span></a>
+                <li class="level1 first parent"><a href="blog.php"><span>Bài viết</span></a>
                 
                 </li>
                 <li class="level1"><a href="contact_us.html"><span>Liên hệ</span></a></li>
@@ -616,9 +567,9 @@ if(isset($_REQUEST['layid']))
         <div class="col-xs-12 col-sm-6 col-lg-3">
           <div class="blog_inner">
             <div class="blog-img"> <img src="images/blog-img1.jpg" alt="Blog image">
-              <div class="mask"> <a class="info" href="blog_detail.html">Read More</a> </div>
+              <div class="mask"> <a class="info" href="blog_detail.php">Read More</a> </div>
             </div>
-            <h3><a href="blog_detail.html">Pellentesque habitant morbi</a> </h3>
+            <h3><a href="blog_detail.php">Pellentesque habitant morbi</a> </h3>
             <div class="post-date"><i class="icon-calendar"></i> Apr 10, 2014</div>
             <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Fusce sit  ... </p>
           </div>
@@ -626,9 +577,9 @@ if(isset($_REQUEST['layid']))
         <div class="col-xs-12 col-sm-6 col-lg-3">
           <div class="blog_inner">
             <div class="blog-img"> <img src="images/blog-img2.jpg" alt="Blog image">
-              <div class="mask"> <a class="info" href="blog_detail.html">Read More</a> </div>
+              <div class="mask"> <a class="info" href="blog_detail.php">Read More</a> </div>
             </div>
-            <h3><a href="blog_detail.html">Pellentesque habitant morbi</a> </h3>
+            <h3><a href="blog_detail.php">Pellentesque habitant morbi</a> </h3>
             <div class="post-date"><i class="icon-calendar"></i> Apr 10, 2014</div>
             <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Fusce sit  ... </p>
           </div>
@@ -636,9 +587,9 @@ if(isset($_REQUEST['layid']))
         <div class="col-xs-12 col-sm-6 col-lg-3">
           <div class="blog_inner">
             <div class="blog-img"> <img src="images/blog-img3.jpg" alt="Blog image">
-              <div class="mask"> <a class="info" href="blog_detail.html">Read More</a> </div>
+              <div class="mask"> <a class="info" href="blog_detail.php">Read More</a> </div>
             </div>
-            <h3><a href="blog_detail.html">Pellentesque habitant morbi</a> </h3>
+            <h3><a href="blog_detail.php">Pellentesque habitant morbi</a> </h3>
             <div class="post-date"><i class="icon-calendar"></i> Apr 10, 2014</div>
             <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Fusce sit  ... </p>
           </div>
@@ -646,9 +597,9 @@ if(isset($_REQUEST['layid']))
         <div class="col-xs-12 col-sm-6 col-lg-3">
           <div class="blog_inner">
             <div class="blog-img"> <img src="images/blog-img4.jpg" alt="Blog image">
-              <div class="mask"> <a class="info" href="blog_detail.html">Read More</a> </div>
+              <div class="mask"> <a class="info" href="blog_detail.php">Read More</a> </div>
             </div>
-            <h3><a href="blog_detail.html">Pellentesque habitant morbi</a> </h3>
+            <h3><a href="blog_detail.php">Pellentesque habitant morbi</a> </h3>
             <div class="post-date"><i class="icon-calendar"></i> Apr 10, 2014</div>
             <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Fusce sit  ... </p>
           </div>
@@ -723,111 +674,9 @@ if(isset($_REQUEST['layid']))
     </div>
   </div>
   <!-- Footer -->
-  <footer>
-    <section class="footer-navbar">
-      <div class="footer-inner">
-        <div class="container">
-          <div class="row">
-            <div class="col-sm-12 col-xs-12 col-lg-8">
-              <div class="footer-column pull-left collapsed-block">
-                <h4>MEBOOK<a class="expander visible-xs" href="#TabBlock-1">+</a></h4>
-                <div class="tabBlock" id="TabBlock-1">
-                  <ul class="links">
-                    <li class="first"><a href="#" title="How to buy">Giới thiệu</a></li>
-                    <li><a href="#" title="">Điều khoản sử dụng</a></li>
-                    <li><a href="#" title="Payment">Chính sách bảo mật</a></li>
-                    <li><a href="#" title="Shipment&lt;/a&gt;">Chính sách bán hàng</a></li>
-                    <li><a href="#" title="Where is my order?">Phương thức vận chuyển</a></li>
-                    <!--<li class="last"><a href="#" title="Return policy">Return policy</a></li>-->
-                  </ul>
-                </div>
-              </div>
-              <div class="footer-column pull-left collapsed-block">
-                <h4>Tài khoản<a class="expander visible-xs" href="#TabBlock-2">+</a></h4>
-                <div class="tabBlock" id="TabBlock-2">
-                  <ul class="links">
-                    <li class="first"><a title="Your Account" href="login.php">Đăng nhập</a></li>
-                    <li><a title="Information" href="#">Tạo tài khoản</a></li>
-                    <li><a title="Addresses" href="#">Lịch sử mua hàng</a></li>
-                    <li><a title="Addresses" href="#">Chi tiết tài khoản</a></li>
-                    <!--<li><a title="Orders History" href="#">Orders History</a></li>
-                    <li class="last"><a title=" Additional Information" href="#">Additional Information</a></li>-->
-                  </ul>
-                </div>
-              </div>
-              <div class="footer-column pull-left collapsed-block">
-                <h4>Hỗ trợ<a class="expander visible-xs" href="#TabBlock-3">+</a></h4>
-                <div class="tabBlock" id="TabBlock-3">
-                  <ul class="links">
-                    <li class="first"><a href="#" title="privacy policy">Chính sách đổi trả</a></li>
-                    <li><a href="#" title="Search Terms">Chính sách bảo hành</a></li>
-                    <li><a href="#" title="Advanced Search">Chính sách giao hàng</a></li>
-                    <li><a href="contact_us.html" title="Contact Us">Liên hệ</a></li>
-                    <!--<li><a href="#" title="Suppliers">Suppliers</a></li>
-                    <li class=" last"><a href="#" title="Our stores" class="link-rss">Our stores</a></li>-->
-                  </ul>
-                </div>
-              </div>
-            </div>
-            <div class="col-xs-12 col-lg-4">
-              <div class="footer-column-last">
-                <div class="newsletter-wrap collapsed-block">
-                  <h4>Sign up for emails<a class="expander visible-xs" href="#TabBlock-4">+</a></h4>
-                  <div class="tabBlock" id="TabBlock-4">
-                    <form id="newsletter-validate-detail" method="post" action="#">
-                      <div id="container_form_news">
-                        <div id="container_form_news2">
-                          <input type="text" class="input-text required-entry validate-email" value="Enter your email address" onfocus=" this.value='' " title="Sign up for our newsletter" id="newsletter" name="email">
-                          <button class="button subscribe" title="Subscribe" type="submit"><span>Subscribe</span></button>
-                        </div>
-                      </div>
-                    </form>
-                  </div>
-                </div>
-                <div class="social">
-                  <h4>Follow Us</h4>
-                  <ul class="link">
-                    <li class="fb pull-left"><a href="#"></a></li>
-                    <li class="tw pull-left"><a href="#"></a></li>
-                    <li class="googleplus pull-left"><a href="#"></a></li>
-                    <li class="rss pull-left"><a href="#"></a></li>
-                    <li class="pintrest pull-left"><a href="#"></a></li>
-                    <li class="linkedin pull-left"><a href="#"></a></li>
-                    <li class="youtube pull-left"><a href="#"></a></li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="footer-middle">
-        <div class="container">
-          <div class="row">
-            <div style="text-align:center"><a href="index.php"><img src="images/logo/logo.png" height="150" alt=""></a></div>
-            <address>
-            <i class="icon-location-arrow"></i> 12 Nguyễn Văn Bảo,Phường 4 ,Q.Gò Vấp,TP Hồ Chí Minh<i class="icon-mobile-phone"></i><span>0387120640</span> <i class="icon-envelope"></i><a href="mailto:support@magikcommerce.com">lethoa22012020@gmail.com</a>
-            </address>
-          </div>
-        </div>
-      </div>
-      <!--<div class="footer-bottom">
-        <div class="container">
-          <div class="row">
-            <div class="col-sm-5 col-xs-12 coppyright">&copy; 2015 Magikcommerce. All Rights Reserved.</div>
-            <div class="col-sm-7 col-xs-12 company-links">
-              <ul class="links">
-                <li><a title="Magento Themes" href="#">Magento Themes</a></li>
-                <li><a title="Premium Themes" href="#">Premium Themes</a></li>
-                <li><a title="Responsive Themes" href="#">Responsive Themes</a></li>
-                <li class="last"><a title="Magento Extensions" href="#">Magento Extensions</a></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>-->
-    </section>
-  </footer>
+  <?php
+  	$giaodien->showFooter();
+  ?>
 </div>
 <div id="mobile-menu">
   <div class="mm-search">
@@ -848,10 +697,10 @@ if(isset($_REQUEST['layid']))
     <li><a href="#">Pages</a>
       <ul>
         <li><a href="grid.php">Grid</a></li>
-        <li> <a href="list.html">List</a></li>
+        <li> <a href="list.php">List</a></li>
         <li> <a href="product_detail.php">Product Detail</a></li>
         <li> <a href="shopping_cart.php">Shopping Cart</a></li>
-        <li><a href="checkout.html">Checkout</a></li>
+        <li><a href="checkout.php">Checkout</a></li>
         <li> <a href="wishlist.html">Wishlist</a></li>
         <li> <a href="dashboard.html">Dashboard</a></li>
         <li> <a href="multiple_addresses.html">Multiple Addresses</a></li>
@@ -860,9 +709,9 @@ if(isset($_REQUEST['layid']))
  	   <li><a href="faq.html">FAQ</a></li>
         <li><a href="quick_view.php">Quick view</a></li>
         <li><a href="login.php">Login</a></li>
-        <li><a href="blog.html">Blog</a>
+        <li><a href="blog.php">Blog</a>
           <ul>
-            <li><a href="blog_detail.html">Blog Detail</a></li>
+            <li><a href="blog_detail.php">Blog Detail</a></li>
           </ul>
         </li>
         <li><a href="contact_us.html">Contact us</a></li>
