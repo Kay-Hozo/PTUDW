@@ -248,33 +248,21 @@ if(isset($_REQUEST['layid']))
                   </thead>
                   <tfoot>
                     <tr class="first last">
-                      <td class="a-right last" colspan="8"><button onclick="setLocation('http://magento.magikthemes.com/magikClassic/womens.html')" class="button btn-continue" title="Continue Shopping" type="button"><span>tiếp tục mua sắm </span></button>
-                        <button class="button btn-update" title="Update Cart" value="update_qty" name="update_cart_action" type="submit"><span>Xóa giỏ hàng</span></button>
-                        <button id="empty_cart_button" class="button" title="Clear Cart" value="empty_cart" name="update_cart_action" type="submit"><span>cập nhật giỏ hàng</span></button></td>
+                    
+                      <td class="a-right last" colspan="8"><a href="index.php"><button  class="button btn-continue" title="Continue Shopping" type="button"><span>tiếp tục mua sắm </span></button></a>
+                        <a href="delete_cart.php"><button class="button btn-update" title="Update Cart" value="update_qty" name="update_cart_action" type="button" id="update_cart_action"><span>Xóa giỏ hàng</span></button></a>
+                        <button id="empty_cart_button" class="button" title="Clear Cart" value="empty_cart" name="update_cart_action" type="submit" ><span>cập nhật giỏ hàng</span></button></td>
+                    
                     </tr>
+                  
                   </tfoot>
                   <tbody>
                      <?php 
 					 $sql="select * from giohang g left join sanPham s on g.maSP=s.maSP";
 					 $p->load_DS_giohang($sql);
 					 
-					 switch($_REQUEST['nut'])
-					 {
-						 case'Xoa':
-						 {
-							 $sql1="DELETE FROM giohang WHERE maSP = '$layid'";
-							 if($p->themsuaxoa($sql1)==1)
-							 {
-								 echo " <script>alert('Xóa sản phẩm  thành công')</script>;";
-							 }
-							 else
-							 {
-								 echo " <script>alert('Xóa thất bại')</script>;";
-							 }
-							 break;
-						 }
-					 }
 					 ?>
+                      
                   </tbody>
                 </table>
               </fieldset>

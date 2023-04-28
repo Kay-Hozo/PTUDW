@@ -127,6 +127,21 @@ if(isset($_REQUEST['layid']))
 </div>
 
 <!-- JavaScript --> 
+<script>
+  function increase() {
+    var quantity = parseInt(document.getElementById('qty').value);
+    quantity++;
+    document.getElementById('qty').value = quantity;
+  }
+
+  function decrease() {
+    var quantity = parseInt(document.getElementById('qty').value);
+    if (quantity > 1) {
+      quantity--;
+      document.getElementById('qty').value = quantity;
+    }
+  }
+</script>
 <script type="text/javascript" src="js/jquery.min.js"></script> 
 <script type="text/javascript" src="js/bootstrap.min.js"></script> 
 <script type="text/javascript" src="js/parallax.js"></script> 

@@ -298,7 +298,7 @@ if(isset($_REQUEST['layid']))
 					  }
 				  }
 			  ?>
-             
+            
                 <div class="tab-pane fade" id="reviews_tabs">
                   <div class="box-collateral box-reviews" id="customer-reviews">
                     <div class="box-reviews1">
@@ -692,21 +692,7 @@ if(isset($_REQUEST['layid']))
           </div>
         </div>
       </div>
-      <!--<div class="footer-bottom">
-        <div class="container">
-          <div class="row">
-            <div class="col-sm-5 col-xs-12 coppyright">&copy; 2015 Magikcommerce. All Rights Reserved.</div>
-            <div class="col-sm-7 col-xs-12 company-links">
-              <ul class="links">
-                <li><a title="Magento Themes" href="#">Magento Themes</a></li>
-                <li><a title="Premium Themes" href="#">Premium Themes</a></li>
-                <li><a title="Responsive Themes" href="#">Responsive Themes</a></li>
-                <li class="last"><a title="Magento Extensions" href="#">Magento Extensions</a></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>-->
+     
     </section>
   </footer>
 </div>
@@ -753,194 +739,32 @@ if(isset($_REQUEST['layid']))
     <li><a href="grid.php">Sách </a>
       <ul>
         <li> <a href="grid.php" class="">Sách giáo khoa</a>
-          <!--<ul>
-            <li> <a href="grid.html" class="">Clutch Handbags</a></li>
-            <li> <a href="grid.html" class="">Diaper Bags</a></li>
-            <li> <a href="grid.html" class="">Bags</a></li>
-            <li> <a href="grid.html" class="">Hobo handbags</a></li>
-          </ul>-->
+          
         </li>
         <li> <a href="grid.php">Sách tham khảo</a>
-          <!--<ul>
-            <li> <a href="grid.html">Beaded Handbags</a></li>
-            <li> <a href="grid.html">Fabric Handbags</a></li>
-            <li> <a href="grid.html">Handbags</a></li>
-            <li> <a href="grid.html">Leather Handbags</a></li>
-          </ul>-->
+         
         </li>
         <li> <a href="grid.php">Sách ngoại ngữ</a>
-         <!-- <ul>
-            <li> <a href="grid.html">Flat Shoes</a></li>
-            <li> <a href="grid.html">Flat Sandals</a></li>
-            <li> <a href="grid.html">Boots</a></li>
-            <li> <a href="grid.html">Heels</a></li>
-          </ul>-->
+         
         </li>
         <li> <a href="grid.php">Sách thiếu nhi</a>
-         <!-- <ul>
-            <li> <a href="grid.html">Bracelets</a></li>
-            <li> <a href="grid.html">Necklaces &amp; Pendent</a></li>
-            <li> <a href="grid.html">Pendants</a></li>
-            <li> <a href="grid.html">Pins &amp; Brooches</a></li>
-          </ul>-->
+         
         </li>
         <li> <a href="grid.php">Sách kinh tế</a>
-          <!--<ul>
-            <li> <a href="grid.html">Casual Dresses</a></li>
-            <li> <a href="grid.html">Evening</a></li>
-            <li> <a href="grid.html">Designer</a></li>
-            <li> <a href="grid.html">Party</a></li>
-          </ul>-->
+          
         </li>
-    <!-- <li> <a href="grid.html">Swimwear</a>
-          <ul>
-            <li> <a href="grid.html">Swimsuits</a></li>
-            <li> <a href="grid.html">Beach Clothing</a></li>
-            <li> <a href="grid.html">Clothing</a></li>
-            <li> <a href="grid.html">Bikinis</a></li>
-          </ul>
-        </li>-->
+    
       </ul>
     </li>
     <li><a href="grid.php">Truyện tranh</a>
-     <!-- <ul>
-        <li> <a href="grid.html" class="">Shoes</a>
-          <ul class="level1">
-            <li class="level2 nav-6-1-1"><a href="grid.html">Sport Shoes</a></li>
-            <li class="level2 nav-6-1-1"><a href="grid.html">Casual Shoes</a></li>
-            <li class="level2 nav-6-1-1"><a href="grid.html">Leather Shoes</a></li>
-            <li class="level2 nav-6-1-1"><a href="grid.html">canvas shoes</a></li>
-          </ul>
-        </li>
-        <li> <a href="#.html">Dresses</a>
-          <ul class="level1">
-            <li class="level2 nav-6-1-1"><a href="grid.html">Casual Dresses</a></li>
-            <li class="level2 nav-6-1-1"><a href="grid.html">Evening</a></li>
-            <li class="level2 nav-6-1-1"><a href="grid.html">Designer</a></li>
-            <li class="level2 nav-6-1-1"><a href="grid.html">Party</a></li>
-          </ul>
-        </li>
-        <li> <a href="#.html">Jackets</a>
-          <ul class="level1">
-            <li class="level2 nav-6-1-1"><a href="grid.html">Coats</a></li>
-            <li class="level2 nav-6-1-1"><a href="grid.html">Formal Jackets</a></li>
-            <li class="level2 nav-6-1-1"><a href="grid.html">Leather Jackets</a></li>
-            <li class="level2 nav-6-1-1"><a href="grid.html">Blazers</a></li>
-          </ul>
-        </li>
-        <li> <a href="#.html">Watches</a>
-          <ul class="level1">
-            <li class="level2 nav-6-1-1"><a href="grid.html">Fasttrack</a></li>
-            <li class="level2 nav-6-1-1"><a href="grid.html">Casio</a></li>
-            <li class="level2 nav-6-1-1"><a href="grid.html">Titan</a></li>
-            <li class="level2 nav-6-1-1"><a href="grid.html">Tommy-Hilfiger</a></li>
-          </ul>
-        </li>
-        <li> <a href="#/sunglasses.html">Sunglasses</a>
-          <ul class="level1">
-            <li class="level2 nav-6-1-1"><a href="grid.html">Ray Ban</a></li>
-            <li class="level2 nav-6-1-1"><a href="grid.html">Fasttrack</a></li>
-            <li class="level2 nav-6-1-1"><a href="grid.html">Police</a></li>
-            <li class="level2 nav-6-1-1"><a href="grid.html">Oakley</a></li>
-          </ul>
-        </li>
-        <li> <a href="grid.html">Sách kinh tế </a>
-          <ul class="level1">
-            <li class="level2 nav-6-1-1"><a href="grid.html">Backpacks</a></li>
-            <li class="level2 nav-6-1-1"><a href="grid.html">Wallets</a></li>
-            <li class="level2 nav-6-1-1"><a href="grid.html">Laptops Bags</a></li>
-            <li class="level2 nav-6-1-1"><a href="grid.html">Belts</a></li>
-          </ul>
-        </li>
-      </ul>-->
+    
+      
     </li>
     <li><a href="grid.php">Từ điển</a>
-     <!-- <ul>
-        <li> <a href="grid.html"><span>Mobiles</span></a>
-          <ul>
-            <li> <a href="grid.html"><span>Samsung</span></a></li>
-            <li> <a href="grid.html"><span>Nokia</span></a></li>
-            <li> <a href="grid.html"><span>IPhone</span></a></li>
-            <li> <a href="grid.html"><span>Sony</span></a></li>
-          </ul>
-        </li>
-        <li> <a href="grid.html" class=""><span>Accesories</span></a>
-          <ul>
-            <li> <a href="grid.html"><span>Mobile Memory Cards</span></a></li>
-            <li> <a href="grid.html"><span>Cases &amp; Covers</span></a></li>
-            <li> <a href="grid.html"><span>Mobile Headphones</span></a></li>
-            <li> <a href="grid.html"><span>Bluetooth Headsets</span></a></li>
-          </ul>
-        </li>
-        <li> <a href="grid.html"><span>Cameras</span></a>
-          <ul>
-            <li> <a href="grid.html"><span>Camcorders</span></a></li>
-            <li> <a href="grid.html"><span>Point &amp; Shoot</span></a></li>
-            <li> <a href="grid.html"><span>Digital SLR</span></a></li>
-            <li> <a href="grid.html"><span>Camera Accesories</span></a></li>
-          </ul>
-        </li>
-        <li> <a href="grid.html"><span>Audio &amp; Video</span></a>
-          <ul>
-            <li> <a href="grid.html"><span>MP3 Players</span></a></li>
-            <li> <a href="grid.html"><span>IPods</span></a></li>
-            <li> <a href="grid.html"><span>Speakers</span></a></li>
-            <li> <a href="grid.html"><span>Video Players</span></a></li>
-          </ul>
-        </li>
-        <li> <a href="grid.html"><span>Computer</span></a>
-          <ul>
-            <li> <a href="grid.html"><span>External Hard Disk</span></a></li>
-            <li> <a href="grid.html"><span>Pendrives</span></a></li>
-            <li> <a href="grid.html"><span>Headphones</span></a></li>
-            <li> <a href="grid.html"><span>PC Components</span></a></li>
-          </ul>
-        </li>
-        <li> <a href="grid.html"><span>Appliances</span></a>
-          <ul>
-            <li> <a href="grid.html"><span>Vaccum Cleaners</span></a></li>
-            <li> <a href="grid.html"><span>Indoor Lighting</span></a></li>
-            <li> <a href="grid.html"><span>Kitchen Tools</span></a></li>
-            <li> <a href="grid.html"><span>Water Purifier</span></a></li>
-          </ul>
-        </li>
-      </ul>-->
+     
     </li>
     <li><a href="grid.php">Tiểu thuyết</a>
-      <!--<ul>
-        <li> <a href="grid.html">Living Room</a>
-          <ul>
-            <li> <a href="grid.html">Racks &amp; Cabinets</a></li>
-            <li> <a href="grid.html">Sofas</a></li>
-            <li> <a href="grid.html">Chairs</a></li>
-            <li> <a href="grid.html">Tables</a></li>
-          </ul>
-        </li>
-        <li> <a href="grid.html" class="">Dining &amp; Bar</a>
-          <ul>
-            <li> <a href="grid.html">Dining Table Sets</a></li>
-            <li> <a href="grid.html">Serving Trolleys</a></li>
-            <li> <a href="grid.html">Bar Counters</a></li>
-            <li> <a href="grid.html">Dining Cabinets</a></li>
-          </ul>
-        </li>
-        <li> <a href="grid.html">Bedroom</a>
-          <ul>
-            <li> <a href="grid.html">Beds</a></li>
-            <li> <a href="grid.html">Chest of Drawers</a></li>
-            <li> <a href="grid.html">Wardrobes &amp; Almirahs</a></li>
-            <li> <a href="grid.html">Nightstands</a></li>
-          </ul>
-        </li>
-        <li> <a href="grid.html">Kitchen</a>
-          <ul>
-            <li> <a href="grid.html">Kitchen Racks</a></li>
-            <li> <a href="grid.html">Kitchen Fillings</a></li>
-            <li> <a href="grid.html">Wall Units</a></li>
-            <li> <a href="grid.html">Benches &amp; Stools</a></li>
-          </ul>
-        </li>
-      </ul>-->
+      
     </li>
     <li><a href="grid.php">Đời sống</a></li>
     <li><a href="contact_us.html">Contact Us</a></li>
@@ -975,6 +799,21 @@ if(isset($_REQUEST['layid']))
 ?>
 <!-- End Footer --> 
 <!-- JavaScript --> 
+<script>
+  function increase() {
+    var quantity = parseInt(document.getElementById('qty').value);
+    quantity++;
+    document.getElementById('qty').value = quantity;
+  }
+
+  function decrease() {
+    var quantity = parseInt(document.getElementById('qty').value);
+    if (quantity > 1) {
+      quantity--;
+      document.getElementById('qty').value = quantity;
+    }
+  }
+</script>
 <script type="text/javascript" src="js/jquery.min.js"></script> 
 <script type="text/javascript" src="js/bootstrap.min.js"></script> 
 <script type="text/javascript" src="js/parallax.js"></script> 

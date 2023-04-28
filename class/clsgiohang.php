@@ -68,10 +68,10 @@ class giohang extends connectDB
                     <div class="pull-left">
                       <div class="custom pull-left">
 					 
-                        <button onClick="var result = document.getElementById("qty"); var qty = result.value; if( !isNaN( qty )) result.value++;return false;" class="increase items-count" type="button"><i class="icon-plus">&nbsp;</i></button>
+                        <button onClick="increase()";  class="increase items-count" type="button" id="btnsl" name="btnsl" ><i class="icon-plus">&nbsp;</i></button>
                         <input type="text" class="input-text qty" title="Qty" value="1" maxlength="12" id="qty" name="qty">
                         
-                        <button onClick="var result = document.getElementById("qty"); var qty = result.value; if( !isNaN( qty ) &amp;&amp; qty &gt; 0 ) result.value--;return false;" class="reduced items-count" type="button"><i class="icon-minus">&nbsp;</i></button>
+                        <button onClick="decrease()"; class="reduced items-count" type="button" id="btnsl" name="btnsl" ><i class="icon-minus">&nbsp;</i></button>
                       </div>
                     </div>
       
@@ -262,10 +262,10 @@ class giohang extends connectDB
                     <div class="pull-left">
                       <div class="custom pull-left">
 					 
-                        <button onClick="var result = document.getElementById("qty"); var qty = result.value; if( !isNaN( qty )) result.value++;return false;" class="increase items-count" type="button"><i class="icon-plus">&nbsp;</i></button>
+                        <button  onClick="increase()"; class="increase items-count" type="button"><i class="icon-plus">&nbsp;</i></button>
                         <input type="text" class="input-text qty" title="Qty" value="1" maxlength="12" id="qty" name="qty">
                         
-                        <button onClick="var result = document.getElementById("qty"); var qty = result.value; if( !isNaN( qty ) &amp;&amp; qty &gt; 0 ) result.value--;return false;" class="reduced items-count" type="button"><i class="icon-minus">&nbsp;</i></button>
+                        <button  onClick="decrease()"; class="reduced items-count" type="button"><i class="icon-minus">&nbsp;</i></button>
 					  
                       </div>
                     </div>
