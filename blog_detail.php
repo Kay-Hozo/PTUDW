@@ -30,6 +30,7 @@
 <link rel="stylesheet" type="text/css" href="css/owl.theme.css">
 <link rel="stylesheet" href="css/flexslider.css" type="text/css">
 <link rel="stylesheet" type="text/css" href="css/jquery.mobile-menu.css">
+<link rel="stylesheet" type="text/css" href="css/jquery.bxslider.css">
 <link rel="stylesheet" type="text/css" href="css/blogmate.css">
 
 <!-- Google Fonts -->
@@ -39,76 +40,10 @@
 
 <body class="cms-index-index cms-home-page">
 <div id="page"> 
-  <!-- Header -->
-   <header>
-    <div class="header-container">
-      <div class="container">
-        <div class="row">
-          <div class="col-sm-3 col-xs-12"> 
-            <!-- Header Logo -->
-            <div class="logo"><a title="Magento Commerce" href="index.php"><img alt="Magento Commerce" src="images/logo/logo.png" style="height:150px; "></a></div>
-            <!-- End Header Logo --> 
-          </div>
-          <div class="col-lg-9 col-xs-12 right_menu">
-            <div class="toplinks"> 
-              <!-- Default Welcome Message -->
-              <div class="welcome-msg hidden-xs">Default welcome msg! </div>
-              <!-- End Default Welcome Message -->
-              <div class="links">
-                <div class="myaccount"><a title="My Account" href="login.php"><span class="hidden-xs">Tài khoản</span></a></div>
-                <!--<div class="wishlist"><a title="My Wishlist" href="wishlist.html"><span class="hidden-xs">Wishlist</span></a></div>-->
-                <div class="check"><a title="Checkout" href="checkout.html"><span class="hidden-xs">Thanh toán</span></a></div>
-                <div class="demo"><a title="Blog" href="blog.html"><span class="hidden-xs">Bài viết</span></a></div>
-                <!-- Header Company -->
-                <!--<div class="dropdown block-company-wrapper hidden-xs"><a role="button" data-toggle="dropdown" data-target="#" class="block-company dropdown-toggle" href="#">Company <span class="caret"></span></a>
-                  <ul class="dropdown-menu" role="menu">
-                    <li role="presentation"><a role="menuitem" tabindex="-1" href="about_us.html">About Us</a></li>
-                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Customer Service</a></li>
-                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Privacy Policy</a></li>
-                    <li role="presentation"><a role="menuitem" tabindex="-1" href="sitemap.html">Site Map</a></li>
-                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Search Terms</a></li>
-                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Advanced Search</a></li>
-                  </ul>
-                </div>-->
-                <!-- End Header Company -->
-                
-                <div class="login"><a href="login.php"><span class="hidden-xs">Đăng nhập</span></a></div>
-              </div>
-              <!-- links --> 
-            </div>
-            
-            <!-- Search-col -->
-            <div class="search-box pull-right">
-              <form action="http://htmldemo.magikcommerce.com/ecommerce/classic-html-template/version_1/cat" method="POST" id="search_mini_form" name="Categories">
-                <input type="text" placeholder="Search entire store here..." value="Search" maxlength="70" name="search" id="search">
-                <button type="button" class="search-btn-bg"><span class="glyphicon glyphicon-search"></span>&nbsp;</button>
-              </form>
-            </div>
-            <!-- End Search-col --> 
-            <!-- Header Language -->
-            <div class="lang-curr">
-              <div class="form-language">
-                <ul class="lang">
-                  <li class=""><a href="#" title="English"><img src="images/english.png" alt="English" /> <span>English</span></a></li>
-                  <li class=""><a href="#" title="Francais"><img src="images/francais.png" alt="Francais" /> <span>francais</span></a></li>
-                  <li class=""><a href="#" title="German"><img src="images/german.png" alt="German" /> <span>german</span></a></li>
-                </ul>
-              </div>
-              <div class="form-currency">
-                <ul class="currencies_list">
-                  <li class=""><a class="" title="Dollar" href="#">$</a></li>
-                  <li class=""><a class="" title="Euro" href="#">&euro;</a></li>
-                  <li class=""><a class="" title="Pound" href="#">&pound;</a></li>
-                </ul>
-              </div>
-            </div>
-            
-            <!-- End Header Currency --> 
-          </div>
-        </div>
-      </div>
-    </div>
-  </header>
+    <!-- Header -->
+	<?php
+    	$giaodien->showHeader();
+	?>
   <!-- end header -->
   <div class="mm-toggle-wrap">
     <div class="mm-toggle"><i class="icon-align-justify"></i><span class="mm-label">Menu</span> </div>
@@ -119,7 +54,7 @@
       <div class="row">
         <div class="nav-inner col-lg-12">
           <ul id="nav" class="hidden-xs">
-            <li class="level0 parent drop-menu"><a href="index.php"><span>Home</span></a>
+            <li class="level0 parent drop-menu "><a href="index.php"><span>Home</span></a>
              <!-- <ul class="level1">
                 <li class="level1 first parent"><a href="index.html"><span>Home Version 1</span></a></li>
                 <li class="level1 parent"><a href="../version_2/index.html"><span>Home Version 2</span></a></li>
@@ -133,7 +68,7 @@
                <!-- <li class="level1 nav-10-2"><a href="list.html"><span>List</span></a></li>-->
                 <!--<li class="level1 nav-10-3"><a href="product_detail.html"><span>Product Detail</span></a></li>-->
                 <li class="level1 nav-10-4"><a href="shopping_cart.php"><span>Giỏ hàng</span></a></li>
-                <li class="level1 first parent"><a href="checkout.html"><span>Thanh toán</span></a>  </li>
+                <li class="level1 first parent"><a href="checkout.php"><span>Thanh toán</span></a>  </li>
                <!-- <li class="level1 nav-10-4"><a href="wishlist.html"><span>Wishlist</span></a></li>-->
               <!--  <li class="level1"><a href="dashboard.html"><span>Dashboard</span></a></li>
                 <li class="level1"><a href="multiple_addresses.html"><span>Multiple Addresses</span></a></li>
@@ -144,7 +79,7 @@
                 <li class="level1"><a href="quick_view.html"><span>Quick view </span></a></li>-->
                 <li class="level1"><a href="login.php"><span>Đăng nhập</span></a></li>
                 
-                <li class="level1 first parent"><a href="blog.html"><span>Bài viết</span></a>
+                <li class="level1 first parent"><a href="blog.php"><span>Bài viết</span></a>
                  <!-- <ul class="level2 right-sub">
                     <li class="level2 nav-2-1-1 first"><a href="blog_detail.html"><span>Blog Detail</span></a></li>
                   </ul>-->
@@ -514,182 +449,202 @@
     </div>
   </nav>
 
-  <!-- end nav --> 
-  
-  <!-- Main Container -->
-  
-  <section class="main-container col2-right-layout bounceInUp animated">
-    <div class="main container">
-      <div class="row">
-        <div class="col-main col-sm-9">
-          <div class="page-title">
-            <h2>Blog</h2>
-          </div>
-          <div class="blog-wrapper" id="main">
-            <div class="site-content" id="primary">
-              <div role="main" id="content">
-                <article class="blog_entry clearfix">
-                  <header class="blog_entry-header clearfix">
-                    <div class="blog_entry-header-inner">
-                      <h2 class="blog_entry-title"> <a rel="bookmark" href="blog_detail.html">Pellentesque habitant morbi</a> </h2>
-                    </div>
-                    <!--blog_entry-header-inner--> 
-                  </header>
-                  <div class="entry-content">
-                    <div class="featured-thumb"><a href="#"><img src="images/blog-img4.jpg" alt="blog image"></a></div>
-                    <div class="entry-content">
-                      <p>Fusce ac pharetra urna. Duis non lacus sit amet lacus interdum facilisis sed non est. Ut mi metus, semper eu dictum nec, condimentum sed sapien. Nullam lobortis nunc semper ipsum luctus ut viverra ante eleifend. Nunc pretium velit sed augue luctus accumsan.</p>
-                      <p>Aliquam laoreet consequat malesuada. Integer vitae diam sed dolor euismod laoreet eget ac felis. Donec non erat sed elit bibendum sodales. Donec eu cursus velit. Proin nunc lacus, gravida mollis dictum ut, vulputate eu turpis. Sed felis sapien, commodo in iaculis in, feugiat sed enim. Sed nunc ipsum, fermentum varius dignissim vitae, blandit et ante.Maecenas sagittis, lorem sed congue egestas, lectus purus congue nisl, ac molestie enim ligula nec eros. Sed leo tortor, tincidunt sit amet elementum vel, eleifend at orci. Maecenas ut turpis felis. Donec sit amet quam sem, et aliquet est.</p>
-                    </div>
-                    <p> <a class="btn"  href="blog_detail.html">Read More</a> </p>
+  <!-- end nav -->  
+<!-- Main Container -->
+<div class="main-container col2-right-layout bounceInUp animated">
+  <div class="main container">
+    <div class="row">
+      <div class="col-main col-sm-9">
+        <div class="page-title">
+          <h2>Blog</h2>
+        </div>
+        <div class="blog-wrapper" id="main">
+          <div class="site-content" id="primary">
+            <div role="main" id="content">
+              <article class="blog_entry clearfix" >
+                <header class="blog_entry-header clearfix">
+                  <div class="blog_entry-header-inner">
+                    <h2 class="blog_entry-title"> Pellentesque habitant morbi </h2>
                   </div>
-                  <footer class="entry-meta"> This entry was posted	in <a rel="category tag" title="View all posts in First Category" href="#">First Category</a> On
-                    <time datetime="2014-07-10T06:53:43+00:00" class="entry-date">Jul 10, 2014</time>
-                    . </footer>
-                </article>
-                <article class="blog_entry clearfix">
-                  <header class="blog_entry-header clearfix">
-                    <div class="blog_entry-header-inner">
-                      <h2 class="blog_entry-title"> <a rel="bookmark" href="blog_detail.html">Aliquam eget sapien placerat</a> </h2>
-                    </div>
-                    <!--blog_entry-header-inner--> 
-                  </header>
+                  <!--blog_entry-header-inner--> 
+                </header>
+                <!--blog_entry-header clearfix-->
+                <div class="entry-content">
+                  <div class="featured-thumb"><a href="#"><img alt="blog-img4" src="images/blog-img4.jpg"></a></div>
                   <div class="entry-content">
-                    <div class="featured-thumb"><a href="#"><img alt="blog-img1" src="images/blog-img3.jpg"></a></div>
-                    <div class="entry-content">
-                      <p>Fusce ac pharetra urna. Duis non lacus sit amet lacus interdum facilisis sed non est. Ut mi metus, semper eu dictum nec, condimentum sed sapien. Nullam lobortis nunc semper ipsum luctus ut viverra ante eleifend. Nunc pretium velit sed augue luctus accumsan.</p>
-                      <p>Aliquam laoreet consequat malesuada. Integer vitae diam sed dolor euismod laoreet eget ac felis. Donec non erat sed elit bibendum sodales. Donec eu cursus velit. Proin nunc lacus, gravida mollis dictum ut, vulputate eu turpis. Sed felis sapien, commodo in iaculis in, feugiat sed enim. Sed nunc ipsum, fermentum varius dignissim vitae, blandit et ante.Maecenas sagittis, lorem sed congue egestas, lectus purus congue nisl, ac molestie enim ligula nec eros. Sed leo tortor, tincidunt sit amet elementum vel, eleifend at orci. Maecenas ut turpis felis. Donec sit amet quam sem, et aliquet est.</p>
-                      <p>Quisque nisl lectus, accumsan et euismod eu, sollicitudin ac augue. In sit amet urna magna. Curabitur imperdiet urna nec purus egestas eget aliquet purus iaculis. Nunc porttitor blandit imperdiet. Nulla facilisi. Cras odio ipsum, vehicula nec vehicula sed, convallis scelerisque quam. Phasellus ut odio dui, ut fermentum neque.</p>
-                    </div>
-                    <p> <a class="btn"  href="blog_detail.html">Read More</a> </p>
+                    <p>Fusce ac pharetra urna. Duis non lacus sit amet lacus interdum facilisis sed non est. Ut mi metus, semper eu dictum nec, condimentum sed sapien. Nullam lobortis nunc semper ipsum luctus ut viverra ante eleifend. Nunc pretium velit sed augue luctus accumsan.</p>
+                    <p>Aliquam laoreet consequat malesuada. Integer vitae diam sed dolor euismod laoreet eget ac felis. Donec non erat sed elit bibendum sodales. Donec eu cursus velit. Proin nunc lacus, gravida mollis dictum ut, vulputate eu turpis. Sed felis sapien, commodo in iaculis in, feugiat sed enim. Sed nunc ipsum, fermentum varius dignissim vitae, blandit et ante.Maecenas sagittis, lorem sed congue egestas, lectus purus congue nisl, ac molestie enim ligula nec eros. Sed leo tortor, tincidunt sit amet elementum vel, eleifend at orci. Maecenas ut turpis felis. Donec sit amet quam sem, et aliquet est.</p>
+                    <p>Quisque nisl lectus, accumsan et euismod eu, sollicitudin ac augue. In sit amet urna magna. Curabitur imperdiet urna nec purus egestas eget aliquet purus iaculis. Nunc porttitor blandit imperdiet. Nulla facilisi. Cras odio ipsum, vehicula nec vehicula sed, convallis scelerisque quam. Phasellus ut odio dui, ut fermentum neque.</p>
+                    <blockquote>Lorem ipsum dolor sit amet, consecte adipiscing elit. Integer aliquam mi nec dolor placerat a condimentum diam mollis. Ut pulvinar neque eget massa dapibus dolor.</blockquote>
+                    <p>Curabitur at vestibulum sem. Aliquam vehicula neque ac nibh suscipit ultrices. Morbi interdum accumsan arcu nec scelerisque. Phasellus eget purus nulla. Suspendisse quam est, tempor quis consectetur non, interdum vitae diam. Pellentesque volutpat mollis ligula in laoreet. Aenean est dui, sagittis in consequat at, adipiscing at risus. Sed suscipit, est vitae aliquam molestie, sem dolor dignissim leo, eget imperdiet enim urna in justo. Mauris pulvinar tortor lorem. Aliquam sed nisl in ipsum tincidunt ultrices.</p>
+                    <p>Nullam commodo lobortis nibh, vitae accumsan velit dapibus sed. Nunc ac sem eu libero pretium faucib. Quisque et semper odio. Praesent tortor ligula, imperdiet sed aliquet ut, pharetra at nisi. Etiam sit amet molestie est. Donec id turpis vitae leo viverra adipiscing at sed nisi. Donec ut justo nunc. Vivamu bibendum erat ac nunc sollicitudin lacinia. Phasellus sed lacus magna.</p>
                   </div>
-                  <footer class="entry-meta"> This entry was posted	in <a rel="category tag" title="View all posts in First Category" href="#">First Category</a> On
-                    <time datetime="2014-07-10T06:59:14+00:00" class="entry-date">Jul 10, 2014</time>
-                    . </footer>
-                </article>
-                <article class="blog_entry clearfix">
-                  <header class="blog_entry-header clearfix">
-                    <div class="blog_entry-header-inner">
-                      <h2 class="blog_entry-title"> <a rel="bookmark" href="blog_detail.html">Dolor lorem ipsum</a> </h2>
+                </div>
+                <footer class="entry-meta"> This entry was posted						in <a rel="category tag" title="View all posts in First Category" href="#/first-category">First Category</a> On
+                  <time datetime="2014-07-10T06:53:43+00:00" class="entry-date">Jul 10, 2014</time>
+                  . </footer>
+              </article>
+              <div class="comment-content wow bounceInUp animated">
+                <div class="comments-wrapper">
+                  <h3> Comments </h3>
+                  <ul class="commentlist">
+                    <li class="comment">
+                      <div class="comment-wrapper" >
+                        <div class="comment-author vcard">
+                          
+                          <span class="author">John Doe</span> </div>
+                        <!--comment-author vcard-->
+                        <div class="comment-meta">
+                          <time datetime="2014-07-10T07:26:28+00:00" class="entry-date">Thu, Jul 10, 2014 07:26:28 am</time>
+                          . </div>
+                        <!--comment-meta-->
+                        <div class="comment-body"> Curabitur at vestibulum sem. Aliquam vehicula neque ac nibh suscipit ultrices. Morbi interdum accumsan arcu nec scelerisque ellentesque id erat sem, ut commodo nulla. Sed a nulla et eros fringilla. Phasellus eget purus nulla. </div>
+                      </div>
+                    </li>
+                    <!--comment-->
+                    <li class="comment">
+                      <div class="comment-wrapper" >
+                        <div class="comment-author vcard">
+                          
+                          <span class="author">John Doe</span> </div>
+                        <!--comment-author vcard-->
+                        <div class="comment-meta">
+                          <time datetime="2014-07-10T07:27:08+00:00" class="entry-date">Thu, Jul 10, 2014 07:27:08 am</time>
+                          . </div>
+                        <!--comment-meta-->
+                        <div class="comment-body"> Curabitur at vestibulum sem. Aliquam vehicula neque ac nibh suscipit ultrices. Morbi interdum accumsan arcu nec scelerisque ellentesque id erat sem, ut commodo nulla. Sed a nulla et eros fringilla. Phasellus eget purus nulla. </div>
+                      </div>
+                    </li>
+                    <!--comment-->
+                    <li class="comment">
+                      <div class="comment-wrapper" >
+                        <div class="comment-author vcard">
+                          
+                          <span class="author">John Doe</span> </div>
+                        <!--comment-author vcard-->
+                        <div class="comment-meta">
+                          <time datetime="2014-07-10T07:27:56+00:00" class="entry-date">Thu, Jul 10, 2014 07:27:56 am</time>
+                          . </div>
+                        <!--comment-meta-->
+                        <div class="comment-body"> Curabitur at vestibulum sem. Aliquam vehicula neque ac nibh suscipit ultrices. Morbi interdum accumsan arcu nec scelerisque ellentesque id erat sem, ut commodo nulla. Sed a nulla et eros fringilla. Phasellus eget purus nulla. </div>
+                      </div>
+                    </li>
+                    <!--comment-->
+                    <li class="comment">
+                      <div class="comment-wrapper" >
+                        <div class="comment-author vcard">
+                          
+                          <span class="author">Lisa White</span> </div>
+                        <!--comment-author vcard-->
+                        <div class="comment-meta">
+                          <time datetime="2014-07-10T07:28:32+00:00" class="entry-date">Thu, Jul 10, 2014 07:28:32 am</time>
+                          . </div>
+                        <!--comment-meta-->
+                        <div class="comment-body"> Curabitur at vestibulum sem. Aliquam vehicula neque ac nibh suscipit ultrices. Morbi interdum accumsan arcu nec scelerisque ellentesque id erat sem, ut commodo nulla. Sed a nulla et eros fringilla. </div>
+                      </div>
+                    </li>
+                    <!--comment-->
+                  </ul>
+                  <!--commentlist--> 
+                </div>
+                <!--comments-wrapper-->
+                
+                <div class="comments-form-wrapper clearfix">
+                  <h3>Leave A reply</h3>
+                  <form class="comment-form" method="post" id="postComment">
+                    <div class="field">
+                      <label>Name<em class="required">*</em></label>
+                      <input type="text" class="input-text" title="Name" id="user" name="user_name">
                     </div>
-                    <!--blog_entry-header-inner--> 
-                  </header>
-                  <div class="entry-content">
-                    <div class="featured-thumb"><a href="#"><img alt="blog-img2" src="images/blog-img2.jpg"></a></div>
-                    <div class="entry-content">
-                      <p>Fusce ac pharetra urna. Duis non lacus sit amet lacus interdum facilisis sed non est. Ut mi metus, semper eu dictum nec, condimentum sed sapien. Nullam lobortis nunc semper ipsum luctus ut viverra ante eleifend. Nunc pretium velit sed augue luctus accumsan.</p>
-                      <p>Aliquam laoreet consequat malesuada. Integer vitae diam sed dolor euismod laoreet eget ac felis. Donec non erat sed elit bibendum sodales. Donec eu cursus velit. Proin nunc lacus, gravida mollis dictum ut, vulputate eu turpis. Sed felis sapien, commodo in iaculis in, feugiat sed enim. Sed nunc ipsum, fermentum varius dignissim vitae, blandit et ante.Maecenas sagittis, lorem sed congue egestas, lectus purus congue nisl, ac molestie enim ligula nec eros. Sed leo tortor, tincidunt sit amet elementum vel, eleifend at orci. Maecenas ut turpis felis. Donec sit amet quam sem, et aliquet est.</p>
+                    <div class="field">
+                      <label>Email<em class="required">*</em></label>
+                      <input type="text" class="input-text" title="Email" id="email" name="user_email">
                     </div>
-                    <p> <a class="btn"  href="blog_detail.html">Read More</a> </p>
-                  </div>
-                  <footer class="entry-meta"> This entry was posted in <a rel="category tag" title="View all posts in First Category" href="#">First Category</a> On
-                    <time datetime="2014-07-10T07:01:18+00:00" class="entry-date">Jul 10, 2014</time>
-                    . </footer>
-                </article>
-                <article class="blog_entry clearfix">
-                  <header class="blog_entry-header clearfix">
-                    <div class="blog_entry-header-inner">
-                      <h2 class="blog_entry-title"> <a rel="bookmark" href="blog_detail.html">Pellentesque posuere</a> </h2>
+                    <div class="clear"></div>
+                    <div class="field aw-blog-comment-area">
+                      <label for="comment">Comment<em class="required">*</em></label>
+                      <textarea rows="5" cols="50" class="input-text" title="Comment" id="comment" name="comment"></textarea>
                     </div>
-                    <!--blog_entry-header-inner--> 
-                  </header>
-                  <div class="entry-content">
-                    <div class="featured-thumb"><a href="#"><img alt="blog-img3" src="images/blog-img1.jpg" ></a></div>
-                    <div class="entry-content">
-                      <p>Fusce ac pharetra urna. Duis non lacus sit amet lacus interdum facilisis sed non est. Ut mi metus, semper eu dictum nec, condimentum sed sapien. Nullam lobortis nunc semper ipsum luctus ut viverra ante eleifend. Nunc pretium velit sed augue luctus accumsan.</p>
-                      <p>Aliquam laoreet consequat malesuada. Integer vitae diam sed dolor euismod laoreet eget ac felis. Donec non erat sed elit bibendum sodales. Donec eu cursus velit. Proin nunc lacus, gravida mollis dictum ut, vulputate eu turpis. Sed felis sapien, commodo in iaculis in, feugiat sed enim. Sed nunc ipsum, fermentum varius dignissim vitae, blandit et ante.Maecenas sagittis, lorem sed congue egestas, lectus purus congue nisl, ac molestie enim ligula nec eros. Sed leo tortor, tincidunt sit amet elementum vel, eleifend at orci. Maecenas ut turpis felis. Donec sit amet quam sem, et aliquet est.</p>
+                    <div style="width:96%" class="button-set">
+                      <input type="hidden" value="1" name="blog_id">
+                      <button type="submit" class="bnt-comment"><span><span>Add Comment</span></span></button>
                     </div>
-                    <p> <a class="btn"  href="blog_detail.html">Read More</a> </p>
-                  </div>
-                  <footer class="entry-meta"> This entry was posted						in <a rel="category tag" title="View all posts in First Category" href="#">First Category</a> On
-                    <time datetime="2014-07-10T07:09:31+00:00" class="entry-date">Jul 10, 2014</time>
-                    . </footer>
-                </article>
+                  </form>
+                </div>
+                <!--comments-form-wrapper clearfix--> 
               </div>
-            </div>
-            <div class="pager">
-              <p class="amount"> <strong>4 Item(s)</strong> </p>
-              <div class="limiter">
-                <label>Show</label>
-                <select onchange="setLocation(this.value)">
-                  <option selected="selected" value="#"> 5 </option>
-                  <option value="#"> 10 </option>
-                  <option value="#"> 15 </option>
-                  <option value="#"> 20 </option>
-                  <option value="#"> All </option>
-                </select>
-                per page </div>
             </div>
           </div>
         </div>
-        <aside class="col-right sidebar col-sm-3">
-          <div role="complementary" class="widget_wrapper13" id="secondary">
-            <div class="popular-posts widget widget__sidebar" id="recent-posts-4">
-              <h3 class="widget-title">Most Popular Post</h3>
-              <div class="widget-content">
-                <ul class="posts-list unstyled clearfix">
-                  <li>
-                    <figure class="featured-thumb"> <a href="blog_detail.html"> <img width="80" height="53" alt="blog image" src="images/blog-img1.jpg"> </a> </figure>
-                    <!--featured-thumb-->
-                    <h4><a title="Pellentesque posuere" href="blog_detail.html">Pellentesque posuere</a></h4>
-                    <p class="post-meta"><i class="icon-calendar"></i>
-                      <time datetime="2014-07-10T07:09:31+00:00" class="entry-date">Jul 10, 2014</time>
-                      .</p>
-                  </li>
-                  <li>
-                    <figure class="featured-thumb"> <a href="blog_detail.html"> <img width="80" height="53" alt="blog image" src="images/blog-img2.jpg"> </a> </figure>
-                    <!--featured-thumb-->
-                    <h4><a title="Dolor lorem ipsum" href="blog_detail.html">Dolor lorem ipsum</a></h4>
-                    <p class="post-meta"><i class="icon-calendar"></i>
-                      <time datetime="2014-07-10T07:01:18+00:00" class="entry-date">Jul 10, 2014</time>
-                      .</p>
-                  </li>
-                  <li>
-                    <figure class="featured-thumb"> <a  href="blog_detail.html"> <img width="80" height="53" alt="blog image" src="images/blog-img3.jpg"> </a> </figure>
-                    <!--featured-thumb-->
-                    <h4><a title="Aliquam eget sapien placerat" href="blog_detail.html">Aliquam eget sapien placerat</a></h4>
-                    <p class="post-meta"><i class="icon-calendar"></i>
-                      <time datetime="2014-07-10T06:59:14+00:00" class="entry-date">Jul 10, 2014</time>
-                      .</p>
-                  </li>
-                  <li>
-                    <figure class="featured-thumb"> <a  href="blog_detail.html"> <img width="80" height="53" alt="blog image" src="images/blog-img4.jpg"> </a> </figure>
-                    <!--featured-thumb-->
-                    <h4><a title="Pellentesque habitant morbi" href="blog_detail.html">Pellentesque habitant morbi</a></h4>
-                    <p class="post-meta"><i class="icon-calendar"></i>
-                      <time datetime="2014-07-10T06:53:43+00:00" class="entry-date">Jul 10, 2014</time>
-                      .</p>
-                  </li>
-                </ul>
-              </div>
-              <!--widget-content--> 
-            </div>
-            <div class="popular-posts widget widget_categories" id="categories-2">
-              <h3 class="widget-title">Categories</h3>
-              <ul>
-                <li class="cat-item cat-item-19599"><a href="#">First Category</a></li>
-                <li class="cat-item cat-item-19599"><a href="#">Second Category</a></li>
+      </div>
+      <aside class="col-right sidebar col-sm-3">
+        <div role="complementary" class="widget_wrapper13" id="secondary">
+          <div class="popular-posts widget widget__sidebar" id="recent-posts-4">
+            <h3 class="widget-title">Most Popular Post</h3>
+            <div class="widget-content">
+              <ul class="posts-list unstyled clearfix">
+                <li>
+                  <figure class="featured-thumb"> <a href="blog_detail.php"> <img width="80" height="53" alt="blog image" src="images/blog-img1.jpg"> </a> </figure>
+                  <!--featured-thumb-->
+                  <h4><a title="Pellentesque posuere" href="blog_detail.php">Pellentesque posuere</a></h4>
+                  <p class="post-meta"><i class="icon-calendar"></i>
+                    <time datetime="2014-07-10T07:09:31+00:00" class="entry-date">Jul 10, 2014</time>
+                    .</p>
+                </li>
+                <li>
+                  <figure class="featured-thumb"> <a href="blog_detail.php"> <img width="80" height="53" alt="blog image" src="images/blog-img2.jpg"> </a> </figure>
+                  <!--featured-thumb-->
+                  <h4><a title="Dolor lorem ipsum" href="blog_detail.php">Dolor lorem ipsum</a></h4>
+                  <p class="post-meta"><i class="icon-calendar"></i>
+                    <time datetime="2014-07-10T07:01:18+00:00" class="entry-date">Jul 10, 2014</time>
+                    .</p>
+                </li>
+                <li>
+                  <figure class="featured-thumb"> <a href="blog_detail.php"> <img width="80" height="53" alt="blog image" src="images/blog-img3.jpg"> </a> </figure>
+                  <!--featured-thumb-->
+                  <h4><a title="Aliquam eget sapien placerat" href="blog_detail.php">Aliquam eget sapien placerat</a></h4>
+                  <p class="post-meta"><i class="icon-calendar"></i>
+                    <time datetime="2014-07-10T06:59:14+00:00" class="entry-date">Jul 10, 2014</time>
+                    .</p>
+                </li>
+                <li>
+                  <figure class="featured-thumb"> <a href="blog_detail.php"> <img width="80" height="53" alt="blog image" src="images/blog-img4.jpg"> </a> </figure>
+                  <!--featured-thumb-->
+                  <h4><a title="Pellentesque habitant morbi" href="blog_detail.php">Pellentesque habitant morbi</a></h4>
+                  <p class="post-meta"><i class="icon-calendar"></i>
+                    <time datetime="2014-07-10T06:53:43+00:00" class="entry-date">Jul 10, 2014</time>
+                    .</p>
+                </li>
               </ul>
             </div>
-            <!-- Banner Ad Block -->
-            <div class="ad-spots widget widget__sidebar">
-              <h3 class="widget-title">Ad Spots</h3>
-              <div class="widget-content"><a target="_self" href="#" title=""><img alt="offer banner" src="images/offer-banner1.jpg"></a></div>
-            </div>
-            <!-- Banner Text Block -->
-            <div class="text-widget widget widget__sidebar">
-              <h3 class="widget-title">Text Widget</h3>
-              <div class="widget-content">Mauris at blandit erat. Nam vel tortor non quam scelerisque cursus. Praesent nunc vitae magna pellentesque auctor. Quisque id lectus.<br>
-                <br>
-                Massa, eget eleifend tellus. Proin nec ante leo ssim nunc sit amet velit malesuada pharetra. Nulla neque sapien, sollicitudin non ornare quis, malesuada.</div>
-            </div>
+            <!--widget-content--> 
           </div>
+          <div class="popular-posts widget widget_categories" id="categories-2">
+            <h3 class="widget-title">Categories</h3>
+            <ul>
+              <li class="cat-item cat-item-19599"><a href="#">First Category</a></li>
+              <li class="cat-item cat-item-19599"><a href="#">Second Category</a></li>
+            </ul>
+          </div>
+          <!-- Banner Ad Block -->
+          <div class="ad-spots widget widget__sidebar">
+            <h3 class="widget-title">Ad Spots</h3>
+            <div class="widget-content"><a target="_self" href="#" title=""><img alt="offer banner" src="images/offer-banner1.jpg"></a></div>
+          </div>
+          <!-- Banner Text Block -->
+          <div class="text-widget widget widget__sidebar">
+            <h3 class="widget-title">Text Widget</h3>
+            <div class="widget-content">Mauris at blandit erat. Nam vel tortor non quam scelerisque cursus. Praesent nunc vitae magna pellentesque auctor. Quisque id lectus.<br>
+              <br>
+              Massa, eget eleifend tellus. Proin nec ante leo ssim nunc sit amet velit malesuada pharetra. Nulla neque sapien, sollicitudin non ornare quis, malesuada.</div>
+          </div>
+        </div>
         </aside>
-      </div>
     </div>
-  </section>
-  <!-- Main Container End --> 
-  <div class="top-banner-section wow bounceInUp animated">
+  </div>
+</div>
+<!-- Main Container End -->
+ <div class="top-banner-section wow bounceInUp animated">
     <div class="container">
       <div class="row">
         <div class="col-lg-3 col-sm-3 col-xs-6">
@@ -702,10 +657,7 @@
         <div class="col-lg-3 col-sm-3 col-xs-6">
         <div class="col add-banner2">
           <div class="top-b-text"></div>
-          </div>
-                  
-          
-          
+          </div>  
         </div>
         <div class="col-lg-3 col-sm-3 col-xs-6">
           <div class="col last offer"></div>
@@ -757,112 +709,10 @@
       </div>
     </div>
   </div>
-   <!-- Footer -->
-   <footer>
-    <section class="footer-navbar">
-      <div class="footer-inner">
-        <div class="container">
-          <div class="row">
-            <div class="col-sm-12 col-xs-12 col-lg-8">
-              <div class="footer-column pull-left collapsed-block">
-                <h4>MEBOOK<a class="expander visible-xs" href="#TabBlock-1">+</a></h4>
-                <div class="tabBlock" id="TabBlock-1">
-                  <ul class="links">
-                    <li class="first"><a href="#" title="How to buy">Giới thiệu</a></li>
-                    <li><a href="#" title="">Điều khoản sử dụng</a></li>
-                    <li><a href="#" title="Payment">Chính sách bảo mật</a></li>
-                    <li><a href="#" title="Shipment&lt;/a&gt;">Chính sách bán hàng</a></li>
-                    <li><a href="#" title="Where is my order?">Phương thức vận chuyển</a></li>
-                    <!--<li class="last"><a href="#" title="Return policy">Return policy</a></li>-->
-                  </ul>
-                </div>
-              </div>
-              <div class="footer-column pull-left collapsed-block">
-                <h4>Tài khoản<a class="expander visible-xs" href="#TabBlock-2">+</a></h4>
-                <div class="tabBlock" id="TabBlock-2">
-                  <ul class="links">
-                    <li class="first"><a title="Your Account" href="login.php">Đăng nhập</a></li>
-                    <li><a title="Information" href="#">Tạo tài khoản</a></li>
-                    <li><a title="Addresses" href="#">Lịch sử mua hàng</a></li>
-                    <li><a title="Addresses" href="#">Chi tiết tài khoản</a></li>
-                    <!--<li><a title="Orders History" href="#">Orders History</a></li>
-                    <li class="last"><a title=" Additional Information" href="#">Additional Information</a></li>-->
-                  </ul>
-                </div>
-              </div>
-              <div class="footer-column pull-left collapsed-block">
-                <h4>Hỗ trợ<a class="expander visible-xs" href="#TabBlock-3">+</a></h4>
-                <div class="tabBlock" id="TabBlock-3">
-                  <ul class="links">
-                    <li class="first"><a href="#" title="privacy policy">Chính sách đổi trả</a></li>
-                    <li><a href="#" title="Search Terms">Chính sách bảo hành</a></li>
-                    <li><a href="#" title="Advanced Search">Chính sách giao hàng</a></li>
-                    <li><a href="contact_us.html" title="Contact Us">Liên hệ</a></li>
-                    <!--<li><a href="#" title="Suppliers">Suppliers</a></li>
-                    <li class=" last"><a href="#" title="Our stores" class="link-rss">Our stores</a></li>-->
-                  </ul>
-                </div>
-              </div>
-            </div>
-            <div class="col-xs-12 col-lg-4">
-              <div class="footer-column-last">
-                <div class="newsletter-wrap collapsed-block">
-                  <h4>Sign up for emails<a class="expander visible-xs" href="#TabBlock-4">+</a></h4>
-                  <div class="tabBlock" id="TabBlock-4">
-                    <form id="newsletter-validate-detail" method="post" action="#">
-                      <div id="container_form_news">
-                        <div id="container_form_news2">
-                          <input type="text" class="input-text required-entry validate-email" value="Enter your email address" onfocus=" this.value='' " title="Sign up for our newsletter" id="newsletter" name="email">
-                          <button class="button subscribe" title="Subscribe" type="submit"><span>Subscribe</span></button>
-                        </div>
-                      </div>
-                    </form>
-                  </div>
-                </div>
-                <div class="social">
-                  <h4>Follow Us</h4>
-                  <ul class="link">
-                    <li class="fb pull-left"><a href="#"></a></li>
-                    <li class="tw pull-left"><a href="#"></a></li>
-                    <li class="googleplus pull-left"><a href="#"></a></li>
-                    <li class="rss pull-left"><a href="#"></a></li>
-                    <li class="pintrest pull-left"><a href="#"></a></li>
-                    <li class="linkedin pull-left"><a href="#"></a></li>
-                    <li class="youtube pull-left"><a href="#"></a></li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="footer-middle">
-        <div class="container">
-          <div class="row">
-            <div style="text-align:center"><a href="index.php"><img src="images/logo/logo.png" height="150" alt=""></a></div>
-            <address>
-            <i class="icon-location-arrow"></i> 12 Nguyễn Văn Bảo,Phường 4 ,Q.Gò Vấp,TP Hồ Chí Minh<i class="icon-mobile-phone"></i><span>0387120640</span> <i class="icon-envelope"></i><a href="mailto:support@magikcommerce.com">lethoa22012020@gmail.com</a>
-            </address>
-          </div>
-        </div>
-      </div>
-      <!--<div class="footer-bottom">
-        <div class="container">
-          <div class="row">
-            <div class="col-sm-5 col-xs-12 coppyright">&copy; 2015 Magikcommerce. All Rights Reserved.</div>
-            <div class="col-sm-7 col-xs-12 company-links">
-              <ul class="links">
-                <li><a title="Magento Themes" href="#">Magento Themes</a></li>
-                <li><a title="Premium Themes" href="#">Premium Themes</a></li>
-                <li><a title="Responsive Themes" href="#">Responsive Themes</a></li>
-                <li class="last"><a title="Magento Extensions" href="#">Magento Extensions</a></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>-->
-    </section>
-  </footer>
+  <!-- Footer -->
+  <?php
+  	$giaodien->showFooter();
+  ?>
 </div>
 <div id="mobile-menu">
   <div class="mm-search">
@@ -883,10 +733,10 @@
     <li><a href="#">Pages</a>
       <ul>
         <li><a href="grid.php">Grid</a></li>
-        <li> <a href="list.html">List</a></li>
+        <li> <a href="list.php">List</a></li>
         <li> <a href="product_detail.php">Product Detail</a></li>
         <li> <a href="shopping_cart.php">Shopping Cart</a></li>
-        <li><a href="checkout.html">Checkout</a></li>
+        <li><a href="checkout.php">Checkout</a></li>
         <li> <a href="wishlist.html">Wishlist</a></li>
         <li> <a href="dashboard.html">Dashboard</a></li>
         <li> <a href="multiple_addresses.html">Multiple Addresses</a></li>
@@ -895,9 +745,9 @@
  	   <li><a href="faq.html">FAQ</a></li>
         <li><a href="quick_view.php">Quick view</a></li>
         <li><a href="login.php">Login</a></li>
-        <li><a href="blog.html">Blog</a>
+        <li><a href="blog.php">Blog</a>
           <ul>
-            <li><a href="blog_detail.html">Blog Detail</a></li>
+            <li><a href="blog_detail.php">Blog Detail</a></li>
           </ul>
         </li>
         <li><a href="contact_us.html">Contact us</a></li>
@@ -1110,7 +960,8 @@
 <script type="text/javascript" src="js/common.js"></script> 
 <script type="text/javascript" src="js/owl.carousel.min.js"></script> 
 <script type="text/javascript" src="js/jquery.flexslider.js"></script> 
-<script type="text/javascript" src="js/jquery.mobile-menu.min.js"></script>
+<script type="text/javascript" src="js/jquery.mobile-menu.min.js"></script> 
+
 </body>
 
 <!-- Tieu Long Lanh Kute -->

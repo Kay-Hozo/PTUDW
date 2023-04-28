@@ -9,6 +9,11 @@ if(isset($_REQUEST['layid']))
 	$layid=$_REQUEST['layid'];
 }
 ?>
+<?php 
+include ("./class/clsStatusLogin.php");
+
+$giaodien = new statusLogin();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -49,64 +54,10 @@ if(isset($_REQUEST['layid']))
 
 <body class="cms-index-index cms-home-page">
 <div id="page"> 
-  <header>
-    <div class="header-container">
-      <div class="container">
-        <div class="row">
-          <div class="col-sm-3 col-xs-12"> 
-            <!-- Header Logo -->
-            <div class="logo"><a title="Magento Commerce" href="index.php"><img alt="Magento Commerce" src="images/logo/logo.png" style="height:150px; "></a></div>
-            <!-- End Header Logo --> 
-          </div>
-          <div class="col-lg-9 col-xs-12 right_menu">
-            <div class="toplinks"> 
-              <!-- Default Welcome Message -->
-              <div class="welcome-msg hidden-xs">Default welcome msg! </div>
-              <!-- End Default Welcome Message -->
-              <div class="links">
-                <div class="myaccount"><a title="My Account" href="login.php"><span class="hidden-xs">Tài khoản</span></a></div>
-                <!--<div class="wishlist"><a title="My Wishlist" href="wishlist.html"><span class="hidden-xs">Wishlist</span></a></div>-->
-                <div class="check"><a title="Checkout" href="checkout.html"><span class="hidden-xs">Thanh toán</span></a></div>
-                <div class="demo"><a title="Blog" href="blog.html"><span class="hidden-xs">Bài viết</span></a></div>
-                
-                
-                <div class="login"><a href="login.php"><span class="hidden-xs">Đăng nhập</span></a></div>
-              </div>
-              <!-- links --> 
-            </div>
-            
-            <!-- Search-col -->
-            <div class="search-box pull-right">
-              <form action="http://htmldemo.magikcommerce.com/ecommerce/classic-html-template/version_1/cat" method="POST" id="search_mini_form" name="Categories">
-                <input type="text" placeholder="Search entire store here..." value="Search" maxlength="70" name="search" id="search">
-                <button type="button" class="search-btn-bg"><span class="glyphicon glyphicon-search"></span>&nbsp;</button>
-              </form>
-            </div>
-            <!-- End Search-col --> 
-            <!-- Header Language -->
-            <div class="lang-curr">
-              <div class="form-language">
-                <ul class="lang">
-                  <li class=""><a href="#" title="English"><img src="images/english.png" alt="English" /> <span>English</span></a></li>
-                  <li class=""><a href="#" title="Francais"><img src="images/francais.png" alt="Francais" /> <span>francais</span></a></li>
-                  <li class=""><a href="#" title="German"><img src="images/german.png" alt="German" /> <span>german</span></a></li>
-                </ul>
-              </div>
-              <div class="form-currency">
-                <ul class="currencies_list">
-                  <li class=""><a class="" title="Dollar" href="#">$</a></li>
-                  <li class=""><a class="" title="Euro" href="#">&euro;</a></li>
-                  <li class=""><a class="" title="Pound" href="#">&pound;</a></li>
-                </ul>
-              </div>
-            </div>
-            
-            <!-- End Header Currency --> 
-          </div>
-        </div>
-      </div>
-    </div>
-  </header>
+    <!-- Header -->
+	<?php
+    	$giaodien->showHeader();
+	?>
   <!-- end header -->
   <div class="mm-toggle-wrap">
     <div class="mm-toggle"><i class="icon-align-justify"></i><span class="mm-label">Menu</span> </div>
@@ -127,7 +78,7 @@ if(isset($_REQUEST['layid']))
                
                 <li class="level1"><a href="login.php"><span>Đăng nhập</span></a></li>
                 
-                <li class="level1 first parent"><a href="blog.html"><span>Bài viết</span></a>
+                <li class="level1 first parent"><a href="blog.php"><span>Bài viết</span></a>
                  
                 </li>
                 <li class="level1"><a href="contact_us.html"><span>Liên hệ</span></a></li>
@@ -244,6 +195,34 @@ if(isset($_REQUEST['layid']))
 					  case'Add to Cart':
 					  {
 						  $soluong=$_REQUEST['qty'];
+<<<<<<< HEAD
+						  $sql = "insert into giohang(maSP,maKH,soluong) values ('$layid',1,'$soluong');";
+						   $sl=0;
+						   $sql2="update giohang set soluong='$sl'+1 where maSP='$layid'";
+						  $result = $p->themsuaxoa($sql);
+						  $result1=$p->laygiatri("select maSP from giohang where maSP='$layid' limit 1");
+						  
+						  $result2=$p->themsuaxoa($sql2);
+						   if($layid==$result1)
+						   {
+							   if($result2==1)
+							   {
+								   echo " <script>alert('Thêm giỏ hàng thành công')</script>;";
+							   }
+						   }
+						   else
+						   {
+							    if($result==1)
+								 {
+									 echo " <script>alert('Thêm giỏ hàng thành công')</script>;";
+								 }
+								 else
+								 {
+								
+									  echo " <script>alert('Thêm giỏ hàng thất bại')</script>;";
+								 }
+						   }
+=======
 						  $link=$p->addtocart();
 						  $sql="select*from giohang where maSP='$layid'";
 						  $result=mysql_query($sql,$link);
@@ -292,6 +271,7 @@ if(isset($_REQUEST['layid']))
 						  }
 						  
 						   
+>>>>>>> be59e069be4250d3bc5cb87af390f48694ef4a91
 						
 						  break;
 						
@@ -604,6 +584,7 @@ if(isset($_REQUEST['layid']))
     </div>
   </div>
   <!-- Footer -->
+<<<<<<< HEAD
  <footer>
     <section class="footer-navbar">
       <div class="footer-inner">
@@ -695,6 +676,11 @@ if(isset($_REQUEST['layid']))
      
     </section>
   </footer>
+=======
+  <?php
+  	$giaodien->showFooter();
+  ?>
+>>>>>>> 96fa3837df95e84e3ab5c8478ac73d8e9fe0b63b
 </div>
 <div id="mobile-menu">
   <div class="mm-search">
@@ -715,10 +701,10 @@ if(isset($_REQUEST['layid']))
     <li><a href="#">Pages</a>
       <ul>
         <li><a href="grid.php">Grid</a></li>
-        <li> <a href="list.html">List</a></li>
+        <li> <a href="list.php">List</a></li>
         <li> <a href="product_detail.php">Product Detail</a></li>
         <li> <a href="shopping_cart.php">Shopping Cart</a></li>
-        <li><a href="checkout.html">Checkout</a></li>
+        <li><a href="checkout.php">Checkout</a></li>
         <li> <a href="wishlist.html">Wishlist</a></li>
         <li> <a href="dashboard.html">Dashboard</a></li>
         <li> <a href="multiple_addresses.html">Multiple Addresses</a></li>
@@ -727,9 +713,9 @@ if(isset($_REQUEST['layid']))
  	   <li><a href="faq.html">FAQ</a></li>
         <li><a href="quick_view.php">Quick view</a></li>
         <li><a href="login.php">Login</a></li>
-        <li><a href="blog.html">Blog</a>
+        <li><a href="blog.php">Blog</a>
           <ul>
-            <li><a href="blog_detail.html">Blog Detail</a></li>
+            <li><a href="blog_detail.php">Blog Detail</a></li>
           </ul>
         </li>
         <li><a href="contact_us.html">Contact us</a></li>

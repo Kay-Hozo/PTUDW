@@ -1,3 +1,7 @@
+<?php
+	include ("../class/clsLogin.php");
+	$p = new login();
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -21,24 +25,37 @@
 	<div class="row">
 		<div class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2 col-md-4 col-md-offset-4">
 			<div class="login-panel panel panel-default">
-				<div class="panel-heading">Log in</div>
+				<div class="panel-heading">Đăng nhập</div>
 				<div class="panel-body">
-					<form role="form">
+					<form role="form" method="POST">
 						<fieldset>
 							<div class="form-group">
-								<input class="form-control" placeholder="E-mail" name="email" type="email" autofocus>
+								<input class="form-control" placeholder="" name="txtuser" value="khachHang" type="text" autofocus>
 							</div>
 							<div class="form-group">
-								<input class="form-control" placeholder="Password" name="password" type="password" value="">
+								<input class="form-control" placeholder="Password" name="txtpass" value="khachhang" type="password" value="">
 							</div>
 							<div class="checkbox">
 								<label>
 									<input name="remember" type="checkbox" value="Remember Me">Remember Me
 								</label>
 							</div>
-							<a href="index.php" class="btn btn-primary">Login</a>
+                            <input type="submit" name="btn" class="btn btn-primary"  value="Đăng nhập">
 						</fieldset>
 					</form>
+                    <?php
+						switch ($_REQUEST["btn"])
+						{
+							case "Đăng nhập":
+							{
+								$user = $_REQUEST["txtuser"];
+								$pass = $_REQUEST["txtpass"];
+								
+								$p->mylogin($user, $pass);
+								break;	
+							}	
+						}
+					  ?>
 				</div>
 			</div>
 		</div><!-- /.col-->

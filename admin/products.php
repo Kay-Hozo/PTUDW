@@ -1,4 +1,18 @@
 <?php 
+include("../class/clsLogin.php");
+$login = new login();
+session_start();
+
+if(isset($_SESSION["id"]) && isset($_SESSION["user"]) && isset($_SESSION["pass"]) && isset($_SESSION["ten"]) && isset($_SESSION["quyen"]))
+{
+	$login->confirmLogin($_SESSION["id"], $_SESSION["user"], $_SESSION["pass"], $_SESSION["ten"], $_SESSION["quyen"]);
+}
+else
+{
+	header('location: login.php');	
+}
+?>
+<?php 
 	include ("../class/clsProduct.php");
     $p = new product();
 ?>
@@ -35,7 +49,7 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="#"><span>Lumino</span>Admin</a>
+				<a class="navbar-brand" href="./index.php"><span>hello</span>Admin</a>
 				<ul class="user-menu">
 					<li class="dropdown pull-right">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown"><svg class="glyph stroked male-user"><use xlink:href="#stroked-male-user"></use></svg> User <span class="caret"></span></a>
@@ -88,7 +102,7 @@
 				</ul>
 			</li>
 			<li role="presentation" class="divider"></li>
-			<li><a href="login.html"><svg class="glyph stroked male-user"><use xlink:href="#stroked-male-user"></use></svg> Login Page</a></li>
+			<li><a href="login.php"><svg class="glyph stroked male-user"><use xlink:href="#stroked-male-user"></use></svg> Login Page</a></li>
 		</ul>
 
 	</div><!--/.sidebar-->
