@@ -143,11 +143,11 @@ $giaodien = new statusLogin();
             <div class="top-cart-contain pull-right"> 
               <!-- Top Cart -->
               <div class="mini-cart">
-                <div data-toggle="dropdown" data-hover="dropdown" class="basket dropdown-toggle"><a href="shopping_cart.php"><span class="hidden-xs">Giỏ hàng(<?php echo $p->laygiatri("select count(*) from giohang");?>)</span></a></div>
+                <div data-toggle="dropdown" data-hover="dropdown" class="basket dropdown-toggle"><a href="shopping_cart.php"><span class="hidden-xs">Giỏ hàng(<?php echo $p->laygiatri("select count(*) from giohang where maKH = {$_SESSION['id']}");?>)</span></a></div>
                 <div>
                   <div class="top-cart-content" style="display: none;">
                     <div class="block-subtitle">
-                      <div class="top-subtotal"><?php echo $p->laygiatri("select count(*) from giohang");?>  items, <span class="price"><?php echo $p->subtotal("select*from giohang g left join sanPham s on g.maSP=s.maSP ");?>.000 đ</span> </div>
+                      <div class="top-subtotal"><?php echo $p->laygiatri("select count(*) from giohang where maKH = {$_SESSION['id']}");?>  items, <span class="price"><?php echo $p->subtotal("select*from giohang g left join sanPham s on g.maSP=s.maSP where maKH = {$_SESSION['id']}");?>.000 đ</span> </div>
                       <!--top-subtotal-->
                       <div class="pull-right">
                         <button title="View Cart" class="view-cart" type="button"><a href="shopping_cart.php"><span>Xem giỏ hàng</span></a></button>
@@ -157,7 +157,7 @@ $giaodien = new statusLogin();
                     <!--block-subtitle-->
                     <ul class="mini-products-list" id="cart-sidebar">
                       <?php
-					  $p->ouput_checkout("select*from giohang g left join sanPham s on g.maSP=s.maSP"); 
+					  $p->ouput_checkout("select*from giohang g left join sanPham s on g.maSP=s.maSP where maKH = {$_SESSION['id']}"); 
 					  ?>
                     </ul>
                     <div class="actions">
@@ -210,14 +210,14 @@ $giaodien = new statusLogin();
                   </thead>
                   
 				 <?php 
-                 $sql="select * from giohang g left join sanPham s on g.maSP=s.maSP";
+                 $sql="select * from giohang g left join sanPham s on g.maSP=s.maSP where maKH = {$_SESSION['id']}";
                  $p->load_DS_giohang($sql);
                  
                  switch($_REQUEST['nut'])
                  {
                      case'Xoa':
                      {
-                         $sql1="DELETE FROM giohang WHERE maSP = '$layid'";
+                         $sql1="DELETE FROM giohang WHERE maSP = '$layid' and maKH = {$_SESSION['id']}";
                          if($p->themsuaxoa($sql1)==1)
                          {
                              echo " <script>alert('Xóa sản phẩm  thành công')</script>;";
@@ -240,17 +240,6 @@ $giaodien = new statusLogin();
                     </tr>
                   
                   </tfoot>
-                  <tbody>
-<<<<<<< HEAD
-                     <?php 
-					 $sql="select * from giohang g left join sanPham s on g.maSP=s.maSP";
-					 $p->load_DS_giohang($sql);
-					 
-					 ?>
-                      
-=======
->>>>>>> 96fa3837df95e84e3ab5c8478ac73d8e9fe0b63b
-                  </tbody>
                 </table>
               </fieldset>
             </form>
@@ -340,7 +329,7 @@ $giaodien = new statusLogin();
                 <table class="table shopping-cart-table-total" id="shopping-cart-totals-table">
                   
                  <?php 
-				 $sql="select * from giohang g left join sanPham s on g.maSP=s.maSP";
+				 $sql="select * from giohang g left join sanPham s on g.maSP=s.maSP where maKH = {$_SESSION['id']}";
 				 $p->thanhtien_giohang($sql);
 				 ?>
                 </table>
