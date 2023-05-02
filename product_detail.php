@@ -195,34 +195,6 @@ $giaodien = new statusLogin();
 					  case'Add to Cart':
 					  {
 						  $soluong=$_REQUEST['qty'];
-<<<<<<< HEAD
-						  $sql = "insert into giohang(maSP,maKH,soluong) values ('$layid',1,'$soluong');";
-						   $sl=0;
-						   $sql2="update giohang set soluong='$sl'+1 where maSP='$layid'";
-						  $result = $p->themsuaxoa($sql);
-						  $result1=$p->laygiatri("select maSP from giohang where maSP='$layid' limit 1");
-						  
-						  $result2=$p->themsuaxoa($sql2);
-						   if($layid==$result1)
-						   {
-							   if($result2==1)
-							   {
-								   echo " <script>alert('Thêm giỏ hàng thành công')</script>;";
-							   }
-						   }
-						   else
-						   {
-							    if($result==1)
-								 {
-									 echo " <script>alert('Thêm giỏ hàng thành công')</script>;";
-								 }
-								 else
-								 {
-								
-									  echo " <script>alert('Thêm giỏ hàng thất bại')</script>;";
-								 }
-						   }
-=======
 						  $link=$p->addtocart();
 						  $sql="select*from giohang where maSP='$layid'";
 						  $result=mysql_query($sql,$link);
@@ -271,7 +243,6 @@ $giaodien = new statusLogin();
 						  }
 						  
 						   
->>>>>>> be59e069be4250d3bc5cb87af390f48694ef4a91
 						
 						  break;
 						
@@ -477,7 +448,7 @@ $giaodien = new statusLogin();
                   <div id="related-products-slider" class="product-flexslider hidden-buttons">
                     <div class="slider-items slider-width-col4 products-grid">
                     <?php
-					$p->xuatsp("select * from sanPham order by maSP asc limit 4"); 
+					$p->xuatsp("select * from sanPham order by maSP asc limit 8"); 
 					 
 					?>
            
@@ -505,7 +476,7 @@ $giaodien = new statusLogin();
         <div id="upsell-products-slider" class="product-flexslider hidden-buttons">
           <div class="slider-items slider-width-col4 products-grid">
              <?php
-					$p->xuatsp("select * from sanPham order by maSP desc limit 4"); 
+					$p->xuatsp("select * from sanPham order by maSP desc limit 8"); 
 					?>
             <!-- End Item --> 
             

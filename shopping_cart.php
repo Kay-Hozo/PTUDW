@@ -208,28 +208,6 @@ $giaodien = new statusLogin();
                       <th class="a-center" rowspan="1">&nbsp;</th>
                     </tr>
                   </thead>
-                  
-				 <?php 
-                 $sql="select * from giohang g left join sanPham s on g.maSP=s.maSP";
-                 $p->load_DS_giohang($sql);
-                 
-                 switch($_REQUEST['nut'])
-                 {
-                     case'Xoa':
-                     {
-                         $sql1="DELETE FROM giohang WHERE maSP = '$layid'";
-                         if($p->themsuaxoa($sql1)==1)
-                         {
-                             echo " <script>alert('Xóa sản phẩm  thành công')</script>;";
-                         }
-                         else
-                         {
-                             echo " <script>alert('Xóa thất bại')</script>;";
-                         }
-                         break;
-                     }
-                 }
-                 ?>
                   <tfoot>
                     <tr class="first last">
                     
@@ -241,15 +219,34 @@ $giaodien = new statusLogin();
                   
                   </tfoot>
                   <tbody>
-<<<<<<< HEAD
-                     <?php 
-					 $sql="select * from giohang g left join sanPham s on g.maSP=s.maSP";
-					 $p->load_DS_giohang($sql);
-					 
-					 ?>
-                      
-=======
->>>>>>> 96fa3837df95e84e3ab5c8478ac73d8e9fe0b63b
+
+                    <?php 
+                 $sql="select * from giohang g left join sanPham s on g.maSP=s.maSP";
+                 $p->load_DS_giohang($sql);
+                
+                 ?>
+                    <?php 
+					switch($_POST['update_cart_action'])
+					{
+						case'empty_cart':
+						{
+							$qty=$_REQUEST['cart[10522][qty]'];
+							$sql="update giohang set soluong='$qty' where maSP='$layid'";
+							$result=$p->themsuaxoa($sql);
+							if($result==1)
+							{
+								echo " <script>alert('Cập nhật giỏ hàng thành công')</script>;";
+								  
+							}
+							else
+							{
+								echo " <script>alert('Cập nhật giỏ hàng thất bại')</script>;";
+								 
+							}
+							break;
+						}
+					}
+					?>
                   </tbody>
                 </table>
               </fieldset>
