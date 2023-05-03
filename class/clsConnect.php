@@ -45,8 +45,12 @@
 					echo ' <li class="item item-animate wide-first">
                               <div class="item-inner">
                                 <div class="item-img">
-                                  <div class="item-img-info"><a href="product_detail.php?layid='.$id.'" title="'.$tensp.'" class="product-image"><img src="./images/book/'.$hinh.'" alt="'.$tensp.'"></a>
+                               <div class="item-img-info"><a href="product_detail.php?layid='.$id.'" title="'.$tensp.'" class="product-image"><img src="./images/book/'.$hinh.'" alt="'.$tensp.'"></a>
                                     <div class="new-label new-top-left">New</div>
+
+                                  <!--<div class="item-img-info"><a href="product_detail.php?layid='.$id.'" title="Sample Product" class="product-image"><img src="./images/book/'.$hinh.'" alt="Sample Product"></a>
+                                    <div class="new-label new-top-left">TOP</div>-->
+
                                     <div class="item-box-hover">
                                       <div class="box-inner">
                                         <div class="actions">
@@ -151,22 +155,30 @@
 			}
 			$this->closeDB($link);
 		}
-		public function laygiatri($sql)
+		public function laygiatri($sql,$maKH=-1)
 		{
-			$link=$this->connect();
-			 $ketqua=mysql_query($sql,$link);
-			 $i=mysql_num_rows($ketqua);
-			 $giatri="";
-			 if($i>0)
+			
+			 if($maKH<0)
 			 {
-				
-			 while($row=mysql_fetch_array($ketqua))
+				return 0;
+			 }
+			 else
+			 {
+				  $link=$this->connect();
+				 $ketqua=mysql_query($sql,$link);
+				 $i=mysql_num_rows($ketqua);
+				 $giatri="";
+				 if($i>0)
 				 {
 					
-					 $giatri=$row[0];
-					 
+				 while($row=mysql_fetch_array($ketqua))
+					 {
+						
+						 $giatri=$row[0];
+						 
+					 }
+					 return $giatri;
 				 }
-				 return $giatri;
 			 }
 		}
 		public function thanhtien($sql)

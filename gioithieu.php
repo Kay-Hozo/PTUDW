@@ -1,13 +1,11 @@
-﻿<?php
-	session_start();
-	include ("class/clsLogin.php");
-	$p = new login();
-?>
 <?php 
 include ("./class/clsStatusLogin.php");
 
 $giaodien = new statusLogin();
-
+?>
+<?php
+include("./class/clsgiohang.php");
+$p=new giohang(); 
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -34,24 +32,22 @@ $giaodien = new statusLogin();
 <!-- CSS Style -->
 <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="css/font-awesome.css" media="all">
-<link rel="stylesheet" type="text/css" href="css/style1.css" media="all">
+
 <link rel="stylesheet" type="text/css" href="css/animate.css" media="all">
 <link rel="stylesheet" type="text/css" href="css/revslider.css" >
 <link rel="stylesheet" type="text/css" href="css/owl.carousel.css">
 <link rel="stylesheet" type="text/css" href="css/owl.theme.css">
-<link rel="stylesheet" href="css/flexslider.css" type="text/css">
 <link rel="stylesheet" type="text/css" href="css/jquery.mobile-menu.css">
 <link rel="stylesheet" type="text/css" href="css/jquery.bxslider.css">
-
+<link rel="stylesheet" type="text/css" href="css/style1.css" media="all">
 <!-- Google Fonts -->
-<link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,200italic,300,300italic,400,400italic,600,600italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
 <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
 <link href='https://fonts.googleapis.com/css?family=Roboto:400,500,300,700,900' rel='stylesheet' type='text/css'>
 </head>
 
 <body class="cms-index-index cms-home-page">
 <div id="page"> 
-	  <!-- Header -->
+   <!-- Header -->
 	<?php
     	$giaodien->showHeader();
 	?>
@@ -66,25 +62,41 @@ $giaodien = new statusLogin();
         <div class="nav-inner col-lg-12">
           <ul id="nav" class="hidden-xs">
             <li class="level0 parent drop-menu "><a href="index.php"><span>Home</span></a>
-            
+             <!-- <ul class="level1">
+                <li class="level1 first parent"><a href="index.html"><span>Home Version 1</span></a></li>
+                <li class="level1 parent"><a href="../version_2/index.html"><span>Home Version 2</span></a></li>
+                <li class="level1 parent"><a href="../version_3/index.html"><span>Home Version 3</span></a></li>
+           
+              </ul>-->
             </li>
             <li class="level0 parent drop-menu"><a href="#"><span>Trang</span></a>
               <ul class="level1">
                 <li class="level1 first"><a href="grid.php"><span>Danh mục sản phẩm</span></a></li>
-              
+               <!-- <li class="level1 nav-10-2"><a href="list.html"><span>List</span></a></li>-->
+                <!--<li class="level1 nav-10-3"><a href="product_detail.html"><span>Product Detail</span></a></li>-->
                 <li class="level1 nav-10-4"><a href="shopping_cart.php"><span>Giỏ hàng</span></a></li>
                 <li class="level1 first parent"><a href="checkout.php"><span>Thanh toán</span></a>  </li>
-             
+               <!-- <li class="level1 nav-10-4"><a href="wishlist.html"><span>Wishlist</span></a></li>-->
+              <!--  <li class="level1"><a href="dashboard.html"><span>Dashboard</span></a></li>
+                <li class="level1"><a href="multiple_addresses.html"><span>Multiple Addresses</span></a></li>
+                <li class="level1"><a href="about_us.html"><span>About us</span></a></li>
+                <li class="level1"><a href="compare.html"><span>Compare</span></a></li>
+                
+                <li class="level1"><a href="faq.html"><span>FAQ</span></a></li>
+                <li class="level1"><a href="quick_view.html"><span>Quick view </span></a></li>-->
                 <li class="level1"><a href="login.php"><span>Đăng nhập</span></a></li>
                 
                 <li class="level1 first parent"><a href="blog.php"><span>Bài viết</span></a>
-                 
+                 <!-- <ul class="level2 right-sub">
+                    <li class="level2 nav-2-1-1 first"><a href="blog_detail.html"><span>Blog Detail</span></a></li>
+                  </ul>-->
                 </li>
                 <li class="level1"><a href="contact_us.html"><span>Liên hệ</span></a></li>
+               <!-- <li class="level1"><a href="404error.html"><span>404 Error Page</span></a></li>-->
               </ul>
             </li>
-             <li class="mega-menu"><a href="#" class="level-top"><span>Giới thiệu</span></a></li>
-            <li class="mega-menu"><a href="grid.php" class="level-top"><span>Book</span></a>
+             <li class="mega-menu active"><a href="gioithieu.php" class="level-top"><span>Giới thiệu</span></a></li>
+            <li class="mega-menu "><a href="grid.php" class="level-top"><span>Book</span></a>
               <div style="left: 0px; display: none;" class="level0-wrapper dropdown-6col">
                 <div class="container">
                   <div class="level0-wrapper2">
@@ -92,16 +104,36 @@ $giaodien = new statusLogin();
                       <div class="nav-block nav-block-center">
                         <ul class="level0">
                           <li class="level1 nav-6-1 parent item"><a href="grid.php" class=""><span>Sách giáo khoa</span></a>
-                            
+                            <!--<ul class="level1">
+                              <li class="level2 nav-6-1-1"><a href="grid.html" class=""><span>Clutch Handbags</span></a></li>
+                              <li class="level2 nav-6-1-1"><a href="grid.html" class=""><span>Diaper Bags</span></a></li>
+                              <li class="level2 nav-6-1-1"><a href="grid.html" class=""><span>Bags</span></a></li>
+                              <li class="level2 nav-6-1-1"><a href="grid.html" class=""><span>Hobo handbags</span></a></li>
+                            </ul>-->
                           </li>
                           <li class="level1 nav-6-1 parent item"><a href="grid.php"><span>Sách tham khảo</span></a>
-                           
+                           <!-- <ul class="level1">
+                              <li class="level2 nav-6-1-1"><a href="grid.html"><span>Beaded Handbags</span></a></li>
+                              <li class="level2 nav-6-1-1"><a href="grid.html"><span>Fabric Handbags</span></a></li>
+                              <li class="level2 nav-6-1-1"><a href="grid.html"><span>Handbags</span></a></li>
+                              <li class="level2 nav-6-1-1"><a href="grid.html"><span>Leather Handbags</span></a></li>
+                            </ul>-->
                           </li>
                           <li class="level1 nav-6-1 parent item"><a href="grid.php"><span>Sách ngoại ngữ</span></a>
-                           
+                            <!--<ul class="level1">
+                              <li class="level2 nav-6-1-1"><a href="grid.html"><span>Flat Shoes</span></a></li>
+                              <li class="level2 nav-6-1-1"><a href="grid.html"><span>Flat Sandals</span></a></li>
+                              <li class="level2 nav-6-1-1"><a href="grid.html"><span>Boots</span></a></li>
+                              <li class="level2 nav-6-1-1"><a href="grid.html"><span>Heels</span></a></li>
+                            </ul>-->
                           </li>
                           <li class="level1 nav-6-1 parent item"><a href="grid.php"><span>Sách thiếu nhi</span></a>
-                            
+                            <!--<ul class="level1">
+                              <li class="level2 nav-6-1-1"><a href="grid.html"><span>Bracelets</span></a></li>
+                              <li class="level2 nav-6-1-1"><a href="grid-2.html"><span>Necklaces &amp; Pendent</span></a></li>
+                              <li class="level2 nav-6-1-1"><a href="grid.html"><span>Pendants</span></a></li>
+                              <li class="level2 nav-6-1-1"><a href="grid.html"><span>Pins &amp; Brooches</span></a></li>
+                            </ul>-->
                           </li>
                           <li class="level1 nav-6-1 parent item"><a href="grid.php"><span>Sách kinh tế</span></a>
                             
@@ -110,27 +142,28 @@ $giaodien = new statusLogin();
                         </ul>
                       </div>
                     </div>
-                   
+                    
             <li class="mega-menu"><a href="grid.php" class="level-top"><span>Từ điển</span></a>
              
             </li>
            <li class="mega-menu"><a href="grid.php" class="level-top"><span>Truyện tranh</span></a>
-            
+             
             </li>
          <li class="mega-menu"><a class="level-top" href="grid.php"><span>Tiểu thuyết</span></a>
+             
             </li>
             <li class="level0 nav-8 level-top"><a href="grid.php" class="level-top"><span>Đời sống</span></a></li>
-          
+           
           </ul>
           <div class="menu_top">
             <div class="top-cart-contain pull-right"> 
               <!-- Top Cart -->
-               <div class="mini-cart">
-                <div data-toggle="dropdown" data-hover="dropdown" class="basket dropdown-toggle"><a href="shopping_cart.php"><span class="hidden-xs">Giỏ hàng(3)</span></a></div>
+              <div class="mini-cart">
+                <div data-toggle="dropdown" data-hover="dropdown" class="basket dropdown-toggle"><a href="shopping_cart.php"><span class="hidden-xs">Giỏ hàng(<?php echo $p->laygiatri("select count(*) from giohang where maKH = {$_SESSION['id']}");?>)</span></a></div>
                 <div>
                   <div class="top-cart-content" style="display: none;">
                     <div class="block-subtitle">
-                      <div class="top-subtotal">3  items, <span class="price">180.000 đ</span> </div>
+                      <div class="top-subtotal"><?php echo $p->laygiatri("select count(*) from giohang where maKH = {$_SESSION['id']}");?>  items, <span class="price"><?php echo $p->subtotal("select*from giohang g left join sanPham s on g.maSP=s.maSP where maKH = {$_SESSION['id']}");?>.000 đ</span> </div>
                       <!--top-subtotal-->
                       <div class="pull-right">
                         <button title="View Cart" class="view-cart" type="button"><a href="shopping_cart.php"><span>Xem giỏ hàng</span></a></button>
@@ -139,15 +172,9 @@ $giaodien = new statusLogin();
                     </div>
                     <!--block-subtitle-->
                     <ul class="mini-products-list" id="cart-sidebar">
-                     <li class="item first">
-                        <div class="item-inner"><a class="product-image" title="'.$tensp.'" href="./shopping_cart.php"><img alt="'.$tensp.'" src="./images/book/image1.jpg"></a>
-                          <div class="product-details">
-                            <div class="access"><a class="btn-remove1" title="Remove This Item" href="?layid='.$id.'">Remove</a> <a class="btn-edit" title="Edit item" href="./shopping_cart.php"><i class="icon-pencil"></i><span class="hidden">Edit item</span></a> </div>
-                            <!--access--> <strong>1</strong> x <span class="price">69.000 đ</span>
-                            <p class="product-name"><a href="product_detail.php?layid='.$id.'">Người giàu nhất thành bayby lon</a></p>
-                          </div>
-                        </div>
-                      </li>
+                       <?php
+					  $p->ouput_checkout("select*from giohang g left join sanPham s on g.maSP=s.maSP where maKH = {$_SESSION['id']}"); 
+					  ?>
                     </ul>
                     <div class="actions">
                       <button class="btn-checkout" title="Checkout" type="button"><a href="shopping_cart.php"><span style="color:white;">Thanh toán</span></a></button>
@@ -170,86 +197,79 @@ $giaodien = new statusLogin();
     </div>
   </nav>
 
+
   <!-- end nav --> 
-  <!-- Main Container -->
-  <section class="main-container col1-layout wow bounceInUp animated">
-    <div class="main container">
-      <div class="account-login">
-        <div class="page-title">
-          <h2>Đăng nhập hoặc tạo một tài khoản</h2>
+  <!-- Breadcrumbs -->
+  <div class="breadcrumbs bounceInUp animated">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12">
+          <ul>
+            <li class="home"> <a title="Go to Home Page" href="index.php">Home</a><span>» </span></li>
+            <li class=""> <a title="Go to Home Page" href="gioithieu.php">Giới Thiệu</a><span>» </span></li>
+           <!-- <li class="category13"><strong>Tops & Tees</strong></li>-->
+          </ul>
         </div>
-        <fieldset class="col2-set">
-          <legend>Đăng nhập hoặc tạo một tài khoản</legend>
-          <div class="col-1 new-users"><strong>Khách hàng mới</strong>
-            <div class="content">
-              <p>Bằng cách tạo tài khoản với cửa hàng của chúng tôi ,bạn sẽ có thể chuyển qua quy trình thanh toán nhanh hơn,lưu trữ nhiều địa chỉ giao hàng , xem và theo dõi đơn hàng trong tài khoản của bạn ,v.v.</p>
-              <div class="buttons-set">
-                <button class="button create-account"><span>Tạo tài khoản</span></button>
-              </div>
-            </div>
-          </div>
-          <div class="col-2 registered-users"><strong>Khách hàng đã đăng ký</strong>
-            <div class="content">
-              <p>Nếu bạn có tài khoản , vui lòng đăng nhập </p>
-              <form method="post">
-              <ul class="form-list">
-                <li>
-                  <label for="email">Email <span class="required">*</span></label>
-                  <br>
-                  <input type="text" title="Email Address" class="input-text" id="email" value="khachHang" name="txtuser">
-                </li>
-                <li>
-                  <label for="pass">Password <span class="required">*</span></label>
-                  <br>
-                  <input type="password" title="Password" id="pass" value="khachhang" class="input-text" name="txtpass">
-                </li>
-              </ul>
-              <p class="required">*Bắt buộc</p>
-              <div class="buttons-set">
-                <input name="btn" type="submit" class="button login" value="Đăng nhập">
-                <a class="forgot-word" href="#">Quên mật khẩu?</a> </div>
-            </div>
-          </form>
-          </div>
-        </fieldset>
       </div>
-      <?php
-      	switch ($_REQUEST["btn"])
-		{
-			case "Đăng nhập":
-			{
-				$user = $_REQUEST["txtuser"];
-				$pass = $_REQUEST["txtpass"];
-				
-				$p->mylogin($user, $pass);
-				break;	
-			}	
-		}
-	  ?>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
     </div>
+  </div>
+  <!-- Breadcrumbs End --> 
+  <!-- Main Container -->
+  <section class="main-container col2-left-layout bounceInUp animated">
+      <div class="container">
+         <?php
+		 	
+		 	echo '<h1> <b size=100>Giới thiệu về Me Book </b> </h1>';
+			echo '<p style="font-size: 18px">Me Book là công ty thương mại điện tử hoạt động trong lĩnh vực bán sách online trên nền tảng Website </p> <br> <br>'; 
+			echo '<p style="font-size: 18px"><b> Đội ngũ Me Book </b> <br>
+_Với đội ngũ trẻ trung, yêu mến sách và với mong muốn thúc đẩy văn hóa đọc của người Việt, các nhân viên Me Book sẵn sàng đáp ứng mọi nhu cầu quý khách về sách với chất lượng phục vụ tốt nhất. <br> <br>
+<b>Phong cách Me Book </b> <br>
+
+_Phục vụ khách hàng tốt nhất, nhanh nhất, chu đáo nhất và tiết kiệm nhất. Me Book là Nhà sách, vì vậy Dịch vụ của Me Book hướng đến và hiểu những quý khách hàng là những người đọc sách. <br>
+ <br> <br>
+<b>Dịch vụ Me Book: </b><br>
+_Đặt hàng trực tuyến, giao hàng tận nơi <br>
+_Sách trước khi giao được bao bọc cẩn thận trong thùng giấy hoặc túi giấy Kraft Vintage, lịch sự và bảo vệ môi trường <br>
+_Đội ngũ giao hàng trong thành phố thân thiện, tận tâm <br>
+_Sẵn sàng giao đến mọi miền đất nước thông qua dịch vụ giao hàng <br>
+_Chuyển sách đi nước ngoài <br>
+_Nhiều hình thức thanh toán tiện lợi, trả trước bằng thẻ trực tuyến hoặc thu tiền tận nơi <br>
+_Dịch vụ bọc sách bằng bọc nhựa cao cấp, thực hiện tỉ mỉ và cẩn thận cho từng cuốn <br>
+_Dịch vụ gói quà, giúp quý khách gởi tặng những món quà tinh thần bổ ích đến những người thân yêu <br>
+_Dịch vụ chăm sóc khách hàng 7 ngày trong tuần, kể cả thứ 7 và chủ nhật thông qua tổng đài 9999 hoặc hệ thống hỗ trợ khách hàng qua email tại Me Book.com hoặc các hình thức chat trực tuyến Yahoo Messenger, Skype và Facebook. <br> <br>
+
+****Trong trường hợp quý khách có bất kỳ nhu cầu hay câu hỏi nào về sách, đừng ngần ngại gởi email về cho chúng tôi theo địa chỉ: Me Book.com hoặc tổng đài Me Book.com 9999.</p>';
+			
+			echo '<h1> <b size=100>Thông tin về công ty </b> </h1>';
+			
+			echo '<p style="font-size: 18px">- Công ty Me Book <br>
+- Địa chỉ đăng ký kinh doanh: Tòa Nhà X, Số 2, Đường B - Phường 12 - Quận 10 - TP Hồ Chí Minh - Việt Nam. <br>
+
+- Giấy chứng nhận Đăng ký Kinh doanh số XXXXX do Sở Kế hoạch và Đầu tư Thành phố Hồ Chí Minh cấp ngày 30/04/201X <br>
+
+Quý khách có nhu cầu liên lạc, trao đổi hoặc đóng góp ý kiến, vui lòng tham khảo các thông tin sau: <br>
+
+- Liên lạc qua điện thoại: 1900 0000 <br>
+- Liên lạc qua email: Truy cập Me Book.com </p><br> <br><br> 
+';
+		 ?>
+      </div>
   </section>
-  <!-- Main Container End -->
-  
+  <!-- Main Container End --> 
   <div class="top-banner-section wow bounceInUp animated">
     <div class="container">
       <div class="row">
         <div class="col-lg-3 col-sm-3 col-xs-6">
           <div class="col add-banner1">
-            <div class="top-b-text"></div>
-          </div>
+          <div class="top-b-text"></div></div>
         </div>
         <div class="col-lg-3 col-sm-3 col-xs-6">
-          <div class="col free-shipping"><strong></div>
+          <div class="col free-shipping"></div>
         </div>
         <div class="col-lg-3 col-sm-3 col-xs-6">
-          <div class="col add-banner2">
-            <div class="top-b-text"></div>
-          </div>
+        <div class="col add-banner2">
+         <div class="top-b-text"></div>
+          </div> 
         </div>
         <div class="col-lg-3 col-sm-3 col-xs-6">
           <div class="col last offer"></div>
@@ -257,12 +277,12 @@ $giaodien = new statusLogin();
       </div>
     </div>
   </div>
-  <!-- end banner section -->
+ <!-- end banner section -->
   <div class="brand-logo">
     <div class="container">
       <div class="slider-items-products">
         <div id="brand-logo-slider" class="product-flexslider hidden-buttons">
-          <div class="slider-items slider-width-col6"> 
+          <div class="slider-items slider-width-col6">
             
             <!-- Item -->
             <div class="item"><a href="#"><img src="images/b-logo1.png" alt="Image"></a> </div>
@@ -301,7 +321,7 @@ $giaodien = new statusLogin();
       </div>
     </div>
   </div>
-  <!-- Footer -->
+<!-- Footer -->
   <?php
   	$giaodien->showFooter();
   ?>
@@ -548,11 +568,12 @@ $giaodien = new statusLogin();
 <!-- JavaScript --> 
 <script type="text/javascript" src="js/jquery.min.js"></script> 
 <script type="text/javascript" src="js/bootstrap.min.js"></script> 
-<script type="text/javascript" src="js/parallax.js"></script> 
+<script type="text/javascript" src="js/parallax.js"></script>
 <script type="text/javascript" src="js/common.js"></script> 
-<script type="text/javascript" src="js/owl.carousel.min.js"></script> 
-<script type="text/javascript" src="js/jquery.flexslider.js"></script> 
-<script type="text/javascript" src="js/jquery.mobile-menu.min.js"></script>
+<script type="text/javascript" src="js/slider.js"></script> 
+<script type="text/javascript" src="js/owl.carousel.min.js"></script>
+<script type="text/javascript" src="js/jquery.mobile-menu.min.js"></script> 
+<script type="text/javascript" src="js/jquery.bxslider.min.js"></script> 
 </body>
 
 <!-- Tieu Long Lanh Kute -->

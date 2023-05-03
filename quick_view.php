@@ -1,5 +1,6 @@
 
 <?php 
+session_start();
 include ("./class/clsgiohang.php");
 $p=new giohang();
 ?>
@@ -65,24 +66,23 @@ if(isset($_REQUEST['layid']))
 					  {
 						  $soluong=$_REQUEST['qty'];
 						  $link=$p->addtocart();
-						  $sql="select*from giohang where maSP='$layid'";
+						  $sql="select*from giohang where maSP='$layid' and maKH = {$_SESSION['id']}";
 						  $result=mysql_query($sql,$link);
 						  $i=mysql_num_rows($result);
 						  if($i>0)
 						  {
 							  $row=mysql_fetch_array($result);
-							  $sl=$row['soluong'];
-							  $sql1="update giohang set soluong='$sl'+1 where maSP='$layid'";
+							  $sql1="update giohang set soluong= soluong + {$soluong} where maSP='$layid'";
 							  if( mysql_query($sql1,$link))
 							  {
-								  echo " <script>alert('Thêm giỏ hàng thành công')</script>;";
+								  echo " <script>alert('Cập nhật giỏ hàng thành công')</script>;";
 								  echo '<script language="javascript">
 										window.location="./quick_view.php?layid='.$layid.'";
 										  </script>';
 							  }
 							  else
 							  {
-								  echo " <script>alert('Thêm giỏ hàng thất bại')</script>;";
+								  echo " <script>alert('Cập nhật giỏ hàng thất bại')</script>;";
 								   echo '<script language="javascript">
 										window.location="./quick_view.php?layid='.$layid.'";
 										  </script>';
@@ -91,8 +91,8 @@ if(isset($_REQUEST['layid']))
 						  }
 						  else
 						  {
-							  $sql2="insert into giohang(maKH,maSP,soluong) values (1,'$layid','$soluong')";
-							  if( mysql_query($sql2,$link))
+							 $sql2="insert into giohang(maKH,maSP,soluong) values ('{$_SESSION['id']}','$layid','$soluong')";
+							  if(mysql_query($sql2,$link))
 							  {
 								  echo " <script>alert('Thêm giỏ hàng thành công')</script>;";
 								  echo '<script language="javascript">
@@ -108,9 +108,6 @@ if(isset($_REQUEST['layid']))
 							  }
 							  
 						  }
-						  
-						   
-						
 						  break;
 						
 					  }

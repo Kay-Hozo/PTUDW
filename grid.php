@@ -91,7 +91,7 @@ $giaodien = new statusLogin();
                <!-- <li class="level1"><a href="404error.html"><span>404 Error Page</span></a></li>-->
               </ul>
             </li>
-             <li class="mega-menu"><a href="grid.php" class="level-top"><span>Giới thiệu</span></a></li>
+             <li class="mega-menu"><a href="gioithieu.php" class="level-top"><span>Giới thiệu</span></a></li>
             <li class="mega-menu active"><a href="grid.php" class="level-top"><span>Book</span></a>
               <div style="left: 0px; display: none;" class="level0-wrapper dropdown-6col">
                 <div class="container">

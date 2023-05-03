@@ -193,7 +193,7 @@ class giohang extends connectDB
 		}
 		public function laygiatri($sql)
 		{
-			$link=$this->connect();
+			 $link=$this->connect();
 			 $ketqua=mysql_query($sql,$link);
 			 $i=mysql_num_rows($ketqua);
 			 $giatri="";

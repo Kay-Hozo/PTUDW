@@ -2,6 +2,14 @@
 include("./class/clsConnect.php");
 $p=new connectDB();
 session_start();
+if(isset($_SESSION['id']))
+{
+	$maKH=$_SESSION['id'];
+}
+else
+{
+	$maKH=-1;
+}
 ?>
 <?php 
 include ("./class/clsStatusLogin.php");
@@ -86,7 +94,7 @@ if(isset($_REQUEST['layid']))
                
               </ul>
             </li>
-             <li class="mega-menu"><a href="grid.php" class="level-top"><span>Giới thiệu</span></a></li>
+             <li class="mega-menu"><a href="gioithieu.php" class="level-top"><span>Giới thiệu</span></a></li>
             <li class="mega-menu"><a href="grid.php" class="level-top"><span>Book</span></a>
               <div style="left: 0px; display: none;" class="level0-wrapper dropdown-6col">
                 <div class="container">
@@ -132,11 +140,11 @@ if(isset($_REQUEST['layid']))
             <div class="top-cart-contain pull-right"> 
               <!-- Top Cart -->
               <div class="mini-cart">
-                <div data-toggle="dropdown" data-hover="dropdown" class="basket dropdown-toggle"><a href="#>"<span class="hidden-xs">Giỏ hàng(<?php echo $p->laygiatri("select count(*) from giohang");?>)</span></a></div>
+                <div data-toggle="dropdown" data-hover="dropdown" class="basket dropdown-toggle"><a href="#>"<span class="hidden-xs">Giỏ hàng(<?php echo $p->laygiatri("select count(*) from giohang where maKH={$maKH}",$maKH);?>)</span></a></div>
                 <div>
                   <div class="top-cart-content" style="display: none;">
                     <div class="block-subtitle">
-                      <div class="top-subtotal"><?php echo $p->laygiatri("select count(*) from giohang");?> items, <span class="price"><?php echo $p->thanhtien("select*from giohang g left join sanPham s on g.maSP=s.maSP ");?> 000 đ</span> </div>
+                      <div class="top-subtotal"><?php echo $p->laygiatri("select count(*) from giohang where maKH = {$maKH}");?> items, <span class="price"><?php echo $p->thanhtien("select*from giohang g left join sanPham s on g.maSP=s.maSP where maKH = {$_SESSION['id']}");?> 000 đ</span> </div>
                       <!--top-subtotal-->
                       <div class="pull-right">
                         <button title="View Cart" class="view-cart" type="button"><a href="shopping_cart.php"><span>Xem giỏ hàng</span></a></button>
@@ -146,7 +154,7 @@ if(isset($_REQUEST['layid']))
                     <!--block-subtitle-->
                     <ul class="mini-products-list" id="cart-sidebar">
                       <?php 
-					  $p->ouput_checkout("select*from giohang g left join sanPham s on g.maSP=s.maSP");
+					  $p->ouput_checkout("select*from giohang g left join sanPham s on g.maSP=s.maSP where maKH = {$_SESSION['id']}");
 					  ?>
                     </ul>
                     <div class="actions">
