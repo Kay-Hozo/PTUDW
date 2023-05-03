@@ -87,6 +87,8 @@ if(isset($_REQUEST['layid']))
              
                 <li class="level1"><a href="login.php"><span>Đăng nhập</span></a></li>
                 
+                <li class="level1"><a href="signup.php"><span>Đăng ký</span></a></li>
+                
                 <li class="level1 first parent"><a href="blog.php"><span>Bài viết</span></a>
                 
                 </li>

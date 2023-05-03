@@ -1,13 +1,12 @@
-﻿<?php
+<?php
 	session_start();
-	include ("class/clsLogin.php");
-	$p = new login();
+	include ("class/clsSignup.php");
+	$p = new signin();
 ?>
 <?php 
-include ("./class/clsStatusLogin.php");
+ include ("./class/clsStatusLogin.php");
 
-$giaodien = new statusLogin();
-
+ $giaodien = new statusLogin();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -125,12 +124,12 @@ $giaodien = new statusLogin();
           <div class="menu_top">
             <div class="top-cart-contain pull-right"> 
               <!-- Top Cart -->
-               <div class="mini-cart">
+              <div class="mini-cart">
                 <div data-toggle="dropdown" data-hover="dropdown" class="basket dropdown-toggle"><a href="shopping_cart.php"><span class="hidden-xs">Giỏ hàng(3)</span></a></div>
                 <div>
                   <div class="top-cart-content" style="display: none;">
                     <div class="block-subtitle">
-                      <div class="top-subtotal">3  items, <span class="price">180.000 đ</span> </div>
+                      <div class="top-subtotal">3 items, <span class="price">$180.00</span> </div>
                       <!--top-subtotal-->
                       <div class="pull-right">
                         <button title="View Cart" class="view-cart" type="button"><a href="shopping_cart.php"><span>Xem giỏ hàng</span></a></button>
@@ -139,12 +138,30 @@ $giaodien = new statusLogin();
                     </div>
                     <!--block-subtitle-->
                     <ul class="mini-products-list" id="cart-sidebar">
-                     <li class="item first">
-                        <div class="item-inner"><a class="product-image" title="'.$tensp.'" href="./shopping_cart.php"><img alt="'.$tensp.'" src="./images/book/image1.jpg"></a>
+                      <li class="item first">
+                        <div class="item-inner"><a class="product-image" title="Sample Product" href="#l"><img alt="Sample Product" src="images/book/image1.jpg"></a>
                           <div class="product-details">
-                            <div class="access"><a class="btn-remove1" title="Remove This Item" href="?layid='.$id.'">Remove</a> <a class="btn-edit" title="Edit item" href="./shopping_cart.php"><i class="icon-pencil"></i><span class="hidden">Edit item</span></a> </div>
-                            <!--access--> <strong>1</strong> x <span class="price">69.000 đ</span>
-                            <p class="product-name"><a href="product_detail.php?layid='.$id.'">Người giàu nhất thành bayby lon</a></p>
+                            <div class="access"><a class="btn-remove1" title="Remove This Item" href="#">Remove</a> <a class="btn-edit" title="Edit item" href="#"><i class="icon-pencil"></i><span class="hidden">Edit item</span></a> </div>
+                            <!--access--> <strong>1</strong> x <span class="price">$99.00</span>
+                            <p class="product-name"><a href="product_detail.php">Người Giàu Có Nhất Thành Babylon</a></p>
+                          </div>
+                        </div>
+                      </li>
+                      <li class="item last">
+                        <div class="item-inner"><a class="product-image" title="Sample Product" href="#"><img alt="Sample Product" src="images/book/image2.jpg"></a>
+                          <div class="product-details">
+                            <div class="access"><a class="btn-remove1" title="Remove This Item" href="#">Remove</a> <a class="btn-edit" title="Edit item" href="#"><i class="icon-pencil"></i><span class="hidden">Edit item</span></a> </div>
+                            <!--access--> <strong>1</strong> x <span class="price">$16.00</span>
+                            <p class="product-name"><a href="product_detail.php">Doremon</a></p>
+                          </div>
+                        </div>
+                      </li>
+                      <li class="item last">
+                        <div class="item-inner"><a class="product-image" title="Sample Product" href="#"><img alt="Sample Product" src="images/book/image3.png"></a>
+                          <div class="product-details">
+                            <div class="access"><a class="btn-remove1" title="Remove This Item" href="#">Remove</a> <a class="btn-edit" title="Edit item" href="#"><i class="icon-pencil"></i><span class="hidden">Edit item</span></a> </div>
+                            <!--access--> <strong>1</strong> x <span class="price">$65.00</span>
+                            <p class="product-name"><a href="product_detail.php">Từ điển Anh-Việt</a></p>
                           </div>
                         </div>
                       </li>
@@ -176,52 +193,76 @@ $giaodien = new statusLogin();
     <div class="main container">
       <div class="account-login">
         <div class="page-title">
-          <h2>Đăng nhập hoặc tạo một tài khoản</h2>
+          <h2>Đăng ký, tạo một tài khoản để có nhiều trải nghiệm </h2>
         </div>
-        <fieldset class="col2-set">
-          <legend>Đăng nhập hoặc tạo một tài khoản</legend>
-          <div class="col-1 new-users"><strong>Khách hàng mới</strong>
+        <fieldset class="col-12">
+          
+          <!--<div class="col-1 new-users"><strong>Khách hàng mới</strong>
             <div class="content">
               <p>Bằng cách tạo tài khoản với cửa hàng của chúng tôi ,bạn sẽ có thể chuyển qua quy trình thanh toán nhanh hơn,lưu trữ nhiều địa chỉ giao hàng , xem và theo dõi đơn hàng trong tài khoản của bạn ,v.v.</p>
               <div class="buttons-set">
-                <button class="button create-account"><a href="signup.php"><span>Tạo tài khoản</span></a></button>
+                <button class="button create-account"><span>Tạo tài khoản</span></button>
               </div>
             </div>
-          </div>
-          <div class="col-2 registered-users"><strong>Khách hàng đã đăng ký</strong>
+          </div>-->
+          <!--<div class="col-2 registered-users"><strong></strong>-->
             <div class="content">
-              <p>Nếu bạn có tài khoản , vui lòng đăng nhập </p>
+              <p>Nếu bạn đã có tài khoản , vui lòng <a class="required" class="forgot-word" href="login.php"><em>đăng nhập</em></a></p>
               <form method="post">
+              
               <ul class="form-list">
                 <li>
-                  <label for="email">Email <span class="required">*</span></label>
+                  <label for="email">Email/Số Điện Thoại <span class="required">*</span></label>
                   <br>
-                  <input type="text" title="Email Address" class="input-text" id="email" value="khachHang" name="txtuser">
+                  <input type="text" title="Email Address" class="input-text" id="email" value="KhachHang" name="txtuser">
                 </li>
                 <li>
                   <label for="pass">Password <span class="required">*</span></label>
                   <br>
                   <input type="password" title="Password" id="pass" value="khachhang" class="input-text" name="txtpass">
                 </li>
+                <li>
+                  <label for="pass"> Nhập lại Password <span class="required">*</span></label>
+                  <br>
+                  <input type="password" title="Password" id="pass" value="khachhang" class="input-text" name="configpass">
+                </li>
               </ul>
               <p class="required">*Bắt buộc</p>
+              <p>Bằng việc đăng ký, bạn đã đồng ý với <strong>Mebook</strong> về <a class="required" class="forgot-word" href="#"><em>Điều khoản dịch vụ</em></a> & <a class="required" class="forgot-word" href="#"><em>Chính sách bảo mật</em></a></p>
               <div class="buttons-set">
-                <input name="btn" type="submit" class="button login" value="Đăng nhập">
-                <a class="forgot-word" href="#">Quên mật khẩu?</a> </div>
-            </div>
+                <div align="center">
+                  <input name="btn" type="submit" class="button login" value="Đăng ký">
+                  <!--<a class="forgot-word" href="#">Quên mật khẩu?</a> </div>-->
+                </div>
+              </div>
           </form>
-          </div>
+         <!-- </div>-->
         </fieldset>
       </div>
       <?php
       	switch ($_REQUEST["btn"])
 		{
-			case "Đăng nhập":
+			case "Đăng ký":
+
 			{
 				$user = $_REQUEST["txtuser"];
 				$pass = $_REQUEST["txtpass"];
+        		//$config = $_REQUEST["configpass"];
 				
-				$p->mylogin($user, $pass);
+				$p->mysignup($user, $pass);
+			/* if($p->ThemXoaSuaTK("INSERT INTO taikhoan(tenTK,matKhau) VALUES ('$user', '$pass', '$config ')")==1)
+					{
+						echo '<script language="javascript">
+								alert("Thêm sản phẩm thành công");
+								</script>';
+						echo '<script language="javascript">
+								window.location.replace('./login.php');
+								</script>';						
+					}
+					else
+					{
+						echo 'Thêm sản phẩm không thành công';
+					}*/
 				break;	
 			}	
 		}

@@ -48,6 +48,9 @@
 							<div class='check' style='display: {$loginShow}'><a title='Checkout' href='checkout.html'><span class='hidden-xs'>Thanh toán</span></a></div>							
 							<div class='login' style='display: {$noLoginShow}'><a href='login.php'><span class='hidden-xs'>Đăng nhập</span></a></div>
 						  </div>
+						  
+						  <div class='login' style='display: {$noLoginShow}'><a href='signup.php'><span class='hidden-xs'>Đăng ký</span></a></div>
+						  </div>
 						  <!-- links --> 
 						</div>
 						
