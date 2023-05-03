@@ -201,7 +201,7 @@ $giaodien = new statusLogin();
             <div class="content">
               <p>Bằng cách tạo tài khoản với cửa hàng của chúng tôi ,bạn sẽ có thể chuyển qua quy trình thanh toán nhanh hơn,lưu trữ nhiều địa chỉ giao hàng , xem và theo dõi đơn hàng trong tài khoản của bạn ,v.v.</p>
               <div class="buttons-set">
-                <button class="button create-account"><span>Tạo tài khoản</span></button>
+                <button class="button create-account"><a href="signup.php"><span>Tạo tài khoản</span></a></button>
               </div>
             </div>
           </div>

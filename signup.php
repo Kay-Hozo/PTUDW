@@ -1,16 +1,12 @@
-<?php 
-include("./class/clsConnect.php");
-$p=new connectDB();
-session_start();
+<?php
+	session_start();
+	include ("class/clsSignup.php");
+	$p = new signin();
 ?>
 <?php 
-include ("./class/clsStatusLogin.php");
+ include ("./class/clsStatusLogin.php");
 
-$giaodien = new statusLogin();
-if(isset($_REQUEST['layid']))
-{
-	$layid=$_REQUEST['layid'];
-}
+ $giaodien = new statusLogin();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -37,23 +33,24 @@ if(isset($_REQUEST['layid']))
 <!-- CSS Style -->
 <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="css/font-awesome.css" media="all">
+<link rel="stylesheet" type="text/css" href="css/style1.css" media="all">
 <link rel="stylesheet" type="text/css" href="css/animate.css" media="all">
 <link rel="stylesheet" type="text/css" href="css/revslider.css" >
 <link rel="stylesheet" type="text/css" href="css/owl.carousel.css">
 <link rel="stylesheet" type="text/css" href="css/owl.theme.css">
+<link rel="stylesheet" href="css/flexslider.css" type="text/css">
 <link rel="stylesheet" type="text/css" href="css/jquery.mobile-menu.css">
 <link rel="stylesheet" type="text/css" href="css/jquery.bxslider.css">
-<link rel="stylesheet" type="text/css" href="css/style1.css" media="all">
-<link rel="stylesheet" type="text/css" href="css/main.css">
 
 <!-- Google Fonts -->
+<link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,200italic,300,300italic,400,400italic,600,600italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
 <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
 <link href='https://fonts.googleapis.com/css?family=Roboto:400,500,300,700,900' rel='stylesheet' type='text/css'>
 </head>
 
 <body class="cms-index-index cms-home-page">
 <div id="page"> 
-  <!-- Header -->
+	  <!-- Header -->
 	<?php
     	$giaodien->showHeader();
 	?>
@@ -67,28 +64,25 @@ if(isset($_REQUEST['layid']))
       <div class="row">
         <div class="nav-inner col-lg-12">
           <ul id="nav" class="hidden-xs">
-            <li class="level0 parent drop-menu active"><a href="index.php"><span>Home</span></a>
-             
+            <li class="level0 parent drop-menu "><a href="index.php"><span>Home</span></a>
+            
             </li>
             <li class="level0 parent drop-menu"><a href="#"><span>Trang</span></a>
               <ul class="level1">
                 <li class="level1 first"><a href="grid.php"><span>Danh mục sản phẩm</span></a></li>
-               
+              
                 <li class="level1 nav-10-4"><a href="shopping_cart.php"><span>Giỏ hàng</span></a></li>
                 <li class="level1 first parent"><a href="checkout.php"><span>Thanh toán</span></a>  </li>
              
                 <li class="level1"><a href="login.php"><span>Đăng nhập</span></a></li>
                 
-                <li class="level1"><a href="signup.php"><span>Đăng ký</span></a></li>
-                
                 <li class="level1 first parent"><a href="blog.php"><span>Bài viết</span></a>
-                
+                 
                 </li>
                 <li class="level1"><a href="contact_us.html"><span>Liên hệ</span></a></li>
-               
               </ul>
             </li>
-             <li class="mega-menu"><a href="gioithieu.php" class="level-top"><span>Giới thiệu</span></a></li>
+             <li class="mega-menu"><a href="#" class="level-top"><span>Giới thiệu</span></a></li>
             <li class="mega-menu"><a href="grid.php" class="level-top"><span>Book</span></a>
               <div style="left: 0px; display: none;" class="level0-wrapper dropdown-6col">
                 <div class="container">
@@ -106,7 +100,7 @@ if(isset($_REQUEST['layid']))
                            
                           </li>
                           <li class="level1 nav-6-1 parent item"><a href="grid.php"><span>Sách thiếu nhi</span></a>
-                          
+                            
                           </li>
                           <li class="level1 nav-6-1 parent item"><a href="grid.php"><span>Sách kinh tế</span></a>
                             
@@ -115,17 +109,14 @@ if(isset($_REQUEST['layid']))
                         </ul>
                       </div>
                     </div>
-                    
+                   
             <li class="mega-menu"><a href="grid.php" class="level-top"><span>Từ điển</span></a>
-              
+             
             </li>
            <li class="mega-menu"><a href="grid.php" class="level-top"><span>Truyện tranh</span></a>
-             
-             
+            
             </li>
-            <li class="mega-menu"><a href="grid.php" class="level-top"><span>Tiểu Thuyết</span></a>
-             
-             
+         <li class="mega-menu"><a class="level-top" href="grid.php"><span>Tiểu thuyết</span></a>
             </li>
             <li class="level0 nav-8 level-top"><a href="grid.php" class="level-top"><span>Đời sống</span></a></li>
           
@@ -134,11 +125,11 @@ if(isset($_REQUEST['layid']))
             <div class="top-cart-contain pull-right"> 
               <!-- Top Cart -->
               <div class="mini-cart">
-                <div data-toggle="dropdown" data-hover="dropdown" class="basket dropdown-toggle"><a href="#>"<span class="hidden-xs">Giỏ hàng(<?php echo $p->laygiatri("select count(*) from giohang where maKH = {$_SESSION['id']}");?>)</span></a></div>
+                <div data-toggle="dropdown" data-hover="dropdown" class="basket dropdown-toggle"><a href="shopping_cart.php"><span class="hidden-xs">Giỏ hàng(3)</span></a></div>
                 <div>
                   <div class="top-cart-content" style="display: none;">
                     <div class="block-subtitle">
-                      <div class="top-subtotal"><?php echo $p->laygiatri("select count(*) from giohang where maKH = {$_SESSION['id']}");?> items, <span class="price"><?php echo $p->thanhtien("select*from giohang g left join sanPham s on g.maSP=s.maSP where maKH = {$_SESSION['id']}");?> 000 đ</span> </div>
+                      <div class="top-subtotal">3 items, <span class="price">$180.00</span> </div>
                       <!--top-subtotal-->
                       <div class="pull-right">
                         <button title="View Cart" class="view-cart" type="button"><a href="shopping_cart.php"><span>Xem giỏ hàng</span></a></button>
@@ -147,9 +138,33 @@ if(isset($_REQUEST['layid']))
                     </div>
                     <!--block-subtitle-->
                     <ul class="mini-products-list" id="cart-sidebar">
-                      <?php 
-					  $p->ouput_checkout("select*from giohang g left join sanPham s on g.maSP=s.maSP where maKH = {$_SESSION['id']}");
-					  ?>
+                      <li class="item first">
+                        <div class="item-inner"><a class="product-image" title="Sample Product" href="#l"><img alt="Sample Product" src="images/book/image1.jpg"></a>
+                          <div class="product-details">
+                            <div class="access"><a class="btn-remove1" title="Remove This Item" href="#">Remove</a> <a class="btn-edit" title="Edit item" href="#"><i class="icon-pencil"></i><span class="hidden">Edit item</span></a> </div>
+                            <!--access--> <strong>1</strong> x <span class="price">$99.00</span>
+                            <p class="product-name"><a href="product_detail.php">Người Giàu Có Nhất Thành Babylon</a></p>
+                          </div>
+                        </div>
+                      </li>
+                      <li class="item last">
+                        <div class="item-inner"><a class="product-image" title="Sample Product" href="#"><img alt="Sample Product" src="images/book/image2.jpg"></a>
+                          <div class="product-details">
+                            <div class="access"><a class="btn-remove1" title="Remove This Item" href="#">Remove</a> <a class="btn-edit" title="Edit item" href="#"><i class="icon-pencil"></i><span class="hidden">Edit item</span></a> </div>
+                            <!--access--> <strong>1</strong> x <span class="price">$16.00</span>
+                            <p class="product-name"><a href="product_detail.php">Doremon</a></p>
+                          </div>
+                        </div>
+                      </li>
+                      <li class="item last">
+                        <div class="item-inner"><a class="product-image" title="Sample Product" href="#"><img alt="Sample Product" src="images/book/image3.png"></a>
+                          <div class="product-details">
+                            <div class="access"><a class="btn-remove1" title="Remove This Item" href="#">Remove</a> <a class="btn-edit" title="Edit item" href="#"><i class="icon-pencil"></i><span class="hidden">Edit item</span></a> </div>
+                            <!--access--> <strong>1</strong> x <span class="price">$65.00</span>
+                            <p class="product-name"><a href="product_detail.php">Từ điển Anh-Việt</a></p>
+                          </div>
+                        </div>
+                      </li>
                     </ul>
                     <div class="actions">
                       <button class="btn-checkout" title="Checkout" type="button"><a href="shopping_cart.php"><span style="color:white;">Thanh toán</span></a></button>
@@ -171,25 +186,96 @@ if(isset($_REQUEST['layid']))
       </div>
     </div>
   </nav>
+
   <!-- end nav --> 
-  <!-- Slider -->
-  <div id="magik-slideshow" class="magik-slideshow">
-    <div id='rev_slider_4_wrapper' class='rev_slider_wrapper fullwidthbanner-container' >
-      <div id='rev_slider_4' class='rev_slider fullwidthabanner'>
-        <ul>
-          <li data-transition='random' data-slotamount='7' data-masterspeed='1000' data-thumb='images/silde/slide-image-1.png'><img src='images/silde/slide-image-1.png' alt="slide-img" data-bgposition='left top'  data-bgfit='cover' data-bgrepeat='no-repeat'  />
-         
-          </li>
-          <li data-transition='random' data-slotamount='7' data-masterspeed='1000' data-thumb='images/silde/slide-image-2.png'><img src='images/silde/slide-image-2.png' alt="slide" data-bgposition='left top'  data-bgfit='cover' data-bgrepeat='no-repeat'  />
-           
-          </li>
-          <li data-transition='random' data-slotamount='7' data-masterspeed='1000' data-thumb=''><img src='images/silde/slide-image-3.jpg' alt="slide" data-bgposition='left top' data-bgfit='cover' data-bgrepeat='no-repeat'  /></li>
-          <li data-transition='random' data-slotamount='7' data-masterspeed='1000' data-thumb='images/silde/slide-image-4.png'><img src='images/silde/slide-image-4.png' alt="slide" data-bgposition='left top' data-bgfit='cover' data-bgrepeat='no-repeat'  /></li>
-        </ul>
+  <!-- Main Container -->
+  <section class="main-container col1-layout wow bounceInUp animated">
+    <div class="main container">
+      <div class="account-login">
+        <div class="page-title">
+          <h2>Đăng ký, tạo một tài khoản để có nhiều trải nghiệm </h2>
+        </div>
+        <fieldset class="col-12">
+          
+          <!--<div class="col-1 new-users"><strong>Khách hàng mới</strong>
+            <div class="content">
+              <p>Bằng cách tạo tài khoản với cửa hàng của chúng tôi ,bạn sẽ có thể chuyển qua quy trình thanh toán nhanh hơn,lưu trữ nhiều địa chỉ giao hàng , xem và theo dõi đơn hàng trong tài khoản của bạn ,v.v.</p>
+              <div class="buttons-set">
+                <button class="button create-account"><span>Tạo tài khoản</span></button>
+              </div>
+            </div>
+          </div>-->
+          <!--<div class="col-2 registered-users"><strong></strong>-->
+            <div class="content">
+              <p>Nếu bạn đã có tài khoản , vui lòng <a class="required" class="forgot-word" href="login.php"><em>đăng nhập</em></a></p>
+              <form method="post">
+              
+              <ul class="form-list">
+                <li>
+                  <label for="email">Email/Số Điện Thoại <span class="required">*</span></label>
+                  <br>
+                  <input type="text" title="Email Address" class="input-text" id="email" value="KhachHang" name="txtuser">
+                </li>
+                <li>
+                  <label for="pass">Password <span class="required">*</span></label>
+                  <br>
+                  <input type="password" title="Password" id="pass" value="khachhang" class="input-text" name="txtpass">
+                </li>
+                <li>
+                  <label for="pass"> Nhập lại Password <span class="required">*</span></label>
+                  <br>
+                  <input type="password" title="Password" id="pass" value="khachhang" class="input-text" name="configpass">
+                </li>
+              </ul>
+              <p class="required">*Bắt buộc</p>
+              <p>Bằng việc đăng ký, bạn đã đồng ý với <strong>Mebook</strong> về <a class="required" class="forgot-word" href="#"><em>Điều khoản dịch vụ</em></a> & <a class="required" class="forgot-word" href="#"><em>Chính sách bảo mật</em></a></p>
+              <div class="buttons-set">
+                <div align="center">
+                  <input name="btn" type="submit" class="button login" value="Đăng ký">
+                  <!--<a class="forgot-word" href="#">Quên mật khẩu?</a> </div>-->
+                </div>
+              </div>
+          </form>
+         <!-- </div>-->
+        </fieldset>
       </div>
+      <?php
+      	switch ($_REQUEST["btn"])
+		{
+			case "Đăng ký":
+
+			{
+				$user = $_REQUEST["txtuser"];
+				$pass = $_REQUEST["txtpass"];
+        		//$config = $_REQUEST["configpass"];
+				
+				$p->mysignup($user, $pass);
+			/* if($p->ThemXoaSuaTK("INSERT INTO taikhoan(tenTK,matKhau) VALUES ('$user', '$pass', '$config ')")==1)
+					{
+						echo '<script language="javascript">
+								alert("Thêm sản phẩm thành công");
+								</script>';
+						echo '<script language="javascript">
+								window.location.replace('./login.php');
+								</script>';						
+					}
+					else
+					{
+						echo 'Thêm sản phẩm không thành công';
+					}*/
+				break;	
+			}	
+		}
+	  ?>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
     </div>
-  </div>
-  <!-- end banner -->
+  </section>
+  <!-- Main Container End -->
+  
   <div class="top-banner-section wow bounceInUp animated">
     <div class="container">
       <div class="row">
@@ -199,177 +285,15 @@ if(isset($_REQUEST['layid']))
           </div>
         </div>
         <div class="col-lg-3 col-sm-3 col-xs-6">
-          <div class="col free-shipping"></div>
+          <div class="col free-shipping"><strong></div>
         </div>
         <div class="col-lg-3 col-sm-3 col-xs-6">
           <div class="col add-banner2">
-           <div class="top-b-text"></div>
+            <div class="top-b-text"></div>
           </div>
         </div>
         <div class="col-lg-3 col-sm-3 col-xs-6">
           <div class="col last offer"></div>
-        </div>
-      </div>
-    </div>
-  </div>
-  
-  <!-- main container -->
-  <div class="main-col">
-    <div class="container">
-      <div class="row">
-        <div class="product-grid-view">
-          <div class="col-md-12">
-            <div class="std">
-              <div class="home-tabs wow bounceInUp animated">
-                <div class="producttabs">
-                  <div id="magik_producttabs1" class="magik-producttabs"> 
-                    <!--<h3></h3>-->
-                    <div class="magik-pdt-container"> 
-                      <!--Begin Tab Nav -->
-                      <div class="magik-pdt-nav">
-                        <ul class="pdt-nav">
-                          <li class="item-nav tab-loaded tab-nav-actived" data-type="order" data-catid="" data-orderby="best_sales" data-href="pdt_best_sales"><span class="title-navi">Top sách bán chạy</span></li>
-                          <li class="item-nav" data-type="order" data-catid="" data-orderby="new_arrivals" data-href="pdt_new_arrivals"><span class="title-navi">Sách mới</span></li>
-                        </ul>
-                      </div>
-                      <!-- End Tab Nav --> 
-                      <!--Begin Tab Content -->
-                      <div class="magik-pdt-content wide-5">
-                        <div class="pdt-content is-loaded pdt_best_sales tab-content-actived">
-                          <ul class="pdt-list products-grid-home zoomOut play">
-                          <?php    
-						  $p->xuatsp("SELECT * FROM sanPham ORDER BY noiBat DESC LIMIT 8;");
-						  ?>
-                          </ul>
-                        </div>
-                        <div class="pdt-content pdt_new_arrivals is-loaded">
-                          <ul class="pdt-list products-grid-home zoomOut play">
-                        <?php
-						$p->xuatsp2("select * from sanPham order by maSP desc limit 8;"); 
-						?>
-                        </ul>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- end main container --> 
-  <!-- Featured Slider -->
-  <section class="featured-pro container wow bounceInUp animated">
-    <div class="slider-items-products">
-      <div class="new_title center">
-        <h2>Sản phẩm nổi bật</h2>
-      </div>
-      <div id="featured-slider" class="product-flexslider hidden-buttons">
-        <div class="slider-items slider-width-col4 products-grid">
-        <?php 
-		 $p->xuatsp("SELECT * FROM sanPham ORDER BY noiBat DESC LIMIT 8;");
-		?>
-          
-        </div>
-      </div>
-    </div>
-  </section>
-  <!-- End Featured Slider --> 
-  <!--Offer Start-->
-  <div class="offer-slider wow animated parallax parallax-2">
-    <div class="container">
-      <ul class="bxslider">
-        <li>
-          <h2>NEW ARRIVALS</h2>
-          <h1>Sale up to 30% off</h1>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut non libero magna. Sed et quam lacus. Fusce condimentum eleifend enim a feugiat. Pellentesque viverra vehicula sem ut volutpat. Integer sed arcu massa. </p>
-          <a class="shop-now" href="#">Shop now</a> </li>
-        <li>
-          <h2>Hello hotness!</h2>
-          <h1>Summer collection</h1>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut non libero magna. Sed et quam lacus. Fusce condimentum eleifend enim a feugiat. Pellentesque viverra vehicula sem ut volutpat. Integer sed arcu massa. </p>
-          <a class="shop-now" href="#">View More</a> </li>
-        <li>
-          <h2>New launch</h2>
-          <h1>Designer dresses on sale</h1>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut non libero magna. Sed et quam lacus. Fusce condimentum eleifend enim a feugiat. Pellentesque viverra vehicula sem ut volutpat. Integer sed arcu massa. </p>
-          <a class="shop-now" href="#">Learn More</a> </li>
-      </ul>
-    </div>
-  </div>
-  <!--Offer silder End--> 
-  
-  <!-- Latest Blog -->
-  <section class="latest-blog wow bounceInUp animated">
-    <div class="container">
-      <div class="row">
-        <div class="new_title center">
-          <h2>Latest Blog</h2>
-        </div>
-        <div class="col-xs-12 col-sm-6 col-lg-3">
-          <div class="blog_inner">
-            <div class="blog-img"> <img src="images/blog-img1.jpg" alt="Blog image">
-              <div class="mask"> <a class="info" href="blog_detail.php">Read More</a> </div>
-            </div>
-            <h3><a href="blog_detail.php">Pellentesque habitant morbi</a> </h3>
-            <div class="post-date"><i class="icon-calendar"></i> Apr 10, 2014</div>
-            <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Fusce sit  ... </p>
-          </div>
-        </div>
-        <div class="col-xs-12 col-sm-6 col-lg-3">
-          <div class="blog_inner">
-            <div class="blog-img"> <img src="images/blog-img2.jpg" alt="Blog image">
-              <div class="mask"> <a class="info" href="blog_detail.php">Read More</a> </div>
-            </div>
-            <h3><a href="blog_detail.php">Pellentesque habitant morbi</a> </h3>
-            <div class="post-date"><i class="icon-calendar"></i> Apr 10, 2014</div>
-            <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Fusce sit  ... </p>
-          </div>
-        </div>
-        <div class="col-xs-12 col-sm-6 col-lg-3">
-          <div class="blog_inner">
-            <div class="blog-img"> <img src="images/blog-img3.jpg" alt="Blog image">
-              <div class="mask"> <a class="info" href="blog_detail.php">Read More</a> </div>
-            </div>
-            <h3><a href="blog_detail.php">Pellentesque habitant morbi</a> </h3>
-            <div class="post-date"><i class="icon-calendar"></i> Apr 10, 2014</div>
-            <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Fusce sit  ... </p>
-          </div>
-        </div>
-        <div class="col-xs-12 col-sm-6 col-lg-3">
-          <div class="blog_inner">
-            <div class="blog-img"> <img src="images/blog-img4.jpg" alt="Blog image">
-              <div class="mask"> <a class="info" href="blog_detail.php">Read More</a> </div>
-            </div>
-            <h3><a href="blog_detail.php">Pellentesque habitant morbi</a> </h3>
-            <div class="post-date"><i class="icon-calendar"></i> Apr 10, 2014</div>
-            <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Fusce sit  ... </p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <!-- End Latest Blog --> 
-  
-  <!-- offer banner section -->
-  
-  <div class="offer-banner-section wow bounceInUp animated">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-3 col-sm-3 col-xs-6">
-          <div class="col"><img src="images/promo-banner-img1.png" alt="offer banner1"></div>
-        </div>
-        <div class="col-lg-3 col-sm-3 col-xs-6">
-          <div class="col"><img src="images/promo-banner-img2.png" alt="offer banner2"></div>
-        </div>
-        <div class="col-lg-3 col-sm-3 col-xs-6">
-          <div class="col"><img src="images/promo-banner-img3.png" alt="offer banner3"></div>
-        </div>
-        <div class="col-lg-3 col-sm-3 col-xs-6">
-          <div class="col last"><img src="images/promo-banner-img4.png" alt="offer banner4"></div>
         </div>
       </div>
     </div>
@@ -660,115 +584,16 @@ if(isset($_REQUEST['layid']))
   </ul>
 </div>
 
+
 <!-- End Footer --> 
 <!-- JavaScript --> 
 <script type="text/javascript" src="js/jquery.min.js"></script> 
 <script type="text/javascript" src="js/bootstrap.min.js"></script> 
 <script type="text/javascript" src="js/parallax.js"></script> 
-<script type="text/javascript" src="js/revslider.js"></script> 
 <script type="text/javascript" src="js/common.js"></script> 
 <script type="text/javascript" src="js/owl.carousel.min.js"></script> 
-<script type="text/javascript" src="js/jquery.mobile-menu.min.js"></script> 
-<script type="text/javascript" src="js/jquery.bxslider.min.js"></script> 
-<script type='text/javascript'>
-jQuery(document).ready(function(){
-jQuery('#rev_slider_4').show().revolution({
-dottedOverlay: 'none',
-delay: 5000,
-startwidth: 1920,
-startheight: 650,
-
-hideThumbs: 200,
-thumbWidth: 200,
-thumbHeight: 50,
-thumbAmount: 2,
-
-navigationType: 'thumb',
-navigationArrows: 'solo',
-navigationStyle: 'round',
-
-touchenabled: 'on',
-onHoverStop: 'on',
-
-swipe_velocity: 0.7,
-swipe_min_touches: 1,
-swipe_max_touches: 1,
-drag_block_vertical: false,
-
-spinner: 'spinner0',
-keyboardNavigation: 'off',
-
-navigationHAlign: 'center',
-navigationVAlign: 'bottom',
-navigationHOffset: 0,
-navigationVOffset: 20,
-
-soloArrowLeftHalign: 'left',
-soloArrowLeftValign: 'center',
-soloArrowLeftHOffset: 20,
-soloArrowLeftVOffset: 0,
-
-soloArrowRightHalign: 'right',
-soloArrowRightValign: 'center',
-soloArrowRightHOffset: 20,
-soloArrowRightVOffset: 0,
-
-shadow: 0,
-fullWidth: 'on',
-fullScreen: 'off',
-
-stopLoop: 'off',
-stopAfterLoops: -1,
-stopAtSlide: -1,
-
-shuffle: 'off',
-
-autoHeight: 'off',
-forceFullWidth: 'on',
-fullScreenAlignForce: 'off',
-minFullScreenHeight: 0,
-hideNavDelayOnMobile: 1500,
-
-hideThumbsOnMobile: 'off',
-hideBulletsOnMobile: 'off',
-hideArrowsOnMobile: 'off',
-hideThumbsUnderResolution: 0,
-
-hideSliderAtLimit: 0,
-hideCaptionAtLimit: 0,
-hideAllCaptionAtLilmit: 0,
-startWithSlide: 0,
-fullScreenOffsetContainer: ''
-});
-});
-
-</script>
-<?php 
-/*switch($_POST['nut'])
-	  {
-		  case'Add to Cart':
-		  {
-			  
-			  $sql = "insert into giohang(maSP,maKH,soluong) values ('$layid',1,1);";
-			
-			  $result = $p->themsuaxoa($sql);
-			 
-							 if($result==1)
-							 {
-								 echo " <script>alert('Thêm giỏ hàng thành công')</script>;";
-							 }
-							 else
-							 {
-							
-								  echo " <script>alert('Thêm giỏ hàng thất bại')</script>;";
-							 }
-				
-			
-			  break;
-			
-		  }
-	  }
-*/?>
+<script type="text/javascript" src="js/jquery.flexslider.js"></script> 
+<script type="text/javascript" src="js/jquery.mobile-menu.min.js"></script>
 </body>
 
 <!-- Tieu Long Lanh Kute -->
