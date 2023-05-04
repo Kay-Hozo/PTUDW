@@ -46,7 +46,7 @@
                               <div class="item-inner">
                                 <div class="item-img">
                                <div class="item-img-info"><a href="product_detail.php?layid='.$id.'" title="'.$tensp.'" class="product-image"><img src="./images/book/'.$hinh.'" alt="'.$tensp.'"></a>
-                                    <div class="new-label new-top-left">New</div>
+                                    <div class="new-label new-top-left">TOP</div>
 
                                   <!--<div class="item-img-info"><a href="product_detail.php?layid='.$id.'" title="Sample Product" class="product-image"><img src="./images/book/'.$hinh.'" alt="Sample Product"></a>
                                     <div class="new-label new-top-left">TOP</div>-->

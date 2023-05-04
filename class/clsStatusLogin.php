@@ -26,6 +26,14 @@
 			}
 			
 			echo "
+			<div id='load' style='
+	  background-image: url(images/loading.gif) !important;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: 20;
+  height: 100vh;
+  background-color: #f5f7f6;'></div>
 			  <header>
 				<div class='header-container'>
 				  <div class='container'>
@@ -47,10 +55,11 @@
 						   
 							<div class='check' style='display: {$loginShow}'><a title='Checkout' href='checkout.html'><span class='hidden-xs'>Thanh toán</span></a></div>							
 							<div class='login' style='display: {$noLoginShow}'><a href='login.php'><span class='hidden-xs'>Đăng nhập</span></a></div>
+							<div class='signup' style='display: {$noLoginShow}'><a href='signup.php'><span class='hidden-xs'>Đăng ký</span></a></div>
+						  </div>
 						  </div>
 						  
-						  <div class='login' style='display: {$noLoginShow}'><a href='signup.php'><span class='hidden-xs'>Đăng ký</span></a></div>
-						  </div>
+						  
 						  <!-- links --> 
 						</div>
 						
@@ -207,6 +216,7 @@
 				  </div>-->
 				</section>
 			  </footer>
+			  <script type='text/javascript' src='./js/loading.js'></script>
 			";
 		}
 	}
