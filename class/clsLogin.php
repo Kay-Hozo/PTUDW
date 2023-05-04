@@ -37,7 +37,7 @@
 				$sql = "SELECT maTK, tenTK, matKhau, ten, phanQuyen FROM taiKhoan WHERE tenTK = '$user' AND matKhau = '$pass' LIMIT 1";
 				$result = mysql_query($sql, $conn);
 				$row = mysql_num_rows($result);
-				
+				var_dump();
 				if($row == 1)
 				{
 					session_start();
@@ -81,10 +81,35 @@
 			$this->closeDB($conn);	
 		}	
 		
-		public function logout() {
+		public function logout() 
+		{
 			session_destroy();
 			echo "<script>window.location.replace('./index.php')</script>";
 			exit();
 		}
+		
+		public function mySignup($user, $pass, $ho, $ten, $sdt, $quocGia, $tinh, $phuong, $quan, $diaChi, $email)
+		{
+			$conn = $this->connect();
+			
+			$sqlSignUp = "insert into taiKhoan
+			(`tenTK`, `matKhau`, `ho`, `ten`, `sdt`, `quocgia`, `tinh_thanhpho`, `phuong_xa`, `quan_huyen`, `diaChi`, `email`)
+			 values
+			('{$user}', SHA1('{$pass}'), N'{$ho}', N'{$ten}', '{$sdt}', '{$quocGia}', '{$tinh}', '{$phuong}', '{$quan}', '{$diaChi}', '{$email}')";
+			$result = mysql_query($sqlSignUp, $conn);
+			
+			if($result)
+			{
+				echo "<script>alert('Đăng ký thành công!')</script>";
+				$this->mylogin($user, $pass);
+			}
+			else
+			{
+				echo "<script> alert('Đăng ký không thành công')</script>";
+			}		
+			
+			$this->closeDB($conn);		
+		}
+
 	}
 ?>
