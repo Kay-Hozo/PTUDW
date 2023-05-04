@@ -3,6 +3,20 @@ include ("./class/clsStatusLogin.php");
 
 $giaodien = new statusLogin();
 ?>
+<?php 
+include("./class/clsgiohang.php");
+$p=new giohang();
+session_start();
+if(isset($_SESSION['id']))
+{
+	$maKH=$_SESSION['id'];
+}
+else
+{
+	$maKH=-1;
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -235,79 +249,7 @@ $giaodien = new statusLogin();
               </div>-->
             </li>
            <li class="mega-menu"><a href="grid.php" class="level-top"><span>Truyện tranh</span></a>
-             <!-- <div style="left: 0px; display: none;" class="level0-wrapper dropdown-6col">
-                <div class="container">
-                  <div class="level0-wrapper2">
-                    <div class="nav-block nav-block-center">
-                      <ul class="level0">
-                        <li class="level1 nav-6-1 parent item"><a href="grid.html"><span>Mobiles</span></a>
-                          <ul class="level1">
-                            <li class="level2 nav-6-1-1"><a href="grid.html"><span>Samsung</span></a></li>
-                            <li class="level2 nav-6-1-1"><a href="grid.html"><span>Nokia</span></a></li>
-                            <li class="level2 nav-6-1-1"><a href="grid.html"><span>IPhone</span></a></li>
-                            <li class="level2 nav-6-1-1"><a href="grid.html"><span>Sony</span></a></li>
-                          </ul>
-                        </li>
-                        <li class="level1 nav-6-1 parent item"><a href="grid.html" class=""><span>Accesories</span></a>
-                          <ul class="level1">
-                            <li class="level2 nav-6-1-1"><a href="grid.html"><span>Mobile Memory Cards</span></a></li>
-                            <li class="level2 nav-6-1-1"><a href="grid.html"><span>Cases &amp; Covers</span></a></li>
-                            <li class="level2 nav-6-1-1"><a href="grid.html"><span>Mobile Headphones</span></a></li>
-                            <li class="level2 nav-6-1-1"><a href="grid.html"><span>Bluetooth Headsets</span></a></li>
-                          </ul>
-                        </li>
-                        <li class="level1 nav-6-1 parent item"><a href="grid.html"><span>Cameras</span></a>
-                          <ul class="level1">
-                            <li class="level2 nav-6-1-1"><a href="grid.html"><span>Camcorders</span></a></li>
-                            <li class="level2 nav-6-1-1"><a href="grid.html"><span>Point &amp; Shoot</span></a></li>
-                            <li class="level2 nav-6-1-1"><a href="grid.html"><span>Digital SLR</span></a></li>
-                            <li class="level2 nav-6-1-1"><a href="grid.html"><span>Camera Accesories</span></a></li>
-                          </ul>
-                        </li>
-                        <li class="level1 nav-6-1 parent item"><a href="grid.html"><span>Audio &amp; Video</span></a>
-                          <ul class="level1">
-                            <li class="level2 nav-6-1-1"><a href="grid.html"><span>MP3 Players</span></a></li>
-                            <li class="level2 nav-6-1-1"><a href="grid.html"><span>IPods</span></a></li>
-                            <li class="level2 nav-6-1-1"><a href="grid.html"><span>Speakers</span></a></li>
-                            <li class="level2 nav-6-1-1"><a href="grid.html"><span>Video Players</span></a></li>
-                          </ul>
-                        </li>
-                        <li class="level1 nav-6-1 parent item"><a href="grid.html"><span>Computer</span></a>
-                          <ul class="level1">
-                            <li class="level2 nav-6-1-1"><a href="grid.html"><span>External Hard Disk</span></a></li>
-                            <li class="level2 nav-6-1-1"><a href="grid.html"><span>Pendrives</span></a></li>
-                            <li class="level2 nav-6-1-1"><a href="grid.html"><span>Headphones</span></a></li>
-                            <li class="level2 nav-6-1-1"><a href="grid.html"><span>PC Components</span></a></li>
-                          </ul>
-                        </li>
-                        <li class="level1 nav-6-1 parent item"><a href="grid.html"><span>Appliances</span></a>
-                          <ul class="level1">
-                            <li class="level2 nav-6-1-1"><a href="grid.html"><span>Vaccum Cleaners</span></a></li>
-                            <li class="level2 nav-6-1-1"><a href="grid.html"><span>Indoor Lighting</span></a></li>
-                            <li class="level2 nav-6-1-1"><a href="grid.html"><span>Kitchen Tools</span></a></li>
-                            <li class="level2 nav-6-1-1"><a href="grid.html"><span>Water Purifier</span></a></li>
-                          </ul>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>-->
-                  <!--level0-wrapper2-->
-             <!--     <div class="nav-add">
-                    <div class="push_item">
-                      <div class="push_img"><a href="#"><img alt="phone" src="images/menu_ele_phone.png"></a></div>
-                    </div>
-                    <div class="push_item">
-                      <div class="push_img"><a href="#"><img alt="camera" src="images/menu_ele_camera.png"></a></div>
-                    </div>
-                    <div class="push_item">
-                      <div class="push_img"><a href="#"><img alt="ipod" src="images/menu_ele_ipod.png"></a></div>
-                    </div>
-                    <div class="push_item push_item_last">
-                      <div class="push_img"><a href="#"><img alt="laptop" src="images/menu_ele_laptop.png"></a></div>
-                    </div>
-                  </div>
-                </div>
-              </div>-->
+             
             </li>
          <li class="mega-menu"><a class="level-top" href="grid.php"><span>Tiểu thuyết</span></a>
              <!--<div style="left: 0px; display: none;" class="level0-wrapper dropdown-6col">
@@ -390,11 +332,11 @@ $giaodien = new statusLogin();
             <div class="top-cart-contain pull-right"> 
               <!-- Top Cart -->
               <div class="mini-cart">
-                <div data-toggle="dropdown" data-hover="dropdown" class="basket dropdown-toggle"><a href="shopping_cart.php"><span class="hidden-xs">Giỏ hàng(3)</span></a></div>
+                <div data-toggle="dropdown" data-hover="dropdown" class="basket dropdown-toggle"><a href="shopping_cart.php"><span class="hidden-xs">Giỏ hàng(<?php echo $p->laygiatri("select count(*) from giohang where maKH={$maKH}",$maKH);?>)</span></a></div>
                 <div>
                   <div class="top-cart-content" style="display: none;">
                     <div class="block-subtitle">
-                      <div class="top-subtotal">3 items, <span class="price">$180.00</span> </div>
+                      <div class="top-subtotal"><?php echo $p->laygiatri("select count(*) from giohang where maKH={$maKH}",$maKH);?>  items, <span class="price"><?php echo $p->subtotal("select*from giohang g left join sanPham s on g.maSP=s.maSP where maKH={$maKH}",$maKH);?>.000 đ</span> </div>
                       <!--top-subtotal-->
                       <div class="pull-right">
                         <button title="View Cart" class="view-cart" type="button"><a href="shopping_cart.php"><span>Xem giỏ hàng</span></a></button>
@@ -403,37 +345,9 @@ $giaodien = new statusLogin();
                     </div>
                     <!--block-subtitle-->
                     <ul class="mini-products-list" id="cart-sidebar">
-                      <li class="item first">
-                        <div class="item-inner"><a class="product-image" title="Sample Product" href="#l"><img alt="Sample Product" src="images/book/image1.jpg"></a>
-                          <div class="product-details">
-                            <div class="access"><a class="btn-remove1" title="Remove This Item" href="#">Remove</a> <a class="btn-edit" title="Edit item" href="#"><i class="icon-pencil"></i><span class="hidden">Edit item</span></a> </div>
-                            <!--access--> <strong>1</strong> x <span class="price">$99.00</span>
-                            <p class="product-name"><a href="product_detail.php">Người Giàu Có Nhất Thành Babylon</a></p>
-                          </div>
-                        </div>
-                      </li>
-                      <li class="item last">
-                        <div class="item-inner"><a class="product-image" title="Sample Product" href="#"><img alt="Sample Product" src="images/book/image2.jpg"></a>
-                          <div class="product-details">
-                            <div class="access"><a class="btn-remove1" title="Remove This Item" href="#">Remove</a> <a class="btn-edit" title="Edit item" href="#"><i class="icon-pencil"></i><span class="hidden">Edit item</span></a> </div>
-                            <!--access--> <strong>1</strong> x <span class="price">$16.00</span>
-                            <p class="product-name"><a href="product_detail.php">Doremon</a></p>
-                          </div>
-                        </div>
-                      </li>
-                      <li class="item last">
-                        <div class="item-inner"><a class="product-image" title="Sample Product" href="#"><img alt="Sample Product" src="images/book/image3.png"></a>
-                          <div class="product-details">
-                            <div class="access"><a class="btn-remove1" title="Remove This Item" href="#">Remove</a> <a class="btn-edit" title="Edit item" href="#"><i class="icon-pencil"></i><span class="hidden">Edit item</span></a> </div>
-                            <!--access--> <strong>1</strong> x <span class="price">$65.00</span>
-                            <p class="product-name"><a href="product_detail.php">Từ điển Anh-Việt</a></p>
-                          </div>
-                        </div>
-                      </li>
-                    </ul>
-                    <div class="actions">
-                      <button class="btn-checkout" title="Checkout" type="button"><a href="shopping_cart.php"><span style="color:white;">Thanh toán</span></a></button>
-                    </div>
+                      <?php
+					  $p->ouput_checkout("select*from giohang g left join sanPham s on g.maSP=s.maSP where maKH={$maKH}",$maKH); 
+					  ?>
                     <!--actions--> 
                   </div>
                 </div>
