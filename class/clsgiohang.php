@@ -145,7 +145,7 @@ class giohang extends connectDB
 						echo ' <div class="item">
 				  <div class="item-inner">
 					<div class="item-img">
-					  <div class="item-img-info"> <a class="product-image" title="Sample Product" href="product_detail.php?layid='.$id.'"> <img alt="Sample Product" src="./images/book/'.$hinh.'"></a>
+					  <div class="item-img-info"> <a class="product-image" title="'.$tensp.'" href="product_detail.php?layid='.$id.'"> <img alt="'.$tensp.'" src="./images/book/'.$hinh.'"></a>
 						<div class="item-box-hover">
 						  <div class="box-inner">                                        
                                         <div class="actions">
@@ -162,7 +162,7 @@ class giohang extends connectDB
 							</div>
 							<div class="item-info">
 							  <div class="info-inner">
-								<div class="item-title"> <a title="Sample Product" href="product_detail.php?layid='.$id.'">'.$tensp.'</a> </div>
+								<div class="item-title"> <a title="'.$tensp.'" href="product_detail.php?layid='.$id.'">'.$tensp.'</a> </div>
 								<div class="item-content">
 								  <div class="rating">
 									<div class="ratings">
@@ -193,7 +193,7 @@ class giohang extends connectDB
 		}
 		public function laygiatri($sql)
 		{
-			$link=$this->connect();
+			 $link=$this->connect();
 			 $ketqua=mysql_query($sql,$link);
 			 $i=mysql_num_rows($ketqua);
 			 $giatri="";
@@ -307,7 +307,7 @@ class giohang extends connectDB
 					$tongtien=$gia*$soluong;
 					
 					echo '<tr class="first odd">
-                      <td class="image"><a class="product-image" title="Sample Product" href="product_detail.php?layid='.$id.'"><img width="75" alt="Sample Product" src="./images/book/'.$hinh.'"></a></td>
+                      <td class="image"><a class="product-image" title="'.$tensp.'" href="product_detail.php?layid='.$id.'"><img width="75" alt="'.$tensp.'" src="./images/book/'.$hinh.'"></a></td>
                       <td><h2 class="product-name"> <a href="product_detail.php?layid='.$id.'">'.$tensp.'</a> </h2></td>
                       <td class="a-center hidden-table"><a title="Edit item parameters" class="edit-bnt" href="#"></a></td>
                       <td class="a-center hidden-table"><span class="cart-price"> <span class="price">'.$gia.'.000 đ</span> </span></td>
@@ -418,7 +418,7 @@ class giohang extends connectDB
 					echo '<li class="item col-lg-3 col-md-3 col-sm-4 col-xs-6">
                 <div class="item-inner">
                   <div class="item-img">
-                    <div class="item-img-info"> <a href="product_detail.php?layid='.$id.'" title="Sample Product" class="product-image"> <img src="./images/book/'.$hinh.'" alt="Sample Product"> </a>
+                    <div class="item-img-info"> <a href="product_detail.php?layid='.$id.'" title="'.$tensp.'" class="product-image"> <img src="./images/book/'.$hinh.'" alt="'.$tensp.'"> </a>
                       <div class="new-label new-top-left">New</div>
                       <div class="item-box-hover">
                         <div class="box-inner">
@@ -434,7 +434,7 @@ class giohang extends connectDB
                   </div>
                   <div class="item-info">
                     <div class="info-inner">
-                      <div class="item-title"> <a href="product_detail.php?layid='.$id.'" title="Sample Product"> '.$tensp.' </a> </div>
+                      <div class="item-title"> <a href="product_detail.php?layid='.$id.'" title="'.$tensp.'"> '.$tensp.' </a> </div>
                       <div class="item-content">
                         <div class="rating">
                           <div class="ratings">
@@ -479,7 +479,7 @@ class giohang extends connectDB
 					$hinh=$row['hinhAnh'];
 					
 					echo '<li class="item first">
-                        <div class="item-inner"><a class="product-image" title="Sample Product" href="./shopping_cart.php"><img alt="Sample Product" src="./images/book/'.$hinh.'"></a>
+                        <div class="item-inner"><a class="product-image" title="'.$tensp.'" href="./shopping_cart.php"><img alt="'.$tensp.'" src="./images/book/'.$hinh.'"></a>
                           <div class="product-details">
                             <div class="access"><a class="btn-remove1" title="Remove This Item" href="?layid='.$id.'">Remove</a> <a class="btn-edit" title="Edit item" href="./shopping_cart.php"><i class="icon-pencil"></i><span class="hidden">Edit item</span></a> </div>
                             <!--access--> <strong>'.$soluong.'</strong> x <span class="price">'.$gia.'.000 đ</span>

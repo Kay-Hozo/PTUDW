@@ -123,11 +123,11 @@ $giaodien = new statusLogin();
             <div class="top-cart-contain pull-right"> 
               <!-- Top Cart -->
               <div class="mini-cart">
-                <div data-toggle="dropdown" data-hover="dropdown" class="basket dropdown-toggle"><a href="shopping_cart.php"><span class="hidden-xs">Giỏ hàng(<?php echo $p->laygiatri("select count(*) from giohang");?>)</span></a></div>
+                <div data-toggle="dropdown" data-hover="dropdown" class="basket dropdown-toggle"><a href="shopping_cart.php"><span class="hidden-xs">Giỏ hàng(<?php echo $p->laygiatri("select count(*) from giohang where maKH={$_SESSION['id']}");?>)</span></a></div>
                 <div>
                   <div class="top-cart-content" style="display: none;">
                     <div class="block-subtitle">
-                      <div class="top-subtotal"><?php echo $p->laygiatri("select count(*) from giohang");?> items, <span class="price"><?php echo $p->subtotal("select*from giohang g left join sanPham s on g.maSP=s.maSP ");?>.000 đ</span> </div>
+                      <div class="top-subtotal"><?php echo $p->laygiatri("select count(*) from giohang where maKH={$_SESSION['id']}");?> items, <span class="price"><?php echo $p->subtotal("select*from giohang g left join sanPham s on g.maSP=s.maSP where maKH={$_SESSION['id']}");?>.000 đ</span> </div>
                       <!--top-subtotal-->
                       <div class="pull-right">
                         <button title="View Cart" class="view-cart" type="button"><a href="shopping_cart.php"><span>Xem giỏ hàng</span></a></button>
@@ -137,7 +137,7 @@ $giaodien = new statusLogin();
                     <!--block-subtitle-->
                     <ul class="mini-products-list" id="cart-sidebar">
                       <?php
-					  $p->ouput_checkout("select*from giohang g left join sanPham s on g.maSP=s.maSP"); 
+					  $p->ouput_checkout("select*from giohang g left join sanPham s on g.maSP=s.maSP where maKH={$_SESSION['id']}"); 
 					  ?>
                     </ul>
                     <div class="actions">
@@ -240,7 +240,13 @@ $giaodien = new statusLogin();
 										  </script>';
 							  }
 							  
-						  }						
+
+						  }
+						  
+						   
+						
+
+						  						
 						  break;
 						
 					  }
@@ -445,7 +451,7 @@ $giaodien = new statusLogin();
                   <div id="related-products-slider" class="product-flexslider hidden-buttons">
                     <div class="slider-items slider-width-col4 products-grid">
                     <?php
-					$p->xuatsp("select * from sanPham order by maSP asc limit 4"); 
+					$p->xuatsp("select * from sanPham order by maSP asc limit 8"); 
 					 
 					?>
            
@@ -473,7 +479,7 @@ $giaodien = new statusLogin();
         <div id="upsell-products-slider" class="product-flexslider hidden-buttons">
           <div class="slider-items slider-width-col4 products-grid">
              <?php
-					$p->xuatsp("select * from sanPham order by maSP desc limit 4"); 
+					$p->xuatsp("select * from sanPham order by maSP desc limit 8"); 
 					?>
             <!-- End Item --> 
             
@@ -552,103 +558,11 @@ $giaodien = new statusLogin();
     </div>
   </div>
   <!-- Footer -->
-<<<<<<< HEAD
- <footer>
-    <section class="footer-navbar">
-      <div class="footer-inner">
-        <div class="container">
-          <div class="row">
-            <div class="col-sm-12 col-xs-12 col-lg-8">
-              <div class="footer-column pull-left collapsed-block">
-                <h4>MEBOOK<a class="expander visible-xs" href="#TabBlock-1">+</a></h4>
-                <div class="tabBlock" id="TabBlock-1">
-                  <ul class="links">
-                    <li class="first"><a href="#" title="How to buy">Giới thiệu</a></li>
-                    <li><a href="#" title="">Điều khoản sử dụng</a></li>
-                    <li><a href="#" title="Payment">Chính sách bảo mật</a></li>
-                    <li><a href="#" title="Shipment&lt;/a&gt;">Chính sách bán hàng</a></li>
-                    <li><a href="#" title="Where is my order?">Phương thức vận chuyển</a></li>
-                    <!--<li class="last"><a href="#" title="Return policy">Return policy</a></li>-->
-                  </ul>
-                </div>
-              </div>
-              <div class="footer-column pull-left collapsed-block">
-                <h4>Tài khoản<a class="expander visible-xs" href="#TabBlock-2">+</a></h4>
-                <div class="tabBlock" id="TabBlock-2">
-                  <ul class="links">
-                    <li class="first"><a title="Your Account" href="login.php">Đăng nhập</a></li>
-                    <li><a title="Information" href="#">Tạo tài khoản</a></li>
-                    <li><a title="Addresses" href="#">Lịch sử mua hàng</a></li>
-                    <li><a title="Addresses" href="#">Chi tiết tài khoản</a></li>
-                    <!--<li><a title="Orders History" href="#">Orders History</a></li>
-                    <li class="last"><a title=" Additional Information" href="#">Additional Information</a></li>-->
-                  </ul>
-                </div>
-              </div>
-              <div class="footer-column pull-left collapsed-block">
-                <h4>Hỗ trợ<a class="expander visible-xs" href="#TabBlock-3">+</a></h4>
-                <div class="tabBlock" id="TabBlock-3">
-                  <ul class="links">
-                    <li class="first"><a href="#" title="privacy policy">Chính sách đổi trả</a></li>
-                    <li><a href="#" title="Search Terms">Chính sách bảo hành</a></li>
-                    <li><a href="#" title="Advanced Search">Chính sách giao hàng</a></li>
-                    <li><a href="contact_us.html" title="Contact Us">Liên hệ</a></li>
-                    <!--<li><a href="#" title="Suppliers">Suppliers</a></li>
-                    <li class=" last"><a href="#" title="Our stores" class="link-rss">Our stores</a></li>-->
-                  </ul>
-                </div>
-              </div>
-            </div>
-            <div class="col-xs-12 col-lg-4">
-              <div class="footer-column-last">
-                <div class="newsletter-wrap collapsed-block">
-                  <h4>Sign up for emails<a class="expander visible-xs" href="#TabBlock-4">+</a></h4>
-                  <div class="tabBlock" id="TabBlock-4">
-                    <form id="newsletter-validate-detail" method="post" action="#">
-                      <div id="container_form_news">
-                        <div id="container_form_news2">
-                          <input type="text" class="input-text required-entry validate-email" value="Enter your email address" onfocus=" this.value='' " title="Sign up for our newsletter" id="newsletter" name="email">
-                          <button class="button subscribe" title="Subscribe" type="submit"><span>Subscribe</span></button>
-                        </div>
-                      </div>
-                    </form>
-                  </div>
-                </div>
-                <div class="social">
-                  <h4>Follow Us</h4>
-                  <ul class="link">
-                    <li class="fb pull-left"><a href="#"></a></li>
-                    <li class="tw pull-left"><a href="#"></a></li>
-                    <li class="googleplus pull-left"><a href="#"></a></li>
-                    <li class="rss pull-left"><a href="#"></a></li>
-                    <li class="pintrest pull-left"><a href="#"></a></li>
-                    <li class="linkedin pull-left"><a href="#"></a></li>
-                    <li class="youtube pull-left"><a href="#"></a></li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="footer-middle">
-        <div class="container">
-          <div class="row">
-            <div style="text-align:center"><a href="index.php"><img src="images/logo/logo.png" height="150" alt=""></a></div>
-            <address>
-            <i class="icon-location-arrow"></i> 12 Nguyễn Văn Bảo,Phường 4 ,Q.Gò Vấp,TP Hồ Chí Minh<i class="icon-mobile-phone"></i><span>0387120640</span> <i class="icon-envelope"></i><a href="mailto:support@magikcommerce.com">lethoa22012020@gmail.com</a>
-            </address>
-          </div>
-        </div>
-      </div>
-     
-    </section>
-  </footer>
-=======
+
   <?php
   	$giaodien->showFooter();
   ?>
->>>>>>> 96fa3837df95e84e3ab5c8478ac73d8e9fe0b63b
+
 </div>
 <div id="mobile-menu">
   <div class="mm-search">

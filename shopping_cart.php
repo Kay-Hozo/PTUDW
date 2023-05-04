@@ -99,7 +99,7 @@ $giaodien = new statusLogin();
               
               </ul>
             </li>
-             <li class="mega-menu"><a href="grid.php" class="level-top"><span>Giới thiệu</span></a></li>
+             <li class="mega-menu"><a href="gioithieu.php" class="level-top"><span>Giới thiệu</span></a></li>
             <li class="mega-menu"><a href="grid.php" class="level-top"><span>Book</span></a>
               <div style="left: 0px; display: none;" class="level0-wrapper dropdown-6col">
                 <div class="container">
@@ -208,28 +208,10 @@ $giaodien = new statusLogin();
                       <th class="a-center" rowspan="1">&nbsp;</th>
                     </tr>
                   </thead>
+
                   
-				 <?php 
-                 $sql="select * from giohang g left join sanPham s on g.maSP=s.maSP where maKH = {$_SESSION['id']}";
-                 $p->load_DS_giohang($sql);
-                 
-                 switch($_REQUEST['nut'])
-                 {
-                     case'Xoa':
-                     {
-                         $sql1="DELETE FROM giohang WHERE maSP = '$layid' and maKH = {$_SESSION['id']}";
-                         if($p->themsuaxoa($sql1)==1)
-                         {
-                             echo " <script>alert('Xóa sản phẩm  thành công')</script>;";
-                         }
-                         else
-                         {
-                             echo " <script>alert('Xóa thất bại')</script>;";
-                         }
-                         break;
-                     }
-                 }
-                 ?>
+				
+
                   <tfoot>
                     <tr class="first last">
                     
@@ -240,6 +222,17 @@ $giaodien = new statusLogin();
                     </tr>
                   
                   </tfoot>
+
+                  <tbody>
+                <?php 
+                 $sql="select * from giohang g left join sanPham s on g.maSP=s.maSP where maKH = {$_SESSION['id']}";
+                 $p->load_DS_giohang($sql);
+                 
+                 
+               
+                 ?>
+                  </tbody>
+
                 </table>
               </fieldset>
             </form>
@@ -248,11 +241,22 @@ $giaodien = new statusLogin();
           <div class="cart-collaterals row">
             <div class="col-sm-4">
               <div class="shipping">
-                <h3>Ước tính vận chuyển và thuế</h3>
+                <h3>Địa chỉ giao hàng</h3>
                 <div class="shipping-form">
                   <form id="shipping-zip-form" method="post" action="#">
-                    <p>Nhập địa chỉ giao hàng</p>
                     <ul class="form-list">
+                    <li>
+                        <label for="postcode">Họ tên người nhận</label>
+                        <div class="input-box">
+                          <input type="text" name="txtten" id="txtten" class="input-text validate-postcode" placeholder="Nhập họ tên người nhận">
+                        </div>
+                      </li>
+                      <li>
+                        <label for="postcode">Số điện thoại</label>
+                        <div class="input-box">
+                          <input type="text" name="huyen" id="huyen" class="input-text validate-postcode" placeholder="Ví dụ:038712xxxx(10 ký tự số)">
+                        </div>
+                      </li>
                       <li>
                         <label class="required" for="country"><em>*</em>Quốc gia</label>
                         <div class="input-box">
@@ -298,14 +302,26 @@ $giaodien = new statusLogin();
                         </div>
                       </li>
                       <li>
-                        <label for="postcode">Zip/Postal Code</label>
+                        <label for="postcode">Quận/Huyện</label>
                         <div class="input-box">
-                          <input type="text" name="estimate_postcode" id="postcode" class="input-text validate-postcode">
+                          <input type="text" name="huyen" id="huyen" class="input-text validate-postcode">
+                        </div>
+                      </li>
+                       <li>
+                        <label for="postcode">Phường/Xã</label>
+                        <div class="input-box">
+                          <input type="text" name="phuong" id="phuong" class="input-text validate-postcode">
+                        </div>
+                      </li>
+                      <li>
+                        <label for="postcode">Địa chỉ</label>
+                        <div class="input-box">
+                          <input type="text" name="DC" id="DC" class="input-text validate-postcode">
                         </div>
                       </li>
                     </ul>
                     <div class="buttons-set11">
-                      <button class="button get-quote" title="Get a Quote" type="button"><span>Nhận báo giá</span></button>
+                      <button class="button get-quote" title="Get a Quote" type="button" id="ship" name="ship"><span>Nhận báo giá</span></button>
                     </div>
                     <!--buttons-set11-->
                   </form>
@@ -322,7 +338,56 @@ $giaodien = new statusLogin();
                   <button value="Apply Coupon" class="button coupon " title="Apply Coupon" type="button"><span>Áp dụng phiếu giảm giá</span></button>
                 </form>
               </div>
+            <div >
+             <div class="shipping">
+                <h3>Phương thức thanh toán</h3>
+                <div class="shipping-form">
+                  <form id="shipping-zip-form" method="post" action="#">
+                    <ul class="form-list">
+                    <li>
+                       <div class="input-box">
+                          <select title="State/Province" name="pttt" id="pttt">
+                            <option value="">Vui lòng chọn phương thức thanh toán</option>
+                            <option value="1" title="Alabama">Thanh toán khi nhận hàng</option>
+                            <option value="2" title="Alaska">Ví MOMO</option>
+                            <option value="3" title="American Samoa">Ví ZaloPay</option>
+                            <option value="4" title="Arizona">Ví VNPay</option>
+                            <option value="5" title="Arkansas">Thẻ tín dụng ATM</option>
+                           
+                            </select>
+                         </div>
+                      </li>
+                      </ul>
+                    </form>
+                   </div>
+               </div>
             </div>
+            <div >
+             <div class="shipping"><!--các bước làm chức năng đặt hàng
+                                        B1:lấy thông tin 
+                                         - lấy thông tin khách hàng
+                                          - lấy thông tin giỏ hàng
+                                           - tính tiền ship 
+                                        B2: tính toán tổng tiền
+                                          - đơn giá*soluong sp + ship=tổng tiền
+                                        B3: lưu vào csdl bảng hóa đơn và chi tiết hóa đơn
+                                        -->
+                <h3>Phí vận chuyển</h3>
+                <div class="shipping-form">
+                  <form id="shipping-zip-form" method="post" action="#">
+                    <ul class="form-list">
+                    <li>
+                       <div class="input-box">
+                           <input type="text" name="phiship" id="phiship" class="input-text validate-postcode">
+                         </div>
+                      </li>
+                      </ul>
+                    </form>
+                   </div>
+               </div>
+            </div>
+            </div>
+            
             <div class="totals col-sm-4">
               <h3>Tổng cộng giỏ hàng</h3>
               <div class="inner">
@@ -345,6 +410,7 @@ $giaodien = new statusLogin();
               <!--inner--> 
               
             </div>
+          
           </div>
           
           <!--cart-collaterals--> 
