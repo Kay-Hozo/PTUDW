@@ -55,9 +55,7 @@
                                       <div class="box-inner">
                                         <div class="actions">
                                           <div class="add_cart">
-										  <form method="POST">
-                                            <a href="?layid='.$id.'"><button class="button btn-cart" type="submit" id="nut" name="nut" value="Add to Cart"><span>Thêm vào giỏ hàng</span></button></a>
-											</form>
+                                           <a href="addToCart.php?product_id='.$id.'"> <button class="button btn-cart" type="submit" name="nut" id="nut" value="Add to Cart" ><span>Add to Cart</span></button></a>
                                           </div>
                                           <div class="product-detail-bnt"><a href="quick_view.php?layid='.$id.'" class="button detail-bnt"><span>Quick View</span></a></div>
                                           
@@ -118,7 +116,7 @@
                                       <div class="box-inner">
                                         <div class="actions">
                                           <div class="add_cart">
-                                           <a href="?layid='.$id.'"> <button class="button btn-cart" type="submit" name="nut" id="nut" value="Add to Cart" ><span>Add to Cart</span></button></a>
+                                           <a href="addToCart.php?product_id='.$id.'"> <button class="button btn-cart" type="submit" name="nut" id="nut" value="Add to Cart" ><span>Add to Cart</span></button></a>
                                           </div>
                                           <div class="product-detail-bnt"><a href="quick_view.php?layid='.$id.'" class="button detail-bnt"><span>Quick View</span></a></div>
                                           

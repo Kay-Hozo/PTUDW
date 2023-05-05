@@ -37,7 +37,7 @@
 				$sql = "SELECT maTK, tenTK, matKhau, ten, phanQuyen FROM taiKhoan WHERE tenTK = '$user' AND matKhau = '$pass' LIMIT 1";
 				$result = mysql_query($sql, $conn);
 				$row = mysql_num_rows($result);
-				var_dump();
+				
 				if($row == 1)
 				{
 					session_start();
@@ -83,6 +83,7 @@
 		
 		public function logout() 
 		{
+			session_start();
 			session_destroy();
 			echo "<script>window.location.replace('./index.php')</script>";
 			exit();

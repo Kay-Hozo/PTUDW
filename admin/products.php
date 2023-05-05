@@ -5,7 +5,15 @@ session_start();
 
 if(isset($_SESSION["id"]) && isset($_SESSION["user"]) && isset($_SESSION["pass"]) && isset($_SESSION["ten"]) && isset($_SESSION["quyen"]))
 {
-	$login->confirmLogin($_SESSION["id"], $_SESSION["user"], $_SESSION["pass"], $_SESSION["ten"], $_SESSION["quyen"]);
+	if($_SESSION["quyen"] == 1)
+	{
+		$login->confirmLogin($_SESSION["id"], $_SESSION["user"], $_SESSION["pass"], $_SESSION["ten"], $_SESSION["quyen"]);	
+	}
+	else
+	{
+		echo "<script>alert('Bạn không có quyền truy cập vào trang!')</script>";
+		header('location: login.php');	
+	}
 }
 else
 {
@@ -56,7 +64,7 @@ else
 						<ul class="dropdown-menu" role="menu">
 							<li><a href="#"><svg class="glyph stroked male-user"><use xlink:href="#stroked-male-user"></use></svg> Profile</a></li>
 							<li><a href="#"><svg class="glyph stroked gear"><use xlink:href="#stroked-gear"></use></svg> Settings</a></li>
-							<li><a href="#"><svg class="glyph stroked cancel"><use xlink:href="#stroked-cancel"></use></svg> Logout</a></li>
+							<li><a href="./logout.php"><svg class="glyph stroked cancel"><use xlink:href="#stroked-cancel"></use></svg> Logout</a></li>
 						</ul>
 					</li>
 				</ul>
@@ -102,7 +110,6 @@ else
 				</ul>
 			</li>
 			<li role="presentation" class="divider"></li>
-			<li><a href="login.php"><svg class="glyph stroked male-user"><use xlink:href="#stroked-male-user"></use></svg> Login Page</a></li>
 		</ul>
 
 	</div><!--/.sidebar-->
@@ -132,7 +139,7 @@ else
 						<div class="tab-content border-0">
 							<div class="tab-pane active" id="sanPham">
 							  <?php 
-							  	$p->showProducts();
+							  	$p->showProductsAdmin();
 							  ?>
 							</div>
 							<div class="tab-pane" id="themSP">

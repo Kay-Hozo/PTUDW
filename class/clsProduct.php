@@ -145,7 +145,7 @@
 			}
 		}
 		
-		public function  showProducts($product_id=0)
+		public function  showProductsAdmin($product_id=0)
         {
             $conn = $this->connect();
 			if($product_id > 0)
@@ -231,5 +231,196 @@
 			
 			$this->closeDB($conn);
         }
+		
+		public function showCategory($cate_check = 0)
+		{
+			$sql = "SELECT maDM, tenDM FROM danhMuc ";	
+			$conn = $this->connect();	
+			$result = mysql_query($sql, $conn);
+			$row = mysql_num_rows($result);
+			
+			if($row > 0)
+			{
+				echo "<ul class='prod-category'>";
+				while ($category = mysql_fetch_array($result))
+				{			
+				
+					if($category['maDM'] == $row)
+					{
+						echo "<li class='last'><a href='?category={$category['maDM']}'>{$category['tenDM']}</li>";
+					}
+					else if($category['maDM'] == $cate_check)
+					{
+						echo "<li><a style='text-decoration: underline' href='?category={$category['maDM']}'>{$category['tenDM']}</li>";
+					}
+					else
+					{
+						echo "<li><a href='?category={$category['maDM']}'>{$category['tenDM']}</li>";
+					}		
+				}
+				echo "</ul>";
+			}
+			else
+			{
+				echo "<li><a href='#'>Danh mục rỗng</li>";		
+			}
+			$this->closeDB($conn);
+		}
+		
+		public function showProducts($cate_check = 0)
+		{
+			if($cate_check > 0)
+			{
+				$sql = "
+					SELECT maSP, tenSP, danhGia, hinhAnh, gia, giamGia
+					FROM sanPham sp left join danhMucSP dm ON sp.maSP = dm.maSanPham 
+					WHERE maDanhMuc = {$cate_check}
+				";	
+			}
+			else
+			{
+				$sql = "
+					SELECT maSP, tenSP, danhGia, hinhAnh, gia, giamGia
+					FROM sanPham sp left join danhMucSP dm ON sp.maSP = dm.maSanPham 
+				";	
+			}
+			$conn = $this->connect();	
+			$result = mysql_query($sql, $conn);
+			$row = mysql_num_rows($result);
+			
+			if($row > 0)
+			{
+				echo "<ul class='products-grid'>";
+				while ($product = mysql_fetch_array($result))
+				{			
+					$giaHienTai = $product['gia'] - $product['giamGia'];
+					$danhGia = $product['danhGia'] * 20;
+					echo 
+					"
+					<li class='item col-lg-3 col-md-3 col-sm-4 col-xs-6'>
+                  <div class='item-inner'>
+                    <div class='item-img'>
+                      <div class='item-img-info'> <a href='product_detail.php?layid={$product['maSP']}' title='Sample Product' class='product-image'> <img src='images/book/{$product['hinhAnh']}' alt='Sample Product'> </a>
+                        <div class='item-box-hover'>
+                          <div class='box-inner'> <div class='actions'>
+                            <div class='add_cart'>
+									<a href='addToCart.php?product_id={$product['maSP']}&qty=1' class='btn-add-cart'><span><i class='fa-solid fa-cart-shopping'></i></span></a>
+									
+                            </div>
+                            <div class='product-detail-bnt'><a href='quick_view.php?layid={$product['maSP']}' class='button detail-bnt'><span>Quick View</span></a></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class='item-info'>
+                      <div class='info-inner'>
+                        <div class='item-title'> <a href='product_detail.php?layid={$product['maSP']}' title='Sample Product'>{$product['tenSP']}</a> </div>
+                        <div class='item-content'>
+                          <div class='rating'>
+                            <div class='ratings'>
+                              <div class='rating-box'>
+                                <div class='rating' style='width:{$danhGia}%'></div>
+                              </div>
+                              <p class='rating-links'> <a href='#'>1 Review(s)</a> <span class='separator'>|</span> <a href='#'>Add Review</a> </p>
+                            </div>
+                          </div>
+                          <div class='item-price'>
+                            <div class='price-box'> <span class='regular-price'> <span class='price'>{$giaHienTai}.000</span> </span> </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+					";		
+				}
+				echo "</ul>";
+			}
+			else
+			{
+				echo "Không có dữ liệu";		
+			}
+			$this->closeDB($conn);
+		}
+		
+		public function getValue($sql)
+		{
+			$conn = $this->connect();
+			$result = mysql_query($sql, $conn);
+			$row = mysql_fetch_array($result);
+			
+			if($row > 0)
+			{
+				return $row[0];
+			}
+			else
+			{
+				return "Tất cả sách";
+			}
+			
+			$this->closeDB($conn);
+		}
+		public function laygiatri($sql,$maKH)
+		{
+			
+			 if($maKH<0)
+			 {
+				return 0;
+			 }
+			 else
+			 {
+				  $link=$this->connect();
+				 $ketqua=mysql_query($sql,$link);
+				 $i=mysql_num_rows($ketqua);
+				 $giatri="";
+				 if($i>0)
+				 {
+					
+				 while($row=mysql_fetch_array($ketqua))
+					 {
+						
+						 $giatri=$row[0];
+						 
+					 }
+					 return $giatri;
+				 }
+			 }
+		}
+		public function subtotal($sql,$maKH)
+		{
+			if($maKH<0)
+			{
+				return 0;
+			}
+			else
+			{
+			$link=$this->connect();
+			$kq=mysql_query($sql,$link);
+			$i=mysql_num_rows($kq);
+			if($i>0)
+			{
+				$thanhtien=0;
+				while($row=mysql_fetch_array($kq))
+				{
+					
+					$id=$row['maSP'];
+					$tensp=$row['tenSP'];
+					$mota=$row['moTa'];
+					$gia=$row['gia'];
+					$soluong=$row['soluong'];
+					$hinh=$row['hinhAnh'];
+					$tongtien=$gia*$soluong;
+					$thanhtien+=$tongtien;
+					
+				}
+				return  $thanhtien;
+			}
+			else
+			{
+				echo 'Không có dữ liệu';
+			}
+			$this->closeDB($link);
+			}
+		}
     }
 ?>
