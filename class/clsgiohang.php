@@ -533,6 +533,10 @@ class giohang extends connectDB
 			{
 				$row=mysql_fetch_array($kq);
 				$id=$row['maTK'];
+				//$ho=$row['ho'];
+//				$ten=$row['ten'];
+//				$name=$ho+" "+$ten;
+				$sdt=$row['sdt'];
 				$quocgia=$row['quocgia'];
 				$tp=$row['tinh_thanhpho'];
 				$quan=$row['quan_huyen'];
@@ -542,18 +546,18 @@ class giohang extends connectDB
               <div class="shipping">
                 <h3>Địa chỉ giao hàng</h3>
                 <div class="shipping-form">
-                  <form id="shipping-zip-form" method="post" action="./class/clsgiohang.php" enctype="multipart/form-data">
+                 <!-- <form id="shipping-zip-form" method="post" action="./class/clsgiohang.php" enctype="multipart/form-data">-->
                     <ul class="form-list">
                     <li>
                         <label for="postcode">Họ tên người nhận</label>
                         <div class="input-box">
-                          <input type="text" name="txtten" id="txtten" class="input-text validate-postcode" placeholder="Nhập họ tên người nhận">
+                          <input type="text" name="txtten" id="txtten" class="input-text validate-postcode" placeholder="Nhập họ tên người nhận" >
                         </div>
                       </li>
                       <li>
                         <label for="postcode">Số điện thoại</label>
                         <div class="input-box">
-                          <input type="text" name="huyen" id="huyen" class="input-text validate-postcode" placeholder="Ví dụ:038712xxxx(10 ký tự số)">
+                          <input type="text" name="sdt" id="sdt" class="input-text validate-postcode" placeholder="Ví dụ:038712xxxx(10 ký tự số)" value="'.$sdt.'">
                         </div>
                       </li>
                       <li>
@@ -572,30 +576,13 @@ class giohang extends connectDB
                           <select title="State/Province" name="region_id" id="region_id">
                             <option value="">Vui lòng chọn tỉnh , thành phố</option>
                             <option value="'.$tp.'" title="Alabama" selected="selected">'.$tp.'</option>
-                            <option value="2" title="Alaska">Bến Tre</option>
-                            <option value="3" title="American Samoa">Cần Thơ</option>
-                            <option value="4" title="Arizona">Tiền Giang</option>
-                            <option value="5" title="Arkansas">Hà Giang</option>
-                            <option value="6" title="Armed Forces Africa">Bạc liêu</option>
-                            <option value="7" title="Armed Forces Americas">Long An</option>
-                            <option value="8" title="Armed Forces Canada">Sóc Trăng</option>
-                            <option value="9" title="Armed Forces Europe">Đắc Lắc</option>
-                            <option value="10" title="Armed Forces Middle East">Gia Lai</option>
-                            <option value="11" title="Armed Forces Pacific">Kiên Giang</option>
-                            <option value="12" title="California">Hậu Giang</option>
-                            <option value="13" title="Colorado">An Giang</option>
-                            <option value="14" title="Connecticut">Bạc Liêu</option>
-                            <option value="15" title="Delaware">Cà Mau</option>
-                            <option value="16" title="District of Columbia">Bình Định</option>
-                            <option value="17" title="Federated States Of Micronesia">Đồng Nai</option>
-                            <option value="18" title="Florida">Bình Dương</option>
-                            <option value="19" title="Georgia">Trà Vinh</option>
-                            <option value="20" title="Guam">Hậu Giang</option>
-                            <option value="21" title="Hawaii">Ninh Bình</option>
-                            <option value="22" title="Idaho">Đà Nẵng</option>
-                            <option value="23" title="Illinois">Ninh Thuận</option>
-                            <option value="24" title="Indiana">Bình Thuận</option>
-                           
+                            <option value="Thành phố Hồ Chí Minh" title="Alaska">Thành phố Hồ Chí Minh</option>
+                            <option value="Cần Thơ" title="American Samoa">Cần Thơ</option>
+                            <option value="Tiền Giang" title="Arizona">Tiền Giang</option>
+                            <option value="Hà Giang" title="Arkansas">Hà Giang</option>
+                            <option value="Bạc liêu" title="Armed Forces Africa">Bạc liêu</option>
+                            <option value="Long An" title="Armed Forces Americas">Long An</option>
+                            
                           </select>
                           <input type="text" style="display:none;" class="input-text" title="State/Province" name="region" id="region">
                         </div>
@@ -619,11 +606,11 @@ class giohang extends connectDB
                         </div>
                       </li>
                     </ul>
-                    <!--<div class="buttons-set11">
-                      <button class="button get-quote" title="Get a Quote" type="submit" id="ship" name="ship" value="Nhận báo giá"><span>Nhận báo giá</span></button>
-                    </div>-->
+                    <div class="buttons-set11">
+                      <button class="button get-quote" title="Get a Quote" type="submit" id="ship" name="ship" value="Thay đổi địa chỉ"><span>Thay đổi địa chỉ</span></button>
+                    </div>
                     <!--buttons-set11-->
-                  </form>
+                <!--  </form>-->
                 </div>
               </div>
             </div>';

@@ -194,11 +194,12 @@ $ship=0;
     <div class="main container">
       <div class="col-main">
         <div class="cart">
+        <form method="post" action="#">
           <div class="page-title">
             <h2>Giỏ hàng</h2>
           </div>
           <div class="table-responsive">
-            <form method="post" action="#">
+            <!--<form method="post" action="#">-->
               <input type="hidden" value="Vwww7itR3zQFe86m" name="form_key">
               <fieldset>
                 <table class="data-table cart-table" id="shopping-cart-table">
@@ -241,7 +242,7 @@ $ship=0;
 
                 </table>
               </fieldset>
-            </form>
+          <!--  </form>-->
           </div>
           <!-- BEGIN CART COLLATERALS -->
           <div class="cart-collaterals row">
@@ -252,18 +253,18 @@ $ship=0;
             <div class="col-sm-4">
               <div class="discount">
                 <h3>Mã giảm giá </h3>
-                <form method="post" action="#" id="discount-coupon-form">
+               <!-- <form method="post" action="#" id="discount-coupon-form">-->
                   <label for="coupon_code">Nhập mã giảm giá của bạn nếu có</label>
                   <input type="hidden" value="0" id="remove-coupone" name="remove">
                   <input type="text" name="coupon_code" id="coupon_code" class="input-text fullwidth">
                   <button value="Apply Coupon" class="button coupon " title="Apply Coupon" type="button"><span>Áp dụng phiếu giảm giá</span></button>
-                </form>
+                <!--</form>-->
               </div>
             <div >
              <div class="shipping">
                 <h3>Phương thức thanh toán</h3>
                 <div class="shipping-form">
-                  <form id="shipping-zip-form" method="post" action="#">
+                 <!-- <form id="shipping-zip-form" method="post" action="#">-->
                     <ul class="form-list">
                     <li>
                        <div class="input-box">
@@ -279,7 +280,7 @@ $ship=0;
                          </div>
                       </li>
                       </ul>
-                    </form>
+                    <!--</form>-->
                    </div>
                </div>
             </div>
@@ -295,17 +296,27 @@ $ship=0;
                                         -->
                 <h3>Phí vận chuyển</h3>
                 <div class="shipping-form">
-                  <form id="shipping-zip-form" method="post" action="#">
+                  <!--<form id="shipping-zip-form" method="post" action="#">-->
                     <ul class="form-list">
                     <li>
                        <div class="input-box">
                            <input type="text" name="phiship" id="phiship" class="input-text validate-postcode" value="<?php 
-						 echo  $p->ship("select*from taiKhoan where maTK='$maKH'");
+						 //echo  $p->ship("select*from taiKhoan where maTK='$maKH'");
+						 $khuvuc=$_REQUEST['region_id'];
+						 if($khuvuc=='Thành phố Hồ Chí Minh')
+						 {
+							 $ship=0;
+						 }
+						 else
+						 {
+							 $ship=30;
+						 }
+						 echo $ship;
 						   ?>">
                          </div>
                       </li>
                       </ul>
-                    </form>
+                    <!--</form>-->
                    </div>
                </div>
             </div>
@@ -327,16 +338,28 @@ $ship=0;
                   <tr>
                       <td colspan="1" class="a-left"><strong>Phí vận chuyển</strong></td>
                       <?php 
-				 $sql1="select*from taiKhoan where maTK={$maKH}";
-				 $p->ship_giohang($sql1);
-				 ?>
+						 
+						 $khuvuc=$_REQUEST['region_id'];
+						 if($khuvuc=='Thành phố Hồ Chí Minh')
+						 {
+							 $ship=0;
+						 }
+						 else
+						 {
+							 $ship=30;
+						 }
+						 echo '<td class="a-right"><strong><span class="price">'.$ship.'.000 đ</span></strong></td>';
+						   ?>
+                      
+                     
                   </tr>
                   <tr>
                       <td colspan="1" class="a-left"><strong> Subtotal</strong> </td>
                       <td class="a-right"><strong><span class="price"><?php 
 					$tong=$p->subtotal("select*from giohang g left join sanPham s on g.maSP=s.maSP where maKH={$maKH}",$maKH);
-					  $phi=$p->ship("select * from taiKhoan where maTK='$maKH'");
-					  $sub=$tong + $phi;
+					  
+					  $phi=$ship;
+					  $sub= $tong + $phi;
 					  echo $sub;
 					  ?>.000 đ</span></strong></td>
                     </tr>
@@ -348,9 +371,10 @@ $ship=0;
                 </table>
                 <ul class="checkout">
                   <li>
-                  <form method="post" action="#">
-                    <button class="button btn-proceed-checkout" title="Proceed to Checkout" type="submit" id="thanhtoan" name="thanhtoan"><span>Xác nhận thanh toán</span></button>
-                    </form>
+                  
+                    <button class="button btn-proceed-checkout" title="Proceed to Checkout" type="submit" id="thanhtoan" name="thanhtoan" value="Xác nhận thanh toán"><span>Xác nhận thanh toán</span></button>
+               
+                    
                   </li>
                 
                   <li><a title="Checkout with Multiple Addresses" href="#">Thanh toán với nhiều địa chỉ</a> </li>
@@ -366,6 +390,47 @@ $ship=0;
           <!--cart-collaterals--> 
           
         </div>
+        </form>
+        <?php
+		switch($_POST['thanhtoan'])
+		{
+			case'Xác nhận thanh toán':
+			{
+				$ten=$_REQUEST['txtten'];
+				$sdt=$_REQUEST['sdt'];
+				$quocgia=$_REQUEST['country_id'];
+				$tp=$_REQUEST['region_id'];
+				$quan=$_REQUEST['huyen'];
+				$phuong=$_REQUEST['phuong'];
+				$dc=$_REQUEST['DC'];
+				$thoigiandat=getdate();
+				$thanhtoan=$_REQUEST['pttt'];
+				$tongtien=$sub;
+				echo $tp;
+				break;
+			}
+			case'Thay đổi địa chỉ':
+			{
+				$sdt=$_REQUEST['sdt'];
+				$quocgia=$_REQUEST['country_id'];
+				$tp=$_REQUEST['region_id'];
+				$quan=$_REQUEST['huyen'];
+				$phuong=$_REQUEST['phuong'];
+				$dc=$_REQUEST['DC'];
+				$sql="update taiKhoan set sdt='$sdt',quocgia='$quocgia',tinh_thanhpho='$tp',quan_huyen='$quan',phuong_xa='$phuong',diaChi='$dc' where maTK='$maKH'";
+				if($p->themsuaxoa($sql)==1)
+				{
+					echo '<script>Cập nhật thành công</script>';
+				}
+				else
+				{
+					echo '<script>Cập nhật thất bại</script>';
+				}
+				
+				break;
+			}
+		}
+		?>
         <div class="crosssel wow bounceInUp animated">
           <div class="">
             <h2>Dựa trên lựa chọn của bạn,bạn có thể quan tâm đến các mục sau:</h2>

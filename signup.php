@@ -1,5 +1,6 @@
 <?php
 	session_start();
+
 	include ("class/clsSignup.php");
 	$p = new signin();
 	if(isset($_SESSION['id']))
@@ -10,6 +11,10 @@
 	{
 		$maKH=-1;
 	}
+
+	include ("class/clsLogin.php");
+	$p = new login();
+
 ?>
 <?php 
  include ("./class/clsStatusLogin.php");
@@ -33,7 +38,7 @@
 <!-- Favicons Icon -->
 <link rel="icon" href="http://demo.magikthemes.com/skin/frontend/base/default/favicon.ico" type="image/x-icon" />
 <link rel="shortcut icon" href="http://demo.magikthemes.com/skin/frontend/base/default/favicon.ico" type="image/x-icon" />
-<title>Classic premium HTML5 &amp; CSS3 template</title>
+<title>Đăng ký</title>
 
 <!-- Mobile Specific -->
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -49,6 +54,7 @@
 <link rel="stylesheet" href="css/flexslider.css" type="text/css">
 <link rel="stylesheet" type="text/css" href="css/jquery.mobile-menu.css">
 <link rel="stylesheet" type="text/css" href="css/jquery.bxslider.css">
+<link rel="stylesheet" type="text/css" href="css/main.css"
 
 <!-- Google Fonts -->
 <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,200italic,300,300italic,400,400italic,600,600italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
@@ -176,35 +182,95 @@
           <h2>Đăng ký, tạo một tài khoản để có nhiều trải nghiệm </h2>
         </div>
         <fieldset class="col-12">
-          
-          <!--<div class="col-1 new-users"><strong>Khách hàng mới</strong>
-            <div class="content">
-              <p>Bằng cách tạo tài khoản với cửa hàng của chúng tôi ,bạn sẽ có thể chuyển qua quy trình thanh toán nhanh hơn,lưu trữ nhiều địa chỉ giao hàng , xem và theo dõi đơn hàng trong tài khoản của bạn ,v.v.</p>
-              <div class="buttons-set">
-                <button class="button create-account"><span>Tạo tài khoản</span></button>
-              </div>
-            </div>
-          </div>-->
-          <!--<div class="col-2 registered-users"><strong></strong>-->
             <div class="content">
               <p>Nếu bạn đã có tài khoản , vui lòng <a class="required" class="forgot-word" href="login.php"><em>đăng nhập</em></a></p>
               <form method="post">
               
               <ul class="form-list">
                 <li>
-                  <label for="email">Email/Số Điện Thoại <span class="required">*</span></label>
+                  <label for="email">Tên Tài khoản <span class="required">*</span></label>
                   <br>
-                  <input type="text" title="Email Address" class="input-text" id="email" value="KhachHang" name="txtuser">
+                  <input type="text" title="Email Address" class="input-text" id="" value="" name="txtuser" required>
                 </li>
                 <li>
-                  <label for="pass">Password <span class="required">*</span></label>
+                  <label for="pass">Mật khẩu <span class="required">*</span></label>
                   <br>
-                  <input type="password" title="Password" id="pass" value="khachhang" class="input-text" name="txtpass">
+                  <input type="password" title="Password" id="pass" value="khachhang" class="input-text" name="txtpass" required>
                 </li>
                 <li>
-                  <label for="pass"> Nhập lại Password <span class="required">*</span></label>
+                  <label for="pass"> Nhập lại mật khẩu <span class="required">*</span></label>
                   <br>
                   <input type="password" title="Password" id="pass" value="khachhang" class="input-text" name="configpass">
+                </li>
+                <li>
+                  <label for=""> Họ <span class="required mr-2">*</span></label>
+                  <input type="text" title="" id="" value="Nguyễn Văn" class="input-text input-w-30" name="txtHo" placeholder="Nguyễn Văn">
+                  <label for="" class="ml-4"> Tên <span class="required">*</span></label>
+                  <input type="text" title="Tên" id="" value="Anh" class="input-text input-w-30" name="txtTen" placeholder="Anh">
+                </li>
+                <li>
+                  <label for="pass"> Số điện thoại <span class="required">*</span></label>
+                  <br>
+                  <input type="text" title="Số điện thoại" id="" value="" class="input-text" name="txtsdt" required>
+                </li>
+                <li>
+                  <label for="pass"> Email</label>
+                  <br>
+                  <input type="email" title="email" id="pass" value="abc@gmail.com" class="input-text" name="txtemail">
+                </li>
+                <li>
+                  <label for="pass"> Quốc gia <span class="required">*</span></label>
+                  <br>
+                  <select title="Country" class="validate-select" id="country" name="txtQG">
+                    <option value="Việt Nam">Việt Nam</option>
+                    <option value="Anh">Anh</option>
+                 </select>
+                </li>
+                <li>
+                  <label for="pass"> Thành phố <span class="required">*</span></label>
+                  <br>
+                      <select ="State/Province" name="txtTP" id="region_id">
+                        <option value="NULL">Vui lòng chọn tỉnh , thành phố</option>
+                        <option value="TP Hồ Chí Minh" selected>TP Hồ Chí Minh</option>
+                        <option value="Bến Tre">Bến Tre</option>
+                        <option value="Cần Thơ">Cần Thơ</option>
+                        <option value="Tiền Giang">Tiền Giang</option>
+                        <option value="Hà Giang">Hà Giang</option>
+                        <option value="Bạc liêu">Bạc liêu</option>
+                        <option value="Long An">Long An</option>
+                        <option value="Sóc Trăng">Sóc Trăng</option>
+                        <option value="Đắc Lắc">Đắc Lắc</option>
+                        <option value="Gia Lai">Gia Lai</option>
+                        <option value="Kiên Giang">Kiên Giang</option>
+                        <option value="Hậu Giang">Hậu Giang</option>
+                        <option value="An Giang">An Giang</option>
+                        <option value="Bạc Liêu">Bạc Liêu</option>
+                        <option value="Cà Mau">Cà Mau</option>
+                        <option value="Bình Định">Bình Định</option>
+                        <option value="Đồng Nai">Đồng Nai</option>
+                        <option value="Bình Dương">Bình Dương</option>
+                        <option value="Trà Vinh">Trà Vinh</option>
+                        <option value="Hậu Giang">Hậu Giang</option>
+                        <option value="Ninh Bình">Ninh Bình</option>
+                        <option value="Đà Nẵng">Đà Nẵng</option>
+                        <option value="Ninh Thuận">Ninh Thuận</option>
+                        <option value="Bình Thuận">Bình Thuận</option>
+                      </select>
+                </li>
+                <li>
+                  <label for=""> Quận Huyện <span class="required">*</span></label>
+                  <br>
+                  <input type="text" title="" id="" value="Gò Vấp" class="input-text" name="txtHuyen">
+                </li>
+                <li>
+                  <label for=""> Phường <span class="required">*</span></label>
+                  <br>
+                  <input type="text" title="" id="" value="Phường 4" class="input-text" name="txtPhuong">
+                </li>
+                <li>
+                  <label for="diaChi"> Địa chỉ <span class="required">*</span></label>
+                  <br>
+                  <input type="text" title="" id="" value="12 Nguyễn Văn Bảo" class="input-text" name="txtDiaChi" required>
                 </li>
               </ul>
               <p class="required">*Bắt buộc</p>
@@ -227,22 +293,17 @@
 			{
 				$user = $_REQUEST["txtuser"];
 				$pass = $_REQUEST["txtpass"];
-        		//$config = $_REQUEST["configpass"];
+				$ho = $_REQUEST["txtHo"];
+				$ten = $_REQUEST["txtTen"];
+				$email = $_REQUEST["txtemail"];
+				$sdt = $_REQUEST["txtsdt"];
+				$quocGia = $_REQUEST["txtQG"];
+				$thanhPho = $_REQUEST["txtTP"];
+				$phuong = $_REQUEST["txtPhuong"];
+				$huyen = $_REQUEST["txtHuyen"];
+				$diaChi = $_REQUEST["txtDiaChi"];
 				
-				$p->mysignup($user, $pass);
-			/* if($p->ThemXoaSuaTK("INSERT INTO taikhoan(tenTK,matKhau) VALUES ('$user', '$pass', '$config ')")==1)
-					{
-						echo '<script language="javascript">
-								alert("Thêm sản phẩm thành công");
-								</script>';
-						echo '<script language="javascript">
-								window.location.replace('./login.php');
-								</script>';						
-					}
-					else
-					{
-						echo 'Thêm sản phẩm không thành công';
-					}*/
+				$p->mySignup($user, $pass, $ho, $ten, $sdt, $quocGia, $thanhPho, $phuong, $huyen, $diaChi, $email);
 				break;	
 			}	
 		}
