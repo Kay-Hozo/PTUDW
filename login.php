@@ -70,7 +70,7 @@ $giaodien = new statusLogin();
             </li>
             <li class="level0 parent drop-menu"><a href="#"><span>Trang</span></a>
               <ul class="level1">
-                <li class="level1 first"><a href="grid.php"><span>Danh mục sản phẩm</span></a></li>
+                <li class="level1 first"><a href="show_product.php"><span>Danh mục sản phẩm</span></a></li>
               
                 <li class="level1 nav-10-4"><a href="shopping_cart.php"><span>Giỏ hàng</span></a></li>
                 <li class="level1 first parent"><a href="checkout.php"><span>Thanh toán</span></a>  </li>
@@ -84,26 +84,26 @@ $giaodien = new statusLogin();
               </ul>
             </li>
              <li class="mega-menu"><a href="#" class="level-top"><span>Giới thiệu</span></a></li>
-            <li class="mega-menu"><a href="grid.php" class="level-top"><span>Book</span></a>
+            <li class="mega-menu"><a href="show_product.php" class="level-top"><span>Book</span></a>
               <div style="left: 0px; display: none;" class="level0-wrapper dropdown-6col">
                 <div class="container">
                   <div class="level0-wrapper2">
                     <div class="col-1">
                       <div class="nav-block nav-block-center">
                         <ul class="level0">
-                          <li class="level1 nav-6-1 parent item"><a href="grid.php" class=""><span>Sách giáo khoa</span></a>
+                          <li class="level1 nav-6-1 parent item"><a href="show_product.php" class=""><span>Sách giáo khoa</span></a>
                             
                           </li>
-                          <li class="level1 nav-6-1 parent item"><a href="grid.php"><span>Sách tham khảo</span></a>
+                          <li class="level1 nav-6-1 parent item"><a href="show_product.php"><span>Sách tham khảo</span></a>
                            
                           </li>
-                          <li class="level1 nav-6-1 parent item"><a href="grid.php"><span>Sách ngoại ngữ</span></a>
+                          <li class="level1 nav-6-1 parent item"><a href="show_product.php"><span>Sách ngoại ngữ</span></a>
                            
                           </li>
-                          <li class="level1 nav-6-1 parent item"><a href="grid.php"><span>Sách thiếu nhi</span></a>
+                          <li class="level1 nav-6-1 parent item"><a href="show_product.php"><span>Sách thiếu nhi</span></a>
                             
                           </li>
-                          <li class="level1 nav-6-1 parent item"><a href="grid.php"><span>Sách kinh tế</span></a>
+                          <li class="level1 nav-6-1 parent item"><a href="show_product.php"><span>Sách kinh tế</span></a>
                             
                           </li>
                           
@@ -111,15 +111,15 @@ $giaodien = new statusLogin();
                       </div>
                     </div>
                    
-            <li class="mega-menu"><a href="grid.php" class="level-top"><span>Từ điển</span></a>
+            <li class="mega-menu"><a href="show_product.php" class="level-top"><span>Từ điển</span></a>
              
             </li>
-           <li class="mega-menu"><a href="grid.php" class="level-top"><span>Truyện tranh</span></a>
+           <li class="mega-menu"><a href="show_product.php" class="level-top"><span>Truyện tranh</span></a>
             
             </li>
-         <li class="mega-menu"><a class="level-top" href="grid.php"><span>Tiểu thuyết</span></a>
+         <li class="mega-menu"><a class="level-top" href="show_product.php"><span>Tiểu thuyết</span></a>
             </li>
-            <li class="level0 nav-8 level-top"><a href="grid.php" class="level-top"><span>Đời sống</span></a></li>
+            <li class="level0 nav-8 level-top"><a href="show_product.php" class="level-top"><span>Đời sống</span></a></li>
           
           </ul>
           <div class="menu_top">
@@ -324,7 +324,7 @@ $giaodien = new statusLogin();
     </li>
     <li><a href="#">Pages</a>
       <ul>
-        <li><a href="grid.php">Grid</a></li>
+        <li><a href="show_product.php">Grid</a></li>
         <li> <a href="list.php">List</a></li>
         <li> <a href="product_detail.php">Product Detail</a></li>
         <li> <a href="shopping_cart.php">Shopping Cart</a></li>
@@ -346,9 +346,9 @@ $giaodien = new statusLogin();
         <li><a href="404error.html">404 Error Page</a></li>
       </ul>
     </li>
-    <li><a href="grid.php">Sách </a>
+    <li><a href="show_product.php">Sách </a>
       <ul>
-        <li> <a href="grid.php" class="">Sách giáo khoa</a>
+        <li> <a href="show_product.php" class="">Sách giáo khoa</a>
           <!--<ul>
             <li> <a href="grid.html" class="">Clutch Handbags</a></li>
             <li> <a href="grid.html" class="">Diaper Bags</a></li>
@@ -356,7 +356,7 @@ $giaodien = new statusLogin();
             <li> <a href="grid.html" class="">Hobo handbags</a></li>
           </ul>-->
         </li>
-        <li> <a href="grid.php">Sách tham khảo</a>
+        <li> <a href="show_product.php">Sách tham khảo</a>
           <!--<ul>
             <li> <a href="grid.html">Beaded Handbags</a></li>
             <li> <a href="grid.html">Fabric Handbags</a></li>
@@ -364,7 +364,7 @@ $giaodien = new statusLogin();
             <li> <a href="grid.html">Leather Handbags</a></li>
           </ul>-->
         </li>
-        <li> <a href="grid.php">Sách ngoại ngữ</a>
+        <li> <a href="show_product.php">Sách ngoại ngữ</a>
          <!-- <ul>
             <li> <a href="grid.html">Flat Shoes</a></li>
             <li> <a href="grid.html">Flat Sandals</a></li>
@@ -372,7 +372,7 @@ $giaodien = new statusLogin();
             <li> <a href="grid.html">Heels</a></li>
           </ul>-->
         </li>
-        <li> <a href="grid.php">Sách thiếu nhi</a>
+        <li> <a href="show_product.php">Sách thiếu nhi</a>
          <!-- <ul>
             <li> <a href="grid.html">Bracelets</a></li>
             <li> <a href="grid.html">Necklaces &amp; Pendent</a></li>
@@ -380,7 +380,7 @@ $giaodien = new statusLogin();
             <li> <a href="grid.html">Pins &amp; Brooches</a></li>
           </ul>-->
         </li>
-        <li> <a href="grid.php">Sách kinh tế</a>
+        <li> <a href="show_product.php">Sách kinh tế</a>
           <!--<ul>
             <li> <a href="grid.html">Casual Dresses</a></li>
             <li> <a href="grid.html">Evening</a></li>
@@ -398,7 +398,7 @@ $giaodien = new statusLogin();
         </li>-->
       </ul>
     </li>
-    <li><a href="grid.php">Truyện tranh</a>
+    <li><a href="show_product.php">Truyện tranh</a>
      <!-- <ul>
         <li> <a href="grid.html" class="">Shoes</a>
           <ul class="level1">
@@ -450,7 +450,7 @@ $giaodien = new statusLogin();
         </li>
       </ul>-->
     </li>
-    <li><a href="grid.php">Từ điển</a>
+    <li><a href="show_product.php">Từ điển</a>
      <!-- <ul>
         <li> <a href="grid.html"><span>Mobiles</span></a>
           <ul>
@@ -502,7 +502,7 @@ $giaodien = new statusLogin();
         </li>
       </ul>-->
     </li>
-    <li><a href="grid.php">Tiểu thuyết</a>
+    <li><a href="show_product.php">Tiểu thuyết</a>
       <!--<ul>
         <li> <a href="grid.html">Living Room</a>
           <ul>
@@ -538,7 +538,7 @@ $giaodien = new statusLogin();
         </li>
       </ul>-->
     </li>
-    <li><a href="grid.php">Đời sống</a></li>
+    <li><a href="show_product.php">Đời sống</a></li>
     <li><a href="contact_us.html">Contact Us</a></li>
   </ul>
 </div>

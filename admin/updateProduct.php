@@ -5,7 +5,15 @@ session_start();
 
 if(isset($_SESSION["id"]) && isset($_SESSION["user"]) && isset($_SESSION["pass"]) && isset($_SESSION["ten"]) && isset($_SESSION["quyen"]))
 {
-	$login->confirmLogin($_SESSION["id"], $_SESSION["user"], $_SESSION["pass"], $_SESSION["ten"], $_SESSION["quyen"]);
+	if($_SESSION["quyen"] == 1)
+	{
+		$login->confirmLogin($_SESSION["id"], $_SESSION["user"], $_SESSION["pass"], $_SESSION["ten"], $_SESSION["quyen"]);	
+	}
+	else
+	{
+		echo "<script>alert('Bạn không có quyền truy cập vào trang!')</script>";
+		header('location: login.php');	
+	}
 }
 else
 {

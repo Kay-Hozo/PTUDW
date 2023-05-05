@@ -1,4 +1,22 @@
-﻿<!DOCTYPE html>
+﻿<?php 
+include ("./class/clsStatusLogin.php");
+include ("class/clsProduct.php");
+
+if(isset($_REQUEST['category']))
+{
+	$category_id = $_REQUEST['category'];
+}
+else
+{
+	$category_id = 0;	
+}
+
+$giaodien = new statusLogin();
+$p = new product();
+
+$tenDM = $p->getValue("SELECT tenDM FROM danhMuc WHERE maDM = {$category_id}");
+?>
+<!DOCTYPE html>
 <html lang="en">
 
 <!-- Tieu Long Lanh Kute -->
@@ -15,7 +33,7 @@
 <!-- Favicons Icon -->
 <link rel="icon" href="http://demo.magikthemes.com/skin/frontend/base/default/favicon.ico" type="image/x-icon" />
 <link rel="shortcut icon" href="http://demo.magikthemes.com/skin/frontend/base/default/favicon.ico" type="image/x-icon" />
-<title>Classic premium HTML5 &amp; CSS3 template</title>
+<title>Sản phẩm</title>
 
 <!-- Mobile Specific -->
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -23,16 +41,15 @@
 <!-- CSS Style -->
 <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="css/font-awesome.css" media="all">
-<link rel="stylesheet" type="text/css" href="css/style1.css" media="all">
+
 <link rel="stylesheet" type="text/css" href="css/animate.css" media="all">
 <link rel="stylesheet" type="text/css" href="css/revslider.css" >
 <link rel="stylesheet" type="text/css" href="css/owl.carousel.css">
 <link rel="stylesheet" type="text/css" href="css/owl.theme.css">
-<link rel="stylesheet" href="css/flexslider.css" type="text/css">
 <link rel="stylesheet" type="text/css" href="css/jquery.mobile-menu.css">
 <link rel="stylesheet" type="text/css" href="css/jquery.bxslider.css">
-<link rel="stylesheet" type="text/css" href="css/blogmate.css">
-
+<link rel="stylesheet" type="text/css" href="css/style1.css" media="all">
+<link rel="stylesheet" type="text/css" href="css/main.css">
 <!-- Google Fonts -->
 <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
 <link href='https://fonts.googleapis.com/css?family=Roboto:400,500,300,700,900' rel='stylesheet' type='text/css'>
@@ -40,7 +57,7 @@
 
 <body class="cms-index-index cms-home-page">
 <div id="page"> 
-    <!-- Header -->
+   <!-- Header -->
 	<?php
     	$giaodien->showHeader();
 	?>
@@ -88,8 +105,8 @@
                <!-- <li class="level1"><a href="404error.html"><span>404 Error Page</span></a></li>-->
               </ul>
             </li>
-             <li class="mega-menu"><a href="show_product.php" class="level-top"><span>Giới thiệu</span></a></li>
-            <li class="mega-menu"><a href="show_product.php" class="level-top"><span>Book</span></a>
+             <li class="mega-menu"><a href="gioithieu.php" class="level-top"><span>Giới thiệu</span></a></li>
+            <li class="mega-menu active"><a href="show_product.php" class="level-top"><span>Book</span></a>
               <div style="left: 0px; display: none;" class="level0-wrapper dropdown-6col">
                 <div class="container">
                   <div class="level0-wrapper2">
@@ -104,46 +121,6 @@
                               <li class="level2 nav-6-1-1"><a href="grid.html" class=""><span>Hobo handbags</span></a></li>
                             </ul>-->
                           </li>
-                          <li class="level1 nav-6-1 parent item"><a href="show_product.php"><span>Sách tham khảo</span></a>
-                           <!-- <ul class="level1">
-                              <li class="level2 nav-6-1-1"><a href="grid.html"><span>Beaded Handbags</span></a></li>
-                              <li class="level2 nav-6-1-1"><a href="grid.html"><span>Fabric Handbags</span></a></li>
-                              <li class="level2 nav-6-1-1"><a href="grid.html"><span>Handbags</span></a></li>
-                              <li class="level2 nav-6-1-1"><a href="grid.html"><span>Leather Handbags</span></a></li>
-                            </ul>-->
-                          </li>
-                          <li class="level1 nav-6-1 parent item"><a href="show_product.php"><span>Sách ngoại ngữ</span></a>
-                            <!--<ul class="level1">
-                              <li class="level2 nav-6-1-1"><a href="grid.html"><span>Flat Shoes</span></a></li>
-                              <li class="level2 nav-6-1-1"><a href="grid.html"><span>Flat Sandals</span></a></li>
-                              <li class="level2 nav-6-1-1"><a href="grid.html"><span>Boots</span></a></li>
-                              <li class="level2 nav-6-1-1"><a href="grid.html"><span>Heels</span></a></li>
-                            </ul>-->
-                          </li>
-                          <li class="level1 nav-6-1 parent item"><a href="show_product.php"><span>Sách thiếu nhi</span></a>
-                            <!--<ul class="level1">
-                              <li class="level2 nav-6-1-1"><a href="grid.html"><span>Bracelets</span></a></li>
-                              <li class="level2 nav-6-1-1"><a href="grid-2.html"><span>Necklaces &amp; Pendent</span></a></li>
-                              <li class="level2 nav-6-1-1"><a href="grid.html"><span>Pendants</span></a></li>
-                              <li class="level2 nav-6-1-1"><a href="grid.html"><span>Pins &amp; Brooches</span></a></li>
-                            </ul>-->
-                          </li>
-                          <li class="level1 nav-6-1 parent item"><a href="show_product.php"><span>Sách kinh tế</span></a>
-                            <!--<ul class="level1">
-                              <li class="level2 nav-6-1-1"><a href="grid.html"><span>Casual Dresses</span></a></li>
-                              <li class="level2 nav-6-1-1"><a href="grid.html"><span>Evening</span></a></li>
-                              <li class="level2 nav-6-1-1"><a href="grid.html"><span>Designer</span></a></li>
-                              <li class="level2 nav-6-1-1"><a href="grid.html"><span>Party</span></a></li>
-                            </ul>-->
-                          </li>
-                          <!--<li class="level1 nav-6-1 parent item"><a href="grid.html"><span>Swimwear</span></a>
-                            <ul class="level1">
-                              <li class="level2 nav-6-1-1"><a href="grid.html"><span>Swimsuits</span></a></li>
-                              <li class="level2 nav-6-1-1"><a href="#/swimwear/beach-clothing.html"><span>Beach Clothing</span></a></li>
-                              <li class="level2 nav-6-1-1"><a href="grid.html"><span>Clothing</span></a></li>
-                              <li class="level2 nav-6-1-1"><a href="grid.html"><span>Bikinis</span></a></li>
-                            </ul>
-                          </li>-->
                         </ul>
                       </div>
                     </div>
@@ -449,202 +426,109 @@
     </div>
   </nav>
 
-  <!-- end nav -->  
-<!-- Main Container -->
-<div class="main-container col2-right-layout bounceInUp animated">
-  <div class="main container">
-    <div class="row">
-      <div class="col-main col-sm-9">
-        <div class="page-title">
-          <h2>Blog</h2>
-        </div>
-        <div class="blog-wrapper" id="main">
-          <div class="site-content" id="primary">
-            <div role="main" id="content">
-              <article class="blog_entry clearfix" >
-                <header class="blog_entry-header clearfix">
-                  <div class="blog_entry-header-inner">
-                    <h2 class="blog_entry-title"> Pellentesque habitant morbi </h2>
-                  </div>
-                  <!--blog_entry-header-inner--> 
-                </header>
-                <!--blog_entry-header clearfix-->
-                <div class="entry-content">
-                  <div class="featured-thumb"><a href="#"><img alt="blog-img4" src="images/blog-img4.jpg"></a></div>
-                  <div class="entry-content">
-                    <p>Fusce ac pharetra urna. Duis non lacus sit amet lacus interdum facilisis sed non est. Ut mi metus, semper eu dictum nec, condimentum sed sapien. Nullam lobortis nunc semper ipsum luctus ut viverra ante eleifend. Nunc pretium velit sed augue luctus accumsan.</p>
-                    <p>Aliquam laoreet consequat malesuada. Integer vitae diam sed dolor euismod laoreet eget ac felis. Donec non erat sed elit bibendum sodales. Donec eu cursus velit. Proin nunc lacus, gravida mollis dictum ut, vulputate eu turpis. Sed felis sapien, commodo in iaculis in, feugiat sed enim. Sed nunc ipsum, fermentum varius dignissim vitae, blandit et ante.Maecenas sagittis, lorem sed congue egestas, lectus purus congue nisl, ac molestie enim ligula nec eros. Sed leo tortor, tincidunt sit amet elementum vel, eleifend at orci. Maecenas ut turpis felis. Donec sit amet quam sem, et aliquet est.</p>
-                    <p>Quisque nisl lectus, accumsan et euismod eu, sollicitudin ac augue. In sit amet urna magna. Curabitur imperdiet urna nec purus egestas eget aliquet purus iaculis. Nunc porttitor blandit imperdiet. Nulla facilisi. Cras odio ipsum, vehicula nec vehicula sed, convallis scelerisque quam. Phasellus ut odio dui, ut fermentum neque.</p>
-                    <blockquote>Lorem ipsum dolor sit amet, consecte adipiscing elit. Integer aliquam mi nec dolor placerat a condimentum diam mollis. Ut pulvinar neque eget massa dapibus dolor.</blockquote>
-                    <p>Curabitur at vestibulum sem. Aliquam vehicula neque ac nibh suscipit ultrices. Morbi interdum accumsan arcu nec scelerisque. Phasellus eget purus nulla. Suspendisse quam est, tempor quis consectetur non, interdum vitae diam. Pellentesque volutpat mollis ligula in laoreet. Aenean est dui, sagittis in consequat at, adipiscing at risus. Sed suscipit, est vitae aliquam molestie, sem dolor dignissim leo, eget imperdiet enim urna in justo. Mauris pulvinar tortor lorem. Aliquam sed nisl in ipsum tincidunt ultrices.</p>
-                    <p>Nullam commodo lobortis nibh, vitae accumsan velit dapibus sed. Nunc ac sem eu libero pretium faucib. Quisque et semper odio. Praesent tortor ligula, imperdiet sed aliquet ut, pharetra at nisi. Etiam sit amet molestie est. Donec id turpis vitae leo viverra adipiscing at sed nisi. Donec ut justo nunc. Vivamu bibendum erat ac nunc sollicitudin lacinia. Phasellus sed lacus magna.</p>
-                  </div>
-                </div>
-                <footer class="entry-meta"> This entry was posted						in <a rel="category tag" title="View all posts in First Category" href="#/first-category">First Category</a> On
-                  <time datetime="2014-07-10T06:53:43+00:00" class="entry-date">Jul 10, 2014</time>
-                  . </footer>
-              </article>
-              <div class="comment-content wow bounceInUp animated">
-                <div class="comments-wrapper">
-                  <h3> Comments </h3>
-                  <ul class="commentlist">
-                    <li class="comment">
-                      <div class="comment-wrapper" >
-                        <div class="comment-author vcard">
-                          
-                          <span class="author">John Doe</span> </div>
-                        <!--comment-author vcard-->
-                        <div class="comment-meta">
-                          <time datetime="2014-07-10T07:26:28+00:00" class="entry-date">Thu, Jul 10, 2014 07:26:28 am</time>
-                          . </div>
-                        <!--comment-meta-->
-                        <div class="comment-body"> Curabitur at vestibulum sem. Aliquam vehicula neque ac nibh suscipit ultrices. Morbi interdum accumsan arcu nec scelerisque ellentesque id erat sem, ut commodo nulla. Sed a nulla et eros fringilla. Phasellus eget purus nulla. </div>
-                      </div>
-                    </li>
-                    <!--comment-->
-                    <li class="comment">
-                      <div class="comment-wrapper" >
-                        <div class="comment-author vcard">
-                          
-                          <span class="author">John Doe</span> </div>
-                        <!--comment-author vcard-->
-                        <div class="comment-meta">
-                          <time datetime="2014-07-10T07:27:08+00:00" class="entry-date">Thu, Jul 10, 2014 07:27:08 am</time>
-                          . </div>
-                        <!--comment-meta-->
-                        <div class="comment-body"> Curabitur at vestibulum sem. Aliquam vehicula neque ac nibh suscipit ultrices. Morbi interdum accumsan arcu nec scelerisque ellentesque id erat sem, ut commodo nulla. Sed a nulla et eros fringilla. Phasellus eget purus nulla. </div>
-                      </div>
-                    </li>
-                    <!--comment-->
-                    <li class="comment">
-                      <div class="comment-wrapper" >
-                        <div class="comment-author vcard">
-                          
-                          <span class="author">John Doe</span> </div>
-                        <!--comment-author vcard-->
-                        <div class="comment-meta">
-                          <time datetime="2014-07-10T07:27:56+00:00" class="entry-date">Thu, Jul 10, 2014 07:27:56 am</time>
-                          . </div>
-                        <!--comment-meta-->
-                        <div class="comment-body"> Curabitur at vestibulum sem. Aliquam vehicula neque ac nibh suscipit ultrices. Morbi interdum accumsan arcu nec scelerisque ellentesque id erat sem, ut commodo nulla. Sed a nulla et eros fringilla. Phasellus eget purus nulla. </div>
-                      </div>
-                    </li>
-                    <!--comment-->
-                    <li class="comment">
-                      <div class="comment-wrapper" >
-                        <div class="comment-author vcard">
-                          
-                          <span class="author">Lisa White</span> </div>
-                        <!--comment-author vcard-->
-                        <div class="comment-meta">
-                          <time datetime="2014-07-10T07:28:32+00:00" class="entry-date">Thu, Jul 10, 2014 07:28:32 am</time>
-                          . </div>
-                        <!--comment-meta-->
-                        <div class="comment-body"> Curabitur at vestibulum sem. Aliquam vehicula neque ac nibh suscipit ultrices. Morbi interdum accumsan arcu nec scelerisque ellentesque id erat sem, ut commodo nulla. Sed a nulla et eros fringilla. </div>
-                      </div>
-                    </li>
-                    <!--comment-->
-                  </ul>
-                  <!--commentlist--> 
-                </div>
-                <!--comments-wrapper-->
-                
-                <div class="comments-form-wrapper clearfix">
-                  <h3>Leave A reply</h3>
-                  <form class="comment-form" method="post" id="postComment">
-                    <div class="field">
-                      <label>Name<em class="required">*</em></label>
-                      <input type="text" class="input-text" title="Name" id="user" name="user_name">
-                    </div>
-                    <div class="field">
-                      <label>Email<em class="required">*</em></label>
-                      <input type="text" class="input-text" title="Email" id="email" name="user_email">
-                    </div>
-                    <div class="clear"></div>
-                    <div class="field aw-blog-comment-area">
-                      <label for="comment">Comment<em class="required">*</em></label>
-                      <textarea rows="5" cols="50" class="input-text" title="Comment" id="comment" name="comment"></textarea>
-                    </div>
-                    <div style="width:96%" class="button-set">
-                      <input type="hidden" value="1" name="blog_id">
-                      <button type="submit" class="bnt-comment"><span><span>Add Comment</span></span></button>
-                    </div>
-                  </form>
-                </div>
-                <!--comments-form-wrapper clearfix--> 
-              </div>
-            </div>
-          </div>
+
+  <!-- end nav --> 
+  <!-- Breadcrumbs -->
+  <div class="breadcrumbs bounceInUp animated">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12">
+          <ul>
+            <li class="home"> <a title="Go to Home Page" href="index.php">Home</a><span>» </span></li>
+            <li class="">
+			<?php
+			  echo "<a title='Go to Home Page' href='show_product.php?category={$category_id}'>$tenDM</a>"; 
+			?><span>» </span></li>
+           <!-- <li class="category13"><strong>Tops & Tees</strong></li>-->
+          </ul>
         </div>
       </div>
-      <aside class="col-right sidebar col-sm-3">
-        <div role="complementary" class="widget_wrapper13" id="secondary">
-          <div class="popular-posts widget widget__sidebar" id="recent-posts-4">
-            <h3 class="widget-title">Most Popular Post</h3>
-            <div class="widget-content">
-              <ul class="posts-list unstyled clearfix">
-                <li>
-                  <figure class="featured-thumb"> <a href="blog_detail.php"> <img width="80" height="53" alt="blog image" src="images/blog-img1.jpg"> </a> </figure>
-                  <!--featured-thumb-->
-                  <h4><a title="Pellentesque posuere" href="blog_detail.php">Pellentesque posuere</a></h4>
-                  <p class="post-meta"><i class="icon-calendar"></i>
-                    <time datetime="2014-07-10T07:09:31+00:00" class="entry-date">Jul 10, 2014</time>
-                    .</p>
-                </li>
-                <li>
-                  <figure class="featured-thumb"> <a href="blog_detail.php"> <img width="80" height="53" alt="blog image" src="images/blog-img2.jpg"> </a> </figure>
-                  <!--featured-thumb-->
-                  <h4><a title="Dolor lorem ipsum" href="blog_detail.php">Dolor lorem ipsum</a></h4>
-                  <p class="post-meta"><i class="icon-calendar"></i>
-                    <time datetime="2014-07-10T07:01:18+00:00" class="entry-date">Jul 10, 2014</time>
-                    .</p>
-                </li>
-                <li>
-                  <figure class="featured-thumb"> <a href="blog_detail.php"> <img width="80" height="53" alt="blog image" src="images/blog-img3.jpg"> </a> </figure>
-                  <!--featured-thumb-->
-                  <h4><a title="Aliquam eget sapien placerat" href="blog_detail.php">Aliquam eget sapien placerat</a></h4>
-                  <p class="post-meta"><i class="icon-calendar"></i>
-                    <time datetime="2014-07-10T06:59:14+00:00" class="entry-date">Jul 10, 2014</time>
-                    .</p>
-                </li>
-                <li>
-                  <figure class="featured-thumb"> <a href="blog_detail.php"> <img width="80" height="53" alt="blog image" src="images/blog-img4.jpg"> </a> </figure>
-                  <!--featured-thumb-->
-                  <h4><a title="Pellentesque habitant morbi" href="blog_detail.php">Pellentesque habitant morbi</a></h4>
-                  <p class="post-meta"><i class="icon-calendar"></i>
-                    <time datetime="2014-07-10T06:53:43+00:00" class="entry-date">Jul 10, 2014</time>
-                    .</p>
-                </li>
-              </ul>
-            </div>
-            <!--widget-content--> 
-          </div>
-          <div class="popular-posts widget widget_categories" id="categories-2">
-            <h3 class="widget-title">Categories</h3>
-            <ul>
-              <li class="cat-item cat-item-19599"><a href="#">First Category</a></li>
-              <li class="cat-item cat-item-19599"><a href="#">Second Category</a></li>
-            </ul>
-          </div>
-          <!-- Banner Ad Block -->
-          <div class="ad-spots widget widget__sidebar">
-            <h3 class="widget-title">Ad Spots</h3>
-            <div class="widget-content"><a target="_self" href="#" title=""><img alt="offer banner" src="images/offer-banner1.jpg"></a></div>
-          </div>
-          <!-- Banner Text Block -->
-          <div class="text-widget widget widget__sidebar">
-            <h3 class="widget-title">Text Widget</h3>
-            <div class="widget-content">Mauris at blandit erat. Nam vel tortor non quam scelerisque cursus. Praesent nunc vitae magna pellentesque auctor. Quisque id lectus.<br>
-              <br>
-              Massa, eget eleifend tellus. Proin nec ante leo ssim nunc sit amet velit malesuada pharetra. Nulla neque sapien, sollicitudin non ornare quis, malesuada.</div>
-          </div>
-        </div>
-        </aside>
     </div>
   </div>
-</div>
-<!-- Main Container End -->
- <div class="top-banner-section wow bounceInUp animated">
+  <!-- Breadcrumbs End --> 
+  <!-- Main Container -->
+  <section class="main-container col2-left-layout bounceInUp animated">
+  <div class="page-header"><div class="container"><div class="row">
+  <div class="col-xs-12">
+              <h2>
+              <?php
+              	echo $tenDM;
+			  ?>
+              </h2></div></div></div>
+            </div>
+    <div class="container">
+      <div class="row">
+        <div class='col-main col-sm-9 col-sm-push-3'>
+          <article class='col-main'>
+            <div class='toolbar'>
+              <div id='sort-by'>
+                <label class='left'>Sắp xếp theo: </label>
+                <ul>
+                  <li><a href='#'>Vị trí<span class='right-arrow'></span></a>
+                    <ul>
+                      <li><a href='#'>Tên</a></li>
+                      <li><a href='#'>Giá</a></li>
+                      <li><a href='#'>Vị trí</a></li>
+                    </ul>
+                  </li>
+                </ul>
+                <a class='button-asc left' href='#' title='Set Descending Direction'><span class='glyphicon glyphicon-arrow-up'></span></a> </div>
+              <div class='pager'>
+                <div id='limiter'>
+                  <label>Xem: </label>
+                  <ul>
+                    <li><a href='#'>15<span class='right-arrow'></span></a>
+                      <ul>
+                        <li><a href='#'>20</a></li>
+                        <li><a href='#'>30</a></li>
+                        <li><a href='#'>35</a></li>
+                      </ul>
+                    </li>
+                  </ul>
+                </div>
+                <div class='pages'>
+                  <label>Trang:</label>
+                  <ul class='pagination'>
+                    <li><a href='#'>&laquo;</a></li>
+                    <li class='active'><a href='#'>1</a></li>
+                    <li><a href='#'>2</a></li>
+                    <li><a href='#'>3</a></li>
+                    <li><a href='#'>4</a></li>
+                    <li><a href='#'>5</a></li>
+                    <li><a href='#'>&raquo;</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class='category-products'>
+              <?php
+                $p->showProducts($category_id);
+              ?>
+            </div>
+          </article>
+          <!--	///*///======    End article  ========= //*/// --> 
+        </div>
+        <div class="col-left sidebar col-sm-3 col-xs-12 col-sm-pull-9">
+          <aside class="col-left sidebar">
+          <div class="side-nav-categories">
+              <div class="block-title"> Danh mục </div>
+              <!--block-title--> 
+              <!-- BEGIN BOX-CATEGORY -->
+              <div class="box-content box-category">
+                <?php
+                	$p->showCategory($category_id);
+				?>
+              </div>
+              <!--box-content box-category--> 
+            </div>
+            <div class="block block-banner"><a href="#"><img alt="block-banner" src="images/silde/banner3.png" width="280" height="200"></a></div>
+            <div class="block block-banner"><a href="#"><img alt="block-banner" src="images/silde/banner4.png" width="280" height="200"></a></div>
+
+      </div>
+    </div>
+  </section>
+  <!-- Main Container End --> 
+  <div class="top-banner-section wow bounceInUp animated">
     <div class="container">
       <div class="row">
         <div class="col-lg-3 col-sm-3 col-xs-6">
@@ -656,8 +540,8 @@
         </div>
         <div class="col-lg-3 col-sm-3 col-xs-6">
         <div class="col add-banner2">
-          <div class="top-b-text"></div>
-          </div>  
+         <div class="top-b-text"></div>
+          </div> 
         </div>
         <div class="col-lg-3 col-sm-3 col-xs-6">
           <div class="col last offer"></div>
@@ -709,7 +593,7 @@
       </div>
     </div>
   </div>
-  <!-- Footer -->
+<!-- Footer -->
   <?php
   	$giaodien->showFooter();
   ?>
@@ -755,56 +639,7 @@
       </ul>
     </li>
     <li><a href="show_product.php">Sách </a>
-      <ul>
-        <li> <a href="show_product.php" class="">Sách giáo khoa</a>
-          <!--<ul>
-            <li> <a href="grid.html" class="">Clutch Handbags</a></li>
-            <li> <a href="grid.html" class="">Diaper Bags</a></li>
-            <li> <a href="grid.html" class="">Bags</a></li>
-            <li> <a href="grid.html" class="">Hobo handbags</a></li>
-          </ul>-->
-        </li>
-        <li> <a href="show_product.php">Sách tham khảo</a>
-          <!--<ul>
-            <li> <a href="grid.html">Beaded Handbags</a></li>
-            <li> <a href="grid.html">Fabric Handbags</a></li>
-            <li> <a href="grid.html">Handbags</a></li>
-            <li> <a href="grid.html">Leather Handbags</a></li>
-          </ul>-->
-        </li>
-        <li> <a href="show_product.php">Sách ngoại ngữ</a>
-         <!-- <ul>
-            <li> <a href="grid.html">Flat Shoes</a></li>
-            <li> <a href="grid.html">Flat Sandals</a></li>
-            <li> <a href="grid.html">Boots</a></li>
-            <li> <a href="grid.html">Heels</a></li>
-          </ul>-->
-        </li>
-        <li> <a href="show_product.php">Sách thiếu nhi</a>
-         <!-- <ul>
-            <li> <a href="grid.html">Bracelets</a></li>
-            <li> <a href="grid.html">Necklaces &amp; Pendent</a></li>
-            <li> <a href="grid.html">Pendants</a></li>
-            <li> <a href="grid.html">Pins &amp; Brooches</a></li>
-          </ul>-->
-        </li>
-        <li> <a href="show_product.php">Sách kinh tế</a>
-          <!--<ul>
-            <li> <a href="grid.html">Casual Dresses</a></li>
-            <li> <a href="grid.html">Evening</a></li>
-            <li> <a href="grid.html">Designer</a></li>
-            <li> <a href="grid.html">Party</a></li>
-          </ul>-->
-        </li>
-    <!-- <li> <a href="grid.html">Swimwear</a>
-          <ul>
-            <li> <a href="grid.html">Swimsuits</a></li>
-            <li> <a href="grid.html">Beach Clothing</a></li>
-            <li> <a href="grid.html">Clothing</a></li>
-            <li> <a href="grid.html">Bikinis</a></li>
-          </ul>
-        </li>-->
-      </ul>
+      
     </li>
     <li><a href="show_product.php">Truyện tranh</a>
      <!-- <ul>
@@ -956,12 +791,13 @@
 <!-- JavaScript --> 
 <script type="text/javascript" src="js/jquery.min.js"></script> 
 <script type="text/javascript" src="js/bootstrap.min.js"></script> 
-<script type="text/javascript" src="js/parallax.js"></script> 
+<script type="text/javascript" src="js/parallax.js"></script>
 <script type="text/javascript" src="js/common.js"></script> 
-<script type="text/javascript" src="js/owl.carousel.min.js"></script> 
-<script type="text/javascript" src="js/jquery.flexslider.js"></script> 
+<script type="text/javascript" src="js/slider.js"></script> 
+<script type="text/javascript" src="js/owl.carousel.min.js"></script>
 <script type="text/javascript" src="js/jquery.mobile-menu.min.js"></script> 
-
+<script type="text/javascript" src="js/jquery.bxslider.min.js"></script> 
+<script src="https://kit.fontawesome.com/e9dbdfe1dd.js" crossorigin="anonymous"></script>
 </body>
 
 <!-- Tieu Long Lanh Kute -->

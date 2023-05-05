@@ -30,10 +30,10 @@
 					<form role="form" method="POST">
 						<fieldset>
 							<div class="form-group">
-								<input class="form-control" placeholder="" name="txtuser" value="khachHang" type="text" autofocus>
+								<input class="form-control" placeholder="" name="txtuser" type="text" placeholder="Username" autofocus>
 							</div>
 							<div class="form-group">
-								<input class="form-control" placeholder="Password" name="txtpass" value="khachhang" type="password" value="">
+								<input class="form-control" placeholder="Password" name="txtpass" type="password" value="">
 							</div>
 							<div class="checkbox">
 								<label>

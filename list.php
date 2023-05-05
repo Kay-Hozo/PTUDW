@@ -67,7 +67,7 @@ $giaodien = new statusLogin();
             </li>
             <li class="level0 parent drop-menu"><a href="#"><span>Pages</span></a>
               <ul class="level1">
-                <li class="level1 first"><a href="grid.php"><span>Grid</span></a></li>
+                <li class="level1 first"><a href="show_product.php"><span>Grid</span></a></li>
                 <li class="level1 nav-10-2"><a href="list.php"><span>List</span></a></li>
                 <li class="level1 nav-10-3"><a href="product_detail.php"><span>Product Detail</span></a></li>
                 <li class="level1 nav-10-4"><a href="shopping_cart.php"><span>Shopping Cart</span></a></li>
@@ -93,59 +93,59 @@ $giaodien = new statusLogin();
                 <li class="level1"><a href="404error.html"><span>404 Error Page</span></a></li>
               </ul>
             </li>
-            <li class="mega-menu"><a href="grid.php" class="level-top active"><span>Women</span></a>
+            <li class="mega-menu"><a href="show_product.php" class="level-top active"><span>Women</span></a>
               <div style="left: 0px; display: none;" class="level0-wrapper dropdown-6col">
                 <div class="container">
                   <div class="level0-wrapper2">
                     <div class="col-1">
                       <div class="nav-block nav-block-center">
                         <ul class="level0">
-                          <li class="level1 nav-6-1 parent item"><a href="grid.php" class=""><span>Stylish Bag</span></a>
+                          <li class="level1 nav-6-1 parent item"><a href="show_product.php" class=""><span>Stylish Bag</span></a>
                             <ul class="level1">
-                              <li class="level2 nav-6-1-1"><a href="grid.php" class=""><span>Clutch Handbags</span></a></li>
-                              <li class="level2 nav-6-1-1"><a href="grid.php" class=""><span>Diaper Bags</span></a></li>
-                              <li class="level2 nav-6-1-1"><a href="grid.php" class=""><span>Bags</span></a></li>
-                              <li class="level2 nav-6-1-1"><a href="grid.php" class=""><span>Hobo handbags</span></a></li>
+                              <li class="level2 nav-6-1-1"><a href="show_product.php" class=""><span>Clutch Handbags</span></a></li>
+                              <li class="level2 nav-6-1-1"><a href="show_product.php" class=""><span>Diaper Bags</span></a></li>
+                              <li class="level2 nav-6-1-1"><a href="show_product.php" class=""><span>Bags</span></a></li>
+                              <li class="level2 nav-6-1-1"><a href="show_product.php" class=""><span>Hobo handbags</span></a></li>
                             </ul>
                           </li>
-                          <li class="level1 nav-6-1 parent item"><a href="grid.php"><span>Material Bag</span></a>
+                          <li class="level1 nav-6-1 parent item"><a href="show_product.php"><span>Material Bag</span></a>
                             <ul class="level1">
-                              <li class="level2 nav-6-1-1"><a href="grid.php"><span>Beaded Handbags</span></a></li>
-                              <li class="level2 nav-6-1-1"><a href="grid.php"><span>Fabric Handbags</span></a></li>
-                              <li class="level2 nav-6-1-1"><a href="grid.php"><span>Handbags</span></a></li>
-                              <li class="level2 nav-6-1-1"><a href="grid.php"><span>Leather Handbags</span></a></li>
+                              <li class="level2 nav-6-1-1"><a href="show_product.php"><span>Beaded Handbags</span></a></li>
+                              <li class="level2 nav-6-1-1"><a href="show_product.php"><span>Fabric Handbags</span></a></li>
+                              <li class="level2 nav-6-1-1"><a href="show_product.php"><span>Handbags</span></a></li>
+                              <li class="level2 nav-6-1-1"><a href="show_product.php"><span>Leather Handbags</span></a></li>
                             </ul>
                           </li>
-                          <li class="level1 nav-6-1 parent item"><a href="grid.php"><span>Shoes</span></a>
+                          <li class="level1 nav-6-1 parent item"><a href="show_product.php"><span>Shoes</span></a>
                             <ul class="level1">
-                              <li class="level2 nav-6-1-1"><a href="grid.php"><span>Flat Shoes</span></a></li>
-                              <li class="level2 nav-6-1-1"><a href="grid.php"><span>Flat Sandals</span></a></li>
-                              <li class="level2 nav-6-1-1"><a href="grid.php"><span>Boots</span></a></li>
-                              <li class="level2 nav-6-1-1"><a href="grid.php"><span>Heels</span></a></li>
+                              <li class="level2 nav-6-1-1"><a href="show_product.php"><span>Flat Shoes</span></a></li>
+                              <li class="level2 nav-6-1-1"><a href="show_product.php"><span>Flat Sandals</span></a></li>
+                              <li class="level2 nav-6-1-1"><a href="show_product.php"><span>Boots</span></a></li>
+                              <li class="level2 nav-6-1-1"><a href="show_product.php"><span>Heels</span></a></li>
                             </ul>
                           </li>
-                          <li class="level1 nav-6-1 parent item"><a href="grid.php"><span>Jwellery</span></a>
+                          <li class="level1 nav-6-1 parent item"><a href="show_product.php"><span>Jwellery</span></a>
                             <ul class="level1">
-                              <li class="level2 nav-6-1-1"><a href="grid.php"><span>Bracelets</span></a></li>
+                              <li class="level2 nav-6-1-1"><a href="show_product.php"><span>Bracelets</span></a></li>
                               <li class="level2 nav-6-1-1"><a href="grid-2.html"><span>Necklaces &amp; Pendent</span></a></li>
-                              <li class="level2 nav-6-1-1"><a href="grid.php"><span>Pendants</span></a></li>
-                              <li class="level2 nav-6-1-1"><a href="grid.php"><span>Pins &amp; Brooches</span></a></li>
+                              <li class="level2 nav-6-1-1"><a href="show_product.php"><span>Pendants</span></a></li>
+                              <li class="level2 nav-6-1-1"><a href="show_product.php"><span>Pins &amp; Brooches</span></a></li>
                             </ul>
                           </li>
-                          <li class="level1 nav-6-1 parent item"><a href="grid.php"><span>Dresses</span></a>
+                          <li class="level1 nav-6-1 parent item"><a href="show_product.php"><span>Dresses</span></a>
                             <ul class="level1">
-                              <li class="level2 nav-6-1-1"><a href="grid.php"><span>Casual Dresses</span></a></li>
-                              <li class="level2 nav-6-1-1"><a href="grid.php"><span>Evening</span></a></li>
-                              <li class="level2 nav-6-1-1"><a href="grid.php"><span>Designer</span></a></li>
-                              <li class="level2 nav-6-1-1"><a href="grid.php"><span>Party</span></a></li>
+                              <li class="level2 nav-6-1-1"><a href="show_product.php"><span>Casual Dresses</span></a></li>
+                              <li class="level2 nav-6-1-1"><a href="show_product.php"><span>Evening</span></a></li>
+                              <li class="level2 nav-6-1-1"><a href="show_product.php"><span>Designer</span></a></li>
+                              <li class="level2 nav-6-1-1"><a href="show_product.php"><span>Party</span></a></li>
                             </ul>
                           </li>
-                          <li class="level1 nav-6-1 parent item"><a href="grid.php"><span>Swimwear</span></a>
+                          <li class="level1 nav-6-1 parent item"><a href="show_product.php"><span>Swimwear</span></a>
                             <ul class="level1">
-                              <li class="level2 nav-6-1-1"><a href="grid.php"><span>Swimsuits</span></a></li>
+                              <li class="level2 nav-6-1-1"><a href="show_product.php"><span>Swimsuits</span></a></li>
                               <li class="level2 nav-6-1-1"><a href="#/swimwear/beach-clothing.html"><span>Beach Clothing</span></a></li>
-                              <li class="level2 nav-6-1-1"><a href="grid.php"><span>Clothing</span></a></li>
-                              <li class="level2 nav-6-1-1"><a href="grid.php"><span>Bikinis</span></a></li>
+                              <li class="level2 nav-6-1-1"><a href="show_product.php"><span>Clothing</span></a></li>
+                              <li class="level2 nav-6-1-1"><a href="show_product.php"><span>Bikinis</span></a></li>
                             </ul>
                           </li>
                         </ul>
@@ -160,58 +160,58 @@ $giaodien = new statusLogin();
                   <!--level0-wrapper2--> </div>
               </div>
             </li>
-            <li class="mega-menu"><a href="grid.php" class="level-top"><span>Men</span></a>
+            <li class="mega-menu"><a href="show_product.php" class="level-top"><span>Men</span></a>
               <div  style="left: 0px; display: none;" class="level0-wrapper dropdown-6col">
                 <div class="container">
                   <div class="level0-wrapper2">
                     <div class="nav-block nav-block-center">
                       <ul class="level0">
-                        <li class="level1 nav-6-1 parent item"><a href="grid.php" class=""><span>Shoes</span></a>
+                        <li class="level1 nav-6-1 parent item"><a href="show_product.php" class=""><span>Shoes</span></a>
                           <ul class="level1">
-                            <li class="level2 nav-6-1-1"><a href="grid.php"><span>Sport Shoes</span></a></li>
-                            <li class="level2 nav-6-1-1"><a href="grid.php"><span>Casual Shoes</span></a></li>
-                            <li class="level2 nav-6-1-1"><a href="grid.php"><span>Leather Shoes</span></a></li>
-                            <li class="level2 nav-6-1-1"><a href="grid.php"><span>canvas shoes</span></a></li>
+                            <li class="level2 nav-6-1-1"><a href="show_product.php"><span>Sport Shoes</span></a></li>
+                            <li class="level2 nav-6-1-1"><a href="show_product.php"><span>Casual Shoes</span></a></li>
+                            <li class="level2 nav-6-1-1"><a href="show_product.php"><span>Leather Shoes</span></a></li>
+                            <li class="level2 nav-6-1-1"><a href="show_product.php"><span>canvas shoes</span></a></li>
                           </ul>
                         </li>
-                        <li class="level1 nav-6-1 parent item"><a href="grid.php"><span>Dresses</span></a>
+                        <li class="level1 nav-6-1 parent item"><a href="show_product.php"><span>Dresses</span></a>
                           <ul class="level1">
-                            <li class="level2 nav-6-1-1"><a href="grid.php"><span>Casual Dresses</span></a></li>
-                            <li class="level2 nav-6-1-1"><a href="grid.php"><span>Evening</span></a></li>
-                            <li class="level2 nav-6-1-1"><a href="grid.php"><span>Designer</span></a></li>
-                            <li class="level2 nav-6-1-1"><a href="grid.php"><span>Party</span></a></li>
+                            <li class="level2 nav-6-1-1"><a href="show_product.php"><span>Casual Dresses</span></a></li>
+                            <li class="level2 nav-6-1-1"><a href="show_product.php"><span>Evening</span></a></li>
+                            <li class="level2 nav-6-1-1"><a href="show_product.php"><span>Designer</span></a></li>
+                            <li class="level2 nav-6-1-1"><a href="show_product.php"><span>Party</span></a></li>
                           </ul>
                         </li>
-                        <li class="level1 nav-6-1 parent item"><a href="grid.php"><span>Jackets</span></a>
+                        <li class="level1 nav-6-1 parent item"><a href="show_product.php"><span>Jackets</span></a>
                           <ul class="level1">
-                            <li class="level2 nav-6-1-1"><a href="grid.php"><span>Coats</span></a></li>
-                            <li class="level2 nav-6-1-1"><a href="grid.php"><span>Formal Jackets</span></a></li>
-                            <li class="level2 nav-6-1-1"><a href="grid.php"><span>Leather Jackets</span></a></li>
-                            <li class="level2 nav-6-1-1"><a href="grid.php"><span>Blazers</span></a></li>
+                            <li class="level2 nav-6-1-1"><a href="show_product.php"><span>Coats</span></a></li>
+                            <li class="level2 nav-6-1-1"><a href="show_product.php"><span>Formal Jackets</span></a></li>
+                            <li class="level2 nav-6-1-1"><a href="show_product.php"><span>Leather Jackets</span></a></li>
+                            <li class="level2 nav-6-1-1"><a href="show_product.php"><span>Blazers</span></a></li>
                           </ul>
                         </li>
-                        <li class="level1 nav-6-1 parent item"><a href="grid.php"><span>Watches</span></a>
+                        <li class="level1 nav-6-1 parent item"><a href="show_product.php"><span>Watches</span></a>
                           <ul class="level1">
-                            <li class="level2 nav-6-1-1"><a href="grid.php"><span>Fasttrack</span></a></li>
-                            <li class="level2 nav-6-1-1"><a href="grid.php"><span>Casio</span></a></li>
-                            <li class="level2 nav-6-1-1"><a href="grid.php"><span>Titan</span></a></li>
-                            <li class="level2 nav-6-1-1"><a href="grid.php"><span>Tommy-Hilfiger</span></a></li>
+                            <li class="level2 nav-6-1-1"><a href="show_product.php"><span>Fasttrack</span></a></li>
+                            <li class="level2 nav-6-1-1"><a href="show_product.php"><span>Casio</span></a></li>
+                            <li class="level2 nav-6-1-1"><a href="show_product.php"><span>Titan</span></a></li>
+                            <li class="level2 nav-6-1-1"><a href="show_product.php"><span>Tommy-Hilfiger</span></a></li>
                           </ul>
                         </li>
-                        <li class="level1 nav-6-1 parent item"><a href="grid.php"><span>Sunglasses</span></a>
+                        <li class="level1 nav-6-1 parent item"><a href="show_product.php"><span>Sunglasses</span></a>
                           <ul class="level1">
-                            <li class="level2 nav-6-1-1"><a href="grid.php"><span>Ray Ban</span></a></li>
-                            <li class="level2 nav-6-1-1"><a href="grid.php"><span>Fasttrack</span></a></li>
-                            <li class="level2 nav-6-1-1"><a href="grid.php"><span>Police</span></a></li>
-                            <li class="level2 nav-6-1-1"><a href="grid.php"><span>Oakley</span></a></li>
+                            <li class="level2 nav-6-1-1"><a href="show_product.php"><span>Ray Ban</span></a></li>
+                            <li class="level2 nav-6-1-1"><a href="show_product.php"><span>Fasttrack</span></a></li>
+                            <li class="level2 nav-6-1-1"><a href="show_product.php"><span>Police</span></a></li>
+                            <li class="level2 nav-6-1-1"><a href="show_product.php"><span>Oakley</span></a></li>
                           </ul>
                         </li>
-                        <li class="level1 nav-6-1 parent item"><a href="grid.php"><span>Accesories</span></a>
+                        <li class="level1 nav-6-1 parent item"><a href="show_product.php"><span>Accesories</span></a>
                           <ul class="level1">
-                            <li class="level2 nav-6-1-1"><a href="grid.php"><span>Backpacks</span></a></li>
-                            <li class="level2 nav-6-1-1"><a href="grid.php"><span>Wallets</span></a></li>
-                            <li class="level2 nav-6-1-1"><a href="grid.php"><span>Laptops Bags</span></a></li>
-                            <li class="level2 nav-6-1-1"><a href="grid.php"><span>Belts</span></a></li>
+                            <li class="level2 nav-6-1-1"><a href="show_product.php"><span>Backpacks</span></a></li>
+                            <li class="level2 nav-6-1-1"><a href="show_product.php"><span>Wallets</span></a></li>
+                            <li class="level2 nav-6-1-1"><a href="show_product.php"><span>Laptops Bags</span></a></li>
+                            <li class="level2 nav-6-1-1"><a href="show_product.php"><span>Belts</span></a></li>
                           </ul>
                         </li>
                       </ul>
@@ -235,58 +235,58 @@ $giaodien = new statusLogin();
                 </div>
               </div>
             </li>
-            <li class="mega-menu"><a href="grid.php" class="level-top"><span>Electronics</span></a>
+            <li class="mega-menu"><a href="show_product.php" class="level-top"><span>Electronics</span></a>
               <div style="left: 0px; display: none;" class="level0-wrapper dropdown-6col">
                 <div class="container">
                   <div class="level0-wrapper2">
                     <div class="nav-block nav-block-center">
                       <ul class="level0">
-                        <li class="level1 nav-6-1 parent item"><a href="grid.php"><span>Mobiles</span></a>
+                        <li class="level1 nav-6-1 parent item"><a href="show_product.php"><span>Mobiles</span></a>
                           <ul class="level1">
-                            <li class="level2 nav-6-1-1"><a href="grid.php"><span>Samsung</span></a></li>
-                            <li class="level2 nav-6-1-1"><a href="grid.php"><span>Nokia</span></a></li>
-                            <li class="level2 nav-6-1-1"><a href="grid.php"><span>IPhone</span></a></li>
-                            <li class="level2 nav-6-1-1"><a href="grid.php"><span>Sony</span></a></li>
+                            <li class="level2 nav-6-1-1"><a href="show_product.php"><span>Samsung</span></a></li>
+                            <li class="level2 nav-6-1-1"><a href="show_product.php"><span>Nokia</span></a></li>
+                            <li class="level2 nav-6-1-1"><a href="show_product.php"><span>IPhone</span></a></li>
+                            <li class="level2 nav-6-1-1"><a href="show_product.php"><span>Sony</span></a></li>
                           </ul>
                         </li>
-                        <li class="level1 nav-6-1 parent item"><a href="grid.php" class=""><span>Accesories</span></a>
+                        <li class="level1 nav-6-1 parent item"><a href="show_product.php" class=""><span>Accesories</span></a>
                           <ul class="level1">
-                            <li class="level2 nav-6-1-1"><a href="grid.php"><span>Mobile Memory Cards</span></a></li>
-                            <li class="level2 nav-6-1-1"><a href="grid.php"><span>Cases &amp; Covers</span></a></li>
-                            <li class="level2 nav-6-1-1"><a href="grid.php"><span>Mobile Headphones</span></a></li>
-                            <li class="level2 nav-6-1-1"><a href="grid.php"><span>Bluetooth Headsets</span></a></li>
+                            <li class="level2 nav-6-1-1"><a href="show_product.php"><span>Mobile Memory Cards</span></a></li>
+                            <li class="level2 nav-6-1-1"><a href="show_product.php"><span>Cases &amp; Covers</span></a></li>
+                            <li class="level2 nav-6-1-1"><a href="show_product.php"><span>Mobile Headphones</span></a></li>
+                            <li class="level2 nav-6-1-1"><a href="show_product.php"><span>Bluetooth Headsets</span></a></li>
                           </ul>
                         </li>
-                        <li class="level1 nav-6-1 parent item"><a href="grid.php"><span>Cameras</span></a>
+                        <li class="level1 nav-6-1 parent item"><a href="show_product.php"><span>Cameras</span></a>
                           <ul class="level1">
-                            <li class="level2 nav-6-1-1"><a href="grid.php"><span>Camcorders</span></a></li>
-                            <li class="level2 nav-6-1-1"><a href="grid.php"><span>Point &amp; Shoot</span></a></li>
-                            <li class="level2 nav-6-1-1"><a href="grid.php"><span>Digital SLR</span></a></li>
-                            <li class="level2 nav-6-1-1"><a href="grid.php"><span>Camera Accesories</span></a></li>
+                            <li class="level2 nav-6-1-1"><a href="show_product.php"><span>Camcorders</span></a></li>
+                            <li class="level2 nav-6-1-1"><a href="show_product.php"><span>Point &amp; Shoot</span></a></li>
+                            <li class="level2 nav-6-1-1"><a href="show_product.php"><span>Digital SLR</span></a></li>
+                            <li class="level2 nav-6-1-1"><a href="show_product.php"><span>Camera Accesories</span></a></li>
                           </ul>
                         </li>
-                        <li class="level1 nav-6-1 parent item"><a href="grid.php"><span>Audio &amp; Video</span></a>
+                        <li class="level1 nav-6-1 parent item"><a href="show_product.php"><span>Audio &amp; Video</span></a>
                           <ul class="level1">
-                            <li class="level2 nav-6-1-1"><a href="grid.php"><span>MP3 Players</span></a></li>
-                            <li class="level2 nav-6-1-1"><a href="grid.php"><span>IPods</span></a></li>
-                            <li class="level2 nav-6-1-1"><a href="grid.php"><span>Speakers</span></a></li>
-                            <li class="level2 nav-6-1-1"><a href="grid.php"><span>Video Players</span></a></li>
+                            <li class="level2 nav-6-1-1"><a href="show_product.php"><span>MP3 Players</span></a></li>
+                            <li class="level2 nav-6-1-1"><a href="show_product.php"><span>IPods</span></a></li>
+                            <li class="level2 nav-6-1-1"><a href="show_product.php"><span>Speakers</span></a></li>
+                            <li class="level2 nav-6-1-1"><a href="show_product.php"><span>Video Players</span></a></li>
                           </ul>
                         </li>
-                        <li class="level1 nav-6-1 parent item"><a href="grid.php"><span>Computer</span></a>
+                        <li class="level1 nav-6-1 parent item"><a href="show_product.php"><span>Computer</span></a>
                           <ul class="level1">
-                            <li class="level2 nav-6-1-1"><a href="grid.php"><span>External Hard Disk</span></a></li>
-                            <li class="level2 nav-6-1-1"><a href="grid.php"><span>Pendrives</span></a></li>
-                            <li class="level2 nav-6-1-1"><a href="grid.php"><span>Headphones</span></a></li>
-                            <li class="level2 nav-6-1-1"><a href="grid.php"><span>PC Components</span></a></li>
+                            <li class="level2 nav-6-1-1"><a href="show_product.php"><span>External Hard Disk</span></a></li>
+                            <li class="level2 nav-6-1-1"><a href="show_product.php"><span>Pendrives</span></a></li>
+                            <li class="level2 nav-6-1-1"><a href="show_product.php"><span>Headphones</span></a></li>
+                            <li class="level2 nav-6-1-1"><a href="show_product.php"><span>PC Components</span></a></li>
                           </ul>
                         </li>
-                        <li class="level1 nav-6-1 parent item"><a href="grid.php"><span>Appliances</span></a>
+                        <li class="level1 nav-6-1 parent item"><a href="show_product.php"><span>Appliances</span></a>
                           <ul class="level1">
-                            <li class="level2 nav-6-1-1"><a href="grid.php"><span>Vaccum Cleaners</span></a></li>
-                            <li class="level2 nav-6-1-1"><a href="grid.php"><span>Indoor Lighting</span></a></li>
-                            <li class="level2 nav-6-1-1"><a href="grid.php"><span>Kitchen Tools</span></a></li>
-                            <li class="level2 nav-6-1-1"><a href="grid.php"><span>Water Purifier</span></a></li>
+                            <li class="level2 nav-6-1-1"><a href="show_product.php"><span>Vaccum Cleaners</span></a></li>
+                            <li class="level2 nav-6-1-1"><a href="show_product.php"><span>Indoor Lighting</span></a></li>
+                            <li class="level2 nav-6-1-1"><a href="show_product.php"><span>Kitchen Tools</span></a></li>
+                            <li class="level2 nav-6-1-1"><a href="show_product.php"><span>Water Purifier</span></a></li>
                           </ul>
                         </li>
                       </ul>
@@ -310,42 +310,42 @@ $giaodien = new statusLogin();
                 </div>
               </div>
             </li>
-            <li class="mega-menu"><a class="level-top" href="grid.php"><span>Furniture</span></a>
+            <li class="mega-menu"><a class="level-top" href="show_product.php"><span>Furniture</span></a>
               <div style="left: 0px; display: none;" class="level0-wrapper dropdown-6col">
                 <div class="container">
                   <div class="level0-wrapper2">
                     <div class="nav-block nav-block-center grid12-8 itemgrid itemgrid-4col">
                       <ul class="level0">
-                        <li class="level1 nav-6-1 parent item"><a href="grid.php"><span>Living Room</span></a>
+                        <li class="level1 nav-6-1 parent item"><a href="show_product.php"><span>Living Room</span></a>
                           <ul class="level1">
-                            <li class="level2 nav-6-1-1"><a href="grid.php"><span>Racks &amp; Cabinets</span></a></li>
-                            <li class="level2 nav-6-1-1"><a href="grid.php"><span>Sofas</span></a></li>
-                            <li class="level2 nav-6-1-1"><a href="grid.php"><span>Chairs</span></a></li>
-                            <li class="level2 nav-6-1-1"><a href="grid.php"><span>Tables</span></a></li>
+                            <li class="level2 nav-6-1-1"><a href="show_product.php"><span>Racks &amp; Cabinets</span></a></li>
+                            <li class="level2 nav-6-1-1"><a href="show_product.php"><span>Sofas</span></a></li>
+                            <li class="level2 nav-6-1-1"><a href="show_product.php"><span>Chairs</span></a></li>
+                            <li class="level2 nav-6-1-1"><a href="show_product.php"><span>Tables</span></a></li>
                           </ul>
                         </li>
-                        <li class="level1 nav-6-1 parent item"><a href="grid.php" class=""><span>Dining &amp; Bar</span></a>
+                        <li class="level1 nav-6-1 parent item"><a href="show_product.php" class=""><span>Dining &amp; Bar</span></a>
                           <ul class="level1">
-                            <li class="level2 nav-6-1-1"><a href="grid.php"><span>Dining Table Sets</span></a></li>
-                            <li class="level2 nav-6-1-1"><a href="grid.php"><span>Serving Trolleys</span></a></li>
-                            <li class="level2 nav-6-1-1"><a href="grid.php"><span>Bar Counters</span></a></li>
-                            <li class="level2 nav-6-1-1"><a href="grid.php"><span>Dining Cabinets</span></a></li>
+                            <li class="level2 nav-6-1-1"><a href="show_product.php"><span>Dining Table Sets</span></a></li>
+                            <li class="level2 nav-6-1-1"><a href="show_product.php"><span>Serving Trolleys</span></a></li>
+                            <li class="level2 nav-6-1-1"><a href="show_product.php"><span>Bar Counters</span></a></li>
+                            <li class="level2 nav-6-1-1"><a href="show_product.php"><span>Dining Cabinets</span></a></li>
                           </ul>
                         </li>
-                        <li class="level1 nav-6-1 parent item"><a href="grid.php"><span>Bedroom</span></a>
+                        <li class="level1 nav-6-1 parent item"><a href="show_product.php"><span>Bedroom</span></a>
                           <ul class="level1">
-                            <li class="level2 nav-6-1-1"><a href="grid.php"><span>Beds</span></a></li>
-                            <li class="level2 nav-6-1-1"><a href="grid.php"><span>Chest of Drawers</span></a></li>
+                            <li class="level2 nav-6-1-1"><a href="show_product.php"><span>Beds</span></a></li>
+                            <li class="level2 nav-6-1-1"><a href="show_product.php"><span>Chest of Drawers</span></a></li>
                             <li class="level2 nav-6-1-1"><a href="grid-2.html"><span>Wardrobes &amp; Almirahs</span></a></li>
-                            <li class="level2 nav-6-1-1"><a href="grid.php"><span>Nightstands</span></a></li>
+                            <li class="level2 nav-6-1-1"><a href="show_product.php"><span>Nightstands</span></a></li>
                           </ul>
                         </li>
-                        <li class="level1 nav-6-1 parent item"><a href="grid.php"><span>Kitchen</span></a>
+                        <li class="level1 nav-6-1 parent item"><a href="show_product.php"><span>Kitchen</span></a>
                           <ul class="level1">
-                            <li class="level2 nav-6-1-1"><a href="grid.php"><span>Kitchen Racks</span></a></li>
-                            <li class="level2 nav-6-1-1"><a href="grid.php"><span>Kitchen Fillings</span></a></li>
-                            <li class="level2 nav-6-1-1"><a href="grid.php"><span>Wall Units</span></a></li>
-                            <li class="level2 nav-6-1-1"><a href="grid.php"><span>Benches &amp; Stools</span></a></li>
+                            <li class="level2 nav-6-1-1"><a href="show_product.php"><span>Kitchen Racks</span></a></li>
+                            <li class="level2 nav-6-1-1"><a href="show_product.php"><span>Kitchen Fillings</span></a></li>
+                            <li class="level2 nav-6-1-1"><a href="show_product.php"><span>Wall Units</span></a></li>
+                            <li class="level2 nav-6-1-1"><a href="show_product.php"><span>Benches &amp; Stools</span></a></li>
                           </ul>
                         </li>
                       </ul>
@@ -357,7 +357,7 @@ $giaodien = new statusLogin();
                 <!--level0-wrapper2--> 
               </div>
             </li>
-            <li class="level0 nav-8 level-top"><a href="grid.php" class="level-top"><span>Kids</span></a></li>
+            <li class="level0 nav-8 level-top"><a href="show_product.php" class="level-top"><span>Kids</span></a></li>
             <li class="nav-custom-link mega-menu"> <a class="level-top" href="#"><span>Custom</span></a>
               <div class="level0-wrapper custom-menu" style="left: 0px; display: none;">
                 <div class="container">
@@ -451,7 +451,7 @@ $giaodien = new statusLogin();
         <div class="col-xs-12">
           <ul>
             <li class="home"> <a title="Go to Home Page" href="index.php">Home</a><span>» </span></li>
-            <li class=""> <a title="Go to Home Page" href="grid.php">Women</a><span>» </span></li>
+            <li class=""> <a title="Go to Home Page" href="show_product.php">Women</a><span>» </span></li>
             <li class="category13"><strong>Tops & Tees</strong></li>
           </ul>
         </div>
@@ -473,7 +473,7 @@ $giaodien = new statusLogin();
           <div class="category-image"><img title="Sofas " alt="Sofas " src="images/women_banner.png"> </div>
           <div class="toolbar">
             <div class="sorter">
-                <div class="view-mode"> <a href="grid.php" title="Grid" class="button button-grid">&nbsp;</a>&nbsp; <span title="List" class="button button-active button-list">&nbsp;</span>&nbsp; </div>
+                <div class="view-mode"> <a href="show_product.php" title="Grid" class="button button-grid">&nbsp;</a>&nbsp; <span title="List" class="button button-active button-list">&nbsp;</span>&nbsp; </div>
               </div>
             <div id="sort-by">
               <label class="left">Sort By: </label>
@@ -1189,7 +1189,7 @@ $giaodien = new statusLogin();
     </li>
     <li><a href="#">Pages</a>
       <ul>
-        <li><a href="grid.php">Grid</a></li>
+        <li><a href="show_product.php">Grid</a></li>
         <li> <a href="list.php">List</a></li>
         <li> <a href="product_detail.php">Product Detail</a></li>
         <li> <a href="shopping_cart.php">Shopping Cart</a></li>
@@ -1215,199 +1215,199 @@ $giaodien = new statusLogin();
         <li><a href="404error.html">404 Error Page</a></li>
       </ul>
     </li>
-    <li><a href="grid.php">Women</a>
+    <li><a href="show_product.php">Women</a>
       <ul>
-        <li> <a href="grid.php" class="">Stylish Bag</a>
+        <li> <a href="show_product.php" class="">Stylish Bag</a>
           <ul>
-            <li> <a href="grid.php" class="">Clutch Handbags</a></li>
-            <li> <a href="grid.php" class="">Diaper Bags</a></li>
-            <li> <a href="grid.php" class="">Bags</a></li>
-            <li> <a href="grid.php" class="">Hobo handbags</a></li>
+            <li> <a href="show_product.php" class="">Clutch Handbags</a></li>
+            <li> <a href="show_product.php" class="">Diaper Bags</a></li>
+            <li> <a href="show_product.php" class="">Bags</a></li>
+            <li> <a href="show_product.php" class="">Hobo handbags</a></li>
           </ul>
         </li>
-        <li> <a href="grid.php">Material Bag</a>
+        <li> <a href="show_product.php">Material Bag</a>
           <ul>
-            <li> <a href="grid.php">Beaded Handbags</a></li>
-            <li> <a href="grid.php">Fabric Handbags</a></li>
-            <li> <a href="grid.php">Handbags</a></li>
-            <li> <a href="grid.php">Leather Handbags</a></li>
+            <li> <a href="show_product.php">Beaded Handbags</a></li>
+            <li> <a href="show_product.php">Fabric Handbags</a></li>
+            <li> <a href="show_product.php">Handbags</a></li>
+            <li> <a href="show_product.php">Leather Handbags</a></li>
           </ul>
         </li>
-        <li> <a href="grid.php">Shoes</a>
+        <li> <a href="show_product.php">Shoes</a>
           <ul>
-            <li> <a href="grid.php">Flat Shoes</a></li>
-            <li> <a href="grid.php">Flat Sandals</a></li>
-            <li> <a href="grid.php">Boots</a></li>
-            <li> <a href="grid.php">Heels</a></li>
+            <li> <a href="show_product.php">Flat Shoes</a></li>
+            <li> <a href="show_product.php">Flat Sandals</a></li>
+            <li> <a href="show_product.php">Boots</a></li>
+            <li> <a href="show_product.php">Heels</a></li>
           </ul>
         </li>
-        <li> <a href="grid.php">Jwellery</a>
+        <li> <a href="show_product.php">Jwellery</a>
           <ul>
-            <li> <a href="grid.php">Bracelets</a></li>
-            <li> <a href="grid.php">Necklaces &amp; Pendent</a></li>
-            <li> <a href="grid.php">Pendants</a></li>
-            <li> <a href="grid.php">Pins &amp; Brooches</a></li>
+            <li> <a href="show_product.php">Bracelets</a></li>
+            <li> <a href="show_product.php">Necklaces &amp; Pendent</a></li>
+            <li> <a href="show_product.php">Pendants</a></li>
+            <li> <a href="show_product.php">Pins &amp; Brooches</a></li>
           </ul>
         </li>
-        <li> <a href="grid.php">Dresses</a>
+        <li> <a href="show_product.php">Dresses</a>
           <ul>
-            <li> <a href="grid.php">Casual Dresses</a></li>
-            <li> <a href="grid.php">Evening</a></li>
-            <li> <a href="grid.php">Designer</a></li>
-            <li> <a href="grid.php">Party</a></li>
+            <li> <a href="show_product.php">Casual Dresses</a></li>
+            <li> <a href="show_product.php">Evening</a></li>
+            <li> <a href="show_product.php">Designer</a></li>
+            <li> <a href="show_product.php">Party</a></li>
           </ul>
         </li>
-        <li> <a href="grid.php">Swimwear</a>
+        <li> <a href="show_product.php">Swimwear</a>
           <ul>
-            <li> <a href="grid.php">Swimsuits</a></li>
-            <li> <a href="grid.php">Beach Clothing</a></li>
-            <li> <a href="grid.php">Clothing</a></li>
-            <li> <a href="grid.php">Bikinis</a></li>
+            <li> <a href="show_product.php">Swimsuits</a></li>
+            <li> <a href="show_product.php">Beach Clothing</a></li>
+            <li> <a href="show_product.php">Clothing</a></li>
+            <li> <a href="show_product.php">Bikinis</a></li>
           </ul>
         </li>
       </ul>
     </li>
-    <li><a href="grid.php">Men</a>
+    <li><a href="show_product.php">Men</a>
       <ul>
-        <li> <a href="grid.php" class="">Shoes</a>
+        <li> <a href="show_product.php" class="">Shoes</a>
           <ul class="level1">
-            <li class="level2 nav-6-1-1"><a href="grid.php">Sport Shoes</a></li>
-            <li class="level2 nav-6-1-1"><a href="grid.php">Casual Shoes</a></li>
-            <li class="level2 nav-6-1-1"><a href="grid.php">Leather Shoes</a></li>
-            <li class="level2 nav-6-1-1"><a href="grid.php">canvas shoes</a></li>
+            <li class="level2 nav-6-1-1"><a href="show_product.php">Sport Shoes</a></li>
+            <li class="level2 nav-6-1-1"><a href="show_product.php">Casual Shoes</a></li>
+            <li class="level2 nav-6-1-1"><a href="show_product.php">Leather Shoes</a></li>
+            <li class="level2 nav-6-1-1"><a href="show_product.php">canvas shoes</a></li>
           </ul>
         </li>
         <li> <a href="#.html">Dresses</a>
           <ul class="level1">
-            <li class="level2 nav-6-1-1"><a href="grid.php">Casual Dresses</a></li>
-            <li class="level2 nav-6-1-1"><a href="grid.php">Evening</a></li>
-            <li class="level2 nav-6-1-1"><a href="grid.php">Designer</a></li>
-            <li class="level2 nav-6-1-1"><a href="grid.php">Party</a></li>
+            <li class="level2 nav-6-1-1"><a href="show_product.php">Casual Dresses</a></li>
+            <li class="level2 nav-6-1-1"><a href="show_product.php">Evening</a></li>
+            <li class="level2 nav-6-1-1"><a href="show_product.php">Designer</a></li>
+            <li class="level2 nav-6-1-1"><a href="show_product.php">Party</a></li>
           </ul>
         </li>
         <li> <a href="#.html">Jackets</a>
           <ul class="level1">
-            <li class="level2 nav-6-1-1"><a href="grid.php">Coats</a></li>
-            <li class="level2 nav-6-1-1"><a href="grid.php">Formal Jackets</a></li>
-            <li class="level2 nav-6-1-1"><a href="grid.php">Leather Jackets</a></li>
-            <li class="level2 nav-6-1-1"><a href="grid.php">Blazers</a></li>
+            <li class="level2 nav-6-1-1"><a href="show_product.php">Coats</a></li>
+            <li class="level2 nav-6-1-1"><a href="show_product.php">Formal Jackets</a></li>
+            <li class="level2 nav-6-1-1"><a href="show_product.php">Leather Jackets</a></li>
+            <li class="level2 nav-6-1-1"><a href="show_product.php">Blazers</a></li>
           </ul>
         </li>
         <li> <a href="#.html">Watches</a>
           <ul class="level1">
-            <li class="level2 nav-6-1-1"><a href="grid.php">Fasttrack</a></li>
-            <li class="level2 nav-6-1-1"><a href="grid.php">Casio</a></li>
-            <li class="level2 nav-6-1-1"><a href="grid.php">Titan</a></li>
-            <li class="level2 nav-6-1-1"><a href="grid.php">Tommy-Hilfiger</a></li>
+            <li class="level2 nav-6-1-1"><a href="show_product.php">Fasttrack</a></li>
+            <li class="level2 nav-6-1-1"><a href="show_product.php">Casio</a></li>
+            <li class="level2 nav-6-1-1"><a href="show_product.php">Titan</a></li>
+            <li class="level2 nav-6-1-1"><a href="show_product.php">Tommy-Hilfiger</a></li>
           </ul>
         </li>
         <li> <a href="#/sunglasses.html">Sunglasses</a>
           <ul class="level1">
-            <li class="level2 nav-6-1-1"><a href="grid.php">Ray Ban</a></li>
-            <li class="level2 nav-6-1-1"><a href="grid.php">Fasttrack</a></li>
-            <li class="level2 nav-6-1-1"><a href="grid.php">Police</a></li>
-            <li class="level2 nav-6-1-1"><a href="grid.php">Oakley</a></li>
+            <li class="level2 nav-6-1-1"><a href="show_product.php">Ray Ban</a></li>
+            <li class="level2 nav-6-1-1"><a href="show_product.php">Fasttrack</a></li>
+            <li class="level2 nav-6-1-1"><a href="show_product.php">Police</a></li>
+            <li class="level2 nav-6-1-1"><a href="show_product.php">Oakley</a></li>
           </ul>
         </li>
-        <li> <a href="grid.php">Accesories</a>
+        <li> <a href="show_product.php">Accesories</a>
           <ul class="level1">
-            <li class="level2 nav-6-1-1"><a href="grid.php">Backpacks</a></li>
-            <li class="level2 nav-6-1-1"><a href="grid.php">Wallets</a></li>
-            <li class="level2 nav-6-1-1"><a href="grid.php">Laptops Bags</a></li>
-            <li class="level2 nav-6-1-1"><a href="grid.php">Belts</a></li>
+            <li class="level2 nav-6-1-1"><a href="show_product.php">Backpacks</a></li>
+            <li class="level2 nav-6-1-1"><a href="show_product.php">Wallets</a></li>
+            <li class="level2 nav-6-1-1"><a href="show_product.php">Laptops Bags</a></li>
+            <li class="level2 nav-6-1-1"><a href="show_product.php">Belts</a></li>
           </ul>
         </li>
       </ul>
     </li>
-    <li><a href="grid.php">Electronics</a>
+    <li><a href="show_product.php">Electronics</a>
       <ul>
-        <li> <a href="grid.php"><span>Mobiles</span></a>
+        <li> <a href="show_product.php"><span>Mobiles</span></a>
           <ul>
-            <li> <a href="grid.php"><span>Samsung</span></a></li>
-            <li> <a href="grid.php"><span>Nokia</span></a></li>
-            <li> <a href="grid.php"><span>IPhone</span></a></li>
-            <li> <a href="grid.php"><span>Sony</span></a></li>
+            <li> <a href="show_product.php"><span>Samsung</span></a></li>
+            <li> <a href="show_product.php"><span>Nokia</span></a></li>
+            <li> <a href="show_product.php"><span>IPhone</span></a></li>
+            <li> <a href="show_product.php"><span>Sony</span></a></li>
           </ul>
         </li>
-        <li> <a href="grid.php" class=""><span>Accesories</span></a>
+        <li> <a href="show_product.php" class=""><span>Accesories</span></a>
           <ul>
-            <li> <a href="grid.php"><span>Mobile Memory Cards</span></a></li>
-            <li> <a href="grid.php"><span>Cases &amp; Covers</span></a></li>
-            <li> <a href="grid.php"><span>Mobile Headphones</span></a></li>
-            <li> <a href="grid.php"><span>Bluetooth Headsets</span></a></li>
+            <li> <a href="show_product.php"><span>Mobile Memory Cards</span></a></li>
+            <li> <a href="show_product.php"><span>Cases &amp; Covers</span></a></li>
+            <li> <a href="show_product.php"><span>Mobile Headphones</span></a></li>
+            <li> <a href="show_product.php"><span>Bluetooth Headsets</span></a></li>
           </ul>
         </li>
-        <li> <a href="grid.php"><span>Cameras</span></a>
+        <li> <a href="show_product.php"><span>Cameras</span></a>
           <ul>
-            <li> <a href="grid.php"><span>Camcorders</span></a></li>
-            <li> <a href="grid.php"><span>Point &amp; Shoot</span></a></li>
-            <li> <a href="grid.php"><span>Digital SLR</span></a></li>
-            <li> <a href="grid.php"><span>Camera Accesories</span></a></li>
+            <li> <a href="show_product.php"><span>Camcorders</span></a></li>
+            <li> <a href="show_product.php"><span>Point &amp; Shoot</span></a></li>
+            <li> <a href="show_product.php"><span>Digital SLR</span></a></li>
+            <li> <a href="show_product.php"><span>Camera Accesories</span></a></li>
           </ul>
         </li>
-        <li> <a href="grid.php"><span>Audio &amp; Video</span></a>
+        <li> <a href="show_product.php"><span>Audio &amp; Video</span></a>
           <ul>
-            <li> <a href="grid.php"><span>MP3 Players</span></a></li>
-            <li> <a href="grid.php"><span>IPods</span></a></li>
-            <li> <a href="grid.php"><span>Speakers</span></a></li>
-            <li> <a href="grid.php"><span>Video Players</span></a></li>
+            <li> <a href="show_product.php"><span>MP3 Players</span></a></li>
+            <li> <a href="show_product.php"><span>IPods</span></a></li>
+            <li> <a href="show_product.php"><span>Speakers</span></a></li>
+            <li> <a href="show_product.php"><span>Video Players</span></a></li>
           </ul>
         </li>
-        <li> <a href="grid.php"><span>Computer</span></a>
+        <li> <a href="show_product.php"><span>Computer</span></a>
           <ul>
-            <li> <a href="grid.php"><span>External Hard Disk</span></a></li>
-            <li> <a href="grid.php"><span>Pendrives</span></a></li>
-            <li> <a href="grid.php"><span>Headphones</span></a></li>
-            <li> <a href="grid.php"><span>PC Components</span></a></li>
+            <li> <a href="show_product.php"><span>External Hard Disk</span></a></li>
+            <li> <a href="show_product.php"><span>Pendrives</span></a></li>
+            <li> <a href="show_product.php"><span>Headphones</span></a></li>
+            <li> <a href="show_product.php"><span>PC Components</span></a></li>
           </ul>
         </li>
-        <li> <a href="grid.php"><span>Appliances</span></a>
+        <li> <a href="show_product.php"><span>Appliances</span></a>
           <ul>
-            <li> <a href="grid.php"><span>Vaccum Cleaners</span></a></li>
-            <li> <a href="grid.php"><span>Indoor Lighting</span></a></li>
-            <li> <a href="grid.php"><span>Kitchen Tools</span></a></li>
-            <li> <a href="grid.php"><span>Water Purifier</span></a></li>
+            <li> <a href="show_product.php"><span>Vaccum Cleaners</span></a></li>
+            <li> <a href="show_product.php"><span>Indoor Lighting</span></a></li>
+            <li> <a href="show_product.php"><span>Kitchen Tools</span></a></li>
+            <li> <a href="show_product.php"><span>Water Purifier</span></a></li>
           </ul>
         </li>
       </ul>
     </li>
-    <li><a href="grid.php">Furniture</a>
+    <li><a href="show_product.php">Furniture</a>
       <ul>
-        <li> <a href="grid.php">Living Room</a>
+        <li> <a href="show_product.php">Living Room</a>
           <ul>
-            <li> <a href="grid.php">Racks &amp; Cabinets</a></li>
-            <li> <a href="grid.php">Sofas</a></li>
-            <li> <a href="grid.php">Chairs</a></li>
-            <li> <a href="grid.php">Tables</a></li>
+            <li> <a href="show_product.php">Racks &amp; Cabinets</a></li>
+            <li> <a href="show_product.php">Sofas</a></li>
+            <li> <a href="show_product.php">Chairs</a></li>
+            <li> <a href="show_product.php">Tables</a></li>
           </ul>
         </li>
-        <li> <a href="grid.php" class="">Dining &amp; Bar</a>
+        <li> <a href="show_product.php" class="">Dining &amp; Bar</a>
           <ul>
-            <li> <a href="grid.php">Dining Table Sets</a></li>
-            <li> <a href="grid.php">Serving Trolleys</a></li>
-            <li> <a href="grid.php">Bar Counters</a></li>
-            <li> <a href="grid.php">Dining Cabinets</a></li>
+            <li> <a href="show_product.php">Dining Table Sets</a></li>
+            <li> <a href="show_product.php">Serving Trolleys</a></li>
+            <li> <a href="show_product.php">Bar Counters</a></li>
+            <li> <a href="show_product.php">Dining Cabinets</a></li>
           </ul>
         </li>
-        <li> <a href="grid.php">Bedroom</a>
+        <li> <a href="show_product.php">Bedroom</a>
           <ul>
-            <li> <a href="grid.php">Beds</a></li>
-            <li> <a href="grid.php">Chest of Drawers</a></li>
-            <li> <a href="grid.php">Wardrobes &amp; Almirahs</a></li>
-            <li> <a href="grid.php">Nightstands</a></li>
+            <li> <a href="show_product.php">Beds</a></li>
+            <li> <a href="show_product.php">Chest of Drawers</a></li>
+            <li> <a href="show_product.php">Wardrobes &amp; Almirahs</a></li>
+            <li> <a href="show_product.php">Nightstands</a></li>
           </ul>
         </li>
-        <li> <a href="grid.php">Kitchen</a>
+        <li> <a href="show_product.php">Kitchen</a>
           <ul>
-            <li> <a href="grid.php">Kitchen Racks</a></li>
-            <li> <a href="grid.php">Kitchen Fillings</a></li>
-            <li> <a href="grid.php">Wall Units</a></li>
-            <li> <a href="grid.php">Benches &amp; Stools</a></li>
+            <li> <a href="show_product.php">Kitchen Racks</a></li>
+            <li> <a href="show_product.php">Kitchen Fillings</a></li>
+            <li> <a href="show_product.php">Wall Units</a></li>
+            <li> <a href="show_product.php">Benches &amp; Stools</a></li>
           </ul>
         </li>
       </ul>
     </li>
-    <li><a href="grid.php">Kids</a></li>
+    <li><a href="show_product.php">Kids</a></li>
     <li><a href="contact_us.html">Contact Us</a></li>
   </ul>
 </div>
