@@ -192,24 +192,7 @@ class giohang extends connectDB
 			}
 			$this->closeDB($link);
 		}
-		public function laygiatri($sql)
-		{
-			 $link=$this->connect();
-			 $ketqua=mysql_query($sql,$link);
-			 $i=mysql_num_rows($ketqua);
-			 $giatri="";
-			 if($i>0)
-			 {
-				
-			 while($row=mysql_fetch_array($ketqua))
-				 {
-					
-					 $giatri=$row[0];
-					 
-				 }
-				 return $giatri;
-			 }
-		}
+		
 		public function quick_view($sql)
 		{
 			$link=$this->connect();
@@ -320,7 +303,9 @@ class giohang extends connectDB
 			}
 			else
 			{
-				echo 'Không có dữ liệu';
+				echo '<tr class="first odd">
+				<td colspan="8">Không có sản phẩm</td>
+				</tr>';
 			}
 			$this->closeDB($link);
 		}
@@ -341,60 +326,28 @@ class giohang extends connectDB
 					$mota=$row['moTa'];
 					$gia=$row['gia'];
 					$soluong=$row['soluong'];
-					$hinh=$row['hinhAnh'];
+					
 					$tongtien=$gia*$soluong;
 					$thanhtien+=$tongtien;
 					
 				}
-				echo ' <tfoot>
-                    <tr>
-                      <td colspan="1" class="a-left"><strong>Tổng cộng</strong></td>
+				
+				echo '
                       <td class="a-right"><strong><span class="price">'.$thanhtien.'.000 đ</span></strong></td>
-                    </tr>
-                  </tfoot>
-                  <tbody>
-                    <tr>
-                      <td colspan="1" class="a-left"> Tổng tiền </td>
-                      <td class="a-right"><span class="price">'.$thanhtien.'.000 đ</span></td>
-                    </tr>
-                  </tbody>';
+                   
+				 
+                  ';
 			}
 			else
 			{
-				echo 'Không có dữ liệu';
+				echo '
+                      <td class="a-right"><strong><span class="price">0.000 đ</span></strong></td>
+                    
+                 ';
 			}
 			$this->closeDB($link);
 		}
-		public function subtotal($sql)
-		{
-			
-			$link=$this->connect();
-			$kq=mysql_query($sql,$link);
-			$i=mysql_num_rows($kq);
-			if($i>0)
-			{
-				$thanhtien=0;
-				while($row=mysql_fetch_array($kq))
-				{
-					
-					$id=$row['maSP'];
-					$tensp=$row['tenSP'];
-					$mota=$row['moTa'];
-					$gia=$row['gia'];
-					$soluong=$row['soluong'];
-					$hinh=$row['hinhAnh'];
-					$tongtien=$gia*$soluong;
-					$thanhtien+=$tongtien;
-					
-				}
-				echo $thanhtien;
-			}
-			else
-			{
-				echo 'Không có dữ liệu';
-			}
-			$this->closeDB($link);
-		}
+		
 		public function addtocart()
 		{
 			$link=$this->connect();
@@ -461,8 +414,77 @@ class giohang extends connectDB
 			}
 			$this->closeDB($link);
 		}
-		public function ouput_checkout($sql)
+		public function laygiatri($sql,$maKH)
 		{
+			
+			 if($maKH<0)
+			 {
+				return 0;
+			 }
+			 else
+			 {
+				  $link=$this->connect();
+				 $ketqua=mysql_query($sql,$link);
+				 $i=mysql_num_rows($ketqua);
+				 $giatri="";
+				 if($i>0)
+				 {
+					
+				 while($row=mysql_fetch_array($ketqua))
+					 {
+						
+						 $giatri=$row[0];
+						 
+					 }
+					 return $giatri;
+				 }
+			 }
+		}
+		public function subtotal($sql,$maKH)
+		{
+			if($maKH<0)
+			{
+				return 0;
+			}
+			else
+			{
+			$link=$this->connect();
+			$kq=mysql_query($sql,$link);
+			$i=mysql_num_rows($kq);
+			if($i>0)
+			{
+				$thanhtien=0;
+				while($row=mysql_fetch_array($kq))
+				{
+					
+					$id=$row['maSP'];
+					$tensp=$row['tenSP'];
+					$mota=$row['moTa'];
+					$gia=$row['gia'];
+					$soluong=$row['soluong'];
+					$hinh=$row['hinhAnh'];
+					$tongtien=$gia*$soluong;
+					$thanhtien+=$tongtien;
+					
+				}
+				return  $thanhtien;
+			}
+			else
+			{
+				echo 'Không có dữ liệu';
+			}
+			$this->closeDB($link);
+			}
+		}
+		public function ouput_checkout($sql,$maKH)
+		{
+			if($maKH<0)
+			{
+				echo 'Chưa có sản phẩm nào';
+				return 0;
+			}
+			else
+			{
 			$link=$this->connect();
 			$kq=mysql_query($sql,$link);
 			$i=mysql_num_rows($kq);
@@ -487,8 +509,13 @@ class giohang extends connectDB
                             <p class="product-name"><a href="product_detail.php?layid='.$id.'">'.$tensp.'</a></p>
                           </div>
                         </div>
-                      </li>';
+                      </li>
+					  ';
 				}
+				echo'</ul>
+                    <div class="actions">
+                      <button class="btn-checkout" title="Checkout" type="button"><a href="shopping_cart.php"><span style="color:white;">Thanh toán</span></a></button>
+                    </div>';
 				
 			}
 			else
@@ -496,7 +523,136 @@ class giohang extends connectDB
 				echo 'Không có dữ liệu';
 			}
 			$this->closeDB($link);
+			}
 		}
+		public function diachiGH($sql)
+		{
+			$link=$this->connect();
+			$kq=mysql_query($sql,$link);
+			$i=mysql_num_rows($kq);
+			if($i>0)
+			{
+				$row=mysql_fetch_array($kq);
+				$id=$row['maTK'];
+				$quocgia=$row['quocgia'];
+				$tp=$row['tinh_thanhpho'];
+				$quan=$row['quan_huyen'];
+				$phuong=$row['phuong_xa'];
+				$diachi=$row['diaChi'];
+				echo'<div class="col-sm-4">
+              <div class="shipping">
+                <h3>Địa chỉ giao hàng</h3>
+                <div class="shipping-form">
+                 <!-- <form id="shipping-zip-form" method="post" action="./class/clsgiohang.php" enctype="multipart/form-data">-->
+                    <ul class="form-list">
+                    <li>
+                        <label for="postcode">Họ tên người nhận</label>
+                        <div class="input-box">
+                          <input type="text" name="txtten" id="txtten" class="input-text validate-postcode" placeholder="Nhập họ tên người nhận" >
+                        </div>
+                      </li>
+                      <li>
+                        <label for="postcode">Số điện thoại</label>
+                        <div class="input-box">
+                          <input type="text" name="sdt" id="sdt" class="input-text validate-postcode" placeholder="Ví dụ:038712xxxx(10 ký tự số)">
+                        </div>
+                      </li>
+                      <li>
+                        <label class="required" for="country"><em>*</em>Quốc gia</label>
+                        <div class="input-box">
+                          <select title="Country" class="validate-select" id="country" name="country_id">
+                            <option value="'.$quocgia.'" selected="selected">'.$quocgia.'</option>
+                            <option value="1" >Anh</option>
+                            
+                          </select>
+                        </div>
+                      </li>
+                      <li>
+                        <label for="region_id">Tỉnh/Thành phố</label>
+                        <div class="input-box">
+                          <select title="State/Province" name="region_id" id="region_id">
+                            <option value="">Vui lòng chọn tỉnh , thành phố</option>
+                            <option value="'.$tp.'" title="Alabama" selected="selected">'.$tp.'</option>
+                            <option value="Thành phố Hồ Chí Minh" title="Alaska">Thành phố Hồ Chí Minh</option>
+                            <option value="Cần Thơ" title="American Samoa">Cần Thơ</option>
+                            <option value="Tiền Giang" title="Arizona">Tiền Giang</option>
+                            <option value="Hà Giang" title="Arkansas">Hà Giang</option>
+                            <option value="Bạc liêu" title="Armed Forces Africa">Bạc liêu</option>
+                            <option value="Long An" title="Armed Forces Americas">Long An</option>
+                            
+                          </select>
+                          <input type="text" style="display:none;" class="input-text" title="State/Province" name="region" id="region">
+                        </div>
+                      </li>
+                      <li>
+                        <label for="postcode">Quận/Huyện</label>
+                        <div class="input-box">
+                          <input type="text" name="huyen" id="huyen" class="input-text validate-postcode" value="'.$quan.'">
+                        </div>
+                      </li>
+                       <li>
+                        <label for="postcode">Phường/Xã</label>
+                        <div class="input-box">
+                          <input type="text" name="phuong" id="phuong" class="input-text validate-postcode" value="'.$phuong.'">
+                        </div>
+                      </li>
+                      <li>
+                        <label for="postcode">Địa chỉ</label>
+                        <div class="input-box">
+                          <input type="text" name="DC" id="DC" class="input-text validate-postcode"  value="'.$diachi.'">
+                        </div>
+                      </li>
+                    </ul>
+                    <div class="buttons-set11">
+                      <button class="button get-quote" title="Get a Quote" type="submit" id="ship" name="ship" value="Thay đổi địa chỉ"><span>Thay đổi địa chỉ</span></button>
+                    </div>
+                    <!--buttons-set11-->
+                <!--  </form>-->
+                </div>
+              </div>
+            </div>';
+					
+				
+			}
+			
+			
+		}
+		public function ship($sql)
+		{
+			$link=$this->connect();
+			$kq=mysql_query($sql,$link);
+			$row=mysql_fetch_array($kq);
+			$tp=$row['tinh_thanhpho'];
+			if($tp=='Thành phố Hồ Chí Minh')
+			{
+				$ship=0;
+			}
+			else
+			{
+				$ship=30;
+			}
+			return $ship;
+		}
+		public function ship_giohang($sql)
+		{
+			$link=$this->connect();
+			$kq=mysql_query($sql,$link);
+			$row=mysql_fetch_array($kq);
+			$tp=$row['tinh_thanhpho'];
+			if($tp=='Thành phố Hồ Chí Minh')
+			{
+				$ship=0;
+			}
+			else
+			{
+				$ship=30;
+			}
+			echo '
+                    
+                      <td class="a-right"><strong><span class="price">'.$ship.'.000 đ</span></strong></td>
+                    ';
+		}
+		
 		
 }
 ?>

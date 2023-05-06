@@ -1,5 +1,5 @@
 <?php
-	class login
+	class signin
 	{
 		private $db_host = "82.180.152.153";
         private $db_user = "u420857906_admin";
@@ -28,7 +28,7 @@
 			mysql_close($conn);	
 		}
 		
-		public function mylogin($user, $pass)
+		public function mysignup($user, $pass)
 		{
 			$conn = $this->connect();
 			$pass = SHA1($pass);
@@ -54,41 +54,32 @@
 				}
 				else
 				{
-					echo "<script> alert('Sai username hoặc password')</script>";
+					echo "<script> alert('Thông tin chưa đúng')</script>";
 				}		
 			}
 			else
 			{
-				echo "<script> alert('Username hoặc password không được để trống!')</script>";	
+				echo "<script> alert('Không được để trống!')</script>";	
 			}
 			$this->closeDB($conn);		
 		}
-		
-		public function confirmLogin($id, $user, $pass, $ten, $quyen)
-		{
-			$conn = $this->connect();
-			$sql = "SELECT maTK FROM taiKhoan WHERE maTK = {$id} AND tenTK = '{$user}' AND matKhau = '${pass}' AND ten = '{$ten}' AND phanQuyen = $quyen LIMIT 1";	
-			$result = mysql_query($sql, $conn);
-			$row = mysql_num_rows($result);
+
+		public function themTK($sql)
+        {
+            $conn = $this->connect();
 			
-			if($row != 1)
+			$result = mysql_query($sql, $conn);
+			if($result)
 			{
-				echo "<script>
-					window.location.replace('./login.php');
-				</script>";
+				return 1;
+			}
+			else
+			{
+				return 0;
 			}
 			
-			$this->closeDB($conn);	
-		}	
-		
-		public function logout() 
-		{
-			session_start();
-			session_destroy();
-			echo "<script>window.location.replace('./index.php')</script>";
-			exit();
-		}
-
+			$this->closeDB($conn);
+        }
 		public function laygiatri($sql,$maKH)
 		{
 			
@@ -199,31 +190,5 @@
 			$this->closeDB($link);
 			}
 		}
-
-		
-		public function mySignup($user, $pass, $ho, $ten, $sdt, $quocGia, $tinh, $phuong, $quan, $diaChi, $email)
-		{
-			$conn = $this->connect();
-			
-			$sqlSignUp = "insert into taiKhoan
-			(`tenTK`, `matKhau`, `ho`, `ten`, `sdt`, `quocgia`, `tinh_thanhpho`, `phuong_xa`, `quan_huyen`, `diaChi`, `email`)
-			 values
-			('{$user}', SHA1('{$pass}'), N'{$ho}', N'{$ten}', '{$sdt}', '{$quocGia}', '{$tinh}', '{$phuong}', '{$quan}', '{$diaChi}', '{$email}')";
-			$result = mysql_query($sqlSignUp, $conn);
-			
-			if($result)
-			{
-				echo "<script>alert('Đăng ký thành công!')</script>";
-				$this->mylogin($user, $pass);
-			}
-			else
-			{
-				echo "<script> alert('Đăng ký không thành công')</script>";
-			}		
-			
-			$this->closeDB($conn);		
-		}
-
-
 	}
 ?>

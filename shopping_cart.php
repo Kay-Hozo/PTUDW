@@ -19,11 +19,21 @@ if(isset($_REQUEST['layid']))
 {
 	$layid=$_REQUEST['layid'];
 }
+session_start();
+if(isset($_SESSION['id']))
+{
+	$maKH=$_SESSION['id'];
+}
+else
+{
+	$maKH=-1;
+}
 ?>
 <?php 
 include ("./class/clsStatusLogin.php");
 
 $giaodien = new statusLogin();
+$ship=0;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -142,12 +152,12 @@ $giaodien = new statusLogin();
           <div class="menu_top">
             <div class="top-cart-contain pull-right"> 
               <!-- Top Cart -->
-              <div class="mini-cart">
-                <div data-toggle="dropdown" data-hover="dropdown" class="basket dropdown-toggle"><a href="shopping_cart.php"><span class="hidden-xs">Giỏ hàng(<?php echo $p->laygiatri("select count(*) from giohang where maKH = {$_SESSION['id']}");?>)</span></a></div>
+             <div class="mini-cart">
+                <div data-toggle="dropdown" data-hover="dropdown" class="basket dropdown-toggle"><a href="shopping_cart.php"><span class="hidden-xs">Giỏ hàng(<?php echo $p->laygiatri("select count(*) from giohang where maKH={$maKH}",$maKH);?>)</span></a></div>
                 <div>
                   <div class="top-cart-content" style="display: none;">
                     <div class="block-subtitle">
-                      <div class="top-subtotal"><?php echo $p->laygiatri("select count(*) from giohang where maKH = {$_SESSION['id']}");?>  items, <span class="price"><?php echo $p->subtotal("select*from giohang g left join sanPham s on g.maSP=s.maSP where maKH = {$_SESSION['id']}");?>.000 đ</span> </div>
+                      <div class="top-subtotal"><?php echo $p->laygiatri("select count(*) from giohang where maKH={$maKH}",$maKH);?>  items, <span class="price"><?php echo $p->subtotal("select*from giohang g left join sanPham s on g.maSP=s.maSP where maKH={$maKH}",$maKH);?>.000 đ</span> </div>
                       <!--top-subtotal-->
                       <div class="pull-right">
                         <button title="View Cart" class="view-cart" type="button"><a href="shopping_cart.php"><span>Xem giỏ hàng</span></a></button>
@@ -157,12 +167,8 @@ $giaodien = new statusLogin();
                     <!--block-subtitle-->
                     <ul class="mini-products-list" id="cart-sidebar">
                       <?php
-					  $p->ouput_checkout("select*from giohang g left join sanPham s on g.maSP=s.maSP where maKH = {$_SESSION['id']}"); 
+					  $p->ouput_checkout("select*from giohang g left join sanPham s on g.maSP=s.maSP where maKH={$maKH}",$maKH); 
 					  ?>
-                    </ul>
-                    <div class="actions">
-                      <button class="btn-checkout" title="Checkout" type="button"><a href="shopping_cart.php"><span style="color:white;">Thanh toán</span></a></button>
-                    </div>
                     <!--actions--> 
                   </div>
                 </div>
@@ -188,11 +194,12 @@ $giaodien = new statusLogin();
     <div class="main container">
       <div class="col-main">
         <div class="cart">
+        <form method="post" action="#">
           <div class="page-title">
             <h2>Giỏ hàng</h2>
           </div>
           <div class="table-responsive">
-            <form method="post" action="#">
+            <!--<form method="post" action="#">-->
               <input type="hidden" value="Vwww7itR3zQFe86m" name="form_key">
               <fieldset>
                 <table class="data-table cart-table" id="shopping-cart-table">
@@ -224,141 +231,56 @@ $giaodien = new statusLogin();
                   </tfoot>
 
                   <tbody>
-                <?php 
-                 $sql="select * from giohang g left join sanPham s on g.maSP=s.maSP where maKH = {$_SESSION['id']}";
-                 $p->load_DS_giohang($sql);
-                 
-                 
-               
-                 ?>
+						<?php 
+                         $sql="select * from giohang g left join sanPham s on g.maSP=s.maSP where maKH = {$_SESSION['id']}";
+                         $p->load_DS_giohang($sql);
+                         
+                         
+                       
+                         ?>
                   </tbody>
 
                 </table>
               </fieldset>
-            </form>
+          <!--  </form>-->
           </div>
           <!-- BEGIN CART COLLATERALS -->
           <div class="cart-collaterals row">
-            <div class="col-sm-4">
-              <div class="shipping">
-                <h3>Địa chỉ giao hàng</h3>
-                <div class="shipping-form">
-                  <form id="shipping-zip-form" method="post" action="#">
-                    <ul class="form-list">
-                    <li>
-                        <label for="postcode">Họ tên người nhận</label>
-                        <div class="input-box">
-                          <input type="text" name="txtten" id="txtten" class="input-text validate-postcode" placeholder="Nhập họ tên người nhận">
-                        </div>
-                      </li>
-                      <li>
-                        <label for="postcode">Số điện thoại</label>
-                        <div class="input-box">
-                          <input type="text" name="huyen" id="huyen" class="input-text validate-postcode" placeholder="Ví dụ:038712xxxx(10 ký tự số)">
-                        </div>
-                      </li>
-                      <li>
-                        <label class="required" for="country"><em>*</em>Quốc gia</label>
-                        <div class="input-box">
-                          <select title="Country" class="validate-select" id="country" name="country_id">
-                            <option value="VN">Việt Nam</option>
-                            <option value="AX">Anh</option>
-                            
-                          </select>
-                        </div>
-                      </li>
-                      <li>
-                        <label for="region_id">Tỉnh/Thành phố</label>
-                        <div class="input-box">
-                          <select title="State/Province" name="region_id" id="region_id">
-                            <option value="">Vui lòng chọn tỉnh , thành phố</option>
-                            <option value="1" title="Alabama">TP Hồ Chí Minh</option>
-                            <option value="2" title="Alaska">Bến Tre</option>
-                            <option value="3" title="American Samoa">Cần Thơ</option>
-                            <option value="4" title="Arizona">Tiền Giang</option>
-                            <option value="5" title="Arkansas">Hà Giang</option>
-                            <option value="6" title="Armed Forces Africa">Bạc liêu</option>
-                            <option value="7" title="Armed Forces Americas">Long An</option>
-                            <option value="8" title="Armed Forces Canada">Sóc Trăng</option>
-                            <option value="9" title="Armed Forces Europe">Đắc Lắc</option>
-                            <option value="10" title="Armed Forces Middle East">Gia Lai</option>
-                            <option value="11" title="Armed Forces Pacific">Kiên Giang</option>
-                            <option value="12" title="California">Hậu Giang</option>
-                            <option value="13" title="Colorado">An Giang</option>
-                            <option value="14" title="Connecticut">Bạc Liêu</option>
-                            <option value="15" title="Delaware">Cà Mau</option>
-                            <option value="16" title="District of Columbia">Bình Định</option>
-                            <option value="17" title="Federated States Of Micronesia">Đồng Nai</option>
-                            <option value="18" title="Florida">Bình Dương</option>
-                            <option value="19" title="Georgia">Trà Vinh</option>
-                            <option value="20" title="Guam">Hậu Giang</option>
-                            <option value="21" title="Hawaii">Ninh Bình</option>
-                            <option value="22" title="Idaho">Đà Nẵng</option>
-                            <option value="23" title="Illinois">Ninh Thuận</option>
-                            <option value="24" title="Indiana">Bình Thuận</option>
-                           
-                          </select>
-                          <input type="text" style="display:none;" class="input-text" title="State/Province" name="region" id="region">
-                        </div>
-                      </li>
-                      <li>
-                        <label for="postcode">Quận/Huyện</label>
-                        <div class="input-box">
-                          <input type="text" name="huyen" id="huyen" class="input-text validate-postcode">
-                        </div>
-                      </li>
-                       <li>
-                        <label for="postcode">Phường/Xã</label>
-                        <div class="input-box">
-                          <input type="text" name="phuong" id="phuong" class="input-text validate-postcode">
-                        </div>
-                      </li>
-                      <li>
-                        <label for="postcode">Địa chỉ</label>
-                        <div class="input-box">
-                          <input type="text" name="DC" id="DC" class="input-text validate-postcode">
-                        </div>
-                      </li>
-                    </ul>
-                    <div class="buttons-set11">
-                      <button class="button get-quote" title="Get a Quote" type="button" id="ship" name="ship"><span>Nhận báo giá</span></button>
-                    </div>
-                    <!--buttons-set11-->
-                  </form>
-                </div>
-              </div>
-            </div>
+           <?php
+		   $p->diachiGH("select*from taiKhoan where maTK={$_SESSION['id']}");
+		   
+		   ?>
             <div class="col-sm-4">
               <div class="discount">
                 <h3>Mã giảm giá </h3>
-                <form method="post" action="#" id="discount-coupon-form">
+               <!-- <form method="post" action="#" id="discount-coupon-form">-->
                   <label for="coupon_code">Nhập mã giảm giá của bạn nếu có</label>
                   <input type="hidden" value="0" id="remove-coupone" name="remove">
                   <input type="text" name="coupon_code" id="coupon_code" class="input-text fullwidth">
                   <button value="Apply Coupon" class="button coupon " title="Apply Coupon" type="button"><span>Áp dụng phiếu giảm giá</span></button>
-                </form>
+                <!--</form>-->
               </div>
             <div >
              <div class="shipping">
                 <h3>Phương thức thanh toán</h3>
                 <div class="shipping-form">
-                  <form id="shipping-zip-form" method="post" action="#">
+                 <!-- <form id="shipping-zip-form" method="post" action="#">-->
                     <ul class="form-list">
                     <li>
                        <div class="input-box">
                           <select title="State/Province" name="pttt" id="pttt">
                             <option value="">Vui lòng chọn phương thức thanh toán</option>
-                            <option value="1" title="Alabama">Thanh toán khi nhận hàng</option>
-                            <option value="2" title="Alaska">Ví MOMO</option>
-                            <option value="3" title="American Samoa">Ví ZaloPay</option>
-                            <option value="4" title="Arizona">Ví VNPay</option>
-                            <option value="5" title="Arkansas">Thẻ tín dụng ATM</option>
+                            <option value="Thanh toán khi nhận hàng" title="Alabama">Thanh toán khi nhận hàng</option>
+                            <option value="Ví MOMO" title="Alaska">Ví MOMO</option>
+                            <option value="Ví ZaloPay" title="American Samoa">Ví ZaloPay</option>
+                            <option value="Ví VNPay" title="Arizona">Ví VNPay</option>
+                            <option value="Thẻ tín dụng ATM" title="Arkansas">Thẻ tín dụng ATM</option>
                            
                             </select>
                          </div>
                       </li>
                       </ul>
-                    </form>
+                    <!--</form>-->
                    </div>
                </div>
             </div>
@@ -374,15 +296,27 @@ $giaodien = new statusLogin();
                                         -->
                 <h3>Phí vận chuyển</h3>
                 <div class="shipping-form">
-                  <form id="shipping-zip-form" method="post" action="#">
+                  <!--<form id="shipping-zip-form" method="post" action="#">-->
                     <ul class="form-list">
                     <li>
                        <div class="input-box">
-                           <input type="text" name="phiship" id="phiship" class="input-text validate-postcode">
+                           <input type="text" name="phiship" id="phiship" class="input-text validate-postcode" value="<?php 
+						 //echo  $p->ship("select*from taiKhoan where maTK='$maKH'");
+						 $khuvuc=$_REQUEST['region_id'];
+						 if($khuvuc=='Thành phố Hồ Chí Minh')
+						 {
+							 $ship=0;
+						 }
+						 else
+						 {
+							 $ship=30;
+						 }
+						 echo $ship;
+						   ?>">
                          </div>
                       </li>
                       </ul>
-                    </form>
+                    <!--</form>-->
                    </div>
                </div>
             </div>
@@ -392,15 +326,55 @@ $giaodien = new statusLogin();
               <h3>Tổng cộng giỏ hàng</h3>
               <div class="inner">
                 <table class="table shopping-cart-table-total" id="shopping-cart-totals-table">
-                  
-                 <?php 
+                <tfoot>
+                    <tr>
+                      <td colspan="1" class="a-left"><strong>Tổng cộng</strong></td>
+                      <?php 
 				 $sql="select * from giohang g left join sanPham s on g.maSP=s.maSP where maKH = {$_SESSION['id']}";
 				 $p->thanhtien_giohang($sql);
+				 
 				 ?>
+                  </tr>
+                  <tr>
+                      <td colspan="1" class="a-left"><strong>Phí vận chuyển</strong></td>
+                      <?php 
+						 
+						 $khuvuc=$_REQUEST['region_id'];
+						 if($khuvuc=='Thành phố Hồ Chí Minh')
+						 {
+							 $ship=0;
+						 }
+						 else
+						 {
+							 $ship=30;
+						 }
+						 echo '<td class="a-right"><strong><span class="price">'.$ship.'.000 đ</span></strong></td>';
+						   ?>
+                      
+                     
+                  </tr>
+                  <tr>
+                      <td colspan="1" class="a-left"><strong> Subtotal</strong> </td>
+                      <td class="a-right"><strong><span class="price"><?php 
+					$tong=$p->subtotal("select*from giohang g left join sanPham s on g.maSP=s.maSP where maKH={$maKH}",$maKH);
+					  
+					  $phi=$ship;
+					  $sub= $tong + $phi;
+					  echo $sub;
+					  ?>.000 đ</span></strong></td>
+                    </tr>
+              </tfoot>
+                   
+                 
+                 
+                 
                 </table>
                 <ul class="checkout">
                   <li>
-                    <button class="button btn-proceed-checkout" title="Proceed to Checkout" type="button"><span>Xác nhận thanh toán</span></button>
+                  
+                    <button class="button btn-proceed-checkout" title="Proceed to Checkout" type="submit" id="thanhtoan" name="thanhtoan" value="Xác nhận thanh toán"><span>Xác nhận thanh toán</span></button>
+               
+                    
                   </li>
                 
                   <li><a title="Checkout with Multiple Addresses" href="#">Thanh toán với nhiều địa chỉ</a> </li>
@@ -416,6 +390,90 @@ $giaodien = new statusLogin();
           <!--cart-collaterals--> 
           
         </div>
+        </form>
+        <?php
+		switch($_POST['thanhtoan'])
+		{
+			case'Xác nhận thanh toán':
+			{
+				$ten=$_REQUEST['txtten'];
+				$sdt=$_REQUEST['sdt'];
+				$quocgia=$_REQUEST['country_id'];
+				$tp=$_REQUEST['region_id'];
+				$quan=$_REQUEST['huyen'];
+				$phuong=$_REQUEST['phuong'];
+				$dc=$_REQUEST['DC'];
+				$thoigiandat=date('Y-m-d H:i:s');
+				$thanhtoan=$_REQUEST['pttt'];
+				$tongtien=$sub;
+				$sql="INSERT INTO donHang ( maTaiKhoan, trangThai,thanhToan, tongTien,thoiGianMua, diachigiaohang, quocgia, thanhpho, quan, phuong) VALUES ( '$maKH', 'chờ xác nhận', '{$thanhtoan}', '$sub','{$thoigiandat}',  '{$dc}', '{$quocgia}', '{$tp}', '{$quan}', '{$phuong}');";
+				
+                if($p->themsuaxoa($sql)==1)
+				{
+					
+					 $link=$p->addtocart();
+					 $sql1="select max(maDH) from donHang";
+					 $result=mysql_query($sql1,$link);
+					 $r=mysql_fetch_array($result);
+					 $maDH=$r[0];
+					 $sql2="select g.maSP,g.soluong,s.gia from giohang g join sanPham s on g.maSP=s.maSP where g.maKH='$maKH'";
+					 $kq=mysql_query($sql2,$link);
+					 while( $row=mysql_fetch_array($kq))
+					 {
+				     $maSP=$row['maSP'];
+					 $sl=$row['soluong'];
+					 $gia=$row['gia'];
+					 $sqlchitietDH="INSERT INTO chiTietDH (maDonHang, maSanPham, soLuong, gia, ten, sdtnguoinhan) VALUES ('$maDH','$maSP','$sl','$gia', '{$ten}', '{$sdt}')";
+					 $result1=$p->themsuaxoa($sqlchitietDH);
+					 }
+					if($result1==1)
+					 {
+						 $sql_delete="delete from giohang where maKH='$maKH'";
+						 if($p->themsuaxoa($sql_delete)==1)
+						 {
+					        echo " <script>alert('đặt hàng thành công')</script>;";
+							 echo '<script language="javascript">
+										window.location="./shopping_cart.php";
+										  </script>';
+						 }
+						 else
+						 {
+							 echo " <script>alert('đặt hàng thất bại')</script>;";
+							 echo '<script language="javascript">
+										window.location="./shopping_cart.php";
+										  </script>';
+						 }
+					 }
+					 else
+					 {
+						 echo " <script>alert('thêm chi tiết DH thất bại')</script>;";
+					 }
+					
+				}
+				else
+				{
+					echo " <script>alert('thêm đơn hàng thất bại')</script>;";
+				}
+				break;
+			}
+			/*case'Thay đổi địa chỉ':
+			{
+				$sdt=$_REQUEST['sdt'];
+				$quocgia=$_REQUEST['country_id'];
+				$tp=$_REQUEST['region_id'];
+				$quan=$_REQUEST['huyen'];
+				$phuong=$_REQUEST['phuong'];
+				$dc=$_REQUEST['DC'];
+				echo $sdt;
+				//$sql="update taiKhoan set sdt='$sdt',quocgia='$quocgia',tinh_thanhpho='$tp',quan_huyen='$quan',phuong_xa='$phuong',diaChi='$dc' where maTK='$maKH'";
+				//if($p->themsuaxoa($sql)==1)
+				//{
+				//	echo '<script>Cập nhật thành công
+				
+				break;
+			}*/
+		}
+		?>
         <div class="crosssel wow bounceInUp animated">
           <div class="">
             <h2>Dựa trên lựa chọn của bạn,bạn có thể quan tâm đến các mục sau:</h2>

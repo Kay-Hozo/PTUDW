@@ -368,6 +368,22 @@ Quý khách có nhu cầu liên lạc, trao đổi hoặc đóng góp ý kiến,
     </li>
     <li><a href="show_product.php">Sách </a>
       <ul>
+<<<<<<< HEAD
+        <li> <a href="grid.php" class="">Sách giáo khoa</a>
+         
+        </li>
+        <li> <a href="grid.php">Sách tham khảo</a>
+          
+        </li>
+        <li> <a href="grid.php">Sách ngoại ngữ</a>
+         
+        </li>
+        <li> <a href="grid.php">Sách thiếu nhi</a>
+         
+        </li>
+        <li> <a href="grid.php">Sách kinh tế</a>
+          
+=======
         <li> <a href="show_product.php" class="">Sách giáo khoa</a>
           <!--<ul>
             <li> <a href="grid.html" class="">Clutch Handbags</a></li>
@@ -407,17 +423,21 @@ Quý khách có nhu cầu liên lạc, trao đổi hoặc đóng góp ý kiến,
             <li> <a href="grid.html">Designer</a></li>
             <li> <a href="grid.html">Party</a></li>
           </ul>-->
+>>>>>>> 492d6523e57d7f2df3cbf27c1a6d397b79b56683
         </li>
-    <!-- <li> <a href="grid.html">Swimwear</a>
-          <ul>
-            <li> <a href="grid.html">Swimsuits</a></li>
-            <li> <a href="grid.html">Beach Clothing</a></li>
-            <li> <a href="grid.html">Clothing</a></li>
-            <li> <a href="grid.html">Bikinis</a></li>
-          </ul>
-        </li>-->
+    
       </ul>
     </li>
+<<<<<<< HEAD
+    <li><a href="grid.php">Truyện tranh</a>
+     
+    </li>
+    <li><a href="grid.php">Từ điển</a>
+
+    </li>
+    <li><a href="grid.php">Tiểu thuyết</a>
+      
+=======
     <li><a href="show_product.php">Truyện tranh</a>
      <!-- <ul>
         <li> <a href="grid.html" class="">Shoes</a>
@@ -557,6 +577,7 @@ Quý khách có nhu cầu liên lạc, trao đổi hoặc đóng góp ý kiến,
           </ul>
         </li>
       </ul>-->
+>>>>>>> 492d6523e57d7f2df3cbf27c1a6d397b79b56683
     </li>
     <li><a href="show_product.php">Đời sống</a></li>
     <li><a href="contact_us.html">Contact Us</a></li>

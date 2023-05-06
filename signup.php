@@ -1,7 +1,20 @@
 <?php
 	session_start();
+
+	include ("class/clsSignup.php");
+	$p = new signin();
+	if(isset($_SESSION['id']))
+	{
+		$maKH=$_SESSION['id'];
+	}
+	else
+	{
+		$maKH=-1;
+	}
+
 	include ("class/clsLogin.php");
 	$p = new login();
+
 ?>
 <?php 
  include ("./class/clsStatusLogin.php");
@@ -126,11 +139,11 @@
             <div class="top-cart-contain pull-right"> 
               <!-- Top Cart -->
               <div class="mini-cart">
-                <div data-toggle="dropdown" data-hover="dropdown" class="basket dropdown-toggle"><a href="shopping_cart.php"><span class="hidden-xs">Giỏ hàng(3)</span></a></div>
+                <div data-toggle="dropdown" data-hover="dropdown" class="basket dropdown-toggle"><a href="shopping_cart.php"><span class="hidden-xs">Giỏ hàng(<?php echo $p->laygiatri("select count(*) from giohang where maKH={$maKH}",$maKH);?>)</span></a></div>
                 <div>
                   <div class="top-cart-content" style="display: none;">
                     <div class="block-subtitle">
-                      <div class="top-subtotal">3 items, <span class="price">$180.00</span> </div>
+                      <div class="top-subtotal"><?php echo $p->laygiatri("select count(*) from giohang where maKH={$maKH}",$maKH);?>  items, <span class="price"><?php echo $p->thanhtien("select*from giohang g left join sanPham s on g.maSP=s.maSP where maKH={$maKH}",$maKH);?>.000 đ</span> </div>
                       <!--top-subtotal-->
                       <div class="pull-right">
                         <button title="View Cart" class="view-cart" type="button"><a href="shopping_cart.php"><span>Xem giỏ hàng</span></a></button>
@@ -139,37 +152,9 @@
                     </div>
                     <!--block-subtitle-->
                     <ul class="mini-products-list" id="cart-sidebar">
-                      <li class="item first">
-                        <div class="item-inner"><a class="product-image" title="Sample Product" href="#l"><img alt="Sample Product" src="images/book/image1.jpg"></a>
-                          <div class="product-details">
-                            <div class="access"><a class="btn-remove1" title="Remove This Item" href="#">Remove</a> <a class="btn-edit" title="Edit item" href="#"><i class="icon-pencil"></i><span class="hidden">Edit item</span></a> </div>
-                            <!--access--> <strong>1</strong> x <span class="price">$99.00</span>
-                            <p class="product-name"><a href="product_detail.php">Người Giàu Có Nhất Thành Babylon</a></p>
-                          </div>
-                        </div>
-                      </li>
-                      <li class="item last">
-                        <div class="item-inner"><a class="product-image" title="Sample Product" href="#"><img alt="Sample Product" src="images/book/image2.jpg"></a>
-                          <div class="product-details">
-                            <div class="access"><a class="btn-remove1" title="Remove This Item" href="#">Remove</a> <a class="btn-edit" title="Edit item" href="#"><i class="icon-pencil"></i><span class="hidden">Edit item</span></a> </div>
-                            <!--access--> <strong>1</strong> x <span class="price">$16.00</span>
-                            <p class="product-name"><a href="product_detail.php">Doremon</a></p>
-                          </div>
-                        </div>
-                      </li>
-                      <li class="item last">
-                        <div class="item-inner"><a class="product-image" title="Sample Product" href="#"><img alt="Sample Product" src="images/book/image3.png"></a>
-                          <div class="product-details">
-                            <div class="access"><a class="btn-remove1" title="Remove This Item" href="#">Remove</a> <a class="btn-edit" title="Edit item" href="#"><i class="icon-pencil"></i><span class="hidden">Edit item</span></a> </div>
-                            <!--access--> <strong>1</strong> x <span class="price">$65.00</span>
-                            <p class="product-name"><a href="product_detail.php">Từ điển Anh-Việt</a></p>
-                          </div>
-                        </div>
-                      </li>
-                    </ul>
-                    <div class="actions">
-                      <button class="btn-checkout" title="Checkout" type="button"><a href="shopping_cart.php"><span style="color:white;">Thanh toán</span></a></button>
-                    </div>
+                      <?php
+					  $p->ouput_checkout("select*from giohang g left join sanPham s on g.maSP=s.maSP where maKH={$maKH}",$maKH); 
+					  ?>
                     <!--actions--> 
                   </div>
                 </div>

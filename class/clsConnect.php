@@ -153,7 +153,7 @@
 			}
 			$this->closeDB($link);
 		}
-		public function laygiatri($sql,$maKH=-1)
+		public function laygiatri($sql,$maKH)
 		{
 			
 			 if($maKH<0)
@@ -179,9 +179,14 @@
 				 }
 			 }
 		}
-		public function thanhtien($sql)
+		public function thanhtien($sql,$maKH)
 		{
-			
+			if($maKH<0)
+			{
+				return 0;
+			}
+			else
+			{
 			$link=$this->connect();
 			$kq=mysql_query($sql,$link);
 			$i=mysql_num_rows($kq);
@@ -208,9 +213,17 @@
 				echo 'Không có dữ liệu';
 			}
 			$this->closeDB($link);
+			}
 		}
-		public function ouput_checkout($sql)
+		public function ouput_checkout($sql,$maKH)
 		{
+			if($maKH<0)
+			{
+				echo 'Chưa có sản phẩm nào';
+				return 0;
+			}
+			else
+			{
 			$link=$this->connect();
 			$kq=mysql_query($sql,$link);
 			$i=mysql_num_rows($kq);
@@ -235,8 +248,13 @@
                             <p class="product-name"><a href="product_detail.php?layid='.$id.'">'.$tensp.'</a></p>
                           </div>
                         </div>
-                      </li>';
+                      </li>
+					 ';
 				}
+				echo' </ul>
+                    <div class="actions">
+                      <button class="btn-checkout" title="Checkout" type="button"><a href="shopping_cart.php"><span style="color:white;">Thanh toán</span></a></button>
+                    </div>';
 				
 			}
 			else
@@ -244,6 +262,7 @@
 				echo 'Không có dữ liệu';
 			}
 			$this->closeDB($link);
+			}
 		}
 		
     }

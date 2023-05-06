@@ -360,5 +360,67 @@
 			
 			$this->closeDB($conn);
 		}
+		public function laygiatri($sql,$maKH)
+		{
+			
+			 if($maKH<0)
+			 {
+				return 0;
+			 }
+			 else
+			 {
+				  $link=$this->connect();
+				 $ketqua=mysql_query($sql,$link);
+				 $i=mysql_num_rows($ketqua);
+				 $giatri="";
+				 if($i>0)
+				 {
+					
+				 while($row=mysql_fetch_array($ketqua))
+					 {
+						
+						 $giatri=$row[0];
+						 
+					 }
+					 return $giatri;
+				 }
+			 }
+		}
+		public function subtotal($sql,$maKH)
+		{
+			if($maKH<0)
+			{
+				return 0;
+			}
+			else
+			{
+			$link=$this->connect();
+			$kq=mysql_query($sql,$link);
+			$i=mysql_num_rows($kq);
+			if($i>0)
+			{
+				$thanhtien=0;
+				while($row=mysql_fetch_array($kq))
+				{
+					
+					$id=$row['maSP'];
+					$tensp=$row['tenSP'];
+					$mota=$row['moTa'];
+					$gia=$row['gia'];
+					$soluong=$row['soluong'];
+					$hinh=$row['hinhAnh'];
+					$tongtien=$gia*$soluong;
+					$thanhtien+=$tongtien;
+					
+				}
+				return  $thanhtien;
+			}
+			else
+			{
+				echo 'Không có dữ liệu';
+			}
+			$this->closeDB($link);
+			}
+		}
     }
 ?>

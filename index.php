@@ -146,7 +146,7 @@ if(isset($_REQUEST['layid']))
                 <div>
                   <div class="top-cart-content" style="display: none;">
                     <div class="block-subtitle">
-                      <div class="top-subtotal"><?php echo $p->laygiatri("select count(*) from giohang where maKH = {$maKH}");?> items, <span class="price"><?php echo $p->thanhtien("select*from giohang g left join sanPham s on g.maSP=s.maSP where maKH = {$_SESSION['id']}");?> 000 đ</span> </div>
+                      <div class="top-subtotal"><?php echo $p->laygiatri("select count(*) from giohang where maKH = {$maKH}",$maKH);?> items, <span class="price"><?php echo $p->thanhtien("select*from giohang g left join sanPham s on g.maSP=s.maSP where maKH = {$maKH}",$maKH);?> .000 đ</span> </div>
                       <!--top-subtotal-->
                       <div class="pull-right">
                         <button title="View Cart" class="view-cart" type="button"><a href="shopping_cart.php"><span>Xem giỏ hàng</span></a></button>
@@ -156,12 +156,9 @@ if(isset($_REQUEST['layid']))
                     <!--block-subtitle-->
                     <ul class="mini-products-list" id="cart-sidebar">
                       <?php 
-					  $p->ouput_checkout("select*from giohang g left join sanPham s on g.maSP=s.maSP where maKH = {$_SESSION['id']}");
+					  $p->ouput_checkout("select*from giohang g left join sanPham s on g.maSP=s.maSP where maKH = {$maKH}",$maKH);
 					  ?>
-                    </ul>
-                    <div class="actions">
-                      <button class="btn-checkout" title="Checkout" type="button"><a href="shopping_cart.php"><span style="color:white;">Thanh toán</span></a></button>
-                    </div>
+                    
                     <!--actions--> 
                   </div>
                 </div>
@@ -617,32 +614,8 @@ fullScreenOffsetContainer: ''
 });
 
 </script>
-<?php 
-/*switch($_POST['nut'])
-	  {
-		  case'Add to Cart':
-		  {
-			  
-			  $sql = "insert into giohang(maSP,maKH,soluong) values ('$layid',1,1);";
-			
-			  $result = $p->themsuaxoa($sql);
-			 
-							 if($result==1)
-							 {
-								 echo " <script>alert('Thêm giỏ hàng thành công')</script>;";
-							 }
-							 else
-							 {
-							
-								  echo " <script>alert('Thêm giỏ hàng thất bại')</script>;";
-							 }
-				
-			
-			  break;
-			
-		  }
-	  }
-*/?>
+
+
 </body>
 
 <!-- Tieu Long Lanh Kute -->
