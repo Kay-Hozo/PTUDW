@@ -614,32 +614,8 @@ fullScreenOffsetContainer: ''
 });
 
 </script>
-<?php 
-/*switch($_POST['nut'])
-	  {
-		  case'Add to Cart':
-		  {
-			  
-			  $sql = "insert into giohang(maSP,maKH,soluong) values ('$layid',1,1);";
-			
-			  $result = $p->themsuaxoa($sql);
-			 
-							 if($result==1)
-							 {
-								 echo " <script>alert('Thêm giỏ hàng thành công')</script>;";
-							 }
-							 else
-							 {
-							
-								  echo " <script>alert('Thêm giỏ hàng thất bại')</script>;";
-							 }
-				
-			
-			  break;
-			
-		  }
-	  }
-*/?>
+
+
 </body>
 
 <!-- Tieu Long Lanh Kute -->

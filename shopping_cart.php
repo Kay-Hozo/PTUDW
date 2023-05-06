@@ -270,11 +270,11 @@ $ship=0;
                        <div class="input-box">
                           <select title="State/Province" name="pttt" id="pttt">
                             <option value="">Vui lòng chọn phương thức thanh toán</option>
-                            <option value="1" title="Alabama">Thanh toán khi nhận hàng</option>
-                            <option value="2" title="Alaska">Ví MOMO</option>
-                            <option value="3" title="American Samoa">Ví ZaloPay</option>
-                            <option value="4" title="Arizona">Ví VNPay</option>
-                            <option value="5" title="Arkansas">Thẻ tín dụng ATM</option>
+                            <option value="Thanh toán khi nhận hàng" title="Alabama">Thanh toán khi nhận hàng</option>
+                            <option value="Ví MOMO" title="Alaska">Ví MOMO</option>
+                            <option value="Ví ZaloPay" title="American Samoa">Ví ZaloPay</option>
+                            <option value="Ví VNPay" title="Arizona">Ví VNPay</option>
+                            <option value="Thẻ tín dụng ATM" title="Arkansas">Thẻ tín dụng ATM</option>
                            
                             </select>
                          </div>
@@ -406,25 +406,49 @@ $ship=0;
 				$thoigiandat=date('Y-m-d H:i:s');
 				$thanhtoan=$_REQUEST['pttt'];
 				$tongtien=$sub;
-				//echo $tp;
-				$sql="INSERT INTO donHang ( maTaiKhoan, trangThai,thanhToan, tongTien,thoiGianMua, diachigiaohang, quocgia, thanhpho, quan, phuong) VALUES ( '$maKH', 'chờ xác nhận', '0', '$sub','{$thoigiandat}',  '{$dc}', '{$quocgia}', '{$tp}', '{$quan}', '{$phuong}');";
-				//$result=$p->themsuaxoa($sql);
-//				if($result==1)
-//				{
-//					$id=$p->themsuaxoa("SELECT LAST_INSERT_ID();");
-//					echo $id;
-//				}
+				$sql="INSERT INTO donHang ( maTaiKhoan, trangThai,thanhToan, tongTien,thoiGianMua, diachigiaohang, quocgia, thanhpho, quan, phuong) VALUES ( '$maKH', 'chờ xác nhận', '{$thanhtoan}', '$sub','{$thoigiandat}',  '{$dc}', '{$quocgia}', '{$tp}', '{$quan}', '{$phuong}');";
+				
                 if($p->themsuaxoa($sql)==1)
 				{
 					
-					 //$link=$p->addtocart();
-//					 $sql1="select*from giohang g join sanPham s on g.maSP=s.maSP where g.maKH='$maKH'";
-//					 $kq=mysql_query($sql1,$link);
-//					 $row=mysql_fetch_array($kq);
-//					 $maSP=$row['maSP'];
-//					 $sl=$row['soluong'];
-//					 $gia=$row['gia'];
-					 echo " <script>alert('thêm đơn hàng thành công')</script>;";
+					 $link=$p->addtocart();
+					 $sql1="select max(maDH) from donHang";
+					 $result=mysql_query($sql1,$link);
+					 $r=mysql_fetch_array($result);
+					 $maDH=$r[0];
+					 $sql2="select g.maSP,g.soluong,s.gia from giohang g join sanPham s on g.maSP=s.maSP where g.maKH='$maKH'";
+					 $kq=mysql_query($sql2,$link);
+					 while( $row=mysql_fetch_array($kq))
+					 {
+				     $maSP=$row['maSP'];
+					 $sl=$row['soluong'];
+					 $gia=$row['gia'];
+					 $sqlchitietDH="INSERT INTO chiTietDH (maDonHang, maSanPham, soLuong, gia, ten, sdtnguoinhan) VALUES ('$maDH','$maSP','$sl','$gia', '{$ten}', '{$sdt}')";
+					 $result1=$p->themsuaxoa($sqlchitietDH);
+					 }
+					if($result1==1)
+					 {
+						 $sql_delete="delete from giohang where maKH='$maKH'";
+						 if($p->themsuaxoa($sql_delete)==1)
+						 {
+					        echo " <script>alert('đặt hàng thành công')</script>;";
+							 echo '<script language="javascript">
+										window.location="./shopping_cart.php";
+										  </script>';
+						 }
+						 else
+						 {
+							 echo " <script>alert('đặt hàng thất bại')</script>;";
+							 echo '<script language="javascript">
+										window.location="./shopping_cart.php";
+										  </script>';
+						 }
+					 }
+					 else
+					 {
+						 echo " <script>alert('thêm chi tiết DH thất bại')</script>;";
+					 }
+					
 				}
 				else
 				{
@@ -432,7 +456,7 @@ $ship=0;
 				}
 				break;
 			}
-			case'Thay đổi địa chỉ':
+			/*case'Thay đổi địa chỉ':
 			{
 				$sdt=$_REQUEST['sdt'];
 				$quocgia=$_REQUEST['country_id'];
@@ -447,7 +471,7 @@ $ship=0;
 				//	echo '<script>Cập nhật thành công
 				
 				break;
-			}
+			}*/
 		}
 		?>
         <div class="crosssel wow bounceInUp animated">

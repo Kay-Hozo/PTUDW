@@ -533,10 +533,6 @@ class giohang extends connectDB
 			{
 				$row=mysql_fetch_array($kq);
 				$id=$row['maTK'];
-				//$ho=$row['ho'];
-//				$ten=$row['ten'];
-//				$name=$ho+" "+$ten;
-				$sdt=$row['sdt'];
 				$quocgia=$row['quocgia'];
 				$tp=$row['tinh_thanhpho'];
 				$quan=$row['quan_huyen'];
@@ -557,7 +553,7 @@ class giohang extends connectDB
                       <li>
                         <label for="postcode">Số điện thoại</label>
                         <div class="input-box">
-                          <input type="text" name="sdt" id="sdt" class="input-text validate-postcode" placeholder="Ví dụ:038712xxxx(10 ký tự số)" value="'.$sdt.'">
+                          <input type="text" name="sdt" id="sdt" class="input-text validate-postcode" placeholder="Ví dụ:038712xxxx(10 ký tự số)">
                         </div>
                       </li>
                       <li>
