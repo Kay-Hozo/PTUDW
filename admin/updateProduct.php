@@ -135,7 +135,6 @@ else
 						WHERE sp.maSP = {$product_id}
 						";
 					}
-					var_dump($sql_upProduct);
 					$result = $p->themSuaXoaSP($sql_upProduct);
 					if($result == 1)
 					{

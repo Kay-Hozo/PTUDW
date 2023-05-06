@@ -144,6 +144,8 @@
 				return 0;
 			}
 		}
+
+
 		
 		public function  showProductsAdmin($product_id=0)
         {
@@ -422,5 +424,70 @@
 			$this->closeDB($link);
 			}
 		}
+
+		public function  showPostAdmin($sql)
+        {
+            $conn = $this->connect();
+			
+			$result = mysql_query($sql,$conn);
+			
+			if (!$result) {
+				die('Invalid query: ' . mysql_error());
+			}
+			
+			$rows = mysql_num_rows($result);
+						
+			if ($rows > 0) {
+				echo "
+				<table data-toggle='table' data-url=''  data-show-refresh='true' data-show-toggle='true' data-show-columns='true' data-search='true' data-pagination='true' data-sort-name='name' data-sort-order='desc'>
+				<thead>
+					<tr>
+					<th data-field='state' data-checkbox='true' >Item ID</th>
+					<th data-field='id'>Mã bài viết</th>
+					<th data-field='tenBV' data-sortable='true'>Tiêu đề bài viết</th>
+					<th data-field='noiDung'>Nội dung</th>
+					<th data-field='hinhAnh'>Hình ảnh</th>
+					<th data-field='tacGia' data-sortable='true'>Tác giả</th>
+					<th data-field='thoiGianDang' data-sortable='true'>Thời gian đăng</th>
+					<th data-field='noiBat' data-sortable='true'>Nổi bật</th>
+					</tr>
+				</thead>
+				<tbody>";
+			  while($post = mysql_fetch_array($result)) 
+			  {
+					echo "<tr>
+						<td></td>
+						<td class='text-center'>
+							<a href='updatePost.php?post_id={$post['id']}&author_id={$post['tacGia']}' class='text-color'>{$post['id']}</a>
+						</td>
+						<td>
+							<a href='updatePost.php?post_id={$post['id']}&author_id={$post['tacGia']}' class='text-color'>{$post['tenBV']}</a></td>
+						<td>
+							<a href='updatePost.php?post_id={$post['id']}&author_id={$post['tacGia']}' class='text-color'>
+								<p class='product-desc'>{$post['noiDung']}</p>
+							</a>
+						</td>
+						<td class='text-center'>
+							<img src='../images/post/{$post['hinhAnh']}' width='100%' alt=''/>
+						</td>
+						<td class='text-center'>
+							<a href='updatePost.php?post_id={$post['id']}&author_id={$post['tacGia']}' class='text-color'>{$post['ho']} {$post['ten']}</a>
+						</td>
+						<td class='text-center'>
+							<a href='updatePost.php?post_id={$post['id']}&author_id={$post['tacGia']}' class='text-color'>{$post['thoiGianDang']}</a>
+						</td>
+						<td class='text-center'>
+							<a href='updatePost.php?post_id={$post['id']}&author_id={$post['tacGia']}' class='text-color'>{$post['noiBat']}</a>
+						</td>
+					</tr>";
+			  }
+			 	echo "</tbody>
+  				</table>";
+			} else {
+			  echo "Không có bài viết!";
+			}
+			
+			$this->closeDB($conn);
+        }
     }
 ?>

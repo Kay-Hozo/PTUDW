@@ -84,7 +84,7 @@ else
 			<li><a href="widgets.html"><svg class="glyph stroked calendar"><use xlink:href="#stroked-calendar"></use></svg> Widgets</a></li>
 			<li><a href="charts.html"><svg class="glyph stroked line-graph"><use xlink:href="#stroked-line-graph"></use></svg> Charts</a></li>
 			<li class="active"><a href="products.php"><svg class="glyph stroked table"><use xlink:href="#stroked-table"></use></svg> Quản lý sản phẩm</a></li>
-			<li><a href="forms.html"><svg class="glyph stroked pencil"><use xlink:href="#stroked-pencil"></use></svg> Forms</a></li>
+			<li><a href="posts.php"><svg class="glyph stroked pencil"><use xlink:href="#stroked-pencil"></use></svg> Quản lý bài viết</a></li>
 			<li><a href="panels.html"><svg class="glyph stroked app-window"><use xlink:href="#stroked-app-window"></use></svg> Alerts &amp; Panels</a></li>
 			<li><a href="icons.html"><svg class="glyph stroked star"><use xlink:href="#stroked-star"></use></svg> Icons</a></li>
 			<li class="parent ">
@@ -256,12 +256,7 @@ else
                                 }
                                 
                                 break;	
-                            }	
-                        	case "Cập nhật sản phẩm":
-							{
-								var_dump($_POST['toolbar1']);
-								break;	
-							}
+                            }
 						}
                       ?>
                 </div>

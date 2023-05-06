@@ -38,7 +38,7 @@
 .product-desc {
 	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
 	font-size: 14px;	
-	line: 18px;
+	line-height: 18px;
 	max-height: 180px;
 	overflow: hidden;
 	display: -webkit-box;

@@ -453,8 +453,8 @@ if(isset($_REQUEST['layid']))
         <li><a href="checkout.php">Checkout</a></li>
         <li> <a href="wishlist.html">Wishlist</a></li>
         <li> <a href="dashboard.html">Dashboard</a></li>
-        <li> <a href="multiple_addresses.html">Multiple Addresses</a></li>
-        <li> <a href="about_us.html">About us</a></li>
+        <li> <a href="#">Multiple Addresses</a></li>
+        <li> <a href="gioithieu.php">About us</a></li>
         <li><a href="compare.html">Compare</a></li>
  	   <li><a href="faq.html">FAQ</a></li>
         <li><a href="quick_view.php">Quick view</a></li>

@@ -71,8 +71,8 @@
                 <li class="level1 first parent"><a href="checkout.php"><span>Thanh toán</span></a>  </li>
                <!-- <li class="level1 nav-10-4"><a href="wishlist.html"><span>Wishlist</span></a></li>-->
               <!--  <li class="level1"><a href="dashboard.html"><span>Dashboard</span></a></li>
-                <li class="level1"><a href="multiple_addresses.html"><span>Multiple Addresses</span></a></li>
-                <li class="level1"><a href="about_us.html"><span>About us</span></a></li>
+                <li class="level1"><a href="#"><span>Multiple Addresses</span></a></li>
+                <li class="level1"><a href="gioithieu.php"><span>About us</span></a></li>
                 <li class="level1"><a href="compare.html"><span>Compare</span></a></li>
                 
                 <li class="level1"><a href="faq.html"><span>FAQ</span></a></li>
@@ -739,8 +739,8 @@
         <li><a href="checkout.php">Checkout</a></li>
         <li> <a href="wishlist.html">Wishlist</a></li>
         <li> <a href="dashboard.html">Dashboard</a></li>
-        <li> <a href="multiple_addresses.html">Multiple Addresses</a></li>
-        <li> <a href="about_us.html">About us</a></li>
+        <li> <a href="#">Multiple Addresses</a></li>
+        <li> <a href="gioithieu.php">About us</a></li>
         <li><a href="compare.html">Compare</a></li>
  	   <li><a href="faq.html">FAQ</a></li>
         <li><a href="quick_view.php">Quick view</a></li>
