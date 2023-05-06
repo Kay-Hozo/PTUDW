@@ -1,4 +1,9 @@
-﻿<!DOCTYPE html>
+﻿
+<?php 
+include("./class/clsStatusLogin.php");
+$giaodien=new statusLogin();
+?>
+<!DOCTYPE html>
 <html lang="en">
 
 <!-- Tieu Long Lanh Kute -->
@@ -88,7 +93,7 @@
                <!-- <li class="level1"><a href="404error.html"><span>404 Error Page</span></a></li>-->
               </ul>
             </li>
-             <li class="mega-menu"><a href="show_product.php" class="level-top"><span>Giới thiệu</span></a></li>
+             <li class="mega-menu"><a href="gioithieu.php" class="level-top"><span>Giới thiệu</span></a></li>
             <li class="mega-menu"><a href="show_product.php" class="level-top"><span>Book</span></a>
               <div style="left: 0px; display: none;" class="level0-wrapper dropdown-6col">
                 <div class="container">
