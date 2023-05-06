@@ -33,7 +33,7 @@ else
 include ("./class/clsStatusLogin.php");
 
 $giaodien = new statusLogin();
-$ship=0;
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
