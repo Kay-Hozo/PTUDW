@@ -31,6 +31,7 @@ class giohang extends connectDB
 					$soluong=$row['soLuong'];
 					$hinh=$row['hinhAnh'];
 					$tacgia=$row['tenTG'];
+					$danhGia = $row['danhGia']*20;
 					echo '
 					 <div class="product-essential">
             <form action="#" method="post" id="product_addtocart_form">
@@ -51,7 +52,7 @@ class giohang extends connectDB
                   <div class="short-description">Tác giả:'.$tacgia.' </div>
                 <div class="ratings">
                   <div class="rating-box">
-                    <div style="width:60%" class="rating"></div>
+                    <div style="width:'.$danhGia.'%" class="rating"></div>
                   </div>
                   <p class="rating-links"> <a href="#">1 Đánh giá </a> <span class="separator">|</span> <a href="#">Thêm đánh giá</a> </p>
                 </div>
