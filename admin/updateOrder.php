@@ -169,7 +169,7 @@ else
 		<div class="col-sm-4 text-center">
 				</div>
 				<div class="col-sm-2 text-center">
-					<input type="submit" name='btnSP' id="btn" class="btn btn-light" value="Xoá sản phẩm" disabled>
+					<input type="submit" name='btnSP' id="btn" class="btn btn-light" value="Xoá sản phẩm">
 				</div>
 				<div class="col-sm-2 text-center">
 				<input type='submit' name='btnSP' id='btnUpdateSP' class='btn btn-primary' value='Cập nhật sản phẩm'>

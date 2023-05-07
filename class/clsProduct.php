@@ -50,10 +50,10 @@
 			$this->closeDB($conn);
 		}
 		
-		public function countRowTable($tenBang)
+		public function countRowTable($tenBang, $tenCot)
 		{
             $conn = $this->connect();
-			$sql = "SELECT COUNT(*) FROM {$tenBang};";
+			$sql = "SELECT MAX({$tenCot}) FROM {$tenBang};";
 			$result = mysql_query($sql, $conn);
 			
 			if($result !== false)

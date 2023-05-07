@@ -1,7 +1,8 @@
 <?php
 	class login
 	{
-		private $db_host = "82.180.152.153";
+		//private $db_host = "82.180.152.153";
+		private $db_host = "localhost";
         private $db_user = "u420857906_admin";
         private $db_pass = "xinchaoNha@132$";
         private $db_name = "u420857906_PTUDW";

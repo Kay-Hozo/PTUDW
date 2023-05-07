@@ -21,15 +21,15 @@ else
 }
 ?>
 <?php 
-	include ("../class/clsProduct.php");
-    $p = new product();
+	include ("../class/clsOrder.php");
+    $order = new myOrder();
 ?>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Quản lý sản phẩm</title>
+<title>Quản lý hoá đơn</title>
 
 <link href="../css/bootstrap.min.css" rel="stylesheet">
 <link href="../css/datepicker3.css" rel="stylesheet">
@@ -57,14 +57,14 @@ else
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="./index.php"><span>hello</span>Admin</a>
+				<a class="navbar-brand" href="#"><span>Lumino</span>Admin</a>
 				<ul class="user-menu">
 					<li class="dropdown pull-right">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown"><svg class="glyph stroked male-user"><use xlink:href="#stroked-male-user"></use></svg> User <span class="caret"></span></a>
 						<ul class="dropdown-menu" role="menu">
 							<li><a href="#"><svg class="glyph stroked male-user"><use xlink:href="#stroked-male-user"></use></svg> Profile</a></li>
 							<li><a href="#"><svg class="glyph stroked gear"><use xlink:href="#stroked-gear"></use></svg> Settings</a></li>
-							<li><a href="./logout.php"><svg class="glyph stroked cancel"><use xlink:href="#stroked-cancel"></use></svg> Logout</a></li>
+							<li><a href="#"><svg class="glyph stroked cancel"><use xlink:href="#stroked-cancel"></use></svg> Logout</a></li>
 						</ul>
 					</li>
 				</ul>
@@ -80,54 +80,32 @@ else
 			</div>
 		</form>
 		<ul class="nav menu">
-			<li><a href="index.php"><svg class="glyph stroked dashboard-dial"><use xlink:href="#stroked-dashboard-dial"></use></svg> Dashboard</a></li>
+			<li class="active"><a href="index.php"><svg class="glyph stroked dashboard-dial"><use xlink:href="#stroked-dashboard-dial"></use></svg> Dashboard</a></li>
 			<li><a href="widgets.html"><svg class="glyph stroked calendar"><use xlink:href="#stroked-calendar"></use></svg> Widgets</a></li>
 			<li><a href="orders.php"><svg class="glyph stroked line-graph"><use xlink:href="#stroked-line-graph"></use></svg> Quản lý hoá đơn</a></li>
-			<li class="active"><a href="products.php"><svg class="glyph stroked table"><use xlink:href="#stroked-table"></use></svg> Quản lý sản phẩm</a></li>
+			<li><a href="products.php"><svg class="glyph stroked table"><use xlink:href="#stroked-table"></use></svg>Quản lý sản phẩm</a></li>
 			<li><a href="posts.php"><svg class="glyph stroked pencil"><use xlink:href="#stroked-pencil"></use></svg> Quản lý bài viết</a></li>
 			<li><a href="panels.html"><svg class="glyph stroked app-window"><use xlink:href="#stroked-app-window"></use></svg> Alerts &amp; Panels</a></li>
 			<li><a href="icons.html"><svg class="glyph stroked star"><use xlink:href="#stroked-star"></use></svg> Icons</a></li>
-			<li class="parent ">
-				<a href="#">
-					<span data-toggle="collapse" href="#sub-item-1"><svg class="glyph stroked chevron-down"><use xlink:href="#stroked-chevron-down"></use></svg></span> Dropdown 
-				</a>
-				<ul class="children collapse" id="sub-item-1">
-					<li>
-						<a class="" href="#">
-							<svg class="glyph stroked chevron-right"><use xlink:href="#stroked-chevron-right"></use></svg> Sub Item 1
-						</a>
-					</li>
-					<li>
-						<a class="" href="#">
-							<svg class="glyph stroked chevron-right"><use xlink:href="#stroked-chevron-right"></use></svg> Sub Item 2
-						</a>
-					</li>
-					<li>
-						<a class="" href="#">
-							<svg class="glyph stroked chevron-right"><use xlink:href="#stroked-chevron-right"></use></svg> Sub Item 3
-						</a>
-					</li>
-				</ul>
-			</li>
-			<li role="presentation" class="divider"></li>
+			
 		</ul>
-
+		
 	</div><!--/.sidebar-->
 		
 	<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">			
 		<div class="row">
 			<ol class="breadcrumb">
 				<li><a href="#"><svg class="glyph stroked home"><use xlink:href="#stroked-home"></use></svg></a></li>
-				<li class="active">Quản lý sản phẩm</li>
+				<li class="active">Icons</li>
 			</ol>
 		</div><!--/.row-->
 		
 		<div class="row">
 			<div class="col-lg-12">
-				<h1 class="page-header">Quản lý sản phẩm</h1>
+				<h1 class="page-header">Quản lý hoá đơn</h1>
+				
 			</div>
 		</div><!--/.row-->
-				
 		<div class="row">
 			<div class="col-lg-12">
 				<div class="panel panel-default">
@@ -139,7 +117,7 @@ else
 						<div class="tab-content border-0">
 							<div class="tab-pane active" id="sanPham">
 							  <?php 
-							  	$p->showProductsAdmin();
+							  	$order->showOrdersAdmin();
 							  ?>
 							</div>
 							<div class="tab-pane" id="themSP">
@@ -149,7 +127,7 @@ else
                                   <label for="txtDM" class="col-sm-2 col-form-label">Danh mục</label>
                                   <div class="col-sm-10">
                                     <?php
-                                        $p->showOptionsInSelect("SELECT * FROM danhMuc", 'txtDM');
+                                        $order->showOptionsInSelect("SELECT * FROM danhMuc", 'txtDM');
                                     ?>
                                   </div>
                                 </div>
@@ -157,7 +135,7 @@ else
                                   <label for="txtTG" class="col-sm-2 col-form-label">Tác giả</label>
                                   <div class="col-sm-10">
                                     <?php
-                                        $p->showOptionsInSelect("SELECT * FROM tacGia", 'txtTG');
+                                        $order->showOptionsInSelect("SELECT * FROM tacGia", 'txtTG');
                                     ?>
                                   </div>
                                 </div>
@@ -225,18 +203,18 @@ else
                                 $type = $_FILES["txtAnh"]["type"];
                                 $thoiGian = date('Y-m-d H:i:s');
 								
-                                if($p->uploadImg($tmpName, $folder, $tenAnh, $type) == 1)
+                                if($order->uploadImg($tmpName, $folder, $tenAnh, $type) == 1)
                                 {
-                                    $maDanhMuc = $p->countRowTable("danhMucSP", 'id') + 1;
-                                    $maSanPham = $p->countRowTable("sanPham", 'maSP') + 1;
+                                    $maDanhMuc = $order->countRowTable("danhMucSP", 'id') + 1;
+                                    $maSanPham = $order->countRowTable("sanPham", 'maSP') + 1;
                                     
                                     $sql1 = "INSERT INTO `sanPham`
                                         (`tenSP`, `moTa`, `gia`, `giamGia`, `soLuong`, `daBan`, `trangThaiSP`, `noiBat`, `thoiGianTao`,  `maTacGia`, `hinhAnh`, `danhGia`) 
                                          values (N'{$tenSP}', N'{$mota}', {$gia}, {$giamGia}, {$soLuong}, 0, 1, 0, '{$thoiGian}', {$tacGia}, '{$tenAnh}', 0)";
                                     $sql2 = "INSERT INTO `danhMucSP` VALUES ({$maDanhMuc}, {$maSanPham}, {$danhMuc})";
-                                    if($p->themSuaXoaSP($sql1) == 1) 
+                                    if($order->themSuaXoaSP($sql1) == 1) 
                                     {
-                                        if($p->themSuaXoaSP($sql2) == 1)
+                                        if($order->themSuaXoaSP($sql2) == 1)
                                         {
                                             echo "<script>alert('Thêm sản phẩm thành công')</script>";	
                                         }
@@ -261,9 +239,48 @@ else
                       ?>
                 </div>
 			</div>
-		</div><!--/.row-->			
-		
-	</div><!--/.main-->
+		</div>
+		<div class="row">
+			<div class="col-xs-6 col-md-3">
+				<div class="panel panel-default">
+					<div class="panel-body easypiechart-panel">
+						<h4>Label:</h4>
+						<div class="easypiechart" id="easypiechart-blue" data-percent="92" ><span class="percent">92%</span>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-xs-6 col-md-3">
+				<div class="panel panel-default">
+					<div class="panel-body easypiechart-panel">
+						<h4>Label:</h4>
+						<div class="easypiechart" id="easypiechart-orange" data-percent="65" ><span class="percent">65%</span>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-xs-6 col-md-3">
+				<div class="panel panel-default">
+					<div class="panel-body easypiechart-panel">
+						<h4>Label:</h4>
+						<div class="easypiechart" id="easypiechart-teal" data-percent="56" ><span class="percent">56%</span>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-xs-6 col-md-3">
+				<div class="panel panel-default">
+					<div class="panel-body easypiechart-panel">
+						<h4>Label:</h4>
+						<div class="easypiechart" id="easypiechart-red" data-percent="27" ><span class="percent">27%</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div><!--/.row-->
+											
+	</div>	<!--/.main-->
+	  
 
 	<script src="../js/jquery-1.11.1.min.js"></script>
 	<script src="../js/bootstrap.min.js"></script>
@@ -275,10 +292,10 @@ else
 	<script src="../js/bootstrap-table.js"></script>
 	<script>
 		!function ($) {
-			$(document).on("click","ul.nav li.parent > a > span.icon", function(){		  
-				$(this).find('em:first').toggleClass("glyphicon-minus");	  
-			}); 
-			$(".sidebar span.icon").find('em:first').addClass("glyphicon-plus");
+		    $(document).on("click","ul.nav li.parent > a > span.icon", function(){          
+		        $(this).find('em:first').toggleClass("glyphicon-minus");      
+		    }); 
+		    $(".sidebar span.icon").find('em:first').addClass("glyphicon-plus");
 		}(window.jQuery);
 
 		$(window).on('resize', function () {
