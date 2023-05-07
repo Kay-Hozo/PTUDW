@@ -13,7 +13,6 @@ else
 ?>
 <?php 
 include ("./class/clsStatusLogin.php");
-
 $giaodien = new statusLogin();
 if(isset($_REQUEST['layid']))
 {
@@ -312,48 +311,11 @@ if(isset($_REQUEST['layid']))
     <div class="container">
       <div class="row">
         <div class="new_title center">
-          <h2>Latest Blog</h2>
+          <h2>Bài viết mới nhất</h2>
         </div>
-        <div class="col-xs-12 col-sm-6 col-lg-3">
-          <div class="blog_inner">
-            <div class="blog-img"> <img src="images/blog-img1.jpg" alt="Blog image">
-              <div class="mask"> <a class="info" href="blog_detail.php">Read More</a> </div>
-            </div>
-            <h3><a href="blog_detail.php">Pellentesque habitant morbi</a> </h3>
-            <div class="post-date"><i class="icon-calendar"></i> Apr 10, 2014</div>
-            <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Fusce sit  ... </p>
-          </div>
-        </div>
-        <div class="col-xs-12 col-sm-6 col-lg-3">
-          <div class="blog_inner">
-            <div class="blog-img"> <img src="images/blog-img2.jpg" alt="Blog image">
-              <div class="mask"> <a class="info" href="blog_detail.php">Read More</a> </div>
-            </div>
-            <h3><a href="blog_detail.php">Pellentesque habitant morbi</a> </h3>
-            <div class="post-date"><i class="icon-calendar"></i> Apr 10, 2014</div>
-            <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Fusce sit  ... </p>
-          </div>
-        </div>
-        <div class="col-xs-12 col-sm-6 col-lg-3">
-          <div class="blog_inner">
-            <div class="blog-img"> <img src="images/blog-img3.jpg" alt="Blog image">
-              <div class="mask"> <a class="info" href="blog_detail.php">Read More</a> </div>
-            </div>
-            <h3><a href="blog_detail.php">Pellentesque habitant morbi</a> </h3>
-            <div class="post-date"><i class="icon-calendar"></i> Apr 10, 2014</div>
-            <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Fusce sit  ... </p>
-          </div>
-        </div>
-        <div class="col-xs-12 col-sm-6 col-lg-3">
-          <div class="blog_inner">
-            <div class="blog-img"> <img src="images/blog-img4.jpg" alt="Blog image">
-              <div class="mask"> <a class="info" href="blog_detail.php">Read More</a> </div>
-            </div>
-            <h3><a href="blog_detail.php">Pellentesque habitant morbi</a> </h3>
-            <div class="post-date"><i class="icon-calendar"></i> Apr 10, 2014</div>
-            <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Fusce sit  ... </p>
-          </div>
-        </div>
+        <?php
+          $p->showPostIndex("SELECT * FROM baiViet ORDER BY noibat LIMIT 4");
+        ?>
       </div>
     </div>
   </section>
@@ -545,7 +507,7 @@ if(isset($_REQUEST['layid']))
 jQuery(document).ready(function(){
 jQuery('#rev_slider_4').show().revolution({
 dottedOverlay: 'none',
-delay: 5000,
+delay: 50,
 startwidth: 1920,
 startheight: 650,
 

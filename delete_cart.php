@@ -1,7 +1,7 @@
 
 <?php 
 include ("./class/clsgiohang.php");
-$p=new giohang();
+$cart=new giohang();
 ?>
 <?php 
 if(isset($_REQUEST['layid']))
@@ -74,7 +74,7 @@ if(isset($_REQUEST['layid']))
 		  case'Có':
 		  {
 			  $sql="delete from giohang ";
-			  $result=$p->themsuaxoa($sql);
+			  $result=$cart->themsuaxoa($sql);
 			  if($result==1)
 			  {
 				   echo " <script>alert('Xóa sản phẩm thành công')</script>;";

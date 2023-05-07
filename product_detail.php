@@ -1,7 +1,9 @@
 ﻿<?php
 session_start();
 include("./class/clsgiohang.php");
-$p=new giohang();
+include("./class/clsLogin.php");
+$cart=new giohang();
+$login = new login();
 if(isset($_SESSION['id']))
 {
 	$maKH=$_SESSION['id'];
@@ -131,11 +133,11 @@ $giaodien = new statusLogin();
             <div class="top-cart-contain pull-right"> 
               <!-- Top Cart -->
               <div class="mini-cart">
-                <div data-toggle="dropdown" data-hover="dropdown" class="basket dropdown-toggle"><a href="shopping_cart.php"><span class="hidden-xs">Giỏ hàng(<?php echo $p->laygiatri("select count(*) from giohang where maKH={$maKH}",$maKH);?>)</span></a></div>
+                <div data-toggle="dropdown" data-hover="dropdown" class="basket dropdown-toggle"><a href="shopping_cart.php"><span class="hidden-xs">Giỏ hàng(<?php echo $cart->laygiatri("select count(*) from giohang where maKH={$maKH}",$maKH);?>)</span></a></div>
                 <div>
                   <div class="top-cart-content" style="display: none;">
                     <div class="block-subtitle">
-                      <div class="top-subtotal"><?php echo $p->laygiatri("select count(*) from giohang where maKH={$maKH}",$maKH);?> items, <span class="price"><?php echo $p->subtotal("select*from giohang g left join sanPham s on g.maSP=s.maSP where maKH={$maKH}",$maKH);?>.000 đ</span> </div>
+                      <div class="top-subtotal"><?php echo $cart->laygiatri("select count(*) from giohang where maKH={$maKH}",$maKH);?> items, <span class="price"><?php echo $cart->subtotal("select*from giohang g left join sanPham s on g.maSP=s.maSP where maKH={$maKH}",$maKH);?>.000 đ</span> </div>
                       <!--top-subtotal-->
                       <div class="pull-right">
                         <button title="View Cart" class="view-cart" type="button"><a href="shopping_cart.php"><span>Xem giỏ hàng</span></a></button>
@@ -145,7 +147,7 @@ $giaodien = new statusLogin();
                     <!--block-subtitle-->
                     <ul class="mini-products-list" id="cart-sidebar">
                       <?php
-					  $p->ouput_checkout("select*from giohang g left join sanPham s on g.maSP=s.maSP where maKH={$maKH}",$maKH); 
+					  $cart->ouput_checkout("select*from giohang g left join sanPham s on g.maSP=s.maSP where maKH={$maKH}",$maKH); 
 					  ?>
                    
                     <!--actions--> 
@@ -193,14 +195,14 @@ $giaodien = new statusLogin();
             <form action="#" method="post" id="product_addtocart_form">
               <input name="form_key" value="6UbXroakyQlbfQzK" type="hidden">-->
               <?php
-			    $p->chitietsp("select* from sanPham s join tacGia t on s.maTacGia=t.maTG where s.maSP='$layid' limit 1");
+			    $cart->chitietsp("select* from sanPham s join tacGia t on s.maTacGia=t.maTG where s.maSP='$layid' limit 1");
 				
 				switch($_POST['nut'])
 				  {
 					  case'Add to Cart':
 					  {
 						  $soluong=$_REQUEST['qty'];
-						  $link=$p->addtocart();
+						  $link=$cart->addtocart();
 						  $sql="select*from giohang where maSP='$layid' and maKH = '{$_SESSION['id']}' LIMIT 1";
 						  $result=mysql_query($sql,$link);
 						  $i=mysql_num_rows($result);
@@ -262,11 +264,9 @@ $giaodien = new statusLogin();
                   <div class="box-collateral box-reviews" id="customer-reviews">
                     <div class="box-reviews1">
                       <div class="form-add">
-                        <form id="review-form" method="post" action="http://www.magikcommerce.com/review/product/post/id/176/">
-                          <h3>Viết đánh giá của riêng bạn</h3>
+                        <form id="review-form" method="post">
+                          <h3>Viết đánh giá của bạn</h3>
                           <fieldset>
-                            <h4>làm thế nào để bạn đánh giá sản phẩm này?<em class="required">*</em></h4>
-                            <span id="input-message-box"></span>
                             <table id="product-review-table" class="data-table">
                               
                               <thead>
@@ -281,163 +281,69 @@ $giaodien = new statusLogin();
                               </thead>
                               <tbody>
                                 <tr class="first odd">
-                                  <th>Giá</th>
-                                  <td class="value"><input type="radio" class="radio" value="11" id="Price_1" name="ratings[3]"></td>
-                                  <td class="value"><input type="radio" class="radio" value="12" id="Price_2" name="ratings[3]"></td>
-                                  <td class="value"><input type="radio" class="radio" value="13" id="Price_3" name="ratings[3]"></td>
-                                  <td class="value"><input type="radio" class="radio" value="14" id="Price_4" name="ratings[3]"></td>
-                                  <td class="value last"><input type="radio" class="radio" value="15" id="Price_5" name="ratings[3]"></td>
-                                </tr>
-                                <tr class="even">
-                                  <th>Giá trị</th>
-                                  <td class="value"><input type="radio" class="radio" value="6" id="Value_1" name="ratings[2]"></td>
-                                  <td class="value"><input type="radio" class="radio" value="7" id="Value_2" name="ratings[2]"></td>
-                                  <td class="value"><input type="radio" class="radio" value="8" id="Value_3" name="ratings[2]"></td>
-                                  <td class="value"><input type="radio" class="radio" value="9" id="Value_4" name="ratings[2]"></td>
-                                  <td class="value last"><input type="radio" class="radio" value="10" id="Value_5" name="ratings[2]"></td>
-                                </tr>
-                                <tr class="last odd">
                                   <th>Chất lượng</th>
-                                  <td class="value"><input type="radio" class="radio" value="1" id="Quality_1" name="ratings[1]"></td>
-                                  <td class="value"><input type="radio" class="radio" value="2" id="Quality_2" name="ratings[1]"></td>
-                                  <td class="value"><input type="radio" class="radio" value="3" id="Quality_3" name="ratings[1]"></td>
-                                  <td class="value"><input type="radio" class="radio" value="4" id="Quality_4" name="ratings[1]"></td>
-                                  <td class="value last"><input type="radio" class="radio" value="5" id="Quality_5" name="ratings[1]"></td>
+                                  <td class="value"><input type="radio" class="radio" value="1" name="ratings"></td>
+                                  <td class="value"><input type="radio" class="radio" value="2" name="ratings"></td>
+                                  <td class="value"><input type="radio" class="radio" value="3" name="ratings"></td>
+                                  <td class="value"><input type="radio" class="radio" value="4" name="ratings"></td>
+                                  <td class="value last"><input type="radio" class="radio" value="5" name="ratings"></td>
                                 </tr>
                               </tbody>
                             </table>
                             <input type="hidden" value="" class="validate-rating" name="validate_rating">
-                            <div class="review1">
-                              <ul class="form-list">
-                                <li>
-                                  <label class="required" for="nickname_field">Tên<em>*</em></label>
-                                  <div class="input-box">
-                                    <input type="text" class="input-text" id="nickname_field" name="nickname">
-                                  </div>
-                                </li>
-                                <li>
-                                  <label class="required" for="summary_field">Tóm tắt<em>*</em></label>
-                                  <div class="input-box">
-                                    <input type="text" class="input-text" id="summary_field" name="title">
-                                  </div>
-                                </li>
-                              </ul>
-                            </div>
                             <div class="review2">
                               <ul>
                                 <li>
-                                  <label class="required label-wide" for="review_field">Đánh giá<em>*</em></label>
+                                  <label class="required label-wide" for="review_field">Bạn đánh giá sản phẩm này thế nào?<em>*</em></label>
                                   <div class="input-box">
-                                    <textarea rows="3" cols="5" id="review_field" name="detail"></textarea>
+                                    <textarea rows="2" cols="10" id="review_field" name="txtDanhGia"></textarea>
                                   </div>
                                 </li>
                               </ul>
                               <div class="buttons-set">
-                                <button class="button submit" title="Submit Review" type="submit"><span>Gửi đánh giá</span></button>
+                                <button class="button submit" title="Submit Review" value="Đánh giá" name="btn" type="submit"><span>Gửi đánh giá</span></button>
                               </div>
                             </div>
                           </fieldset>
                         </form>
+                        <?php
+                          $btn = $_REQUEST['btn'];
+                          switch($btn)
+                          {
+                            case "Đánh giá":
+                            {
+                              if(isset($_SESSION["id"]) && isset($_SESSION["user"]) && isset($_SESSION["pass"]) && isset($_SESSION["ten"]) && isset($_SESSION["quyen"]))
+                              {
+                                $login->confirmLogin($_SESSION["id"], $_SESSION["user"], $_SESSION["pass"], $_SESSION["ten"], $_SESSION["quyen"]);
+                              }
+                              else
+                              {
+                                echo "<script> window.location.replace('./login.php')</script> ";	
+                              }
+
+                              $danhGia = $_REQUEST['txtDanhGia'];
+                              $sao = $_REQUEST['ratings'];
+
+                              $cart->addComment($layid, $_SESSION['id'], $danhGia, $sao);
+                              break;
+                            }
+
+                          }
+                        ?>
                       </div>
                     </div>
                     <div class="box-reviews2">
                       <h3>Khách hàng đánh giá</h3>
                       <div class="box visible">
-                        <ul>
-                          <li>
-                            <table class="ratings-table">
-                              
-                              <tbody>
-                                <tr>
-                                  <th>Giá trị</th>
-                                  <td><div class="rating-box">
-                                      <div class="rating" style="width:100%;"></div>
-                                    </div></td>
-                                </tr>
-                                <tr>
-                                  <th>Chất lượng</th>
-                                  <td><div class="rating-box">
-                                      <div class="rating" style="width:100%;"></div>
-                                    </div></td>
-                                </tr>
-                                <tr>
-                                  <th>Giá</th>
-                                  <td><div class="rating-box">
-                                      <div class="rating" style="width:100%;"></div>
-                                    </div></td>
-                                </tr>
-                              </tbody>
-                            </table>
-                            <div class="review">
-                              <h6><a href="#">Xuất sắc</a></h6>
-                              <small>Đánh giá bởi <span>Phạm Thị Thùy Trang </span> vào 1/3/2014 </small>
-                              <div class="review-txt"> Đóng gói kỹ, giấy đẹp. Cuốn sách của mình còn nguyên seal, rất đẹp và mới. <br> Nội dung sách thì không phải bàn rồi, mình đọc online rồi và giờ mua sách ủng hộ và đọc lại. Người giàu có nhất thành
-                                                        Babylon và Thịnh vượng tài chính tuổi 30 là 2 cuốn sách về tài chính cá nhân mình tâm đắc cho đến hiện tại. Vẫn đang tìm hiểu thêm những cuốn sách khác</div>
-                            </div>
-                          </li>
-                          <li class="even">
-                             <table class="ratings-table">
-                              
-                              <tbody>
-                                <tr>
-                                  <th>Giá trị</th>
-                                  <td><div class="rating-box">
-                                      <div class="rating" style="width:100%;"></div>
-                                    </div></td>
-                                </tr>
-                                <tr>
-                                  <th>Chất lượng</th>
-                                  <td><div class="rating-box">
-                                      <div class="rating" style="width:100%;"></div>
-                                    </div></td>
-                                </tr>
-                                <tr>
-                                  <th>Giá</th>
-                                  <td><div class="rating-box">
-                                      <div class="rating" style="width:100%;"></div>
-                                    </div></td>
-                                </tr>
-                              </tbody>
-                            </table>
-                            <div class="review">
-                              <h6><a href="#/catalog/product/view/id/60/">Tuyệt vời</a></h6>
-                              <small>Đánh giá bởi <span>Nguyễn Văn Tuấn</span>vào 1/3/2014 </small>
-                              <div class="review-txt"> Tuyệt vời ! </div>
-                            </div>
-                          </li>
-                          <li>
-                            <table class="ratings-table">
-                              
-                              <tbody>
-                                <tr>
-                                  <th>Giá trị</th>
-                                  <td><div class="rating-box">
-                                      <div class="rating" style="width:100%;"></div>
-                                    </div></td>
-                                </tr>
-                                <tr>
-                                  <th>Chất lượng</th>
-                                  <td><div class="rating-box">
-                                      <div class="rating" style="width:100%;"></div>
-                                    </div></td>
-                                </tr>
-                                <tr>
-                                  <th>Giá</th>
-                                  <td><div class="rating-box">
-                                      <div class="rating" style="width:100%;"></div>
-                                    </div></td>
-                                </tr>
-                              </tbody>
-                            </table>
-                            <div class="review">
-                              <h6><a href="#/catalog/product/view/id/59/">Độc đáo</a></h6>
-                              <small>Đánh giá bởi <span>Trần Thị Hương</span>vào 1/3/2014 </small>
-                              <div class="review-txt"> Tuyệt! </div>
-                            </div>
-                          </li>
-                        </ul>
+                        <?php
+                           $cart->showComment("SELECT tk.ho, tk.ten, bl.thoiGianBL as thoiGianBL, bl.danhGia, bl.noiDung
+                           FROM binhLuan bl 
+                           LEFT JOIN sanPham s ON s.maSP = bl.maSanPham 
+                           LEFT JOIN tacGia t ON s.maTacGia = t.maTG 
+                           LEFT JOIN taiKhoan tk ON bl.maTK = tk.maTK 
+                           where s.maSP= {$layid}");
+                        ?>
                       </div>
-                      <div class="actions"> <a class="button view-all" id="revies-button" href="#"><span><span>Tất cả đánh giá</span></span></a> </div>
                     </div>
                     <div class="clear"></div>
                   </div>
@@ -456,7 +362,7 @@ $giaodien = new statusLogin();
                   <div id="related-products-slider" class="product-flexslider hidden-buttons">
                     <div class="slider-items slider-width-col4 products-grid">
                     <?php
-					$p->xuatsp("select * from sanPham order by maSP asc limit 8"); 
+					$cart->xuatsp("select * from sanPham order by maSP asc limit 8"); 
 					 
 					?>
            
@@ -484,7 +390,7 @@ $giaodien = new statusLogin();
         <div id="upsell-products-slider" class="product-flexslider hidden-buttons">
           <div class="slider-items slider-width-col4 products-grid">
              <?php
-					$p->xuatsp("select * from sanPham order by maSP desc limit 8"); 
+					$cart->xuatsp("select * from sanPham order by maSP desc limit 8"); 
 					?>
             <!-- End Item --> 
             
@@ -652,11 +558,11 @@ $giaodien = new statusLogin();
 		  
 		  $sql = "insert into giohang(maSP,maKH,soluong) values ('$layid',1,1);";
 		
-		  $result = $p->themsuaxoa($sql);
+		  $result = $cart->themsuaxoa($sql);
 		 
 						 if($result==1)
 						 {
-							 echo " <script>alert('Thêm giỏ hàng thành công')</script>;";
+							 echo " <script>alert('Thêm giỏ hàng thành công')</>;";
 						 }
 						 else
 						 {

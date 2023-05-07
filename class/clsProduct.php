@@ -1,5 +1,5 @@
 <?php 
-    include ("clsConnect.php");
+    include_once ("clsConnect.php");
     class product extends connectDB
     {
         public function themSuaXoaSP($sql)
@@ -489,5 +489,224 @@
 			
 			$this->closeDB($conn);
         }
+
+		public function showPostBlog($sql)
+		{
+			$conn = $this->connect();
+			$result = mysql_query($sql,$conn);
+			$rows = mysql_num_rows($result);
+						
+			if ($rows > 0) {
+			  while($post = mysql_fetch_array($result)) 
+			  {
+					echo 
+					"
+					<article class='blog_entry clearfix'>
+						<header class='blog_entry-header clearfix'>
+							<div class='blog_entry-header-inner'>
+							<h2 class='blog_entry-title'> <a rel='bookmark' href='blog_detail.php?post_id={$post['id']}'>{$post['tenBV']}</a> </h2>
+							</div>
+							<!--blog_entry-header-inner--> 
+						</header>
+						<div class='entry-content'>
+							<div class='featured-thumb'>
+								<a href='blog_detail.php?post_id={$post['id']}'>
+									<img src='images/post/{$post['hinhAnh']}' alt='blog image' style='width: 100%'>
+								</a>
+							</div>
+							<div class='entry-content'>
+								<p class='post-content-review'>  {$post['noiDung']}</p>
+							</div>
+							<p> <a class='btn'  href='blog_detail.php?post_id={$post['id']}'>Read More</a> </p>
+						</div>
+					</article>
+					";
+			  }
+			} else {
+			  echo "Không có bài viết!";
+			}
+			
+			$this->closeDB($conn);
+		}
+
+		public function showPostPopular($sql)
+		{
+			$conn = $this->connect();
+			$result = mysql_query($sql,$conn);
+			$rows = mysql_num_rows($result);
+						
+			if ($rows > 0) {
+				echo "<ul class='posts-list unstyled clearfix'>";
+			  while($post = mysql_fetch_array($result)) 
+			  {
+					$date = new DateTime($post['thoiGianDang']);
+					$formattedDate = $date->format('d/m/Y');
+					echo 
+					"
+					<li>
+						<figure class='featured-thumb'> <a href='blog_detail.php?post_id={$post['id']}'> 
+							<img width='80' height='53' alt='blog image' src='images/post/{$post['hinhAnh']}'> </a> 
+						</figure>
+						<!--featured-thumb-->
+						<h4 style='margin-top: 0;'><a title='' href='blog_detail.php?post_id={$post['id']}'>{$post['tenBV']}</a></h4>
+						<p class='post-meta'>
+							<i class='icon-calendar'></i>
+							<time class='entry-date'>{$formattedDate}</time>
+						</p>
+                 	</li>
+					";
+			  }
+			  
+				echo "</ul>";
+			} else {
+			  echo "Không có bài viết!";
+			}
+			
+			$this->closeDB($conn);
+		}
+
+		public function showPostDetail($sql)
+		{
+			$conn = $this->connect();
+			$result = mysql_query($sql,$conn);
+			$rows = mysql_num_rows($result);
+						
+			if ($rows > 0) {
+			  while($post = mysql_fetch_array($result)) 
+			  {
+					$date = new DateTime($post['thoiGianDang']);
+					$formattedDate = $date->format('d/m/Y');
+					echo 
+					"
+					<div class='blog-wrapper' id='main'>
+						<div class='site-content' id='primary'>
+							<div role='main' id='content'>
+							<article class='blog_entry clearfix' >
+								<header class='blog_entry-header clearfix'>
+								<div class='blog_entry-header-inner'>
+									<h2 class='blog_entry-title'>{$post['tenBV']} </h2>
+								</div>
+								<!--blog_entry-header-inner--> 
+								</header>
+								<!--blog_entry-header clearfix-->
+								<div class='entry-content'>
+								<div class='featured-thumb'><a href='#'><img alt='blog-img4' src='images/post/{$post['hinhAnh']}'></a></div>
+								<div class='entry-content'>
+									<p>{$post['noiDung']} </p>
+								</div>
+								</div>
+								<footer class='entry-meta'> This entry was posted on
+									<time datetime='' class='entry-date'>{$formattedDate}</time>
+								</footer>
+							</article>
+							</div>
+						</div>
+						</div>
+					";
+			  }
+			} else {
+			  echo "Không có bài viết!";
+			}
+			
+			$this->closeDB($conn);
+		}
+
+		
+		public function searchProduct($sql) 
+		{
+			$conn = $this->connect();	
+			$result = mysql_query($sql, $conn);
+			$row = mysql_num_rows($result);
+			
+			if($row > 0)
+			{
+				echo "<ul class='products-grid'>";
+				while ($product = mysql_fetch_array($result))
+				{			
+					$giaHienTai = $product['gia'] - $product['giamGia'];
+					$danhGia = $product['danhGia'] * 20;
+					echo 
+					"
+					<li class='item col-lg-3 col-md-3 col-sm-4 col-xs-6'>
+                  <div class='item-inner'>
+                    <div class='item-img'>
+                      <div class='item-img-info'> <a href='product_detail.php?layid={$product['maSP']}' title='Sample Product' class='product-image'> <img src='images/book/{$product['hinhAnh']}' alt='Sample Product'> </a>
+                        <div class='item-box-hover'>
+                          <div class='box-inner'> <div class='actions'>
+                            <div class='add_cart'>
+									<a href='addToCart.php?product_id={$product['maSP']}&qty=1' class='btn-add-cart'><span><i class='fa-solid fa-cart-shopping'></i></span></a>
+									
+                            </div>
+                            <div class='product-detail-bnt'><a href='quick_view.php?layid={$product['maSP']}' class='button detail-bnt'><span>Quick View</span></a></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class='item-info'>
+                      <div class='info-inner'>
+                        <div class='item-title'> <a href='product_detail.php?layid={$product['maSP']}' title='Sample Product'>{$product['tenSP']}</a> </div>
+                        <div class='item-content'>
+                          <div class='rating'>
+                            <div class='ratings'>
+                              <div class='rating-box'>
+                                <div class='rating' style='width:{$danhGia}%'></div>
+                              </div>
+                              <p class='rating-links'> <a href='#'>1 Review(s)</a> <span class='separator'>|</span> <a href='#'>Add Review</a> </p>
+                            </div>
+                          </div>
+                          <div class='item-price'>
+                            <div class='price-box'> <span class='regular-price'> <span class='price'>{$giaHienTai}.000</span> </span> </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+					";		
+				}
+				echo "</ul>";
+			}
+			else
+			{
+				echo "Không có dữ liệu";		
+			}
+			$this->closeDB($conn);
+		}
+
+		public function searchPost($sql) 
+		{
+			$conn = $this->connect();	
+			$result = mysql_query($sql, $conn);
+			$row = mysql_num_rows($result);
+			
+			if($row > 0)
+			{
+				echo "<ul class='products-grid'>";
+				while($post = mysql_fetch_array($result))
+				{			
+					echo "
+					<div class='col-xs-12 col-sm-6 col-lg-3'>
+						<div class='blog_inner'>
+							<div class='blog-img' style='background-image: url(./images/post/{$post['hinhAnh']});'> 
+							<div class='mask'> <a class='info' href='blog_detail.php?post_id={$post['id']}'>Read More</a> </div>
+							</div>
+							<a href='blog_detail.php?post_id={$post['id']}'>
+								<h4>{$post['tenBV']}</h4>
+								<p class='post-desc'>{$post['noiDung']}</p>
+							</a> 
+						</div>
+					</div>";
+				}
+				echo "</ul>";
+			}
+			else
+			{
+				echo "
+				<div class='ol-lg-12 mb-3'>
+					<p style='text-align:center!important;'>Không có dữ liệu</p>
+				</div>";	
+			}
+			$this->closeDB($conn);
+		}
     }
 ?>

@@ -126,3 +126,28 @@ label.btn-search.glyphicon.glyphicon-search {
 	background-color: #2ecc71;
 	color: white;	
 }
+
+.blog-img {
+	width: 262px;
+	height: 147px;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+}
+
+.post-desc {
+	max-height: 60px;
+	overflow: hidden;
+	display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+}
+
+.post-content-review {
+	line-height: 19px;
+	max-height: 133px;
+	overflow: hidden;
+	display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 7;
+}

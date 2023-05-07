@@ -15,7 +15,6 @@ $giaodien = new statusLogin();
 $p = new product();
 
 $tenDM = $p->getValue("SELECT tenDM FROM danhMuc WHERE maDM = {$category_id}");
- 
 
 session_start();
 if(isset($_SESSION['id']))

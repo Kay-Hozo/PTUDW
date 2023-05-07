@@ -65,10 +65,11 @@
 						
 					   
 						<div class='search-box pull-right'>
-						  <form method='GET' id='search_mini_form' name='Categories'>
+						  <form method='GET' id='search_mini_form' name='Categories' action='search.php'>
 							<input type='text' placeholder='Search' maxlength='70' value='' name='txtsearch' id='search'>
-							<label for='btnsearch' class='btn-search glyphicon glyphicon-search'></label>
-							<input type='submit' hidden class='search-btn-bg' id='btnsearch' style='display: none;' value='btnsearch'/>
+							<label for='btnsearch' class='btn-search glyphicon glyphicon-search'>
+							</label>
+							<input type='submit' hidden class='search-btn-bg' id='btnsearch' style='display: none;' name='btn' value='btnsearch'/>
 						  </form>
 						</div>
 						<!-- End Search-col --> 

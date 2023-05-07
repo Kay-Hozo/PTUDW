@@ -2,7 +2,7 @@
 <?php 
 session_start();
 include ("./class/clsgiohang.php");
-$p=new giohang();
+$cart=new giohang();
 ?>
 <?php 
 if(isset($_REQUEST['layid']))
@@ -59,13 +59,13 @@ if(isset($_REQUEST['layid']))
           <div class="product-essential">
             
               <?php 
-			  $p->quick_view("select*from sanPham where maSP='$layid' limit 1");
+			  $cart->quick_view("select*from sanPham where maSP='$layid' limit 1");
 			 switch($_POST['nut'])
 				  {
 					  case'Add to Cart':
 					  {
 						  $soluong=$_REQUEST['qty'];
-						  $link=$p->addtocart();
+						  $link=$cart->addtocart();
 						  $sql="select*from giohang where maSP='$layid' and maKH = {$_SESSION['id']}";
 						  $result=mysql_query($sql,$link);
 						  $i=mysql_num_rows($result);

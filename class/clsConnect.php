@@ -265,6 +265,41 @@
 			}
 		}
 		
+		
+		public function showPostIndex($sql)
+		{
+			$conn = $this->connect();
+
+			$result = mysql_query($sql, $conn);
+			$row = mysql_num_rows($result);
+
+			if($row>0)
+			{
+				while($post = mysql_fetch_array($result))
+				{
+					echo "
+					<div class='col-xs-12 col-sm-6 col-lg-3'>
+						<div class='blog_inner'>
+							<div class='blog-img' style='background-image: url(./images/post/{$post['hinhAnh']});'> 
+							<div class='mask'> <a class='info' href='blog_detail.php?post_id={$post['id']}'>Read More</a> </div>
+							</div>
+							<a href='blog_detail.php?post_id={$post['id']}'>
+								<h4>{$post['tenBV']}</h4>
+								<p class='post-desc'>{$post['noiDung']}</p>
+							</a> 
+						</div>
+					</div>";
+				}
+			}
+			else
+			{
+				echo "
+				<div class='ol-lg-12 r'>
+					<p style='text-align:center!important;'>Không có dữ liệu</p>
+				</div>";
+			}
+			$this->closeDB($conn);
+		}
     }
 	
 ?>

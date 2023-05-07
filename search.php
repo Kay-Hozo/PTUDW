@@ -1,13 +1,20 @@
 ﻿<?php 
 include ("./class/clsStatusLogin.php");
+include ("class/clsProduct.php");
+
+if(isset($_REQUEST['category']))
+{
+	$category_id = $_REQUEST['category'];
+}
+else
+{
+	$category_id = 0;	
+}
 
 $giaodien = new statusLogin();
-?>
-<?php
-include_once ("./class/clsgiohang.php");
-include_once ("./class/clsProduct.php");
-$cart = new giohang();
-$post = new product();
+$p = new product();
+
+$tenDM = $p->getValue("SELECT tenDM FROM danhMuc WHERE maDM = {$category_id}");
 
 session_start();
 if(isset($_SESSION['id']))
@@ -18,7 +25,9 @@ else
 {
 	$maKH=-1;
 }
+
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -36,7 +45,7 @@ else
 <!-- Favicons Icon -->
 <link rel="icon" href="http://demo.magikthemes.com/skin/frontend/base/default/favicon.ico" type="image/x-icon" />
 <link rel="shortcut icon" href="http://demo.magikthemes.com/skin/frontend/base/default/favicon.ico" type="image/x-icon" />
-<title>Bài viết</title>
+<title>Tìm kiếm</title>
 
 <!-- Mobile Specific -->
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -44,16 +53,15 @@ else
 <!-- CSS Style -->
 <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="css/font-awesome.css" media="all">
-<link rel="stylesheet" type="text/css" href="css/style1.css" media="all">
+
 <link rel="stylesheet" type="text/css" href="css/animate.css" media="all">
 <link rel="stylesheet" type="text/css" href="css/revslider.css" >
 <link rel="stylesheet" type="text/css" href="css/owl.carousel.css">
 <link rel="stylesheet" type="text/css" href="css/owl.theme.css">
-<link rel="stylesheet" href="css/flexslider.css" type="text/css">
 <link rel="stylesheet" type="text/css" href="css/jquery.mobile-menu.css">
-<link rel="stylesheet" type="text/css" href="css/blogmate.css">
-<link rel="stylesheet" href="css/main.css">
-
+<link rel="stylesheet" type="text/css" href="css/jquery.bxslider.css">
+<link rel="stylesheet" type="text/css" href="css/style1.css" media="all">
+<link rel="stylesheet" type="text/css" href="css/main.css">
 <!-- Google Fonts -->
 <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
 <link href='https://fonts.googleapis.com/css?family=Roboto:400,500,300,700,900' rel='stylesheet' type='text/css'>
@@ -61,11 +69,11 @@ else
 
 <body class="cms-index-index cms-home-page">
 <div id="page"> 
-  <!-- Header -->
+   <!-- Header -->
 	<?php
     	$giaodien->showHeader();
 	?>
- <!-- end header -->
+  <!-- end header -->
   <div class="mm-toggle-wrap">
     <div class="mm-toggle"><i class="icon-align-justify"></i><span class="mm-label">Menu</span> </div>
   </div>
@@ -75,7 +83,7 @@ else
       <div class="row">
         <div class="nav-inner col-lg-12">
           <ul id="nav" class="hidden-xs">
-            <li class="level0 parent drop-menu"><a href="index.php"><span>Home</span></a>
+            <li class="level0 parent drop-menu "><a href="index.php"><span>Home</span></a>
              <!-- <ul class="level1">
                 <li class="level1 first parent"><a href="index.html"><span>Home Version 1</span></a></li>
                 <li class="level1 parent"><a href="../version_2/index.html"><span>Home Version 2</span></a></li>
@@ -110,7 +118,7 @@ else
               </ul>
             </li>
              <li class="mega-menu"><a href="gioithieu.php" class="level-top"><span>Giới thiệu</span></a></li>
-            <li class="mega-menu"><a href="show_product.php" class="level-top"><span>Book</span></a>
+            <li class="mega-menu active"><a href="show_product.php" class="level-top"><span>Book</span></a>
               <div style="left: 0px; display: none;" class="level0-wrapper dropdown-6col">
                 <div class="container">
                   <div class="level0-wrapper2">
@@ -125,46 +133,6 @@ else
                               <li class="level2 nav-6-1-1"><a href="grid.html" class=""><span>Hobo handbags</span></a></li>
                             </ul>-->
                           </li>
-                          <li class="level1 nav-6-1 parent item"><a href="show_product.php"><span>Sách tham khảo</span></a>
-                           <!-- <ul class="level1">
-                              <li class="level2 nav-6-1-1"><a href="grid.html"><span>Beaded Handbags</span></a></li>
-                              <li class="level2 nav-6-1-1"><a href="grid.html"><span>Fabric Handbags</span></a></li>
-                              <li class="level2 nav-6-1-1"><a href="grid.html"><span>Handbags</span></a></li>
-                              <li class="level2 nav-6-1-1"><a href="grid.html"><span>Leather Handbags</span></a></li>
-                            </ul>-->
-                          </li>
-                          <li class="level1 nav-6-1 parent item"><a href="show_product.php"><span>Sách ngoại ngữ</span></a>
-                            <!--<ul class="level1">
-                              <li class="level2 nav-6-1-1"><a href="grid.html"><span>Flat Shoes</span></a></li>
-                              <li class="level2 nav-6-1-1"><a href="grid.html"><span>Flat Sandals</span></a></li>
-                              <li class="level2 nav-6-1-1"><a href="grid.html"><span>Boots</span></a></li>
-                              <li class="level2 nav-6-1-1"><a href="grid.html"><span>Heels</span></a></li>
-                            </ul>-->
-                          </li>
-                          <li class="level1 nav-6-1 parent item"><a href="show_product.php"><span>Sách thiếu nhi</span></a>
-                            <!--<ul class="level1">
-                              <li class="level2 nav-6-1-1"><a href="grid.html"><span>Bracelets</span></a></li>
-                              <li class="level2 nav-6-1-1"><a href="grid-2.html"><span>Necklaces &amp; Pendent</span></a></li>
-                              <li class="level2 nav-6-1-1"><a href="grid.html"><span>Pendants</span></a></li>
-                              <li class="level2 nav-6-1-1"><a href="grid.html"><span>Pins &amp; Brooches</span></a></li>
-                            </ul>-->
-                          </li>
-                          <li class="level1 nav-6-1 parent item"><a href="show_product.php"><span>Sách kinh tế</span></a>
-                            <!--<ul class="level1">
-                              <li class="level2 nav-6-1-1"><a href="grid.html"><span>Casual Dresses</span></a></li>
-                              <li class="level2 nav-6-1-1"><a href="grid.html"><span>Evening</span></a></li>
-                              <li class="level2 nav-6-1-1"><a href="grid.html"><span>Designer</span></a></li>
-                              <li class="level2 nav-6-1-1"><a href="grid.html"><span>Party</span></a></li>
-                            </ul>-->
-                          </li>
-                          <!--<li class="level1 nav-6-1 parent item"><a href="grid.html"><span>Swimwear</span></a>
-                            <ul class="level1">
-                              <li class="level2 nav-6-1-1"><a href="grid.html"><span>Swimsuits</span></a></li>
-                              <li class="level2 nav-6-1-1"><a href="#/swimwear/beach-clothing.html"><span>Beach Clothing</span></a></li>
-                              <li class="level2 nav-6-1-1"><a href="grid.html"><span>Clothing</span></a></li>
-                              <li class="level2 nav-6-1-1"><a href="grid.html"><span>Bikinis</span></a></li>
-                            </ul>
-                          </li>-->
                         </ul>
                       </div>
                     </div>
@@ -178,7 +146,79 @@ else
               </div> 
             </li> -->
             <li class="mega-menu"><a href="show_product.php" class="level-top"><span>Từ điển</span></a>
-             
+              <!--<div  style="left: 0px; display: none;" class="level0-wrapper dropdown-6col">
+                <div class="container">
+                  <div class="level0-wrapper2">
+                    <div class="nav-block nav-block-center">
+                      <ul class="level0">
+                        <li class="level1 nav-6-1 parent item"><a href="grid.html" class=""><span>Shoes</span></a>
+                          <ul class="level1">
+                            <li class="level2 nav-6-1-1"><a href="grid.html"><span>Sport Shoes</span></a></li>
+                            <li class="level2 nav-6-1-1"><a href="grid.html"><span>Casual Shoes</span></a></li>
+                            <li class="level2 nav-6-1-1"><a href="grid.html"><span>Leather Shoes</span></a></li>
+                            <li class="level2 nav-6-1-1"><a href="grid.html"><span>canvas shoes</span></a></li>
+                          </ul>
+                        </li>
+                        <li class="level1 nav-6-1 parent item"><a href="grid.html"><span>Dresses</span></a>
+                          <ul class="level1">
+                            <li class="level2 nav-6-1-1"><a href="grid.html"><span>Casual Dresses</span></a></li>
+                            <li class="level2 nav-6-1-1"><a href="grid.html"><span>Evening</span></a></li>
+                            <li class="level2 nav-6-1-1"><a href="grid.html"><span>Designer</span></a></li>
+                            <li class="level2 nav-6-1-1"><a href="grid.html"><span>Party</span></a></li>
+                          </ul>
+                        </li>
+                        <li class="level1 nav-6-1 parent item"><a href="grid.html"><span>Jackets</span></a>
+                          <ul class="level1">
+                            <li class="level2 nav-6-1-1"><a href="grid.html"><span>Coats</span></a></li>
+                            <li class="level2 nav-6-1-1"><a href="grid.html"><span>Formal Jackets</span></a></li>
+                            <li class="level2 nav-6-1-1"><a href="grid.html"><span>Leather Jackets</span></a></li>
+                            <li class="level2 nav-6-1-1"><a href="grid.html"><span>Blazers</span></a></li>
+                          </ul>
+                        </li>
+                        <li class="level1 nav-6-1 parent item"><a href="grid.html"><span>Watches</span></a>
+                          <ul class="level1">
+                            <li class="level2 nav-6-1-1"><a href="grid.html"><span>Fasttrack</span></a></li>
+                            <li class="level2 nav-6-1-1"><a href="grid.html"><span>Casio</span></a></li>
+                            <li class="level2 nav-6-1-1"><a href="grid.html"><span>Titan</span></a></li>
+                            <li class="level2 nav-6-1-1"><a href="grid.html"><span>Tommy-Hilfiger</span></a></li>
+                          </ul>
+                        </li>
+                        <li class="level1 nav-6-1 parent item"><a href="grid.html"><span>Sunglasses</span></a>
+                          <ul class="level1">
+                            <li class="level2 nav-6-1-1"><a href="grid.html"><span>Ray Ban</span></a></li>
+                            <li class="level2 nav-6-1-1"><a href="grid.html"><span>Fasttrack</span></a></li>
+                            <li class="level2 nav-6-1-1"><a href="grid.html"><span>Police</span></a></li>
+                            <li class="level2 nav-6-1-1"><a href="grid.html"><span>Oakley</span></a></li>
+                          </ul>
+                        </li>
+                        <li class="level1 nav-6-1 parent item"><a href="grid.html"><span>Accesories</span></a>
+                          <ul class="level1">
+                            <li class="level2 nav-6-1-1"><a href="grid.html"><span>Backpacks</span></a></li>
+                            <li class="level2 nav-6-1-1"><a href="grid.html"><span>Wallets</span></a></li>
+                            <li class="level2 nav-6-1-1"><a href="grid.html"><span>Laptops Bags</span></a></li>
+                            <li class="level2 nav-6-1-1"><a href="grid.html"><span>Belts</span></a></li>
+                          </ul>
+                        </li>
+                      </ul>
+                    </div>-->
+                    <!--level0-wrapper2-->
+                 <!--   <div class="nav-add">
+                      <div class="push_item">
+                        <div class="push_img"><a href="#"><img alt="sunglass" src="images/menu_man_sunglass.png"></a></div>
+                      </div>
+                      <div class="push_item">
+                        <div class="push_img"><a href="#"><img alt="watch" src="images/menu_man_watch.png"></a></div>
+                      </div>
+                      <div class="push_item">
+                        <div class="push_img"><a href="#"><img alt="jeans" src="images/menu_man_jeans.png"></a></div>
+                      </div>
+                      <div class="push_item push_item_last">
+                        <div class="push_img"><a href="#"><img alt="shoes" src="images/menu_man_shoes.png"></a></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>-->
             </li>
            <li class="mega-menu"><a href="show_product.php" class="level-top"><span>Truyện tranh</span></a>
              <!-- <div style="left: 0px; display: none;" class="level0-wrapper dropdown-6col">
@@ -336,11 +376,11 @@ else
             <div class="top-cart-contain pull-right"> 
               <!-- Top Cart -->
              <div class="mini-cart">
-                <div data-toggle="dropdown" data-hover="dropdown" class="basket dropdown-toggle"><a href="shopping_cart.php"><span class="hidden-xs">Giỏ hàng(<?php echo $cart->laygiatri("select count(*) from giohang where maKH={$maKH}",$maKH);?>)</span></a></div>
+                <div data-toggle="dropdown" data-hover="dropdown" class="basket dropdown-toggle"><a href="shopping_cart.php"><span class="hidden-xs">Giỏ hàng(<?php echo $p->laygiatri("select count(*) from giohang where maKH={$maKH}",$maKH);?>)</span></a></div>
                 <div>
                   <div class="top-cart-content" style="display: none;">
                     <div class="block-subtitle">
-                      <div class="top-subtotal"><?php echo $cart->laygiatri("select count(*) from giohang where maKH={$maKH}",$maKH);?>  items, <span class="price"><?php echo $cart->subtotal("select*from giohang g left join sanPham s on g.maSP=s.maSP where maKH={$maKH}",$maKH);?>.000 đ</span> </div>
+                      <div class="top-subtotal"><?php echo $p->laygiatri("select count(*) from giohang where maKH={$maKH}",$maKH);?>  items, <span class="price"><?php echo $p->subtotal("select*from giohang g left join sanPham s on g.maSP=s.maSP where maKH={$maKH}",$maKH);?>.000 đ</span> </div>
                       <!--top-subtotal-->
                       <div class="pull-right">
                         <button title="View Cart" class="view-cart" type="button"><a href="shopping_cart.php"><span>Xem giỏ hàng</span></a></button>
@@ -350,7 +390,7 @@ else
                     <!--block-subtitle-->
                     <ul class="mini-products-list" id="cart-sidebar">
                       <?php
-					  $cart->ouput_checkout("select*from giohang g left join sanPham s on g.maSP=s.maSP where maKH={$maKH}",$maKH); 
+					  $p->ouput_checkout("select*from giohang g left join sanPham s on g.maSP=s.maSP where maKH={$maKH}",$maKH); 
 					  ?>
                     <!--actions--> 
                   </div>
@@ -370,41 +410,39 @@ else
     </div>
   </nav>
 
+
   <!-- end nav --> 
-  
   <!-- Main Container -->
-  
-  <section class="main-container col2-right-layout bounceInUp animated">
-    <div class="main container">
+  <section class="main-container col2-left-layout bounceInUp animated">
+  <div class="page-header"><div class="container"><div class="row">
+  <div class="col-xs-12">
+              <h2 class="" style='padding-top: 20px; padding-left: 30px'>
+              <?php
+              	echo 'Tìm kiếm: ' . $_REQUEST['txtsearch'];
+			  ?>
+              </h2></div></div></div>
+            </div>
+            <div class="container">
       <div class="row">
-        <div class="col-main col-sm-9">
-          <div class="page-title">
-            <h2>Bài viết</h2>
-          </div>
-          <div class="blog-wrapper" id="main">
-            <div class="site-content" id="primary">
-              <div role="main" id="content">
-                <?php
-                  $post->showPostBlog("SELECT * FROM baiViet");
+        <div class='col-main col-lg-12 col-sm-12'>
+          <article class='col-lg-12 col-main'>
+            <div class='category-products'>
+          <?php
+                $search = $_REQUEST['txtsearch'];
+                echo "<div class='new_title center' style='border-bottom: 2px dotted #111; margin-bottom: 50px;'><h2>Sách</h2></div>";
+                $p->searchProduct("SELECT * FROM sanPham s LEFT JOIN tacGia g ON s.maTacGia = g.maTG WHERE s.tenSP LIKE '%{$search}%' OR g.tenTG LIKE '%{$search}%'");          
                 ?>
-              </div>
-            </div>
-          </div>
+                </div>
+        </article>
+        <br>
+        <article class='col-lg-12 col-main'>
+            <?php
+            echo "<div class='new_title center' style='border-bottom: 2px dotted #111; margin-bottom: 50px;'><h2>Bài viết</h2></div>";
+            $p->searchPost("SELECT * FROM baiViet bv LEFT JOIN taiKhoan tk ON bv.tacGia = tk.maTK WHERE bv.tenBV LIKE '%{$search}%' OR tk.ho LIKE '%{$search}%' OR tk.ten LIKE '%{$search}%'");
+            ?>
+        </article>
+          <!--	///*///======    End article  ========= //*/// --> 
         </div>
-        <aside class="col-right sidebar col-sm-3">
-          <div role="complementary" class="widget_wrapper13" id="secondary">
-            <div class="popular-posts widget widget__sidebar" id="recent-posts-4">
-              <h3 class="widget-title">Bài viết phổ biến</h3>
-              <div class="widget-content">
-                <?php
-                  $post->showPostPopular("SELECT * FROM baiViet");
-                ?>
-              </div>
-              <!--widget-content--> 
-            </div>
-          </div>
-        </aside>
-      </div>
     </div>
   </section>
   <!-- Main Container End --> 
@@ -420,11 +458,8 @@ else
         </div>
         <div class="col-lg-3 col-sm-3 col-xs-6">
         <div class="col add-banner2">
-          <div class="top-b-text"></div>
-          </div>
-                  
-          
-          
+         <div class="top-b-text"></div>
+          </div> 
         </div>
         <div class="col-lg-3 col-sm-3 col-xs-6">
           <div class="col last offer"></div>
@@ -476,7 +511,7 @@ else
       </div>
     </div>
   </div>
-   <!-- Footer -->
+<!-- Footer -->
   <?php
   	$giaodien->showFooter();
   ?>
@@ -522,196 +557,15 @@ else
       </ul>
     </li>
     <li><a href="show_product.php">Sách </a>
-      <ul>
-        <li> <a href="show_product.php" class="">Sách giáo khoa</a>
-          <!--<ul>
-            <li> <a href="grid.html" class="">Clutch Handbags</a></li>
-            <li> <a href="grid.html" class="">Diaper Bags</a></li>
-            <li> <a href="grid.html" class="">Bags</a></li>
-            <li> <a href="grid.html" class="">Hobo handbags</a></li>
-          </ul>-->
-        </li>
-        <li> <a href="show_product.php">Sách tham khảo</a>
-          <!--<ul>
-            <li> <a href="grid.html">Beaded Handbags</a></li>
-            <li> <a href="grid.html">Fabric Handbags</a></li>
-            <li> <a href="grid.html">Handbags</a></li>
-            <li> <a href="grid.html">Leather Handbags</a></li>
-          </ul>-->
-        </li>
-        <li> <a href="show_product.php">Sách ngoại ngữ</a>
-         <!-- <ul>
-            <li> <a href="grid.html">Flat Shoes</a></li>
-            <li> <a href="grid.html">Flat Sandals</a></li>
-            <li> <a href="grid.html">Boots</a></li>
-            <li> <a href="grid.html">Heels</a></li>
-          </ul>-->
-        </li>
-        <li> <a href="show_product.php">Sách thiếu nhi</a>
-         <!-- <ul>
-            <li> <a href="grid.html">Bracelets</a></li>
-            <li> <a href="grid.html">Necklaces &amp; Pendent</a></li>
-            <li> <a href="grid.html">Pendants</a></li>
-            <li> <a href="grid.html">Pins &amp; Brooches</a></li>
-          </ul>-->
-        </li>
-        <li> <a href="show_product.php">Sách kinh tế</a>
-          <!--<ul>
-            <li> <a href="grid.html">Casual Dresses</a></li>
-            <li> <a href="grid.html">Evening</a></li>
-            <li> <a href="grid.html">Designer</a></li>
-            <li> <a href="grid.html">Party</a></li>
-          </ul>-->
-        </li>
-    <!-- <li> <a href="grid.html">Swimwear</a>
-          <ul>
-            <li> <a href="grid.html">Swimsuits</a></li>
-            <li> <a href="grid.html">Beach Clothing</a></li>
-            <li> <a href="grid.html">Clothing</a></li>
-            <li> <a href="grid.html">Bikinis</a></li>
-          </ul>
-        </li>-->
-      </ul>
+      
     </li>
     <li><a href="show_product.php">Truyện tranh</a>
-     <!-- <ul>
-        <li> <a href="grid.html" class="">Shoes</a>
-          <ul class="level1">
-            <li class="level2 nav-6-1-1"><a href="grid.html">Sport Shoes</a></li>
-            <li class="level2 nav-6-1-1"><a href="grid.html">Casual Shoes</a></li>
-            <li class="level2 nav-6-1-1"><a href="grid.html">Leather Shoes</a></li>
-            <li class="level2 nav-6-1-1"><a href="grid.html">canvas shoes</a></li>
-          </ul>
-        </li>
-        <li> <a href="#.html">Dresses</a>
-          <ul class="level1">
-            <li class="level2 nav-6-1-1"><a href="grid.html">Casual Dresses</a></li>
-            <li class="level2 nav-6-1-1"><a href="grid.html">Evening</a></li>
-            <li class="level2 nav-6-1-1"><a href="grid.html">Designer</a></li>
-            <li class="level2 nav-6-1-1"><a href="grid.html">Party</a></li>
-          </ul>
-        </li>
-        <li> <a href="#.html">Jackets</a>
-          <ul class="level1">
-            <li class="level2 nav-6-1-1"><a href="grid.html">Coats</a></li>
-            <li class="level2 nav-6-1-1"><a href="grid.html">Formal Jackets</a></li>
-            <li class="level2 nav-6-1-1"><a href="grid.html">Leather Jackets</a></li>
-            <li class="level2 nav-6-1-1"><a href="grid.html">Blazers</a></li>
-          </ul>
-        </li>
-        <li> <a href="#.html">Watches</a>
-          <ul class="level1">
-            <li class="level2 nav-6-1-1"><a href="grid.html">Fasttrack</a></li>
-            <li class="level2 nav-6-1-1"><a href="grid.html">Casio</a></li>
-            <li class="level2 nav-6-1-1"><a href="grid.html">Titan</a></li>
-            <li class="level2 nav-6-1-1"><a href="grid.html">Tommy-Hilfiger</a></li>
-          </ul>
-        </li>
-        <li> <a href="#/sunglasses.html">Sunglasses</a>
-          <ul class="level1">
-            <li class="level2 nav-6-1-1"><a href="grid.html">Ray Ban</a></li>
-            <li class="level2 nav-6-1-1"><a href="grid.html">Fasttrack</a></li>
-            <li class="level2 nav-6-1-1"><a href="grid.html">Police</a></li>
-            <li class="level2 nav-6-1-1"><a href="grid.html">Oakley</a></li>
-          </ul>
-        </li>
-        <li> <a href="grid.html">Sách kinh tế </a>
-          <ul class="level1">
-            <li class="level2 nav-6-1-1"><a href="grid.html">Backpacks</a></li>
-            <li class="level2 nav-6-1-1"><a href="grid.html">Wallets</a></li>
-            <li class="level2 nav-6-1-1"><a href="grid.html">Laptops Bags</a></li>
-            <li class="level2 nav-6-1-1"><a href="grid.html">Belts</a></li>
-          </ul>
-        </li>
-      </ul>-->
+    
     </li>
     <li><a href="show_product.php">Từ điển</a>
-     <!-- <ul>
-        <li> <a href="grid.html"><span>Mobiles</span></a>
-          <ul>
-            <li> <a href="grid.html"><span>Samsung</span></a></li>
-            <li> <a href="grid.html"><span>Nokia</span></a></li>
-            <li> <a href="grid.html"><span>IPhone</span></a></li>
-            <li> <a href="grid.html"><span>Sony</span></a></li>
-          </ul>
-        </li>
-        <li> <a href="grid.html" class=""><span>Accesories</span></a>
-          <ul>
-            <li> <a href="grid.html"><span>Mobile Memory Cards</span></a></li>
-            <li> <a href="grid.html"><span>Cases &amp; Covers</span></a></li>
-            <li> <a href="grid.html"><span>Mobile Headphones</span></a></li>
-            <li> <a href="grid.html"><span>Bluetooth Headsets</span></a></li>
-          </ul>
-        </li>
-        <li> <a href="grid.html"><span>Cameras</span></a>
-          <ul>
-            <li> <a href="grid.html"><span>Camcorders</span></a></li>
-            <li> <a href="grid.html"><span>Point &amp; Shoot</span></a></li>
-            <li> <a href="grid.html"><span>Digital SLR</span></a></li>
-            <li> <a href="grid.html"><span>Camera Accesories</span></a></li>
-          </ul>
-        </li>
-        <li> <a href="grid.html"><span>Audio &amp; Video</span></a>
-          <ul>
-            <li> <a href="grid.html"><span>MP3 Players</span></a></li>
-            <li> <a href="grid.html"><span>IPods</span></a></li>
-            <li> <a href="grid.html"><span>Speakers</span></a></li>
-            <li> <a href="grid.html"><span>Video Players</span></a></li>
-          </ul>
-        </li>
-        <li> <a href="grid.html"><span>Computer</span></a>
-          <ul>
-            <li> <a href="grid.html"><span>External Hard Disk</span></a></li>
-            <li> <a href="grid.html"><span>Pendrives</span></a></li>
-            <li> <a href="grid.html"><span>Headphones</span></a></li>
-            <li> <a href="grid.html"><span>PC Components</span></a></li>
-          </ul>
-        </li>
-        <li> <a href="grid.html"><span>Appliances</span></a>
-          <ul>
-            <li> <a href="grid.html"><span>Vaccum Cleaners</span></a></li>
-            <li> <a href="grid.html"><span>Indoor Lighting</span></a></li>
-            <li> <a href="grid.html"><span>Kitchen Tools</span></a></li>
-            <li> <a href="grid.html"><span>Water Purifier</span></a></li>
-          </ul>
-        </li>
-      </ul>-->
+    
     </li>
     <li><a href="show_product.php">Tiểu thuyết</a>
-      <!--<ul>
-        <li> <a href="grid.html">Living Room</a>
-          <ul>
-            <li> <a href="grid.html">Racks &amp; Cabinets</a></li>
-            <li> <a href="grid.html">Sofas</a></li>
-            <li> <a href="grid.html">Chairs</a></li>
-            <li> <a href="grid.html">Tables</a></li>
-          </ul>
-        </li>
-        <li> <a href="grid.html" class="">Dining &amp; Bar</a>
-          <ul>
-            <li> <a href="grid.html">Dining Table Sets</a></li>
-            <li> <a href="grid.html">Serving Trolleys</a></li>
-            <li> <a href="grid.html">Bar Counters</a></li>
-            <li> <a href="grid.html">Dining Cabinets</a></li>
-          </ul>
-        </li>
-        <li> <a href="grid.html">Bedroom</a>
-          <ul>
-            <li> <a href="grid.html">Beds</a></li>
-            <li> <a href="grid.html">Chest of Drawers</a></li>
-            <li> <a href="grid.html">Wardrobes &amp; Almirahs</a></li>
-            <li> <a href="grid.html">Nightstands</a></li>
-          </ul>
-        </li>
-        <li> <a href="grid.html">Kitchen</a>
-          <ul>
-            <li> <a href="grid.html">Kitchen Racks</a></li>
-            <li> <a href="grid.html">Kitchen Fillings</a></li>
-            <li> <a href="grid.html">Wall Units</a></li>
-            <li> <a href="grid.html">Benches &amp; Stools</a></li>
-          </ul>
-        </li>
-      </ul>-->
     </li>
     <li><a href="show_product.php">Đời sống</a></li>
     <li><a href="contact_us.html">Contact Us</a></li>
@@ -723,11 +577,13 @@ else
 <!-- JavaScript --> 
 <script type="text/javascript" src="js/jquery.min.js"></script> 
 <script type="text/javascript" src="js/bootstrap.min.js"></script> 
-<script type="text/javascript" src="js/parallax.js"></script> 
+<script type="text/javascript" src="js/parallax.js"></script>
 <script type="text/javascript" src="js/common.js"></script> 
-<script type="text/javascript" src="js/owl.carousel.min.js"></script> 
-<script type="text/javascript" src="js/jquery.flexslider.js"></script> 
-<script type="text/javascript" src="js/jquery.mobile-menu.min.js"></script>
+<script type="text/javascript" src="js/slider.js"></script> 
+<script type="text/javascript" src="js/owl.carousel.min.js"></script>
+<script type="text/javascript" src="js/jquery.mobile-menu.min.js"></script> 
+<script type="text/javascript" src="js/jquery.bxslider.min.js"></script> 
+<script src="https://kit.fontawesome.com/e9dbdfe1dd.js" crossorigin="anonymous"></script>
 </body>
 
 <!-- Tieu Long Lanh Kute -->
